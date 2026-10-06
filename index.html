@@ -467,6 +467,12 @@ function diag(msg, bad){
          (bad.length ? '含 ' + [...new Set(bad)].join('/') + ' → 會被 LINE 丟掉！' : '乾淨'), bad.length > 0);
   }
 
+  // 環境指紋：LINE 版本不同，支援的 Flex 屬性也不同（舊版可能整則不渲染）
+  const ua = navigator.userAgent;
+  const lineVer = (ua.match(/Line\/([\d.]+)/i) || [])[1] || '（抓不到，可能是外部瀏覽器）';
+  diag('LINE App 版本：' + lineVer + '｜LIFF SDK：' + (window.liff && liff.getVersion ? liff.getVersion() : '?')
+       + '｜OS：' + (ua.match(/\((iPhone|iPad|Android)[^)]*/) || ['未知'])[0].slice(0,40));
+
   if(LIFF_ID.indexOf('【') === 0) return;
   if(!window.liff){ diag('LIFF SDK 沒載入（可能是網路或被封鎖）', true); return; }
   if(DEBUG) diag('debug 模式：' + location.href);
