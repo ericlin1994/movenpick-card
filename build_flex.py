@@ -152,9 +152,11 @@ def build_body(card):
 
 
 def btn(label, uri, bg, fg="#FFFFFF"):
-    return {"type": "button", "style": "primary", "color": bg, "height": "sm",
-            "margin": "none", "action": {"type": "uri", "label": label, "uri": uri},
-            "scaling": False}
+    """只留 style + color。
+    PITFALL: 加上 height / margin / scaling 會讓 shareTargetPicker 回報成功、
+    但整則訊息在對方聊天室完全不顯示（實測於 2026-10，已用二分法定位）。"""
+    return {"type": "button", "style": "primary", "color": bg,
+            "action": {"type": "uri", "label": label, "uri": uri}}
 
 
 def build_bubble(i, card):
@@ -173,7 +175,7 @@ def build_bubble(i, card):
                            btn("導航門市", LINKS["map"], NAVY),
                        ]},
                        # 讓收到卡片的人也能一鍵再分享出去（開 LIFF 頁 → shareTargetPicker）
-                       {"type": "button", "style": "secondary", "height": "sm",
+                       {"type": "button", "style": "secondary",
                         "action": {"type": "uri", "label": "分享給好友", "uri": LIFF_URL + "?share=1"}},
                    ]},
     }

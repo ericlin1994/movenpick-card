@@ -97,47 +97,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -290,47 +280,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -463,47 +443,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -636,47 +606,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -829,47 +789,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -1002,47 +952,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
@@ -1165,47 +1105,37 @@
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
                     "uri": "https://【官網網址】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#A96B3C",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
                     "uri": "https://line.me/ti/p/~【個人LINE ID】"
-                  },
-                  "scaling": false
+                  }
                 },
                 {
                   "type": "button",
                   "style": "primary",
                   "color": "#16233D",
-                  "height": "sm",
-                  "margin": "none",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
                     "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  },
-                  "scaling": false
+                  }
                 }
               ]
             },
             {
               "type": "button",
               "style": "secondary",
-              "height": "sm",
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
