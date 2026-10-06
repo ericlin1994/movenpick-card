@@ -534,6 +534,36 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/v=1/.test(q)){
+        const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
+        const label = (b, t) => { b.body.contents[0] = { type:'text', text:t, color:'#B4462F', weight:'bold' }; return b; };
+        const mk = (t, b) => ({ type:'flex', altText: t.slice(0,20), contents: label(b, t) });
+
+        // V1：極簡卡，但文字故意塞入全角空格與中間點
+        const v1 = { type:'bubble',
+          body:{ type:'box', layout:'vertical', contents:[
+            { type:'text', text:'V1 全角空格　與中間點·測試', weight:'bold' },
+            { type:'text', text:'沙發訂製　·　展售批發　·　專業諮詢', size:'sm', wrap:true } ]},
+          footer:{ type:'box', layout:'vertical', contents:[
+            { type:'button', style:'primary', action:{ type:'uri', label:'官網', uri: LINKS.site } } ]}};
+
+        // V2：完整正式版結構，但把所有全角空格/中間點換成普通字元
+        const san = o => typeof o === 'string' ? o.replace(/\u3000/g, ' ').replace(/·/g, '-').replace(/｜/g, '|')
+                 : Array.isArray(o) ? o.map(san)
+                 : (o && typeof o === 'object') ? Object.fromEntries(Object.entries(o).map(([k,x]) => [k, san(x)])) : o;
+        const v2 = JSON.parse(JSON.stringify(P)); v2.body.contents[0].text = 'x';
+        const v2s = san(v2); v2s.body.contents[0].text = 'V2 同結構、字元已淨化';
+
+        // V3：完整正式版，但 body 只留前 4 個元素
+        const v3 = JSON.parse(JSON.stringify(P)); v3.body.contents = v3.body.contents.slice(0,4);
+
+        // V4：完整正式版，但移除 hero 的點擊 action
+        const v4 = JSON.parse(JSON.stringify(P)); delete v4.hero.action;
+
+        msg = [mk('V1 全角空格與中間點測試', v1), mk('V2 同結構但字元淨化', v2s),
+               mk('V3 正式版但 body 縮短', v3), mk('V4 正式版但移除圖片點擊', v4),
+               mk('V5 完整正式版（對照）', JSON.parse(JSON.stringify(P)))];
+        label = 'V1 字元／V2 字元淨化／V3 body縮短／V4 移圖片點擊／V5 對照';
       }else if(/u=1/.test(q)){
         // 只差在 bubble 的 size 屬性：移除 size vs size:mega/kilo/giga
         const prod = JSON.parse(JSON.stringify(flexPayload));
