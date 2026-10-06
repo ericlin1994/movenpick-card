@@ -205,3 +205,56 @@ sendMessages 失敗：The permission is not in LIFF app scope.
 * **action 型別**：全部是 `uri`（shareTargetPicker 只允許 URI action）✅
 * **按鈕屬性**：只留 `type` / `style` / `color` / `action` ✅
 * **`type` 欄位**：以自寫驗證器掃過整份 payload，無缺漏 ✅
+
+
+---
+
+# 【重要更新 2026-10-07 12:30】找到真正的原因了
+
+## 新證據：`liff.sendMessages()` 會回報真正的錯誤
+
+原本 `shareTargetPicker` 只回 `{status:"success"}` 就靜默丟棄，查不出原因。改用 `liff.sendMessages()`（同樣的 Flex 規格、不同通道）後：
+
+1. 第一次錯誤：`The permission is not in LIFF app scope.`
+   → LIFF app 的 **Scopes 沒勾 `chat_message.write`**。到 Console → LINE Login channel → LIFF → Scopes 勾選後 Update。
+2. 補上 scope 後的真實錯誤：**`(code: INVALID_MESSAGE) invalid message`**
+   → **訊息本身不合法**，所以不是限流、不是帳號問題。
+
+## 元凶：`action.uri` 含空格／全形字元
+
+正式版 payload 裡有三顆按鈕的 URI 是佔位符：
+
+```json
+"uri": "https://【官網網址】"
+"uri": "https://line.me/ti/p/~【個人LINE ID】"   ← 含半形空格 + 全形括號
+```
+
+`https://line.me/ti/p/~【個人LINE ID】` **URI 內有空格**，在 URI 語法上就是不合法。LINE 的渲染器會容忍（所以極簡卡在 picker 路徑下能顯示），但**驗證器會直接判定整則訊息 invalid**。已全部換成合法網址。
+
+同時也解釋了先前的一大堆矛盾：picker 路徑「回報成功但沒有卡片」，是因為訊息被驗證器擋掉後**靜默丟棄**，而 picker 不把錯誤回報給前端。
+
+## 修改內容
+
+`build_flex.py` 的 `LINKS` 全部改成合法 URI：
+
+```python
+LINKS = {
+    "site":  "https://ericlin1994.github.io/movenpick-card/",
+    "line":  "https://liff.line.me/2011897701-TrLfDuwi",
+    "map":   "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D",
+    "share": "https://liff.line.me/2011897701-TrLfDuwi?share=1",
+}
+```
+
+`validate_flex.py` 新增 **URI 稽核**：掃描所有 `action.uri`，命中 `[\s\u3000\uFF00-\uFFEF]` 就擋下不部署。
+
+```
+✓ 結構驗證通過：7 張卡、17707 bytes、無缺漏 type、按鈕屬性乾淨
+✓ URI 檢查通過
+```
+
+## 給 reviewer 的問題（更新版）
+
+1. 除了 URI，還有哪個欄位會讓 LINE 判 `INVALID_MESSAGE` 但一般驗證器抓不出來？
+2. `shareTargetPicker` 是否有任何方式可以取得「為什麼被丟棄」的原因？（目前只知道它 silent）
+3. 在 picker 路徑下，URI 不合法是否**一定**會導致整則訊息被丟棄（而非只讓那顆按鈕失效）？
