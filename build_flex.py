@@ -32,7 +32,8 @@ LINKS = {
     "site": "https://ericlin1994.github.io/movenpick-card/",
     "line": "https://liff.line.me/2011897701-TrLfDuwi",
     "map":  "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D",
-    "share": "https://liff.line.me/2011897701-TrLfDuwi?share=1",
+    # 分享鈕帶版本參數：每次改版都會換網址，順便破掉 LINE 內建瀏覽器的頁面快取
+    "share": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400",
 }
 
 # 3) 7 張卡的文案（照原圖逐字）
@@ -180,7 +181,7 @@ def build_bubble(i, card):
                            btn("LINE 諮詢", LINKS["line"], BROWN),
                            btn("導航門市", LINKS["map"], NAVY) ]},
                        {"type": "button", "style": "secondary",
-                        "action": {"type": "uri", "label": "分享給好友", "uri": LIFF_URL + "?share=1"}} ]},
+                        "action": {"type": "uri", "label": "分享給好友", "uri": LINKS["share"]}} ]},
     }
 
 
