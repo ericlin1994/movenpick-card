@@ -528,6 +528,25 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/r=1/.test(q)){
+        // 對照組測試：把「最早成功過」的極簡卡放回來，切開環境 vs 內容
+        const prod = JSON.parse(JSON.stringify(flexPayload));
+        const known = { type:'bubble',
+          body:{ type:'box', layout:'vertical', contents:[
+            { type:'text', text:'R1 對照組：最早成功過的極簡小卡', weight:'bold' },
+            { type:'text', text:'看到這張＝Flex 與圖片都可用', size:'sm', wrap:true } ]},
+          footer:{ type:'box', layout:'vertical', contents:[
+            { type:'button', style:'primary', action:{ type:'uri', label:'官方網站', uri: LINKS.site } } ]}};
+        const r3 = JSON.parse(JSON.stringify(prod)); r3.contents.contents = [r3.contents.contents[0]];
+        const r4 = JSON.parse(JSON.stringify(prod)); r4.contents.contents = r4.contents.contents.slice(0,3);
+        msg = [
+          { type:'text', text:'R2 純文字對照組：看到這行＝分享機制可用' },
+          { type:'flex', altText:'R1 極簡小卡', contents: known },
+          { type:'flex', altText:'R3 單張含圖', contents: r3.contents },
+          { type:'flex', altText:'R4 三張輪播', contents: r4.contents },
+          { type:'flex', altText:'R5 七張輪播正式版', contents: prod.contents },
+        ];
+        label = 'R1 極簡小卡／R2 純文字／R3 單張含圖／R4 三張／R5 正式七張';
       }else if(/n=1/.test(q)){
         // 最終定位：每張卡印上編號，一次送出五種變體
         const prod = JSON.parse(JSON.stringify(flexPayload));
