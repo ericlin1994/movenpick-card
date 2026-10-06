@@ -534,6 +534,20 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/u=1/.test(q)){
+        // 只差在 bubble 的 size 屬性：移除 size vs size:mega/kilo/giga
+        const prod = JSON.parse(JSON.stringify(flexPayload));
+        const one = JSON.parse(JSON.stringify(prod)); one.contents.contents = [one.contents.contents[0]];
+        const stripSize = m => { m.contents.contents.forEach(b => { delete b.size; }); return m; };
+        const r3 = JSON.parse(JSON.stringify(prod)); r3.contents.contents = r3.contents.contents.slice(0,3);
+        const u1 = stripSize(JSON.parse(JSON.stringify(one)));          // 移除 size
+        const u2 = JSON.parse(JSON.stringify(one));                     // size: mega（對照）
+        const u3 = stripSize(JSON.parse(JSON.stringify(prod)));          // 7 張、移除 size
+        u3.altText = 'U3 七張輪播（移除 size）';
+        const u4 = JSON.parse(JSON.stringify(one)); u4.contents.contents[0].size = 'kilo';
+        const u5 = stripSize(JSON.parse(JSON.stringify(r3)));            // 3 張、移除 size
+        msg = [u1, u2, u3, u4, u5];
+        label = 'U1 單張移除size／U2 單張size:mega／U3 七張移除size／U4 size:kilo／U5 三張移除size';
       }else if(/s=1/.test(q)){
         // 以「已知可用」的極簡卡為底，一次加一個功能，找出你手機不吃哪一項
         const IMG1 = 'https://ericlin1994.github.io/movenpick-card/img/card1.jpg';
