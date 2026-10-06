@@ -487,6 +487,17 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/card=1/.test(q)){
+        // 只送第 1 張卡（單張、含圖片）→ 測「圖片能不能過」
+        const clone = JSON.parse(JSON.stringify(flexPayload));
+        msg = [{ type: 'flex', altText: '單張測試卡', contents: clone.contents.contents[0] }];
+        label = '單張卡片（含圖片）';
+      }else if(/noimg=1/.test(q)){
+        // 7 張輪播但全部移除圖片 → 測「輪播能不能過」
+        const clone = JSON.parse(JSON.stringify(flexPayload));
+        clone.contents.contents.forEach(b => { delete b.hero; });
+        msg = [clone];
+        label = '7 張輪播（無圖片）';
       }else if(/mini=1/.test(q)){
         msg = [{ type: 'flex', altText: '測試小卡',
                  contents: { type: 'bubble', body: { type: 'box', layout: 'vertical', contents: [
