@@ -487,6 +487,50 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/z=1/.test(q)){
+        // 決定性測試：分離「網址」「結構」「按鈕屬性」，並驗證正式 carousel
+        const lbl = t => ({ type:'box', layout:'vertical', contents:[{ type:'text', text:t, weight:'bold' }] });
+        const urlBtn = (style, color, url, label) => { const b = { type:'button', style:style,
+            action:{ type:'uri', label:label, uri:url } }; if(color) b.color = color; return b; };
+        const hbox = kids => ({ type:'box', layout:'horizontal', spacing:'sm', contents:kids });
+        const vbox = kids => ({ type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:kids });
+        const shareBtn = { type:'button', style:'secondary', action:{ type:'uri', label:'分享給好友', uri: LINKS.line } };
+
+        // Z1：Y2 寫法（只有 color），但用三個真實網址
+        const z1 = { type:'bubble', body: lbl('Z1：橫向＋顏色，用真實三網址'),
+          footer: vbox([ hbox([
+            urlBtn('primary','#16233D', LINKS.site, '官方網站'),
+            urlBtn('primary','#A96B3C', LINKS.line, 'LINE 諮詢'),
+            urlBtn('primary','#16233D', LINKS.map,  '導航門市') ]) ]) };
+
+        // Z2：Y2 寫法＋同一 footer 再接一顆分享鈕
+        const z2 = { type:'bubble', body: lbl('Z2：橫向＋顏色＋同 footer 再接分享鈕'),
+          footer: vbox([ hbox([
+            urlBtn('primary','#16233D', LINKS.site, '官方網站'),
+            urlBtn('primary','#A96B3C', LINKS.line, 'LINE 諮詢'),
+            urlBtn('primary','#16233D', LINKS.map,  '導航門市') ]), shareBtn ]) };
+
+        // Z3：原始失敗版 footer（對照）
+        const z3 = { type:'bubble', body: lbl('Z3：原始失敗版（對照）'),
+          footer: JSON.parse(JSON.stringify(flexPayload)).contents.contents[0].footer };
+
+        // Z4：原始 footer 但網址全換成 site（分離網址問題）
+        const z4f = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0].footer;
+        z4f.contents[0].contents.forEach(b => { b.action.uri = LINKS.site; b.action.label = '官網'; });
+        const z4 = { type:'bubble', body: lbl('Z4：原始寫法，網址全換 site'), footer: z4f };
+
+        // Z5：正式版 carousel（修好的 footer：color-only 三顆 + 分享鈕在 body）
+        const fixed = JSON.parse(JSON.stringify(flexPayload));
+        fixed.contents.contents.forEach(b => {
+          b.footer = JSON.parse(JSON.stringify(z2.footer));
+          b.body.contents.push({ type:'button', style:'secondary',
+            action:{ type:'uri', label:'分享給好友', uri: 'https://liff.line.me/2011897701-TrLfDuwi?share=1' } });
+        });
+        fixed.altText = 'Z5 正式版 7 張輪播';
+
+        msg = [z1,z2,z3,z4].map((x,i)=>({ type:'flex', altText:'Z'+(i+1), contents:x }));
+        msg.push(fixed);
+        label = 'Z1~Z4 單張 ＋ Z5 正式 7 張輪播';
       }else if(/foot2=1/.test(q)){
         // 最後一輪：同時測候選上線版
         const lbl = t => ({ type:'box', layout:'vertical', contents:[{ type:'text', text:t, weight:'bold' }] });
