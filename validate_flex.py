@@ -95,7 +95,7 @@ def main():
                     _uri(x)
         elif isinstance(n, list):
             for x in n: _uri(x)
-    _uri(data)
+    _uri(payload)
     if bad:
         print("✗ URI 不合法（含空格／全形字元）:", bad[:3])
         sys.exit(1)
