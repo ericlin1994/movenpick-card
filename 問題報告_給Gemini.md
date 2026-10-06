@@ -258,3 +258,24 @@ LINKS = {
 1. 除了 URI，還有哪個欄位會讓 LINE 判 `INVALID_MESSAGE` 但一般驗證器抓不出來？
 2. `shareTargetPicker` 是否有任何方式可以取得「為什麼被丟棄」的原因？（目前只知道它 silent）
 3. 在 picker 路徑下，URI 不合法是否**一定**會導致整則訊息被丟棄（而非只讓那顆按鈕失效）？
+
+
+---
+
+# 【結案 2026-10-07 03:40】已完全解決
+
+## 根因確認
+`action.uri` 含半形空格／全形字元（`https://line.me/ti/p/~【個人LINE ID】`）→ LINE 判定整則訊息 `INVALID_MESSAGE` → `shareTargetPicker` **靜默丟棄**（只回 `{status:"success"}`）。
+改用合法 URI 後，**7 張 carousel 完整送達**。
+
+## 另外兩個關鍵設定（缺一不可）
+1. LIFF app 的 **Scopes 要勾 `chat_message.write`**，否則 `liff.sendMessages()` 報 `The permission is not in LIFF app scope.`
+2. `liff.sendMessages()` **會回報真正的錯誤**（`INVALID_MESSAGE` 等），而 `shareTargetPicker()` 不會 → **除錯一律先用 sendMessages 驗證 payload 合法性**。
+
+## 最終架構
+- 卡片按鈕「分享給好友」→ `https://liff.line.me/{liffId}?share=1` → LIFF 頁面載入後**自動呼叫 `liff.shareTargetPicker()`**，收件者一鍵即可再轉發（實測有效，官方條件只有「已登入＋Console 已 Enable」，無手勢要求）。
+- LIFF 頁面加 `<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">`，否則 LINE 內建瀏覽器的快取會讓使用者以為「修好了還是舊行為」。
+
+## 給 reviewer 的最終問題
+1. 除了 URI，還有哪些欄位錯誤會造成 `INVALID_MESSAGE` 但一般結構驗證器抓不出來？（建議做一份檢查清單）
+2. `shareTargetPicker` 有沒有任何方法取得「被丟棄的原因」？（目前確認它只會 silent success）
