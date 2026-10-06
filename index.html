@@ -487,6 +487,27 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/c=1/.test(q)){
+        // 用「已知可用」的 footer（只有 color）測：圖片 / 輪播 / 張數
+        const src7 = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
+        const goodFooter = { type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:[
+          { type:'box', layout:'horizontal', spacing:'sm', contents:[
+            { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'官方網站', uri: LINKS.site } },
+            { type:'button', style:'primary', color:'#A96B3C', action:{ type:'uri', label:'LINE 諮詢', uri: LINKS.line } },
+            { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'導航門市', uri: LINKS.map } } ]},
+          { type:'button', style:'secondary', action:{ type:'uri', label:'分享給好友',
+            uri: 'https://liff.line.me/2011897701-TrLfDuwi?share=1' } } ]};
+        const fixed = src7.map(b => { const c = JSON.parse(JSON.stringify(b)); c.footer = JSON.parse(JSON.stringify(goodFooter)); return c; });
+        const noimg = fixed.map(b => { const c = JSON.parse(JSON.stringify(b)); delete c.hero; return c; });
+        const car = (arr, alt) => ({ type:'flex', altText: alt, contents:{ type:'carousel', contents: arr } });
+        msg = [
+          { type:'flex', altText:'S1 單張（含圖）', contents: fixed[0] },
+          car(fixed.slice(0,2), 'C2 兩張輪播（含圖）'),
+          car(fixed.slice(0,3), 'C3 三張輪播（含圖）'),
+          car(fixed,            'C7 七張輪播（含圖）＝正式版'),
+          car(noimg,            'C7N 七張輪播（無圖）'),
+        ];
+        label = 'C 系列：單張／2張／3張／7張／7張無圖';
       }else if(/z=1/.test(q)){
         // 決定性測試：分離「網址」「結構」「按鈕屬性」，並驗證正式 carousel
         const lbl = t => ({ type:'box', layout:'vertical', contents:[{ type:'text', text:t, weight:'bold' }] });
