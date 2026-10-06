@@ -540,6 +540,31 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/a=1/.test(q)){
+        // 「有圖＋多顆按鈕」掛掉 → 測三種解法：較矮的圖／2 顆按鈕／縮小 bubble
+        const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
+        const cp = o => JSON.parse(JSON.stringify(o));
+        const IMG_URL = P[0].hero.url;
+        const mkBtn = (label, uri, color) => ({ type:'button', style:'primary', color, action:{ type:'uri', label, uri } });
+        const three = () => [ mkBtn('官方網站', LINKS.site, '#16233D'), mkBtn('LINE 諮詢', LINKS.line, '#A96B3C'), mkBtn('導航門市', LINKS.map, '#16233D') ];
+        const two    = () => [ mkBtn('官方網站', LINKS.site, '#16233D'), mkBtn('LINE 諮詢', LINKS.line, '#A96B3C') ];
+        const hbox = kids => ({ type:'box', layout:'horizontal', spacing:'sm', contents:kids });
+        const mk = (t, which, size) => {
+          const b = {}; if(size) b.size = size;
+          b.hero = { type:'image', url: IMG_URL, size:'full', aspectMode:'cover', aspectRatio: which };
+          b.body = { type:'box', layout:'vertical', contents:[{ type:'text', text:t, color:'#B4462F', weight:'bold' }] };
+          b.footer = { type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:[ hbox(three()) ] };
+          return { type:'flex', altText:t, contents:b };
+        };
+        const a1 = mk('A1 圖 20:13 ＋ 3 顆（對照）', '20:13');
+        const a2 = mk('A2 圖 1.91:1（較矮）＋ 3 顆', '1.91:1');
+        const a3 = mk('A3 圖 4:3（較矮）＋ 3 顆', '4:3');
+        const a4 = mk('A4 圖 20:13 ＋ 2 顆', '20:13');
+        a4.contents.footer.contents = [ hbox(two()) ];
+        const a5 = (() => { const b = cp(a1.contents); b.body.contents[0].text = 'A5 無圖 ＋ 3 顆（對照）'; delete b.hero;
+                            return { type:'flex', altText:'A5', contents:b }; })();
+        msg = [a1, a2, a3, a4, a5];
+        label = 'A1 20:13+3顆／A2 1.91:1+3顆／A3 4:3+3顆／A4 20:13+2顆／A5 無圖+3顆';
       }else if(/x=1/.test(q)){
         const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
         const cp = o => JSON.parse(JSON.stringify(o));
