@@ -416,6 +416,7 @@ document.querySelectorAll('[data-link]').forEach(el=>{
 });
 
 document.getElementById('y').textContent = new Date().getFullYear();
+window.addEventListener('error', e => diag('❌ JS 錯誤：' + e.message, true));
 
 /* ══════════════════════════════════════════════════════════
    LIFF 原生分享（shareTargetPicker）
@@ -515,6 +516,7 @@ function diag(msg, bad){
 })();
 
 async function shareCard(){
+  diag('👆 分享按鈕被按下（' + new Date().toLocaleTimeString() + '）');
   const tip = document.getElementById('tipText');
 
   // 1) 在 LINE 內 → 用 shareTargetPicker 送出原生 Flex 卡片
