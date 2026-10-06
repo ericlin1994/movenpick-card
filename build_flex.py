@@ -213,6 +213,67 @@ def inject_into_page(payload_json: str):
     print("已內嵌進 index.html，頁面大小", len(html.encode()), "bytes")
 
 
+def _lines(card):
+    out = []
+    for kind, t in card["body"]:
+        if kind == "head":
+            out.append("【" + t + "】")
+        elif kind == "li":
+            out.append("· " + t)
+        else:
+            out.append(t)
+    return "\n".join(out)
+
+
+def build_candidate(with_hero: bool):
+    """只用今天實測「會出現」的零件：兩行文字 body ＋ footer 三顆基本樣式按鈕（垂直排列）。
+    可選 hero 圖片（單獨測過會出現，但在 7 張輪播裡還沒被驗證過）。"""
+    bubbles = []
+    for i, card in enumerate(CARDS):
+        body = [{"type": "text", "text": card["title"], "weight": "bold", "color": NAVY},
+                {"type": "text", "text": _lines(card), "size": "xs", "color": "#4A5468", "wrap": True}]
+        if card.get("sub"):
+            body.insert(1, {"type": "text", "text": card["sub"], "size": "xs", "color": "#6B7280", "wrap": True})
+        bubble = {
+            "type": "bubble",
+            "body": {"type": "box", "layout": "vertical", "contents": body},
+            "footer": {"type": "box", "layout": "vertical", "contents": [
+                {"type": "button", "style": "primary", "action": {"type": "uri", "label": "官方網站", "uri": LINKS["site"]}},
+                {"type": "button", "style": "primary", "action": {"type": "uri", "label": "LINE 諮詢", "uri": LINKS["line"]}},
+                {"type": "button", "style": "primary", "action": {"type": "uri", "label": "導航門市", "uri": LINKS["map"]}},
+            ]},
+        }
+        if with_hero:
+            bubble["hero"] = {"type": "image", "url": IMAGES[i], "size": "full",
+                              "aspectRatio": "20:13", "aspectMode": "cover"}
+        bubbles.append(bubble)
+    return {"type": "flex", "altText": ("F2 有圖版" if with_hero else "F1 無圖版"),
+            "contents": {"type": "carousel", "contents": bubbles}}
+
+
+def inject_candidates():
+    import subprocess, sys
+    here = pathlib.Path(__file__).parent
+    for name, payload in (("f1", build_candidate(False)), ("f2", build_candidate(True))):
+        p = here / f"{name}.json"
+        p.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        r = subprocess.run([sys.executable, str(here / "validate_flex.py"), str(p)],
+                           capture_output=True, text=True, encoding="utf-8")
+        print(r.stdout.strip() or r.stderr.strip())
+        if r.returncode != 0:
+            raise SystemExit("候選版本結構驗證失敗，中止部署")
+    # 注入到 index.html
+    page = here / "index.html"
+    html = page.read_text(encoding="utf-8")
+    s, e = "/* ═══════ F_CANDIDATE_START", "/* ═══════ F_CANDIDATE_END"
+    i, j = html.index(s), html.index(e)
+    line_end = html.index("\n", i) + 1
+    js = "const INLINE_F1 = " + json.dumps(build_candidate(False), ensure_ascii=False, separators=(",", ":")) + ";\n"
+    js += "const INLINE_F2 = " + json.dumps(build_candidate(True), ensure_ascii=False, separators=(",", ":")) + ";\n"
+    page.write_text(html[:line_end] + js + html[j:], encoding="utf-8")
+    print("已注入 F1（無圖）／F2（有圖）到 index.html")
+
+
 def main():
     bubble_cards = [build_bubble(i, c) for i, c in enumerate(CARDS)]
     payload = {"type": "flex", "altText": "莫凡彼沙發工藝｜吳明憲 Steve 電子名片",
@@ -221,6 +282,7 @@ def main():
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"寫出 {out}　卡片數 = {len(bubble_cards)}　{out.stat().st_size} bytes")
     inject_into_page(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+    inject_candidates()
 
 
 if __name__ == "__main__":
