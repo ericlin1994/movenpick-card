@@ -46,10 +46,35 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "生活沒有標準尺寸\n沙發也不該只有標準答案\n沙發訂製　·　展售批發　·　專業諮詢",
+              "text": "生活沒有標準尺寸",
+              "size": "xl",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "沙發也不該只有標準答案",
+              "size": "md",
+              "color": "#A96B3C",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "沙發訂製　·　展售批發　·　專業諮詢",
               "size": "xs",
-              "color": "#4A5468",
+              "color": "#6B7280",
               "weight": "regular",
               "wrap": true,
               "margin": "md",
@@ -154,11 +179,86 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【你是不是也有這些困擾？】\n· 沙發坐起來不舒服，久坐腰酸背痛\n· 尺寸不合，空間總是差一點點\n· 想換皮革／布料／顏色卻不知道怎麼選\n· 找不到符合風格又耐用的沙發\n· 設計師提案需要特殊尺寸款式\n· 坐感可客製：柔軟／適中／扎實自由選擇\n中了其中一項，歡迎直接找我聊聊！",
+              "text": "你是不是也有這些困擾？",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 沙發坐起來不舒服，久坐腰酸背痛",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 尺寸不合，空間總是差一點點",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 想換皮革／布料／顏色卻不知道怎麼選",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 找不到符合風格又耐用的沙發",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 設計師提案需要特殊尺寸款式",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 坐感可客製：柔軟／適中／扎實自由選擇",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "中了其中一項，歡迎直接找我聊聊！",
+              "size": "xs",
+              "color": "#A96B3C",
+              "weight": "bold",
               "wrap": true,
               "margin": "md",
               "align": "start"
@@ -262,13 +362,68 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【沙發訂製】\n· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製\n【展售批發】\n· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定\n【專業諮詢】\n· 配置 · 選材 · 需求評估 — 給你清楚實用的建議",
+              "text": "沙發訂製",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
               "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "展售批發",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
               "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "專業諮詢",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 配置 · 選材 · 需求評估 — 給你清楚實用的建議",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
               "align": "start"
             }
           ]
@@ -370,13 +525,68 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【從設計到製造，一條龍完成】\n· 01 需求　了解空間／需求、使用習慣\n· 02 選材　皮革、布料、填充、五金\n· 03 設計　設計討論\n· 04 製造　台灣工廠、精工製造\n· 05 交付　專人安裝、售後服務",
+              "text": "從設計到製造，一條龍完成",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 01 需求　了解空間／需求、使用習慣",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
               "wrap": true,
-              "margin": "md",
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 02 選材　皮革、布料、填充、五金",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 03 設計　設計討論",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 04 製造　台灣工廠、精工製造",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 05 交付　專人安裝、售後服務",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
               "align": "start"
             }
           ]
@@ -478,13 +688,88 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【嚴選牛皮】\n· 細緻柔韌、透氣耐用，越坐越舒適\n【實木骨架】\n· 結構穩固耐用，使用壽命更長\n【高密度泡棉】\n· 多層結構、支撐性佳，久坐不易塌陷\n【台灣製椅腳】\n· 穩固耐重、不易晃動，細節成就品質",
+              "text": "嚴選牛皮",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 細緻柔韌、透氣耐用，越坐越舒適",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
               "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "實木骨架",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
               "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 結構穩固耐用，使用壽命更長",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "高密度泡棉",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 多層結構、支撐性佳，久坐不易塌陷",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "台灣製椅腳",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 穩固耐重、不易晃動，細節成就品質",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
               "align": "start"
             }
           ]
@@ -586,13 +871,68 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【吳ＯＯ　★★★★★】\n· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！\n【吳ＯＯ　★★★★★】\n· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。\n【Amber　★★★★★】\n· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。",
+              "text": "吳ＯＯ　★★★★★",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
               "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "吳ＯＯ　★★★★★",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
               "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "Amber　★★★★★",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
               "align": "start"
             }
           ]
@@ -694,11 +1034,56 @@
               "align": "start"
             },
             {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E6E0D4"
+            },
+            {
               "type": "text",
-              "text": "【拍下你的空間照片 ＋ 尺寸，LINE 傳給我】\n· 電話　03-397-2191\n· 地址　桃園市龜山區大湖路249號\n· 　　　林口長庚　近警察大學\n沙發訂製・展售・批發・諮詢",
+              "text": "拍下你的空間照片 ＋ 尺寸，LINE 傳給我",
+              "size": "sm",
+              "color": "#16233D",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 電話　03-397-2191",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 地址　桃園市龜山區大湖路249號",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 　　　林口長庚　近警察大學",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "沙發訂製・展售・批發・諮詢",
+              "size": "xs",
+              "color": "#A96B3C",
+              "weight": "bold",
               "wrap": true,
               "margin": "md",
               "align": "start"

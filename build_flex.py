@@ -137,16 +137,20 @@ def build_body(card):
     out = [txt(card["title"], size="lg", color=NAVY, weight="bold", margin="none")]
     if card.get("sub"):
         out.append(txt(card["sub"], size="xs", color="#6B7280", margin="sm"))
-    lines = []
+    out.append({"type": "separator", "margin": "md", "color": "#E6E0D4"})
     for kind, t in card["body"]:
-        if kind == "head":
-            lines.append("【" + t + "】")
+        if kind == "quote":
+            out.append(txt(t, size="xl", color=NAVY, weight="bold", margin="md"))
+        elif kind == "quote2":
+            out.append(txt(t, size="md", color=BROWN, weight="bold", margin="xs"))
+        elif kind == "tag":
+            out.append(txt(t, size="xs", color="#6B7280", margin="md"))
+        elif kind == "head":
+            out.append(txt(t, size="sm", color=NAVY, weight="bold", margin="md"))
         elif kind == "li":
-            lines.append("· " + t)
-        else:
-            lines.append(t)
-    if lines:
-        out.append(txt("\n".join(lines), size="xs", color="#4A5468", margin="md"))
+            out.append(txt("· " + t, size="xs", color="#4A5468", margin="xs"))
+        elif kind == "foot":
+            out.append(txt(t, size="xs", color=BROWN, weight="bold", margin="md"))
     return out
 
 
