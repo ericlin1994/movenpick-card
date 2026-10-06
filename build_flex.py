@@ -181,6 +181,25 @@ def build_bubble(i, card):
     }
 
 
+def inject_into_page(payload_json: str):
+    """把 payload 內嵌進 index.html，並把 BUILD 版號 +1。
+    內嵌的理由：LINE 內建瀏覽器會快取外部 json，導致一直送出舊版卡片。"""
+    import re
+    page = pathlib.Path(__file__).with_name("index.html")
+    html = page.read_text(encoding="utf-8")
+    s_mark, e_mark = "/* ═══════ FLEX_PAYLOAD_START", "/* ═══════ FLEX_PAYLOAD_END"
+    i, j = html.index(s_mark), html.index(e_mark)
+    line_end = html.index("\n", i) + 1
+    html = (html[:line_end]
+            + "const INLINE_FLEX = " + payload_json + ";\n"
+            + html[j:])
+    # BUILD 版號 +1（給外部檔案模式留一份保險）
+    html = re.sub(r"(const BUILD = 'b)(\d+)(')",
+                  lambda m: f"{m.group(1)}{int(m.group(2)) + 1}{m.group(3)}", html, count=1)
+    page.write_text(html, encoding="utf-8")
+    print("已內嵌進 index.html，頁面大小", len(html.encode()), "bytes")
+
+
 def main():
     bubble_cards = [build_bubble(i, c) for i, c in enumerate(CARDS)]
     payload = {"type": "flex", "altText": "莫凡彼沙發工藝｜吳明憲 Steve 電子名片",
@@ -188,6 +207,7 @@ def main():
     out = pathlib.Path(__file__).with_name("flex-cards.json")
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"寫出 {out}　卡片數 = {len(bubble_cards)}　{out.stat().st_size} bytes")
+    inject_into_page(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
 
 
 if __name__ == "__main__":
