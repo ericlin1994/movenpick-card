@@ -540,6 +540,35 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/x=1/.test(q)){
+        const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
+        const cp = o => JSON.parse(JSON.stringify(o));
+        const HERO = cp(P[0].hero);
+        const L = 'https://liff.line.me/2011897701-TrLfDuwi';
+        const b3 = () => [ { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'官方網站', uri: LINKS.site } },
+                           { type:'button', style:'primary', color:'#A96B3C', action:{ type:'uri', label:'LINE 諮詢', uri: LINKS.line } },
+                           { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'導航門市', uri: LINKS.map } } ];
+        const shareBtn = () => ({ type:'button', style:'secondary', action:{ type:'uri', label:'分享給好友', uri: L + '?share=1' }});
+        const hbox = kids => ({ type:'box', layout:'horizontal', spacing:'sm', contents:kids });
+        const txts = t => [ { type:'text', text:t, color:'#B4462F', weight:'bold' },
+                            { type:'text', text:'看到這張＝這個組合可用', size:'sm', color:'#4A5468', wrap:true } ];
+        const bubble = (t, bodyExtra, footerKids, withHero) => {
+          const b = {};
+          if(withHero) b.hero = cp(HERO);
+          b.body = { type:'box', layout:'vertical', contents: txts(t).concat(bodyExtra||[]) };
+          b.footer = { type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents: footerKids };
+          return b;
+        };
+        const x1 = bubble('X1 hero＋footer 3 顆橫向', null, [ hbox(b3()) ], true);
+        const x2 = bubble('X2 hero＋body放分享鈕＋footer 3 顆', [ shareBtn() ], [ hbox(b3()) ], true);
+        const x3 = bubble('X3 hero＋footer 3 顆垂直＋分享鈕', null, [ b3()[0], b3()[1], b3()[2], shareBtn() ], true);
+        const x4 = bubble('X4 hero＋footer 3 顆橫向＋分享鈕（對照）', null, [ hbox(b3()), shareBtn() ], true);
+        const carX2 = { type:'flex', altText:'X5 七張輪播（X2 結構）', contents:{ type:'carousel',
+          contents: P.map((b,i) => { const base = bubble('X5·第 ' + (i+1) + '/7 張', [ shareBtn() ], [ hbox(b3()) ], true);
+                                     base.hero = cp(b.hero); return base; }) }};
+        msg = [ {type:'flex',altText:'X1',contents:x1}, {type:'flex',altText:'X2',contents:x2},
+                {type:'flex',altText:'X3',contents:x3}, {type:'flex',altText:'X4',contents:x4}, carX2 ];
+        label = 'X1 三顆／X2 body分享鈕／X3 四顆垂直／X4 四顆對照／X5 七張X2版';
       }else if(/w=1/.test(q)){
         // 只用「個別驗證過可用」的零件組出正式版
         const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
