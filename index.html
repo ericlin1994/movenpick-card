@@ -540,6 +540,35 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/w=1/.test(q)){
+        // 只用「個別驗證過可用」的零件組出正式版
+        const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
+        const cp = o => JSON.parse(JSON.stringify(o));
+        const goodFooter = P[0].footer;
+        const bodySimple = (t, sub) => ({ type:'box', layout:'vertical', contents:[
+          { type:'text', text:t, color:'#B4462F', weight:'bold' },
+          { type:'text', text:sub, size:'sm', color:'#4A5468', wrap:true } ]});
+        const bodyWithSep = (t, sub) => ({ type:'box', layout:'vertical', contents:[
+          { type:'text', text:t, color:'#B4462F', weight:'bold' },
+          { type:'text', text:sub, size:'sm', color:'#4A5468', wrap:true },
+          { type:'separator', margin:'md', color:'#E6E0D4' },
+          { type:'text', text:'樣式文字（xl 粗體）', size:'xl', color:'#16233D', weight:'bold', align:'start', margin:'md' } ]});
+        const mkCard = (t, body) => ({ type:'flex', altText:t,
+          contents:{ type:'bubble', hero: cp(P[0].hero), body, footer: cp(goodFooter) } });
+        const mkCar = (code, bodyFn) => ({ type:'flex', altText:code, contents:{ type:'carousel',
+          contents: P.map((b,i) => ({ type:'bubble', hero: cp(b.hero),
+            body: bodyFn(code + '·第 ' + (i+1) + '/7 張', '這是簡單結構的卡片'),
+            footer: cp(goodFooter) })) }});
+        const t3 = { type:'flex', altText:'T3', contents: cp(P[0]) };
+        t3.contents.body.contents[0] = { type:'text', text:'T3 完整正式版（對照）', color:'#B4462F', weight:'bold' };
+        msg = [
+          mkCard('T1 單張：hero＋簡單body＋完整footer', bodySimple('T1 單張：hero＋簡單body＋完整footer', '看到這張＝可上線的結構')),
+          mkCard('T2 單張：再加分隔線與樣式文字', bodyWithSep('T2 單張：再加分隔線與樣式文字', '看到這張＝樣式文字也沒問題')),
+          t3,
+          mkCar('T4', bodySimple),
+          mkCar('T5', bodyWithSep),
+        ];
+        label = 'T1 簡單版單張／T2 加樣式單張／T3 完整版對照／T4 七張簡單版／T5 七張加樣式';
       }else if(/v=1/.test(q)){
         const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
         const mkTitle = (b, t) => { b.body.contents[0] = { type:'text', text:t, color:'#B4462F', weight:'bold' }; return b; };
