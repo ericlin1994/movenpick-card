@@ -487,6 +487,29 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/foot2=1/.test(q)){
+        // 最後一輪：同時測候選上線版
+        const lbl = t => ({ type:'box', layout:'vertical', contents:[{ type:'text', text:t, weight:'bold' }] });
+        const mk  = (style, extra, label) => Object.assign({ type:'button', style:style }, extra||{},
+                      { action:{ type:'uri', label: label||'官網', uri: LINKS.site } });
+        const hbox = kids => ({ type:'box', layout:'horizontal', spacing:'sm', contents:kids });
+        const vbox = kids => ({ type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:kids });
+        const plain = (s) => mk(s||'primary');
+        const y1 = { type:'bubble', body: lbl('Y1：橫向 3 顆 plain（對照）'),
+                     footer: vbox([ hbox([plain(),plain(),plain()]) ]) };
+        const y2 = { type:'bubble', body: lbl('Y2：橫向 3 顆「只有 color」'),
+                     footer: vbox([ hbox([ mk('primary',{color:'#16233D'}), mk('primary',{color:'#A96B3C'}), mk('primary',{color:'#16233D'}) ]) ]) };
+        const y3 = { type:'bubble', body: lbl('Y3：橫向 3 顆「color＋height」'),
+                     footer: vbox([ hbox([ mk('primary',{color:'#16233D',height:'sm'}), mk('primary',{color:'#A96B3C',height:'sm'}), mk('primary',{color:'#16233D',height:'sm'}) ]) ]) };
+        const y4 = { type:'bubble',
+                     body: { type:'box', layout:'vertical', contents:[
+                       { type:'text', text:'Y4：橫向 3 顆 plain＋body 內分享鈕', weight:'bold' },
+                       mk('secondary', null, '分享給好友') ]},
+                     footer: vbox([ hbox([plain(),plain(),plain()]) ]) };
+        const y5 = { type:'bubble', body: lbl('Y5：4 顆垂直 plain'),
+                     footer: vbox([ plain(),plain(),plain(), mk('secondary', null, '分享給好友') ]) };
+        msg = [y1,y2,y3,y4,y5].map((x,i)=>({ type:'flex', altText:'Y'+(i+1), contents:x }));
+        label = 'footer 第二輪 Y1~Y5';
       }else if(/foot=1/.test(q)){
         // footer 二分法：W1 基本垂直 → W5 我們的 body + 修好的 footer
         const full0 = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
