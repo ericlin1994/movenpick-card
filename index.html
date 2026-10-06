@@ -417,6 +417,8 @@ document.querySelectorAll('[data-link]').forEach(el=>{
 
 document.getElementById('y').textContent = new Date().getFullYear();
 window.addEventListener('error', e => diag('❌ JS 錯誤：' + e.message, true));
+window.addEventListener('unhandledrejection', e =>
+  diag('❌ 未處理的錯誤：' + ((e.reason && e.reason.message) || e.reason), true));
 
 /* ══════════════════════════════════════════════════════════
    LIFF 原生分享（shareTargetPicker）
@@ -538,8 +540,8 @@ async function shareCard(){
         label = '純文字';
       }else if(/v=1/.test(q)){
         const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
-        const label = (b, t) => { b.body.contents[0] = { type:'text', text:t, color:'#B4462F', weight:'bold' }; return b; };
-        const mk = (t, b) => ({ type:'flex', altText: t.slice(0,20), contents: label(b, t) });
+        const mkTitle = (b, t) => { b.body.contents[0] = { type:'text', text:t, color:'#B4462F', weight:'bold' }; return b; };
+        const mk = (t, b) => ({ type:'flex', altText: t.slice(0,20), contents: mkTitle(b, t) });
 
         // V1：極簡卡，但文字故意塞入全角空格與中間點
         const v1 = { type:'bubble',
