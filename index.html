@@ -540,12 +540,17 @@ async function shareCard(){
         const one = JSON.parse(JSON.stringify(prod)); one.contents.contents = [one.contents.contents[0]];
         const stripSize = m => { m.contents.contents.forEach(b => { delete b.size; }); return m; };
         const r3 = JSON.parse(JSON.stringify(prod)); r3.contents.contents = r3.contents.contents.slice(0,3);
-        const u1 = stripSize(JSON.parse(JSON.stringify(one)));          // 移除 size
-        const u2 = JSON.parse(JSON.stringify(one));                     // size: mega（對照）
-        const u3 = stripSize(JSON.parse(JSON.stringify(prod)));          // 7 張、移除 size
+        const label1 = (m, t) => {   // 把第一張卡的標題文字換成測試標籤，方便肉眼分辨
+          m.contents.contents[0].body.contents[0] = { type:'text', text:t, color:'#B4462F', weight:'bold' };
+          return m;
+        };
+        const u1 = label1(stripSize(JSON.parse(JSON.stringify(one))), 'U1 單張：移除 size 屬性');
+        const u2 = label1(JSON.parse(JSON.stringify(one)),               'U2 單張：size = mega（對照組）');
+        const u3 = stripSize(JSON.parse(JSON.stringify(prod)));           // 7 張、移除 size＝正式版候選
         u3.altText = 'U3 七張輪播（移除 size）';
-        const u4 = JSON.parse(JSON.stringify(one)); u4.contents.contents[0].size = 'kilo';
-        const u5 = stripSize(JSON.parse(JSON.stringify(r3)));            // 3 張、移除 size
+        const u4 = label1(JSON.parse(JSON.stringify(one)),               'U4 單張：size = kilo');
+        u4.contents.contents[0].size = 'kilo';
+        const u5 = stripSize(JSON.parse(JSON.stringify(r3)));             // 3 張、移除 size
         msg = [u1, u2, u3, u4, u5];
         label = 'U1 單張移除size／U2 單張size:mega／U3 七張移除size／U4 size:kilo／U5 三張移除size';
       }else if(/s=1/.test(q)){
