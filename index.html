@@ -492,6 +492,12 @@ async function shareCard(){
         const clone = JSON.parse(JSON.stringify(flexPayload));
         msg = [{ type: 'flex', altText: '單張測試卡', contents: clone.contents.contents[0] }];
         label = '單張卡片（含圖片）';
+      }else if(/ext=1/.test(q)){
+        // 7 張輪播、圖片改用外部圖床（測「是不是我們 GitHub 的圖抓不到」）
+        const clone = JSON.parse(JSON.stringify(flexPayload));
+        clone.contents.contents.forEach((b,i) => { b.hero.url = 'https://placehold.co/1040x676/0F1B33/D8C79B/png?text=Card+'+(i+1); });
+        msg = [clone];
+        label = '7 張輪播（外部圖床）';
       }else if(/noimg=1/.test(q)){
         // 7 張輪播但全部移除圖片 → 測「輪播能不能過」
         const clone = JSON.parse(JSON.stringify(flexPayload));
