@@ -528,6 +528,28 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/n=1/.test(q)){
+        // 最終定位：每張卡印上編號，一次送出五種變體
+        const prod = JSON.parse(JSON.stringify(flexPayload));
+        const tagMsg = (payload, code, pick) => {
+          const c = JSON.parse(JSON.stringify(payload));
+          let arr = c.contents.contents;
+          if(pick) arr = arr.slice(0, pick);
+          arr.forEach((b,i) => b.body.contents.unshift({ type:'text', color:'#B4462F', weight:'bold',
+            text: code + '·第 ' + (i+1) + '/' + arr.length + ' 張' }));
+          return { type:'flex', altText: code, contents: { type:'carousel', contents: arr } };
+        };
+        const m1 = tagMsg(prod, 'Q1');                      // 7 張（含圖）
+        const noHero = JSON.parse(JSON.stringify(prod));
+        noHero.contents.contents.forEach(b => { delete b.hero; });
+        const m2 = tagMsg(noHero, 'Q2');                    // 7 張（無圖）
+        const m3 = tagMsg(prod, 'Q3', 3);                   // 3 張
+        const m4 = tagMsg(prod, 'Q4', 2);                   // 2 張
+        const one = JSON.parse(JSON.stringify(prod));
+        one.contents.contents = [one.contents.contents[0]];
+        const m5 = tagMsg(one, 'Q5');                       // 1 張
+        msg = [m1, m2, m3, m4, m5];
+        label = 'Q1 七張含圖／Q2 七張無圖／Q3 三張／Q4 兩張／Q5 一張';
       }else if(/c=1/.test(q)){
         // 用「已知可用」的 footer（只有 color）測：圖片 / 輪播 / 張數
         const src7 = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
