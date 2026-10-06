@@ -481,8 +481,28 @@ async function shareCard(){
     }else if(!liff.isApiAvailable('shareTargetPicker')){
       diag('shareTargetPicker 不可用 → Console 的 LIFF 分頁還沒按 Enable', true);
     }else{
+      // 診斷開關：?text=1 送純文字／?mini=1 送單張無圖小卡／預設送完整 7 張
+      const q = decodeURIComponent(location.search);
+      let msg, label;
+      if(/text=1/.test(q)){
+        msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
+        label = '純文字';
+      }else if(/mini=1/.test(q)){
+        msg = [{ type: 'flex', altText: '測試小卡',
+                 contents: { type: 'bubble', body: { type: 'box', layout: 'vertical', contents: [
+                   { type: 'text', text: '測試小卡（無圖）', weight: 'bold' },
+                   { type: 'text', text: '看到這張＝Flex 可用、圖片是問題', size: 'sm', wrap: true },
+                 ]}, footer: { type: 'box', layout: 'vertical', contents: [
+                   { type: 'button', style: 'primary', action: { type: 'uri', label: '官方網站', uri: LINKS.site } },
+                 ]}}}];
+        label = '單張無圖 Flex';
+      }else{
+        msg = [flexPayload];
+        label = '完整 7 張 Flex 卡片';
+      }
+      diag('本次送出類型：' + label);
       try{
-        const res = await liff.shareTargetPicker([flexPayload], { isMultiple: true });
+        const res = await liff.shareTargetPicker(msg, { isMultiple: true });
         if(res){ diag('shareTargetPicker 回傳成功，卡片已送出'); tip.textContent = '✅ 已送出，謝謝你幫忙分享！'; }
         else   { diag('使用者取消（回傳 null），沒有送出'); }
         return;
