@@ -438,12 +438,19 @@ let liffReady = false, flexPayload = null;
 
 async function shareCard(){
   // 1) 在 LINE 內 → 用 shareTargetPicker 送出原生 Flex 卡片
-  if(liffReady && liff.isApiAvailable && liff.isApiAvailable('shareTargetPicker') && flexPayload){
-    try{
-      const res = await liff.shareTargetPicker([flexPayload], { isMultiple: true });
-      if(res){ document.getElementById('tipText').textContent = '✅ 已送出，謝謝你幫忙分享！'; }
-      return;
-    }catch(e){ /* 落到下面的一般分享 */ }
+  if(liffReady){
+    // shareTargetPicker 的前提之一是「使用者已登入」，沒登入先走一次登入
+    // （在 LINE App 內通常無感、不跳畫面；若跳出授權視窗按「允許」即可）
+    if(!liff.isLoggedIn()){
+      try{ liff.login({ redirectUri: location.href }); return; }catch(e){}
+    }
+    if(liff.isApiAvailable('shareTargetPicker') && flexPayload){
+      try{
+        const res = await liff.shareTargetPicker([flexPayload], { isMultiple: true });
+        if(res){ document.getElementById('tipText').textContent = '✅ 已送出，謝謝你幫忙分享！'; }
+        return;
+      }catch(e){ /* 落到下面的一般分享 */ }
+    }
   }
 
   // 2) 一般瀏覽器 → 原生分享選單，或複製網址
