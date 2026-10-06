@@ -534,6 +534,42 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/s=1/.test(q)){
+        // 以「已知可用」的極簡卡為底，一次加一個功能，找出你手機不吃哪一項
+        const IMG1 = 'https://ericlin1994.github.io/movenpick-card/img/card1.jpg';
+        const L = 'https://liff.line.me/2011897701-TrLfDuwi';
+        const baseBubble = () => ({ type:'bubble',
+          body:{ type:'box', layout:'vertical', contents:[
+            { type:'text', text:'x', weight:'bold' },
+            { type:'text', text:'看到這張＝這個組合可用', size:'sm', wrap:true } ]},
+          footer:{ type:'box', layout:'vertical', contents:[
+            { type:'button', style:'primary', action:{ type:'uri', label:'官網', uri: LINKS.site } } ]}});
+        const mkM = (label, mut) => {
+          const b = baseBubble(); b.body.contents[0].text = label;
+          if(mut) mut(b);
+          return { type:'flex', altText: label, contents: b };
+        };
+        const heroImg = () => ({ type:'image', url: IMG1, size:'full', aspectRatio:'20:13', aspectMode:'cover' });
+        const s1 = mkM('S1 加 hero 圖片（不帶點擊）', b => { b.hero = heroImg(); });
+        const s2 = mkM('S2 加 hero 圖片＋點擊開啟', b => { b.hero = heroImg(); b.hero.action = { type:'uri', label:'開啟名片', uri: L }; });
+        const s3 = mkM('S3 footer 橫向 3 顆彩色按鈕＋分享鈕', b => {
+          b.footer = { type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:[
+            { type:'box', layout:'horizontal', spacing:'sm', contents:[
+              { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'官方網站', uri: LINKS.site } },
+              { type:'button', style:'primary', color:'#A96B3C', action:{ type:'uri', label:'LINE 諮詢', uri: LINKS.line } },
+              { type:'button', style:'primary', color:'#16233D', action:{ type:'uri', label:'導航門市', uri: LINKS.map } } ]},
+            { type:'button', style:'secondary', action:{ type:'uri', label:'分享給好友', uri: L + '?share=1' } } ]};
+        });
+        const s4 = mkM('S4 body 加分隔線＋大號樣式文字', b => {
+          b.body.contents.splice(1, 0,
+            { type:'separator', margin:'md', color:'#E6E0D4' },
+            { type:'text', text:'樣式文字', size:'xl', color:'#16233D', weight:'bold', align:'start', margin:'md' });
+        });
+        const prod1 = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
+        prod1.body.contents[0] = { type:'text', text:'S5 完整正式版卡片', color:'#16233D', weight:'bold' };
+        const s5 = { type:'flex', altText:'S5 完整正式版', contents: prod1 };
+        msg = [s1, s2, s3, s4, s5];
+        label = 'S1 加圖片／S2 圖片+點擊／S3 橫向彩色按鈕／S4 分隔線樣式／S5 完整版';
       }else if(/r=1/.test(q)){
         // 對照組測試：把「最早成功過」的極簡卡放回來，切開環境 vs 內容
         const prod = JSON.parse(JSON.stringify(flexPayload));
