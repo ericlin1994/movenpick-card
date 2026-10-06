@@ -28,10 +28,11 @@ IMAGES = [
 # 2) 連結（改成 Steve 的真實連結）
 LIFF_URL = "https://liff.line.me/2011897701-TrLfDuwi"  # LIFF app ID
 LINKS = {
-    "site": "https://【官網網址】",
-    "line": "https://line.me/ti/p/~【個人LINE ID】",   # 個人帳號用 ~；官方帳號是 @
-    "map":  "https://www.google.com/maps/search/?api=1&query="
-            "%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D",
+    # 全部改成合法 URI（不能有空格或全形括號，否則 LINE 會判定 invalid message）
+    "site": "https://ericlin1994.github.io/movenpick-card/",
+    "line": "https://liff.line.me/2011897701-TrLfDuwi",
+    "map":  "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D",
+    "share": "https://liff.line.me/2011897701-TrLfDuwi?share=1",
 }
 
 # 3) 7 張卡的文案（照原圖逐字）

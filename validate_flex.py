@@ -6,7 +6,8 @@ Flex payload 結構驗證器
 把「回報成功但對方看不到」的常見結構錯誤擋在部署前。
 用法：python validate_flex.py [payload.json]
 """
-import json, sys, pathlib
+import json
+import re, sys, pathlib
 
 VALID_TYPES = {
     "flex", "bubble", "carousel", "box", "text", "image", "button", "separator",
@@ -81,6 +82,24 @@ def main():
     size = len(json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode())
     print(f"✓ 結構驗證通過：{n} 張卡、{size} bytes、無缺漏 type、按鈕屬性乾淨")
 
+
+    # URI 檢查：URI 內不得有空格或全形字元（會被 LINE 判 invalid message）
+    bad = []
+    def _uri(n):
+        if isinstance(n, dict):
+            for k, x in n.items():
+                if k == "uri" and isinstance(x, str):
+                    if re.search(r"[\s\u3000\uFF00-\uFFEF\u4e00-\u9fff]", x):
+                        bad.append(x)
+                elif isinstance(x, (dict, list)):
+                    _uri(x)
+        elif isinstance(n, list):
+            for x in n: _uri(x)
+    _uri(data)
+    if bad:
+        print("✗ URI 不合法（含空格／全形字元）:", bad[:3])
+        sys.exit(1)
+    print("✓ URI 檢查通過")
 
 if __name__ == "__main__":
     main()
