@@ -540,6 +540,19 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/b=1/.test(q)){
+        // 極限最小測試：只送 2 則，確認是不是被節流（跟卡片內容無關）
+        const known = { type:'bubble',
+          body:{ type:'box', layout:'vertical', contents:[
+            { type:'text', text:'B2 極簡小卡（最早成功過的那張）', weight:'bold' },
+            { type:'text', text:'看到這張＝機制正常', size:'sm', wrap:true } ]},
+          footer:{ type:'box', layout:'vertical', contents:[
+            { type:'button', style:'primary', action:{ type:'uri', label:'官方網站', uri: LINKS.site } } ]}};
+        msg = [
+          { type:'text', text:'B1 純文字：看到這行＝機制正常' },
+          { type:'flex', altText:'B2 極簡小卡', contents: known },
+        ];
+        label = 'B1 純文字 ＋ B2 極簡小卡（只送 2 則）';
       }else if(/a=1/.test(q)){
         // 「有圖＋多顆按鈕」掛掉 → 測三種解法：較矮的圖／2 顆按鈕／縮小 bubble
         const P = JSON.parse(JSON.stringify(flexPayload)).contents.contents;
