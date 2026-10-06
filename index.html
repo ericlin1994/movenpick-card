@@ -158,6 +158,10 @@
         font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em}
   .share button:active{filter:brightness(1.2)}
   .tip{font-size:12px;color:var(--muted);text-align:center;margin:10px 20px 0;line-height:1.75}
+  #diag{display:none;margin:14px 20px 0;padding:12px 14px;border-radius:12px;background:#12192B;
+        color:#8FE3B0;font:12px/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-all}
+  #diag.show{display:block}
+  #diag .bad{color:#FF9B8A}
   footer{text-align:center;font-size:11.5px;color:#9AA1AE;margin:24px 20px 0;line-height:1.9}
 </style>
 </head>
@@ -365,6 +369,7 @@
 
   <div class="share"><button id="shareBtn" onclick="shareCard()">📤 分享這張名片</button></div>
   <p class="tip" id="tipText">在 LINE 聊天室貼上這個網址，會自動展開成一張名片圖卡；<br>朋友點開就能看、一鍵加 LINE、直接導航到門市。</p>
+  <pre id="diag"></pre>
 
   <footer>
     莫凡彼沙發工藝 MOVENPICK　沙發訂製・展售・批發・諮詢<br>
@@ -407,6 +412,14 @@ document.getElementById('y').textContent = new Date().getFullYear();
 const LIFF_ID = '2011897701-TrLfDuwi';   // Steve 的 LIFF app（LINE Login channel 底下）
 let liffReady = false, flexPayload = null;
 
+/* ── 診斷面板：?debug=1 強制顯示；沒加參數時只在出錯時顯示 ── */
+const DEBUG = /debug=1/.test(decodeURIComponent(location.search));
+const diagEl = document.getElementById('diag');
+function diag(msg, bad){
+  diagEl.classList.add('show');
+  diagEl.innerHTML += (bad ? '<span class="bad">✗ ' : '· ') + String(msg).replace(/</g,'&lt;') + (bad ? '</span>' : '') + '\n';
+}
+
 (async function initLiff(){
   // 先把 Flex 卡片的 JSON 讀進來（給 shareTargetPicker 用）
   try{
@@ -414,7 +427,9 @@ let liffReady = false, flexPayload = null;
     if(r.ok) flexPayload = await r.json();
   }catch(e){ /* 用 file:// 開啟時讀不到，屬正常 */ }
 
-  if(LIFF_ID.indexOf('【') === 0 || !window.liff) return;
+  if(LIFF_ID.indexOf('【') === 0) return;
+  if(!window.liff){ diag('LIFF SDK 沒載入（可能是網路或被封鎖）', true); return; }
+  if(DEBUG) diag('debug 模式：' + location.href);
 
   // 只在 LINE 內執行 LIFF 初始化；外部瀏覽器（Safari/Chrome/桌機）不做，
   // 否則會跳出 LINE 的認證頁面（channel 未發佈時會顯示 400）
@@ -430,6 +445,9 @@ let liffReady = false, flexPayload = null;
     liffReady = true;
 
     const inLine = liff.isInClient();
+    diag('liff.init OK｜inClient=' + inLine + '｜loggedIn=' + liff.isLoggedIn()
+         + '｜shareTargetPicker=' + (liff.isApiAvailable ? liff.isApiAvailable('shareTargetPicker') : 'n/a')
+         + '｜payload=' + (flexPayload ? flexPayload.contents.contents.length + ' 張卡' : '未載入'), true);
     // 從卡片上的「分享給好友」按鈕進來（?share=1）
     // 注意：LIFF 會把原始 query 包進 liff.state，所以兩種都判斷
     const raw = decodeURIComponent(location.search);
@@ -443,33 +461,48 @@ let liffReady = false, flexPayload = null;
       document.getElementById('tipText').innerHTML =
         '你正在 LINE 裡開啟名片。<br>按下面那顆按鈕，卡片就會以你的名義傳給朋友，對方也能再往下傳。';
     }
-  }catch(e){ /* LIFF_ID 還沒填或未開啟 shareTargetPicker，走一般分享 */ }
+  }catch(e){
+    diag('liff.init 失敗：' + (e && (e.message || e.code) || e), true);
+    diag('→ channel 若仍在 Developing，需把該 LINE 帳號加成 Tester 或發佈 channel', true);
+  }
 })();
 
 async function shareCard(){
+  const tip = document.getElementById('tipText');
+
   // 1) 在 LINE 內 → 用 shareTargetPicker 送出原生 Flex 卡片
   if(liffReady){
-    // shareTargetPicker 的前提之一是「使用者已登入」，沒登入先走一次登入
-    // （在 LINE App 內通常無感、不跳畫面；若跳出授權視窗按「允許」即可）
     if(!liff.isLoggedIn()){
-      try{ liff.login({ redirectUri: location.href }); return; }catch(e){}
+      diag('尚未登入 LIFF，導向登入…');
+      try{ liff.login({ redirectUri: location.href }); return; }catch(e){ diag('登入失敗：'+e, true); }
     }
-    if(liff.isApiAvailable('shareTargetPicker') && flexPayload){
+    if(!flexPayload){
+      diag('flex-cards.json 沒載入 → 無法送原生卡片', true);
+    }else if(!liff.isApiAvailable('shareTargetPicker')){
+      diag('shareTargetPicker 不可用 → Console 的 LIFF 分頁還沒按 Enable', true);
+    }else{
       try{
         const res = await liff.shareTargetPicker([flexPayload], { isMultiple: true });
-        if(res){ document.getElementById('tipText').textContent = '✅ 已送出，謝謝你幫忙分享！'; }
+        if(res){ diag('shareTargetPicker 回傳成功，卡片已送出'); tip.textContent = '✅ 已送出，謝謝你幫忙分享！'; }
+        else   { diag('使用者取消（回傳 null），沒有送出'); }
         return;
-      }catch(e){ /* 落到下面的一般分享 */ }
+      }catch(e){
+        diag('shareTargetPicker 失敗：' + (e && (e.message || e.code) || e), true);
+        diag('→ 常見原因：Flex 內容不符規格、或尚未 Enable', true);
+      }
     }
+  }else{
+    diag('LIFF 未就緒（liffReady=false）→ 這次只會用一般分享，對方收到的是「連結」不是卡片', true);
   }
 
   // 2) 一般瀏覽器 → 原生分享選單，或複製網址
   const data = { title: SHARE_TITLE, text: SHARE_TEXT, url: location.href };
   try{
-    if(navigator.share){ await navigator.share(data); return; }
+    if(navigator.share){ diag('改用系統分享選單（navigator.share）'); await navigator.share(data); return; }
     await navigator.clipboard.writeText(location.href);
+    diag('已複製網址到剪貼簿');
     alert('網址已複製，貼到 LINE 就能傳給朋友');
-  }catch(e){}
+  }catch(e){ diag('一般分享也失敗：' + e, true); }
 }
 
 /* 滑動時更新「n / 7」指示（主卡算第 1 張） */
