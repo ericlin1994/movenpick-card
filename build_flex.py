@@ -165,32 +165,21 @@ def btn(label, uri, bg, fg="#FFFFFF"):
 def build_bubble(i, card):
     """PITFALL：bubble 少了 "type": "bubble" 就是無效 Flex——LINE 會回報成功但完全不顯示。
     每次組卡片都要確認這個欄位在。"""
-    share = {"type": "button", "style": "secondary",
-             "action": {"type": "uri", "label": "分享給好友", "uri": LIFF_URL + "?share=1"}}
-    body = [txt(card["title"], size="lg", color=NAVY, weight="bold", margin="none")]
-    if card.get("sub"):
-        body.append(txt(card["sub"], size="xs", color="#6B7280", margin="sm"))
-    lines = []
-    for kind, t in card["body"]:
-        if kind == "head":
-            lines.append("【" + t + "】")
-        elif kind == "li":
-            lines.append("· " + t)
-        else:
-            lines.append(t)
-    if lines:
-        body.append(txt("\n".join(lines), size="xs", color="#4A5468", margin="md"))
-    body.append(share)          # 分享鈕放 body（footer 只留三顆，降低風險）
     return {
-        "type": "bubble",
+        "type": "bubble", "size": "mega",
         "hero": {"type": "image", "url": IMAGES[i], "size": "full",
-                 "aspectRatio": "20:13", "aspectMode": "cover"},
-        "body": {"type": "box", "layout": "vertical", "contents": body},
-        "footer": {"type": "box", "layout": "vertical", "paddingAll": "12px", "contents": [
-            {"type": "box", "layout": "horizontal", "spacing": "sm", "contents": [
-                btn("官方網站", LINKS["site"], NAVY),
-                btn("LINE 諮詢", LINKS["line"], BROWN),
-                btn("導航門市", LINKS["map"], NAVY) ]} ]},
+                 "aspectRatio": "20:13", "aspectMode": "cover",
+                 "action": {"type": "uri", "label": "開啟名片", "uri": LIFF_URL}},
+        "body": {"type": "box", "layout": "vertical", "spacing": "none",
+                 "paddingAll": "16px", "contents": build_body(card)},
+        "footer": {"type": "box", "layout": "vertical", "spacing": "sm",
+                   "paddingAll": "12px", "contents": [
+                       {"type": "box", "layout": "horizontal", "spacing": "sm", "contents": [
+                           btn("官方網站", LINKS["site"], NAVY),
+                           btn("LINE 諮詢", LINKS["line"], BROWN),
+                           btn("導航門市", LINKS["map"], NAVY) ]},
+                       {"type": "button", "style": "secondary",
+                        "action": {"type": "uri", "label": "分享給好友", "uri": LIFF_URL + "?share=1"}} ]},
     }
 
 
