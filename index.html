@@ -487,6 +487,27 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/bisect=1/.test(q)){
+        // 一次送 5 則（API 上限 5），V1 已知可用，V2~V5 逐項加上我們的結構
+        const full = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
+        const miniBody = { type:'box', layout:'vertical', contents:[
+          { type:'text', text:'簡單 body', weight:'bold' },
+          { type:'text', text:'兩行文字 + 一顆按鈕', size:'sm', wrap:true } ]};
+        const miniFooter = { type:'box', layout:'vertical', contents:[
+          { type:'button', style:'primary', action:{ type:'uri', label:'官方網站', uri: LINKS.site } } ]};
+        const v1 = { type:'bubble', body: miniBody, footer: miniFooter };
+        const v2 = { type:'bubble', body: JSON.parse(JSON.stringify(full.body)), footer: JSON.parse(JSON.stringify(miniFooter)) };
+        const v3 = { type:'bubble', body: JSON.parse(JSON.stringify(miniBody)), footer: JSON.parse(JSON.stringify(full.footer)) };
+        const v4 = JSON.parse(JSON.stringify(full)); delete v4.hero;
+        const v5 = JSON.parse(JSON.stringify(full));
+        msg = [
+          { type:'flex', altText:'V1 基準', contents: v1 },
+          { type:'flex', altText:'V2 我們的body', contents: v2 },
+          { type:'flex', altText:'V3 我們的footer', contents: v3 },
+          { type:'flex', altText:'V4 body+footer無圖', contents: v4 },
+          { type:'flex', altText:'V5 完整含圖', contents: v5 },
+        ];
+        label = '二分法 5 則（V1 基準 → V5 完整）';
       }else if(/card=1/.test(q)){
         // 只送第 1 張卡（單張、含圖片）→ 測「圖片能不能過」
         const clone = JSON.parse(JSON.stringify(flexPayload));
