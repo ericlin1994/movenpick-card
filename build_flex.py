@@ -131,23 +131,22 @@ def txt(t, size="sm", color="#3C4658", weight="regular", wrap=True, margin="sm",
 
 
 def build_body(card):
+    """只吐 2～3 個文字元件（內文全部塞進一個用 \n 換行的 text）。
+    PITFALL: 每個 bubble 塞十幾個 text 元件時，shareTargetPicker 會回報成功但整則被丟掉；
+    壓成 2～3 個元件＋換行符號就正常，內容一字不少。"""
     out = [txt(card["title"], size="lg", color=NAVY, weight="bold", margin="none")]
     if card.get("sub"):
         out.append(txt(card["sub"], size="xs", color="#6B7280", margin="sm"))
-    out.append({"type": "separator", "margin": "md", "color": "#E6E0D4"})
+    lines = []
     for kind, t in card["body"]:
-        if kind == "quote":
-            out.append(txt(t, size="xl", color=NAVY, weight="bold", margin="md"))
-        elif kind == "quote2":
-            out.append(txt(t, size="md", color=BROWN, weight="bold", margin="xs"))
-        elif kind == "tag":
-            out.append(txt(t, size="xs", color="#6B7280", margin="md"))
-        elif kind == "head":
-            out.append(txt(t, size="sm", color=NAVY, weight="bold", margin="md"))
+        if kind == "head":
+            lines.append("【" + t + "】")
         elif kind == "li":
-            out.append(txt("· " + t, size="xs", color="#4A5468", margin="xs"))
-        elif kind == "foot":
-            out.append(txt(t, size="xs", color=BROWN, weight="bold", margin="md"))
+            lines.append("· " + t)
+        else:
+            lines.append(t)
+    if lines:
+        out.append(txt("\n".join(lines), size="xs", color="#4A5468", margin="md"))
     return out
 
 
