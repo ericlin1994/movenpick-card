@@ -153,6 +153,15 @@
   .info a{color:var(--navy);text-decoration:none;font-weight:700}
   .info .note{font-size:12.5px;color:var(--muted)}
 
+  /* 置頂分享列：滑到哪裡都按得到 */
+  .topbar{position:sticky;top:0;z-index:30;padding:12px 20px 10px;
+          background:linear-gradient(180deg,var(--paper) 70%,rgba(245,241,234,.85) 100%)}
+  .topbar button{width:100%;padding:15px;border:0;border-radius:14px;background:var(--navy);color:#fff;
+          font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em;
+          box-shadow:0 4px 14px rgba(22,35,61,.18)}
+  .topbar button:active{filter:brightness(1.2)}
+  .topbar button.hint{animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 4px 14px rgba(22,35,61,.18)}50%{box-shadow:0 0 0 6px rgba(169,107,60,.28)}}
   .share{margin:18px 20px 0}
   .share button{width:100%;padding:16px;border:0;border-radius:14px;background:var(--navy);color:#fff;
         font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em}
@@ -167,6 +176,11 @@
 </head>
 <body>
 <div class="wrap">
+
+  <!-- ═══════════ 分享列（置頂） ═══════════ -->
+  <div class="topbar">
+    <button id="shareBtn" onclick="shareCard()">📤 分享這張名片</button>
+  </div>
 
   <!-- ═══════════ 1 / 7　主卡 ═══════════ -->
   <header class="hero">
@@ -367,7 +381,6 @@
     <div class="row"><div class="k">社群</div><div><a data-link="ig" href="#">Instagram</a>　·　<a data-link="fb" href="#">Facebook</a></div></div>
   </div>
 
-  <div class="share"><button id="shareBtn" onclick="shareCard()">📤 分享這張名片</button></div>
   <p class="tip" id="tipText">在 LINE 聊天室貼上這個網址，會自動展開成一張名片圖卡；<br>朋友點開就能看、一鍵加 LINE、直接導航到門市。</p>
   <pre id="diag"></pre>
 
@@ -453,13 +466,14 @@ function diag(msg, bad){
     const raw = decodeURIComponent(location.search);
     const fromCard = raw.includes('share=1');
     if(inLine && fromCard){
-      document.getElementById('shareBtn').textContent = '📤 我要分享給好友';
+      const btn = document.getElementById('shareBtn');
+      btn.textContent = '📤 我要分享給好友';
+      btn.classList.add('hint');            // 置頂按鈕加呼吸光，直接引導點它
       document.getElementById('tipText').innerHTML =
-        '你正在 LINE 裡開啟名片。<br>按下面那顆按鈕，就能把這組卡片原封不動傳給你的朋友或群組。';
-      window.scrollTo({ top: document.body.scrollHeight, behavior:'smooth' });
+        '你正在 LINE 裡開啟名片。<br>按<b>最上面</b>那顆按鈕，就能把這組卡片原封不動傳給你的朋友或群組。';
     }else if(inLine){
       document.getElementById('tipText').innerHTML =
-        '你正在 LINE 裡開啟名片。<br>按下面那顆按鈕，卡片就會以你的名義傳給朋友，對方也能再往下傳。';
+        '你正在 LINE 裡開啟名片。<br>按最上面那顆按鈕，卡片就會以你的名義傳給朋友，對方也能再往下傳。';
     }
   }catch(e){
     diag('liff.init 失敗：' + (e && (e.message || e.code) || e), true);
