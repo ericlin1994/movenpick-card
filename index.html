@@ -425,6 +425,10 @@ document.getElementById('y').textContent = new Date().getFullYear();
 const LIFF_ID = '2011897701-TrLfDuwi';   // Steve 的 LIFF app（LINE Login channel 底下）
 let liffReady = false, flexPayload = null;
 
+/* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
+   LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
+const BUILD = 'b2';
+
 /* ── 診斷面板：?debug=1 強制顯示；沒加參數時只在出錯時顯示 ── */
 const DEBUG = /debug=1/.test(decodeURIComponent(location.search));
 const diagEl = document.getElementById('diag');
@@ -436,9 +440,21 @@ function diag(msg, bad){
 (async function initLiff(){
   // 先把 Flex 卡片的 JSON 讀進來（給 shareTargetPicker 用）
   try{
-    const r = await fetch('flex-cards.json');
+    const r = await fetch('flex-cards.json?b=' + BUILD, { cache: 'no-store' });
     if(r.ok) flexPayload = await r.json();
   }catch(e){ /* 用 file:// 開啟時讀不到，屬正常 */ }
+
+  // 指紋檢查：若 payload 內還帶 height / margin / scaling，LINE 會靜默丟掉整則訊息
+  if(flexPayload){
+    let bad = [];
+    JSON.stringify(flexPayload, (k, v) => {
+      if(k === 'height' || k === 'margin' || k === 'scaling') bad.push(k);
+      return v;
+    });
+    const n = flexPayload.contents.contents.length;
+    diag('payload 載入：' + n + ' 張卡｜按鈕屬性 ' +
+         (bad.length ? '含 ' + [...new Set(bad)].join('/') + ' → 會被 LINE 丟掉！' : 'OK'), bad.length > 0);
+  }
 
   if(LIFF_ID.indexOf('【') === 0) return;
   if(!window.liff){ diag('LIFF SDK 沒載入（可能是網路或被封鎖）', true); return; }
