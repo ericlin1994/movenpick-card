@@ -487,6 +487,31 @@ async function shareCard(){
       if(/text=1/.test(q)){
         msg = [{ type: 'text', text: '測試訊息：看到這行字＝分享機制正常。' }];
         label = '純文字';
+      }else if(/foot=1/.test(q)){
+        // footer 二分法：W1 基本垂直 → W5 我們的 body + 修好的 footer
+        const full0 = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
+        const lbl = t => ({ type:'box', layout:'vertical', contents:[
+          { type:'text', text: t, weight:'bold' },
+          { type:'text', text:'看這張有沒有出現', size:'xs', color:'#888888' } ]});
+        const plain = txt2 => ({ type:'button', style:'primary', action:{ type:'uri', label:txt2, uri: LINKS.site } });
+        const fancy = (t2, col) => ({ type:'button', style:'primary', color: col, height:'sm', margin:'none',
+                                      scaling:false, action:{ type:'uri', label:t2, uri: LINKS.site } });
+        const vbox  = kids => ({ type:'box', layout:'vertical', spacing:'sm', paddingAll:'12px', contents:kids });
+        const shareBtn = { type:'button', style:'secondary', height:'sm',
+                           action:{ type:'uri', label:'分享給好友', uri: LINKS.site } };
+        const w1 = { type:'bubble', body: lbl('W1：3 顆按鈕垂直（基本樣式）'),
+                     footer: vbox([ plain('官網'), plain('LINE'), plain('導航') ]) };
+        const w2 = { type:'bubble', body: lbl('W2：3 顆按鈕垂直（我們的屬性）'),
+                     footer: vbox([ fancy('官網','#16233D'), fancy('LINE','#A96B3C'), shareBtn ]) };
+        const w3 = { type:'bubble', body: lbl('W3：橫向 box 內 3 顆按鈕'),
+                     footer: vbox([ { type:'box', layout:'horizontal', spacing:'sm',
+                                      contents:[ plain('官網'), plain('LINE'), plain('導航') ] } ]) };
+        const w4 = { type:'bubble', body: lbl('W4：原始失敗版 footer'),
+                     footer: JSON.parse(JSON.stringify(full0.footer)) };
+        const w5 = { type:'bubble', body: JSON.parse(JSON.stringify(full0.body)),
+                     footer: vbox([ plain('官網'), plain('LINE'), plain('導航'), shareBtn ]) };
+        msg = [w1,w2,w3,w4,w5].map((b,i)=>({ type:'flex', altText:'W'+(i+1), contents:b }));
+        label = 'footer 二分法 W1~W5';
       }else if(/bisect=1/.test(q)){
         // 一次送 5 則（API 上限 5），V1 已知可用，V2~V5 逐項加上我們的結構
         const full = JSON.parse(JSON.stringify(flexPayload)).contents.contents[0];
