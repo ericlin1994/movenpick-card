@@ -72,7 +72,8 @@ def placeholder(img, boxrect, label="形象照"):
     return over(img, lay)
 
 
-def glass_art(sz=(W, H)):
+def glass_art(sz=None):
+    sz = sz or (W, H)
     """玻璃質感替代視覺（尚未有實拍照時）"""
     img = gradient(sz, (20, 34, 48), (40, 74, 88))
     lay = layer(sz)
@@ -84,22 +85,27 @@ def glass_art(sz=(W, H)):
     return over(img, lay.filter(ImageFilter.GaussianBlur(10)))
 
 
-def photo_or_none(name):
+def photo_or_none(name, h=H):
     p = ROOT / name
     if not p.exists():
         return None
     im = Image.open(p).convert("RGB")
-    r = max(W / im.width, H / im.height)
+    r = max(W / im.width, h / im.height)
     im = im.resize((int(im.width * r), int(im.height * r)), Image.LANCZOS)
-    l, t = (im.width - W) // 2, (im.height - H) // 2
-    return im.crop((l, t, l + W, t + H))
+    l, t = (im.width - W) // 2, (im.height - h) // 2
+    return im.crop((l, t, l + W, t + h))
 
 
 def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
-           name_size=120, name_y=700, show_quote=True):
+           name_size=120, name_y=None, show_quote=True, canvas_h=None, size_k=1.0):
+    """canvas_h / unit：同一組文案可套在 3:4（1440）與 4:3（810）兩種畫布"""
+    h = canvas_h or H
+    size_k = size_k * (h / H) ** 0.35   # 矮版字級略縮，避免擠
+    if name_y is None:
+        name_y = int(h * 0.47)
     img = art
-    img = bottom_mask(img, start=int(H * 0.44))
-    lay = layer((W, H))
+    img = bottom_mask(img, start=int(h * 0.44))
+    lay = layer((W, h))
     d = ImageDraw.Draw(lay)
 
     # 品牌（左上 80,80）
@@ -115,20 +121,23 @@ def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
             d.text((80 + fo.getlength(line) + 26, y + int(name_size * 0.42)),
                    en, font=font(BOLD, int(name_size * 0.5)), fill=COPPER + (255,))
 
-    y = name_y + int(name_size * 1.12) * len(name.split("\n")) + 6
+    y = name_y + int(name_size * 1.12) * len(name.split("\n")) + int(h * 0.004)
     if role:
-        d.text((80, y), role, font=font(REG, 40), fill=BEIGE + (240,)); y += 62
+        d.text((80, y), role, font=font(REG, int(40 * size_k)), fill=BEIGE + (240,))
+        y += int(62 * size_k)
     if show_quote and slogan:
-        d.text((80, y + 8), "“", font=font(BOLD, 96), fill=COPPER + (255,)); y += 96
+        d.text((80, y + 8), "“", font=font(BOLD, int(96 * size_k)), fill=COPPER + (255,))
+        y += int(96 * size_k)
     for line in slogan:
-        d.text((80, y), line, font=font(BOLD, 78), fill=WHITE + (255,)); y += 96
+        d.text((80, y), line, font=font(BOLD, int(78 * size_k)), fill=WHITE + (255,))
+        y += int(96 * size_k)
 
     img = over(img, lay)
 
     # 頁碼膠囊（底部置中、米白 80%）
     pw, ph = 160, 50
-    px, py = (W - pw) // 2, 1320
-    lay2 = layer((W, H))
+    px, py = (W - pw) // 2, int(h - 120)
+    lay2 = layer((W, h))
     ImageDraw.Draw(lay2).rounded_rectangle([px, py, px + pw, py + ph], radius=25,
                                            fill=BEIGE + (204,))
     img = over(img, lay2)
@@ -140,25 +149,25 @@ def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
     return path_out
 
 
-def card1(pager="1 / 6"):
-    ph = photo_or_none("photo.jpg")
+def card1(pager="1 / 6", h=H, out="card1.jpg"):
+    ph = photo_or_none("photo.jpg", h)
     if ph:
-        art = bottom_mask(ph, start=int(H * 0.42), strength=0.9)
+        art = bottom_mask(ph, start=int(h * 0.42), strength=0.9)
     else:
-        art = gradient((W, H), (26, 38, 54), (52, 74, 92))
-        art = placeholder(art, (330, 150, W - 90, 660), "形象照（3:4 直式）")
-    return poster(OUT / "card1.jpg", art, "李柏融", en="Benson",
+        art = gradient((W, h), (26, 38, 54), (52, 74, 92))
+        art = placeholder(art, (330, int(h * 0.10), W - 90, int(h * 0.46)), "形象照")
+    return poster(OUT / out, art, "李柏融", en="Benson",
                   role="友泰京玻璃工程　執行長",
                   slogan=("讓藝術融入玻璃，", "讓隔熱成為空間美學"), pager=pager,
-                  name_size=118, name_y=690)
+                  name_size=int(118 * (h / H) ** 0.6), canvas_h=h)
 
 
-def card5(pager="5 / 6"):
-    art = glass_art()
-    return poster(OUT / "card5.jpg", art, "品質落在實處", en="",
+def card5(pager="5 / 6", h=H, out="card5.jpg"):
+    art = glass_art((W, h))
+    return poster(OUT / out, art, "品質落在實處", en="",
                   role="工藝藏在細節，滿足高標準設計",
                   slogan=("藝術工藝 · 機能選材", "精準加工 · 施工細節"), pager=pager,
-                  name_size=96, name_y=700, show_quote=False)
+                  name_size=int(96 * (h / H) ** 0.6), show_quote=False, canvas_h=h)
 
 
 def make_og():
@@ -184,6 +193,8 @@ def make_og():
 
 
 if __name__ == "__main__":
-    for mk, n in ((card1, 1), (card5, 5)):
-        print("✓", mk(f"{n} / 6").name)
+    print("✓", card1("1 / 6").name, "（3:4）")
+    print("✓", card5("5 / 6").name, "（3:4）")
+    print("✓", card1("1 / 6", h=810, out="card1_43.jpg").name, "（4:3 較矮）")
+    print("✓", card5("5 / 6", h=810, out="card5_43.jpg").name, "（4:3 較矮）")
     print("✓", make_og().name)

@@ -72,18 +72,19 @@ def sep(margin="md", color=DIVIDE): return {"type": "separator", "margin": margi
 
 
 def pill(label, uri, bg, fg=WHITE):
-    """圓角膠囊按鈕：用 box + action 做（LINE 預設 button 無法自訂圓角與底色）"""
-    return box([t(label, size="xs", weight="bold", color=fg, align="center", wrap=False)],
-               spacing="none", padding="12px", bg=bg, radius="100px", flex=1,
+    """圓角膠囊按鈕：用 box + action 做（LINE 預設 button 無法自訂圓角與底色）。
+    標籤要短、字級 xxs、允許換行——三顆膠囊各佔 1/3 寬，字太長會被裁掉。"""
+    return box([t(label, size="xxs", weight="bold", color=fg, align="center", wrap=True)],
+               spacing="none", padding="10px", bg=bg, radius="100px", flex=1,
                action={"type": "uri", "label": label[:20], "uri": uri})
 
 
 def control_row():
     """共用底部操作區：米白圓角底 + 三顆膠囊（IG / LINE / 導航）"""
-    return box([hbox(pill("IG 作品", LINKS["ig"], NAVY),
-                     pill("💬 LINE諮詢", LINKS["line"], COPPER),
-                     pill("📍 導航門市", LINKS["map"], NAVY), spacing="sm")],
-               spacing="none", padding="12px", bg=BEIGE, radius="20px")
+    return box([hbox(pill("📷 IG 作品", LINKS["ig"], NAVY),
+                     pill("💬 LINE", LINKS["line"], COPPER),
+                     pill("📍 導航", LINKS["map"], NAVY), spacing="sm")],
+               spacing="none", padding="10px", bg=BEIGE, radius="20px")
 
 
 def tag_pill(label):
@@ -94,12 +95,14 @@ def tag_pill(label):
 
 # ═══════════ 逐卡 body ═══════════
 def body1():
-    """雜誌封面款：文案全部烤進 Hero 圖，body 只有操作列"""
-    return vbox([control_row()], spacing="none", padding="14px", bg=NAVY)
+    """雜誌封面款：主文案烤進 Hero 圖；body 保留一行保險文字 + 操作列"""
+    return vbox([t("友泰京玻璃工程　藝術玻璃・空間玻璃・工程整合・外牆高空作業",
+                   size="xxs", color=MUTED, margin="none"),
+                 control_row()], spacing="md", padding="14px", bg=NAVY)
 
 
 def body2():
-    aud = ["設計師", "建築師", "建商", "營造", "商業空間", "住宅業主"]
+    aud = ["設計師", "建築師", "建商", "營造", "商空", "住宅"]
     pains = ["大圖輸出缺工藝，難達藝術質感",
              "玻璃鐵件分包，尺寸收邊難整合",
              "設計圖美，卻找不到廠家實作",
@@ -150,8 +153,10 @@ def body4():
 
 
 def body5():
-    """工藝：文案烤進 3:4 Hero 圖，body 只有操作列"""
-    return vbox([control_row()], spacing="none", padding="14px", bg=NAVY)
+    """工藝：主文案烤進 3:4 Hero 圖；body 保留一行保險文字 + 操作列"""
+    return vbox([t("藝術工藝・機能選材・精準加工・施工細節",
+                   size="xxs", color=MUTED, margin="none"),
+                 control_row()], spacing="md", padding="14px", bg=NAVY)
 
 
 def body6():
