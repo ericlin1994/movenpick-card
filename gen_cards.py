@@ -1,253 +1,189 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-友泰京玻璃工程｜Hero 卡圖產生器（Gemini 設計規格 C 節實作）
+友泰京玻璃工程｜3:4 直式海報 Hero 圖產生器（精品工程版）
 ------------------------------------------------
-畫布 1040x676（LINE hero 20:13）、安全邊距 56px、原點左上
-共同元素：左上品牌字、右下頁碼膠囊、可選右上大字浮水印
+畫布 1080x1440（LINE aspectRatio 3:4）、座標原點左上
+文字直接「烤」進圖中（卡片 1、5 的 body 不放文案）
 用法：python gen_cards.py
-Benson 給了真實照片後，把 img/cardN.jpg 換掉即可（檔名不變），或改這裡的 PHOTOS。
+執行長形象照放 photo.jpg 進 repo 根目錄就會自動置入（否則顯示虛線預留框）。
 """
 import pathlib
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-W, H = 1040, 676
-MARGIN = 56
+W, H = 1080, 1440
 OUT = pathlib.Path(__file__).with_name("img")
 OUT.mkdir(exist_ok=True)
+ROOT = pathlib.Path(__file__).parent
 
 F = pathlib.Path(r"C:\Windows\Fonts")
 BOLD, REG = str(F / "msjhbd.ttc"), str(F / "msjh.ttc")
 
-PRIMARY, SECOND, ACCENT = (14, 42, 58), (46, 125, 143), (184, 134, 11)
-DARK_T, DARK_B = (9, 30, 44), (20, 62, 78)
-WHITE, CYAN_L = (255, 255, 255), (155, 215, 228)
-
-# 真實照片放這裡就會自動套用（沒有檔案時用程式生成的替代視覺）
-PHOTOS = {1: "photo.jpg", 5: "craft1.jpg", 6: "case1.jpg"}
+NAVY, NAVY_D = (37, 48, 67), (30, 40, 56)
+COPPER, BEIGE = (196, 131, 90), (245, 241, 232)
+WHITE, MUTED = (255, 255, 255), (160, 170, 184)
 
 
-def font(path, size):
-    return ImageFont.truetype(path, size)
+def font(p, s):
+    return ImageFont.truetype(p, s)
 
 
-def gradient(size, top, bot, horizontal=False):
+def gradient(size, top, bot):
     w, h = size
     img = Image.new("RGB", (w, h))
     d = ImageDraw.Draw(img)
-    n = w if horizontal else h
-    for i in range(n):
-        k = i / max(1, n - 1)
-        col = tuple(int(top[j] + (bot[j] - top[j]) * k) for j in range(3))
-        if horizontal:
-            d.line([(i, 0), (i, h)], fill=col)
-        else:
-            d.line([(0, i), (w, i)], fill=col)
+    for y in range(h):
+        k = y / max(1, h - 1)
+        d.line([(0, y), (w, y)], fill=tuple(int(top[i] + (bot[i] - top[i]) * k) for i in range(3)))
     return img
 
 
-def layer(size):
+def layer(size=(W, H)):
     return Image.new("RGBA", size, (0, 0, 0, 0))
 
 
-def overlay(img, lay):
+def over(img, lay):
     return Image.alpha_composite(img.convert("RGBA"), lay).convert("RGB")
 
 
-def pill(img, text, x2=None, y2=None, fill=(0, 0, 0, 128), fg=WHITE, pad=40, height=48):
-    """右下頁碼膠囊（圓角 16px、黑 50%）"""
-    fo = font(REG, 24)
-    tw = fo.getlength(text)
-    w, h = int(tw + pad), height
-    x2 = x2 if x2 is not None else W - MARGIN
-    y2 = y2 if y2 is not None else H - MARGIN
-    lay = layer((W, H))
-    ImageDraw.Draw(lay).rounded_rectangle([x2 - w, y2 - h, x2, y2], radius=16, fill=fill)
-    lay = overlay(img, lay)
+def bottom_mask(img, start=640, strength=0.86, color=(0, 0, 0)):
+    """底部往上疊暗色漸層，讓烤上去的文字清楚浮現"""
+    lay = layer(img.size)
     d = ImageDraw.Draw(lay)
-    d.text((x2 - w + pad / 2, y2 - h + 10), text, font=fo, fill=fg)
-    return lay
+    for y in range(img.size[1]):
+        a = 0 if y < start else int(255 * strength * (y - start) / (img.size[1] - start))
+        d.line([(0, y), (img.size[0], y)], fill=color + (a,))
+    return over(img, lay)
 
 
-def brand(img, label_en="TC FEZ GLASS", label_zh="友泰京玻璃工程", color=WHITE, alpha=235, zh_color=None):
+def placeholder(img, boxrect, label="形象照"):
+    lay = layer(img.size)
+    d = ImageDraw.Draw(lay)
+    x1, y1, x2, y2 = boxrect
+    for x in range(x1, x2, 28):
+        d.line([(x, y1), (min(x + 15, x2), y1)], fill=(255, 255, 255, 120), width=3)
+        d.line([(x, y2), (min(x + 15, x2), y2)], fill=(255, 255, 255, 120), width=3)
+    for y in range(y1, y2, 28):
+        d.line([(x1, y), (x1, min(y + 15, y2))], fill=(255, 255, 255, 120), width=3)
+        d.line([(x2, y), (x2, min(y + 15, y2))], fill=(255, 255, 255, 120), width=3)
+    fo = font(BOLD, 34)
+    d.text(((x1 + x2 - fo.getlength(label)) / 2, (y1 + y2) / 2 - 18), label, font=fo,
+           fill=(255, 255, 255, 170))
+    return over(img, lay)
+
+
+def glass_art(sz=(W, H)):
+    """玻璃質感替代視覺（尚未有實拍照時）"""
+    img = gradient(sz, (20, 34, 48), (40, 74, 88))
+    lay = layer(sz)
+    d = ImageDraw.Draw(lay)
+    for i, x in enumerate(range(-260, W + 340, 150)):
+        d.line([(x, H), (x + 520, 0)], fill=(255, 255, 255, 20), width=30 - (i % 4) * 6)
+    for i, x in enumerate(range(-120, W + 300, 220)):
+        d.line([(x, H), (x + 300, 0)], fill=(196, 131, 90, 16), width=16)
+    return over(img, lay.filter(ImageFilter.GaussianBlur(10)))
+
+
+def photo_or_none(name):
+    p = ROOT / name
+    if not p.exists():
+        return None
+    im = Image.open(p).convert("RGB")
+    r = max(W / im.width, H / im.height)
+    im = im.resize((int(im.width * r), int(im.height * r)), Image.LANCZOS)
+    l, t = (im.width - W) // 2, (im.height - H) // 2
+    return im.crop((l, t, l + W, t + H))
+
+
+def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
+           name_size=120, name_y=700, show_quote=True):
+    img = art
+    img = bottom_mask(img, start=int(H * 0.44))
     lay = layer((W, H))
     d = ImageDraw.Draw(lay)
-    d.text((MARGIN, MARGIN - 8), label_en, font=font(BOLD, 32), fill=color + (alpha,))
-    d.text((MARGIN, MARGIN + 34), label_zh, font=font(REG, 22),
-           fill=(zh_color or CYAN_L) + (228,))
-    return overlay(img, lay)
+
+    # 品牌（左上 80,80）
+    d.text((80, 80), "TC FEZ GLASS", font=font(BOLD, 34), fill=WHITE + (245,))
+    d.text((80, 124), "友泰京玻璃工程", font=font(REG, 26), fill=BEIGE + (240,))
+
+    # 人名 + 英文名
+    fo = font(BOLD, name_size)
+    for i, line in enumerate(name.split("\n")):
+        y = name_y + i * int(name_size * 1.12)
+        d.text((80, y), line, font=fo, fill=WHITE + (255,))
+        if en and i == 0:
+            d.text((80 + fo.getlength(line) + 26, y + int(name_size * 0.42)),
+                   en, font=font(BOLD, int(name_size * 0.5)), fill=COPPER + (255,))
+
+    y = name_y + int(name_size * 1.12) * len(name.split("\n")) + 6
+    if role:
+        d.text((80, y), role, font=font(REG, 40), fill=BEIGE + (240,)); y += 62
+    if show_quote and slogan:
+        d.text((80, y + 8), "“", font=font(BOLD, 96), fill=COPPER + (255,)); y += 96
+    for line in slogan:
+        d.text((80, y), line, font=font(BOLD, 78), fill=WHITE + (255,)); y += 96
+
+    img = over(img, lay)
+
+    # 頁碼膠囊（底部置中、米白 80%）
+    pw, ph = 160, 50
+    px, py = (W - pw) // 2, 1320
+    lay2 = layer((W, H))
+    ImageDraw.Draw(lay2).rounded_rectangle([px, py, px + pw, py + ph], radius=25,
+                                           fill=BEIGE + (204,))
+    img = over(img, lay2)
+    d2 = ImageDraw.Draw(img)
+    fo2 = font(REG, 26)
+    d2.text((px + (pw - fo2.getlength(pager)) / 2, py + 9), pager, font=fo2, fill=NAVY)
+
+    img.save(path_out, "JPEG", quality=90, optimize=True)
+    return path_out
 
 
-def watermark(img, text, size=80, pos="right-top", alpha=52, color=WHITE, cx=None, cy=None):
-    lay = layer((W, H))
-    d = ImageDraw.Draw(lay)
-    fo = font(BOLD, size)
-    tw = fo.getlength(text)
-    if cx is not None and cy is not None:
-        d.text((cx - tw / 2, cy - size / 2), text, font=fo, fill=color + (alpha,))
-    elif pos == "right-top":
-        d.text((W - MARGIN - tw, MARGIN - 10), text, font=fo, fill=color + (alpha,))
-    elif pos == "left-bottom":
-        d.text((MARGIN, H - MARGIN - size - 6), text, font=fo, fill=color + (alpha,))
+def card1(pager="1 / 6"):
+    ph = photo_or_none("photo.jpg")
+    if ph:
+        art = bottom_mask(ph, start=int(H * 0.42), strength=0.9)
     else:
-        d.text((MARGIN, H - MARGIN - size - 6), text, font=fo, fill=color + (alpha,))
-    return overlay(img, lay)
+        art = gradient((W, H), (26, 38, 54), (52, 74, 92))
+        art = placeholder(art, (330, 150, W - 90, 660), "形象照（3:4 直式）")
+    return poster(OUT / "card1.jpg", art, "李柏融", en="Benson",
+                  role="友泰京玻璃工程　執行長",
+                  slogan=("讓藝術融入玻璃，", "讓隔熱成為空間美學"), pager=pager,
+                  name_size=118, name_y=690)
 
 
-def photo_or_none(idx):
-    p = OUT.parent / PHOTOS[idx] if idx in PHOTOS else None
-    if p and p.exists():
-        im = Image.open(p).convert("RGB")
-        ratio = max(W / im.width, H / im.height)
-        im = im.resize((int(im.width * ratio), int(im.height * ratio)), Image.LANCZOS)
-        left = (im.width - W) // 2
-        top = (im.height - H) // 2
-        return im.crop((left, top, left + W, top + H))
-    return None
-
-
-def dark_gradient_mask(img, strength=0.72):
-    """底部往上疊黑色漸層，確保疊字對比（Gemini C-1）"""
-    lay = layer((W, H))
-    d = ImageDraw.Draw(lay)
-    for y in range(H):
-        a = 0 if y < 338 else int(255 * strength * (y - 338) / (H - 338))
-        d.line([(0, y), (W, y)], fill=(0, 0, 0, a))
-    return overlay(img, lay)
-
-
-def glass_texture(size=(W, H), base=DARK_B, streaks=True):
-    """無照片時的玻璃質感替代視覺"""
-    img = gradient(size, DARK_T, base)
-    if streaks:
-        lay = layer(size)
-        d = ImageDraw.Draw(lay)
-        for i, x in enumerate(range(-200, W + 300, 130)):
-            d.line([(x, H), (x + 420, 0)], fill=(255, 255, 255, 16), width=26 - (i % 4) * 5)
-        lay = lay.filter(ImageFilter.GaussianBlur(9))
-        img = overlay(img, lay)
-    return img
-
-
-def placeholder_box(img, box, label):
-    """預留照片位置：虛線框 + 標籤"""
-    lay = layer((W, H))
-    d = ImageDraw.Draw(lay)
-    x1, y1, x2, y2 = box
-    for x in range(x1, x2, 26):
-        d.line([(x, y1), (min(x + 14, x2), y1)], fill=(255, 255, 255, 120), width=3)
-        d.line([(x, y2), (min(x + 14, x2), y2)], fill=(255, 255, 255, 120), width=3)
-    for y in range(y1, y2, 26):
-        d.line([(x1, y), (x1, min(y + 14, y2))], fill=(255, 255, 255, 120), width=3)
-        d.line([(x2, y), (x2, min(y + 14, y2))], fill=(255, 255, 255, 120), width=3)
-    fo = font(BOLD, 28)
-    tw = fo.getlength(label)
-    d.text(((x1 + x2 - tw) / 2, (y1 + y2) / 2 - 16), label, font=fo, fill=(255, 255, 255, 175))
-    return overlay(img, lay)
-
-
-# ═══════════ 各卡視覺（Gemini C-3） ═══════════
-def card1(pg="1 / 6"):
-    img = gradient((W, H), (9, 30, 44), (20, 62, 78))
-    img = brand(img)
-    img = placeholder_box(img, (500, 140, W - MARGIN, H - 158), "形象照")
-    img = watermark(img, "HANDCRAFT", size=76, alpha=30, pos="left-bottom")
-    return pill(img, pg)
-
-
-def card2(pg="2 / 6"):
-    img = glass_texture()
-    img = watermark(img, "PAIN POINTS", size=96, cx=W / 2, cy=H / 2 + 30, alpha=26, color=WHITE)
-    img = brand(img)
-    img = watermark(img, "GLASS", size=76, alpha=30)
-    return pill(img, pg)
-
-
-def card3(pg="3 / 6"):
-    img = Image.new("RGB", (W, H), PRIMARY)
-    d = ImageDraw.Draw(img)
-    quads = [(0, 0, SECOND), (W // 2, 0, PRIMARY),
-             (0, H // 2, ACCENT), (W // 2, H // 2, (26, 74, 88))]
-    labels = ["藝術玻璃", "空間玻璃", "工程整合", "外牆高空作業"]
-    for (x, y, col), lab in zip(quads, labels):
-        d.rectangle([x, y, x + W // 2, y + H // 2], fill=col)
-    img = brand(img, color=WHITE, alpha=245, zh_color=(232, 242, 246))
-    lay = layer((W, H))
-    dl = ImageDraw.Draw(lay)
-    for (x, y, _), lab in zip(quads, labels):
-        fo = font(BOLD, 30)
-        dl.text((x + MARGIN - 8, y + H // 2 - 70), lab, font=fo, fill=(255, 255, 255, 210))
-    img = overlay(img, lay)
-    return pill(img, pg)
-
-
-def card4(pg="4 / 6"):
-    img = gradient((W, H), (10, 26, 38), PRIMARY)
-    img = watermark(img, "30+", size=240, cx=W / 2, cy=H / 2 + 14, alpha=210, color=ACCENT)
-    img = brand(img)
-    img = watermark(img, "SINCE 1990s", size=70, alpha=32)
-    return pill(img, pg)
-
-
-def card5(pg="5 / 6"):
-    ph = photo_or_none(5)
-    if ph is not None:
-        img = dark_gradient_mask(ph, 0.55)
-    else:
-        img = glass_texture(base=(38, 86, 102))
-        img = watermark(img, "照片待補", size=52, cx=W / 2, cy=H / 2 + 40, alpha=110)
-    img = brand(img)
-    img = watermark(img, "CRAFT", size=76, alpha=30)
-    return pill(img, pg)
-
-
-def card6(pg="6 / 6"):
-    ph = photo_or_none(6)
-    if ph is not None:
-        img = overlay(ph, layer((W, H)) and Image.new("RGBA", (W, H), PRIMARY + (128,)))
-    else:
-        img = gradient((W, H), PRIMARY, (16, 52, 66))
-        lay = layer((W, H))
-        d = ImageDraw.Draw(lay)
-        for y in range(0, H, 52):
-            d.line([(0, y), (W, y)], fill=(255, 255, 255, 14), width=1)
-        for x in range(0, W, 52):
-            d.line([(x, 0), (x, H)], fill=(255, 255, 255, 14), width=1)
-        img = overlay(img, lay)
-        img = watermark(img, "施工照待補", size=52, cx=W / 2, cy=H / 2 + 40, alpha=110)
-    img = brand(img)
-    return pill(img, pg)
-
-
-MAKERS = [card1, card2, card3, card4, card5, card6]
+def card5(pager="5 / 6"):
+    art = glass_art()
+    return poster(OUT / "card5.jpg", art, "品質落在實處", en="",
+                  role="工藝藏在細節，滿足高標準設計",
+                  slogan=("藝術工藝 · 機能選材", "精準加工 · 施工細節"), pager=pager,
+                  name_size=96, name_y=700, show_quote=False)
 
 
 def make_og():
     w, h = 1200, 630
-    img = gradient((w, h), DARK_T, DARK_B)
+    img = gradient((w, h), (30, 40, 56), (52, 74, 92))
     lay = layer((w, h))
     d = ImageDraw.Draw(lay)
-    d.ellipse([w - 520, -260, w + 260, 380], fill=CYAN_L + (40,))
-    img = overlay(img, lay.filter(ImageFilter.GaussianBlur(90)))
+    d.ellipse([w - 560, -300, w + 300, 420], fill=COPPER + (60,))
+    img = over(img, lay.filter(ImageFilter.GaussianBlur(100)))
     d = ImageDraw.Draw(img)
-    d.text((80, 66), "TC FEZ GLASS", font=font(BOLD, 30), fill=CYAN_L)
-    d.text((80, 112), "友泰京玻璃工程", font=font(REG, 26), fill=(200, 218, 226))
-    d.text((80, 200), "李柏融  Benson Lee", font=font(BOLD, 76), fill=WHITE)
-    d.text((80, 296), "友泰京玻璃工程　執行長", font=font(REG, 32), fill=(200, 218, 226))
-    d.line([(80, 366), (1120, 366)], fill=(255, 255, 255, 60), width=2)
-    d.text((80, 396), "讓藝術融入玻璃", font=font(BOLD, 52), fill=(217, 180, 74))
-    d.text((80, 464), "讓隔熱成為空間美學", font=font(BOLD, 52), fill=WHITE)
-    d.text((80, 548), "藝術玻璃・空間玻璃・工程整合・外牆高空作業　0938-111-822",
-           font=font(REG, 27), fill=(200, 218, 226))
-    p = pathlib.Path(__file__).with_name("og.jpg")
+    d.text((80, 66), "TC FEZ GLASS", font=font(BOLD, 32), fill=BEIGE)
+    d.text((80, 112), "友泰京玻璃工程", font=font(REG, 26), fill=MUTED)
+    d.text((80, 196), "李柏融  Benson Lee", font=font(BOLD, 76), fill=WHITE)
+    d.text((80, 292), "友泰京玻璃工程　執行長", font=font(REG, 32), fill=MUTED)
+    d.line([(80, 362), (1120, 362)], fill=(196, 131, 90, 220), width=2)
+    d.text((80, 392), "讓藝術融入玻璃，", font=font(BOLD, 50), fill=COPPER)
+    d.text((80, 456), "讓隔熱成為空間美學", font=font(BOLD, 50), fill=WHITE)
+    d.text((80, 545), "藝術玻璃・空間玻璃・工程整合・外牆高空作業　0938-111-822",
+           font=font(REG, 26), fill=MUTED)
+    p = ROOT / "og.jpg"
     img.save(p, "JPEG", quality=90, optimize=True)
     return p
 
 
 if __name__ == "__main__":
-    for i, mk in enumerate(MAKERS, 1):
-        img = mk(f"{i} / {len(MAKERS)}")
-        p = OUT / f"card{i}.jpg"
-        img.convert("RGB").save(p, "JPEG", quality=88, optimize=True)
-        print("✓", p.name)
+    for mk, n in ((card1, 1), (card5, 5)):
+        print("✓", mk(f"{n} / 6").name)
     print("✓", make_og().name)

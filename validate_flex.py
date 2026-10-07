@@ -49,7 +49,9 @@ def main():
                "aspectRatio", "aspectMode", "url", "hero", "body", "footer", "altText",
                "maxWidth", "maxHeight", "scaling", "height", "justifyContent", "alignItems",
                "position", "offsetTop", "offsetBottom", "offsetStart", "offsetEnd",
-               "animation", "width", "gravity", "adjustMode"}
+               "animation", "width", "gravity", "adjustMode", "styles", "background",
+               "startColor", "endColor", "angle", "centerColor", "centerPosition",
+               "separator", "separatorColor", "comment"}
 
     def walk(node, path, in_hbox=False):
         if isinstance(node, list):
@@ -80,8 +82,14 @@ def main():
             for k in ("paddingAll", "paddingStart", "paddingEnd", "paddingTop", "paddingBottom"):
                 if k in node and not LENGTH_RE.match(str(node[k])):
                     errs.append(f"{path} {k}={node[k]} 必須是 px 或 %（關鍵字值不合法）")
-            if "cornerRadius" in node and not LENGTH_RE.match(str(node["cornerRadius"])):
-                errs.append(f"{path} cornerRadius={node['cornerRadius']} 必須是 px 或 %")
+            if "cornerRadius" in node and not (
+                    LENGTH_RE.match(str(node["cornerRadius"]))
+                    or node["cornerRadius"] in {"none", "xs", "sm", "md", "lg", "xl", "xxl"}):
+                errs.append(f"{path} cornerRadius={node['cornerRadius']} 不合法（px 或 none~xxl）")
+            if "borderWidth" in node and not (
+                    LENGTH_RE.match(str(node["borderWidth"]))
+                    or node["borderWidth"] in {"none", "light", "normal", "medium", "semi-bold", "bold"}):
+                errs.append(f"{path} borderWidth={node['borderWidth']} 不合法")
             if "spacing" in node and node["spacing"] not in SPACINGS:
                 errs.append(f"{path} spacing={node['spacing']} 不合法")
         elif typ == "button":
@@ -95,6 +103,17 @@ def main():
         elif typ == "image":
             if not str(node.get("url", "")).startswith("https://"):
                 errs.append(f"{path} 圖片 url 必須是 https")
+            ar = node.get("aspectRatio")
+            if ar:
+                m2 = re.match(r"^(\d+):(\d+)$", str(ar))
+                if not m2:
+                    errs.append(f"{path} aspectRatio={ar} 格式必須是 w:h")
+                else:
+                    w2, h2 = int(m2.group(1)), int(m2.group(2))
+                    if not (1 <= w2 <= 100000 and 1 <= h2 <= 100000):
+                        errs.append(f"{path} aspectRatio 數值需在 1~100000")
+                    elif h2 > 3 * w2:
+                        errs.append(f"{path} aspectRatio={ar} 不合法（height 不可超過 width 的 3 倍）")
         elif typ == "separator":
             pass
 
@@ -126,7 +145,7 @@ def main():
                 errs.append(f"{path} action.label 過長（≤20 字）")
 
         for k, v in node.items():
-            if k in ("action",):
+            if k in ("action", "styles", "background"):
                 continue
             if isinstance(v, (dict, list)):
                 walk(v, f"{path}.{k}", node.get("layout") == "horizontal" and typ == "box")

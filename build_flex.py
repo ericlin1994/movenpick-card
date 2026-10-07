@@ -1,236 +1,226 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-友泰京玻璃工程｜LINE 電子名片 Flex Message 產生器（Gemini 設計規格實作版）
+友泰京玻璃工程｜LINE 電子名片 Flex Message 產生器 v3
 ------------------------------------------------
-設計規格：設計規格_給Gemini.md／Gemini 回覆的 Design Tokens + 逐卡結構
+風格：雜誌海報感（3:4 直式 Hero 烤字）+ 精品配色（深藍 / 玫瑰銅 / 奶油白）
+設計來源：Gemini 第二版 Design Tokens（精品工程）
 用法：python build_flex.py
 """
 import json, pathlib, urllib.parse
 
 IMG = "https://ericlin1994.github.io/movenpick-card/img"
-CARDS_N = 6
-IMAGES = [f"{IMG}/card{i}.jpg" for i in range(1, CARDS_N + 1)]
-
 LIFF_URL = "https://liff.line.me/2011897701-TrLfDuwi"
 ADDR = "新北市中和區連城路518巷8號"
 LINKS = {
-    "line":  "https://line.me/ti/p/@fez86488989",     # 官方帳號
-    "line2": "https://line.me/ti/p/~benson911",        # 個人帳號（備用）
+    "line":  "https://line.me/ti/p/@fez86488989",
+    "line2": "https://line.me/ti/p/~benson911",
     "ig":    "https://www.instagram.com/tc_fez_glass_team/",
     "fb":    "https://www.facebook.com/profile.php?id=100079776776531",
     "tel":   "tel:+886938111822",
     "map":   "https://www.google.com/maps/search/?api=1&query="
              + urllib.parse.quote("友泰京玻璃工程 " + ADDR),
-    "share": LIFF_URL + "?share=1&v=2026-10-07-0600",
+    "share": LIFF_URL + "?share=1&v=2026-10-07-0700",
 }
 
-# ═══════════ Design Tokens（Gemini 規格） ═══════════
-PRIMARY = "#0E2A3A"   # 主色 深墨藍
-SECOND     = "#2E7D8F"   # 輔色 湖水青
-ACCENT  = "#B8860B"   # 點綴 暗金
-BG      = "#FFFFFF"   # 主白底
-BG_ALT  = "#F4F6F8"   # 淺灰底
-TEXT    = "#1A1A1A"   # 主內文
-MUTED   = "#737D8C"   # 次要
-SEP     = "#E2E6EA"   # 分隔線
-CYAN_L  = "#9BD7E4"   # 淺青（深底上的副文字）
-WHITE   = "#FFFFFF"
+# ═══════════ Design Tokens（精品工程版） ═══════════
+NAVY   = "#253043"   # 主底色 深邃海軍藍
+NAVY_D = "#1E2838"   # 卡片內層深色
+COPPER = "#C4835A"   # 強調色 玫瑰銅
+BEIGE  = "#F5F1E8"   # 介面底色 奶油米白
+WHITE  = "#FFFFFF"
+MUTED  = "#A0AAB8"   # 深底上的次要文字
+DIVIDE = "#DCD4C5"   # 米白底上的分隔線
 
-# padding / cornerRadius 一律用 px（關鍵字值不在官方規格內，用錯會被 LINE 整則丟掉）
+# padding / cornerRadius 用 px（cornerRadius 支援關鍵字，但 px 最不會出錯）
 
 
-def t(s, size="xs", weight="regular", color=TEXT, wrap=True, margin=None,
-      align=None, flex=None, max_lines=None):
-    o = {"type": "text", "text": s, "size": size, "weight": weight,
-         "color": color, "wrap": wrap}
+def t(s, size="xs", weight="regular", color=WHITE, wrap=True, margin=None,
+      align=None, flex=None):
+    o = {"type": "text", "text": s, "size": size, "weight": weight, "color": color, "wrap": wrap}
     if margin: o["margin"] = margin
     if align: o["align"] = align
     if flex is not None: o["flex"] = flex
-    if max_lines: o["maxLines"] = max_lines
     return o
 
 
-def vbox(contents, spacing="sm", margin=None, padding=None, bg=None, radius=None, flex=None,
-         align_items=None):
-    o = {"type": "box", "layout": "vertical", "contents": contents, "spacing": spacing}
+def box(contents, layout="vertical", spacing="md", margin=None, padding=None, bg=None,
+        radius=None, flex=None, border=None, align_items=None, action=None):
+    o = {"type": "box", "layout": layout, "contents": contents, "spacing": spacing}
     if margin: o["margin"] = margin
     if padding: o["paddingAll"] = padding
     if bg: o["backgroundColor"] = bg
     if radius: o["cornerRadius"] = radius
     if flex is not None: o["flex"] = flex
+    if border: o["borderWidth"] = border[0]; o["borderColor"] = border[1]
     if align_items: o["alignItems"] = align_items
+    if action: o["action"] = action
     return o
 
 
-def hbox(contents, spacing="sm", margin=None, flex=None, align_items=None):
-    o = {"type": "box", "layout": "horizontal", "contents": contents, "spacing": spacing}
-    if margin: o["margin"] = margin
-    if flex is not None: o["flex"] = flex
-    if align_items: o["alignItems"] = align_items
-    return o
+def _mk(contents):
+    """允許 box(a, b, c) 或 box([a, b, c]) 兩種寫法"""
+    if len(contents) == 1 and isinstance(contents[0], list):
+        return contents[0]
+    return list(contents)
 
 
-def sep(margin="sm", color=SEP):
-    return {"type": "separator", "margin": margin, "color": color}
+def vbox(*contents, spacing="md", **k): return box(_mk(contents), spacing=spacing, **k)
+def hbox(*contents, spacing="sm", **k):
+    return box(_mk(contents), layout="horizontal", spacing=spacing, **k)
+def sep(margin="md", color=DIVIDE): return {"type": "separator", "margin": margin, "color": color}
 
 
-def tag(label):
-    """膠囊標籤：圓角色塊 + 小字"""
-    return vbox([t(label, size="xxs", weight="bold", color=PRIMARY, align="center")],
-                spacing="none", padding="8px", bg=BG_ALT, radius="6px")
+def pill(label, uri, bg, fg=WHITE):
+    """圓角膠囊按鈕：用 box + action 做（LINE 預設 button 無法自訂圓角與底色）"""
+    return box([t(label, size="xs", weight="bold", color=fg, align="center", wrap=False)],
+               spacing="none", padding="12px", bg=bg, radius="100px", flex=1,
+               action={"type": "uri", "label": label[:20], "uri": uri})
 
 
-def icon_line(emoji, body, size="xs", color=TEXT, weight="regular", flex=6, wrap=True, margin=None):
-    """左 emoji、右文字的一列"""
-    return hbox([t(emoji, size="sm", flex=1, align="center"),
-                 t(body, size=size, color=color, weight=weight, flex=flex, wrap=wrap)],
-                spacing="md", margin=margin)
+def control_row():
+    """共用底部操作區：米白圓角底 + 三顆膠囊（IG / LINE / 導航）"""
+    return box([hbox(pill("IG 作品", LINKS["ig"], NAVY),
+                     pill("💬 LINE諮詢", LINKS["line"], COPPER),
+                     pill("📍 導航門市", LINKS["map"], NAVY), spacing="sm")],
+               spacing="none", padding="12px", bg=BEIGE, radius="20px")
 
 
-def btn(label, uri, style="primary", color=None):
-    """只留 style / color / action。
-    PITFALL：加 height / margin / scaling 會讓 LINE 靜默丟掉整則訊息。"""
-    a = {"type": "uri", "label": label, "uri": uri}
-    o = {"type": "button", "style": style, "action": a}
-    if color: o["color"] = color
-    return o
+def tag_pill(label):
+    return box([t(label, size="xxs", weight="bold", color=WHITE, align="center", wrap=False)],
+               spacing="none", padding="8px", radius="100px", flex=1,
+               border=("1px", COPPER))
 
 
-# ═══════════ 逐卡內容（Gemini 設計，文案逐字） ═══════════
+# ═══════════ 逐卡 body ═══════════
 def body1():
-    return vbox([
-        t("李柏融  Benson Lee", size="xl", weight="bold", color=PRIMARY, margin="none"),
-        t("友泰京玻璃工程　執行長", size="sm", color=MUTED, margin="xs"),
-        sep("md"),
-        t("讓藝術融入玻璃，讓隔熱成為空間美學\n以藝術玻璃工藝，打造節能舒適新視界",
-          size="xs", weight="bold", color=SECOND, margin="md"),
-        vbox([hbox([tag("藝術玻璃"), tag("空間玻璃")], spacing="xs"),
-              hbox([tag("工程整合"), tag("外牆高空作業")], spacing="xs")],
-             spacing="xs", margin="md"),
-    ], spacing="md", padding="18px", bg=BG)
+    """雜誌封面款：文案全部烤進 Hero 圖，body 只有操作列"""
+    return vbox([control_row()], spacing="none", padding="14px", bg=NAVY)
 
 
 def body2():
+    aud = ["設計師", "建築師", "建商", "營造", "商業空間", "住宅業主"]
     pains = ["大圖輸出缺工藝，難達藝術質感",
              "玻璃鐵件分包，尺寸收邊難整合",
              "設計圖美，卻找不到廠家實作",
              "特殊彎曲或異材質，找不到方案",
-             "需兼顧採光隔熱，不知如何選材",
-             "報價工法差異大，品質難以判斷"]
+             "兼顧採光與隔熱，不知如何選材"]
     return vbox([
-        t("我們專為誰服務", size="lg", weight="bold", color=PRIMARY, margin="none"),
-        t("設計師｜建築師｜建商｜營造｜商空｜業主", size="xs", weight="bold", color=ACCENT, margin="xs"),
-        sep("sm"),
-    ] + [icon_line("⚠️", p, size="xs", color=TEXT, margin=m) for p, m in
-         zip(pains, ["md"] + ["sm"] * 5)],
-        spacing="sm", padding="18px", bg=BG)
+        t("我們專為誰服務", size="xl", weight="bold", color=COPPER, margin="none"),
+        vbox([hbox(*[tag_pill(x) for x in aud[:3]], spacing="xs"),
+              hbox(*[tag_pill(x) for x in aud[3:]], spacing="xs")], spacing="xs", margin="md"),
+        box([t("你是不是也遇過這些問題？", size="xs", weight="bold", color=NAVY, margin="none"),
+             sep("sm", DIVIDE)] +
+            [hbox(t("📌", size="xs", color=COPPER, flex=1, wrap=False),
+                  t(p, size="xs", color=NAVY, flex=6, margin="none"), spacing="sm",
+                  margin="sm")
+             for p in pains],
+            spacing="sm", padding="18px", bg=BEIGE, radius="20px", margin="md"),
+        control_row(),
+    ], spacing="md", padding="18px", bg=NAVY)
 
 
 def body3():
-    svcs = [("🎨", "藝術玻璃", "結合工藝色彩，打造獨特空間作品"),
-            ("🪟", "空間玻璃", "隔間淋浴門窗，兼顧美感與實用"),
-            ("🏗️", "工程整合", "玻璃鋁框鐵件，丈量安裝完整到位"),
-            ("🧗", "高空作業", "外牆檢測防水，依現場規劃施工")]
+    svcs = [("🎨", "藝術玻璃", "工藝與色彩結合"), ("🪟", "空間玻璃", "美感實用隔間窗"),
+            ("🏗️", "工程整合", "鋁框鐵件一條龍"), ("🧗", "高空作業", "外牆檢測與防水")]
+    def cell(ic, name, desc):
+        return box([t(ic, size="md", color=COPPER, margin="none", wrap=False),
+                    t(name, size="sm", weight="bold", color=WHITE, margin="sm", wrap=False),
+                    t(desc, size="xs", color=MUTED, margin="xs")],
+                   spacing="none", padding="16px", bg=NAVY_D, radius="16px", flex=1)
     return vbox([
-        t("我們能為你做什麼", size="lg", weight="bold", color=PRIMARY, margin="none"),
-        t("從設計規劃到現場施作，實現空間想像", size="xs", weight="bold", color=SECOND, margin="xs"),
-        vbox([hbox([t(ic, size="sm", flex=1, align="center"),
-                    vbox([t(name, size="sm", weight="bold", color=PRIMARY, margin="none"),
-                          t(desc, size="xs", color=MUTED, margin="xs")], spacing="none", flex=5)],
-                   spacing="sm")
-              for ic, name, desc in svcs], spacing="md", margin="md"),
-    ], spacing="md", padding="18px", bg=BG_ALT)
+        t("我們能為你做什麼", size="xl", weight="bold", color=COPPER, margin="none"),
+        t("從設計規劃到現場施作，實現空間想像", size="sm", color=WHITE, margin="xs"),
+        hbox(cell(*svcs[0]), cell(*svcs[1]), spacing="md", margin="md"),
+        hbox(cell(*svcs[2]), cell(*svcs[3]), spacing="md", margin="md"),
+        control_row(),
+    ], spacing="md", padding="18px", bg=NAVY)
 
 
 def body4():
-    stats = [("30+", "年產業經驗\n專業整合"), ("3", "代工藝傳承\n品質保證"), ("4", "大服務項目\n一條龍施作")]
+    stats = [("30+", "年玻璃產業\n服務經驗"), ("3", "代工藝傳承\n品質保證"), ("4", "大服務項目\n專業整合")]
     return vbox([
-        t("為什麼選擇 友泰京？", size="lg", weight="bold", color=WHITE, margin="none"),
-        t("流程：確認→場勘→定案→製作→交付", size="xs", weight="bold", color=ACCENT, margin="xs"),
-        sep("md", SECOND),
-    ] + [hbox([t(big, size="xxl", weight="bold", color=WHITE, flex=2, wrap=False),
-               t(small, size="sm", weight="bold", color=CYAN_L, flex=3)],
-              spacing="md", align_items="center", margin="md")
-         for big, small in stats],
-        spacing="md", padding="18px", bg=PRIMARY)
+        t("為什麼選擇友泰京？", size="xl", weight="bold", color=COPPER, margin="none"),
+    ] + [hbox(t(big, size="4xl", weight="bold", color=COPPER, flex=2, wrap=False),
+              t(small, size="sm", weight="bold", color=WHITE, flex=3, margin="none"),
+              spacing="md", align_items="center", margin="xl" if i == 0 else "md")
+         for i, (big, small) in enumerate(stats)] + [
+        control_row(),
+    ], spacing="md", padding="18px", bg=NAVY)
 
 
 def body5():
-    items = [("🔹 藝術工藝｜光影層次", "鑲嵌、紋理與複合工藝，呈現立體美感"),
-             ("🔹 機能選材｜美感兼顧", "安全玻璃、Low-E 或中空複合結構"),
-             ("🔹 精準加工｜施工細節", "彎曲異材質搭配，矽膠收邊俐落穩固")]
-    out = [t("品質落在實處", size="lg", weight="bold", color=PRIMARY, margin="none"),
-           t("工藝藏在細節，滿足高標準設計", size="xs", color=MUTED, margin="xs"),
-           sep("sm")]
-    for head, desc in items:
-        out.append(sep("sm"))
-        out.append(t(head, size="sm", weight="bold", color=SECOND, margin="sm"))
-        out.append(t(desc, size="xs", color=TEXT, margin="xs"))
-    return vbox(out, spacing="sm", padding="18px", bg=BG)
+    """工藝：文案烤進 3:4 Hero 圖，body 只有操作列"""
+    return vbox([control_row()], spacing="none", padding="14px", bg=NAVY)
 
 
 def body6():
+    def row(ic, txt, size="sm", weight="bold", color=WHITE):
+        return hbox(t(ic, size="sm", color=COPPER, flex=1, wrap=False),
+                    t(txt, size=size, weight=weight, color=color, flex=6, margin="none"),
+                    spacing="sm", margin="sm")
     return vbox([
-        t("讓我們聊聊你的空間", size="lg", weight="bold", color=PRIMARY, margin="none"),
-        t("拍下現場照片＋尺寸，LINE 傳給我免費評估", size="xs", weight="bold", color=ACCENT, margin="xs"),
-        sep("md"),
-        icon_line("📞", "0938-111-822", size="sm", weight="bold"),
-        icon_line("💬", "LINE：@fez86488989", size="sm", weight="bold"),
-        icon_line("⏰", "週一～五 08:00-17:00", size="xs"),
-        icon_line("📍", "新北市中和區連城路518巷8號（中和高中旁巷）", size="xs"),
-    ], spacing="sm", padding="18px", bg=BG_ALT)
+        t("讓我們聊聊你的空間", size="xl", weight="bold", color=NAVY, margin="none"),
+        t("拍下現場照片＋尺寸，LINE 傳給我免費評估", size="xs", weight="bold", color=COPPER, margin="xs"),
+        box([row("📞", "0938-111-822"),
+             row("💬", "LINE：@fez86488989"),
+             row("📍", "新北市中和區連城路518巷8號（中和高中旁巷）", size="xs", weight="regular"),
+             row("⏰", "週一～五 08:00-17:00", size="xs", weight="regular")],
+            spacing="sm", padding="18px", bg=NAVY, radius="20px", margin="md"),
+        control_row(),
+    ], spacing="md", padding="18px", bg=BEIGE)
 
 
 BODIES = [body1, body2, body3, body4, body5, body6]
-SUMMARIES = [
-    ["李柏融 Benson Lee｜執行長", "讓藝術融入玻璃，讓隔熱成為空間美學", "藝術玻璃・空間玻璃・工程整合・外牆高空作業"],
-    ["我們專為誰服務", "設計師｜建築師｜建商｜營造｜商空｜業主",
-     "大圖輸出缺工藝，難達藝術質感", "玻璃鐵件分包，尺寸收邊難整合", "設計圖美，卻找不到廠家實作",
-     "特殊彎曲或異材質，找不到方案", "需兼顧採光隔熱，不知如何選材", "報價工法差異大，品質難以判斷"],
-    ["我們能為你做什麼", "藝術玻璃 結合工藝色彩，打造獨特空間作品", "空間玻璃 隔間淋浴門窗，兼顧美感與實用",
-     "工程整合 玻璃鋁框鐵件，丈量安裝完整到位", "高空作業 外牆檢測防水，依現場規劃施工"],
-    ["為什麼選擇 友泰京？", "30+ 年產業經驗", "3 代工藝傳承", "4 大服務項目", "流程：確認→場勘→定案→製作→交付"],
-    ["品質落在實處", "藝術工藝 鑲嵌紋理複合工藝，呈現立體美感", "機能選材 安全玻璃、Low-E 或中空複合結構",
-     "精準加工 彎曲異材質搭配，矽膠收邊俐落穩固"],
-    ["讓我們聊聊你的空間", "電話 0938-111-822", "LINE @fez86488989", "週一～五 08:00-17:00",
-     "新北市中和區連城路518巷8號（中和高中旁巷）"],
-]
+HEROES = {1: f"{IMG}/card1.jpg", 5: f"{IMG}/card5.jpg"}   # 只有這兩張有 3:4 Hero
+BG_COLOR = {1: NAVY, 2: NAVY, 3: NAVY, 4: NAVY, 5: NAVY, 6: BEIGE}
 TITLES = ["李柏融  Benson Lee", "我們專為誰服務", "我們能為你做什麼",
-          "為什麼選擇 友泰京？", "品質落在實處", "讓我們聊聊你的空間"]
+          "為什麼選擇友泰京？", "品質落在實處", "讓我們聊聊你的空間"]
+SUMMARIES = [
+    ["李柏融 Benson Lee｜執行長", "讓藝術融入玻璃，讓隔熱成為空間美學"],
+    ["我們專為誰服務", "設計師｜建築師｜建商｜營造｜商空｜業主",
+     "大圖輸出缺工藝，難達藝術質感", "玻璃鐵件分包，尺寸收邊難整合",
+     "設計圖美，卻找不到廠家實作", "特殊彎曲或異材質，找不到方案", "兼顧採光與隔熱，不知如何選材"],
+    ["我們能為你做什麼", "藝術玻璃 工藝與色彩結合", "空間玻璃 美感實用隔間窗",
+     "工程整合 鋁框鐵件一條龍", "高空作業 外牆檢測與防水"],
+    ["為什麼選擇友泰京？", "30+ 年玻璃產業服務經驗", "3 代工藝傳承", "4 大服務項目"],
+    ["品質落在實處", "玻璃光影特寫（文案烤進圖內）"],
+    ["讓我們聊聊你的空間", "電話 0938-111-822", "LINE @fez86488989",
+     "新北市中和區連城路518巷8號", "週一～五 08:00-17:00"],
+]
 
 
 def build_bubble(i):
-    """PITFALL：bubble 少了 "type": "bubble" 就是無效 Flex。"""
-    return {
+    b = {
         "type": "bubble", "size": "mega",
-        "hero": {"type": "image", "url": IMAGES[i], "size": "full",
-                 "aspectRatio": "20:13", "aspectMode": "cover",
-                 "action": {"type": "uri", "label": "開啟名片", "uri": LIFF_URL}},
-        "body": BODIES[i](),
-        "footer": {"type": "box", "layout": "vertical", "spacing": "sm",
-                   "paddingAll": "12px", "contents": [
-                       hbox([btn("LINE 諮詢", LINKS["line"], "primary", PRIMARY),
-                             btn("IG 作品", LINKS["ig"], "secondary"),
-                             btn("導航門市", LINKS["map"], "secondary")], spacing="sm"),
-                       btn("分享給好友", LINKS["share"], "link", MUTED) ]},
+        # 深色卡片背景用 bubble styles（官方做法），body 區塊才會整片滿版
+        "styles": {"body": {"backgroundColor": BG_COLOR[i]}},
+        "body": BODIES[i - 1](),
     }
+    if i in HEROES:
+        b["hero"] = {"type": "image", "url": HEROES[i], "size": "full",
+                     "aspectRatio": "3:4", "aspectMode": "cover",
+                     "action": {"type": "uri", "label": "開啟名片", "uri": LIFF_URL}}
+    return b
 
 
-# ═══════════ 備援版（結構最簡，若正式版有問題時可切換） ═══════════
+# ═══════════ 備援版（結構最簡） ═══════════
 def build_candidate(with_hero: bool):
     bubbles = []
-    for i in range(CARDS_N):
-        body = vbox([t(TITLES[i], size="sm", weight="bold", color=PRIMARY, margin="none"),
-                     t("\n".join("· " + s for s in SUMMARIES[i]), size="xs", color=TEXT, margin="xs")],
+    for i in range(6):
+        n = i + 1
+        body = vbox([t(TITLES[i], size="sm", weight="bold", color=WHITE, margin="none"),
+                     t("\n".join("· " + s for s in SUMMARIES[i]), size="xs", color=MUTED, margin="xs")],
                     spacing="none")
-        b = {"type": "bubble", "body": body,
-             "footer": vbox([btn("LINE 諮詢", LINKS["line"], "primary"),
-                             btn("IG 作品", LINKS["ig"], "primary"),
-                             btn("導航門市", LINKS["map"], "primary")], spacing="sm")}
-        if with_hero:
-            b["hero"] = {"type": "image", "url": IMAGES[i], "size": "full",
-                         "aspectRatio": "20:13", "aspectMode": "cover"}
+        b = {"type": "bubble", "styles": {"body": {"backgroundColor": NAVY}}, "body": body,
+             "footer": vbox([box([t("LINE 諮詢", size="xs", weight="bold", color=WHITE,
+                                    align="center", wrap=False)], padding="12px", bg=COPPER,
+                                 radius="100px", action={"type": "uri", "label": "LINE 諮詢",
+                                                         "uri": LINKS["line"]})],
+                            spacing="none", padding="12px", bg=NAVY)}
+        if with_hero and n in HEROES:
+            b["hero"] = {"type": "image", "url": HEROES[n], "size": "full",
+                         "aspectRatio": "3:4", "aspectMode": "cover"}
         bubbles.append(b)
     return {"type": "flex", "altText": ("F2 有圖版" if with_hero else "F1 無圖版"),
             "contents": {"type": "carousel", "contents": bubbles}}
@@ -274,7 +264,7 @@ def inject_candidates():
 
 
 def main():
-    bubbles = [build_bubble(i) for i in range(CARDS_N)]
+    bubbles = [build_bubble(n) for n in range(1, 7)]
     payload = {"type": "flex", "altText": "友泰京玻璃工程｜李柏融 Benson 電子名片",
                "contents": {"type": "carousel", "contents": bubbles}}
     out = pathlib.Path(__file__).with_name("flex-cards.json")

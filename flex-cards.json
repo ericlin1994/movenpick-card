@@ -7,54 +7,15 @@
       {
         "type": "bubble",
         "size": "mega",
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card1.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "開啟名片",
-            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
           }
         },
         "body": {
           "type": "box",
           "layout": "vertical",
           "contents": [
-            {
-              "type": "text",
-              "text": "李柏融  Benson Lee",
-              "size": "xl",
-              "weight": "bold",
-              "color": "#0E2A3A",
-              "wrap": true,
-              "margin": "none"
-            },
-            {
-              "type": "text",
-              "text": "友泰京玻璃工程　執行長",
-              "size": "sm",
-              "weight": "regular",
-              "color": "#737D8C",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "separator",
-              "margin": "md",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "text",
-              "text": "讓藝術融入玻璃，讓隔熱成為空間美學\n以藝術玻璃工藝，打造節能舒適新視界",
-              "size": "xs",
-              "weight": "bold",
-              "color": "#2E7D8F",
-              "wrap": true,
-              "margin": "md"
-            },
             {
               "type": "box",
               "layout": "vertical",
@@ -69,18 +30,24 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": "藝術玻璃",
-                          "size": "xxs",
+                          "text": "IG 作品",
+                          "size": "xs",
                           "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
+                          "color": "#FFFFFF",
+                          "wrap": false,
                           "align": "center"
                         }
                       ],
                       "spacing": "none",
-                      "paddingAll": "8px",
-                      "backgroundColor": "#F4F6F8",
-                      "cornerRadius": "6px"
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
                       "type": "box",
@@ -88,44 +55,24 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": "空間玻璃",
-                          "size": "xxs",
+                          "text": "💬 LINE諮詢",
+                          "size": "xs",
                           "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
+                          "color": "#FFFFFF",
+                          "wrap": false,
                           "align": "center"
                         }
                       ],
                       "spacing": "none",
-                      "paddingAll": "8px",
-                      "backgroundColor": "#F4F6F8",
-                      "cornerRadius": "6px"
-                    }
-                  ],
-                  "spacing": "xs"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "工程整合",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "backgroundColor": "#F4F6F8",
-                      "cornerRadius": "6px"
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
                     },
                     {
                       "type": "box",
@@ -133,98 +80,58 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": "外牆高空作業",
-                          "size": "xxs",
+                          "text": "📍 導航門市",
+                          "size": "xs",
                           "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
+                          "color": "#FFFFFF",
+                          "wrap": false,
                           "align": "center"
                         }
                       ],
                       "spacing": "none",
-                      "paddingAll": "8px",
-                      "backgroundColor": "#F4F6F8",
-                      "cornerRadius": "6px"
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
                     }
                   ],
-                  "spacing": "xs"
+                  "spacing": "sm"
                 }
               ],
-              "spacing": "xs",
-              "margin": "md"
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
             }
           ],
-          "spacing": "md",
-          "paddingAll": "18px",
-          "backgroundColor": "#FFFFFF"
+          "spacing": "none",
+          "paddingAll": "14px",
+          "backgroundColor": "#253043"
         },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
-                }
-              ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
-            }
-          ]
-        }
-      },
-      {
-        "type": "bubble",
-        "size": "mega",
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card2.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card1.jpg",
           "size": "full",
-          "aspectRatio": "20:13",
+          "aspectRatio": "3:4",
           "aspectMode": "cover",
           "action": {
             "type": "uri",
             "label": "開啟名片",
             "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
           }
         },
         "body": {
@@ -234,283 +141,11 @@
             {
               "type": "text",
               "text": "我們專為誰服務",
-              "size": "lg",
+              "size": "xl",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#C4835A",
               "wrap": true,
               "margin": "none"
-            },
-            {
-              "type": "text",
-              "text": "設計師｜建築師｜建商｜營造｜商空｜業主",
-              "size": "xs",
-              "weight": "bold",
-              "color": "#B8860B",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "separator",
-              "margin": "sm",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "大圖輸出缺工藝，難達藝術質感",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "md"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "玻璃鐵件分包，尺寸收邊難整合",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "sm"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "設計圖美，卻找不到廠家實作",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "sm"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "特殊彎曲或異材質，找不到方案",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "sm"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "需兼顧採光隔熱，不知如何選材",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "sm"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⚠️",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "報價工法差異大，品質難以判斷",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md",
-              "margin": "sm"
-            }
-          ],
-          "spacing": "sm",
-          "paddingAll": "18px",
-          "backgroundColor": "#FFFFFF"
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
-                }
-              ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
-            }
-          ]
-        }
-      },
-      {
-        "type": "bubble",
-        "size": "mega",
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card3.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "開啟名片",
-            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
-          }
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "我們能為你做什麼",
-              "size": "lg",
-              "weight": "bold",
-              "color": "#0E2A3A",
-              "wrap": true,
-              "margin": "none"
-            },
-            {
-              "type": "text",
-              "text": "從設計規劃到現場施作，實現空間想像",
-              "size": "xs",
-              "weight": "bold",
-              "color": "#2E7D8F",
-              "wrap": true,
-              "margin": "xs"
             },
             {
               "type": "box",
@@ -521,14 +156,25 @@
                   "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "text",
-                      "text": "🎨",
-                      "size": "sm",
-                      "weight": "regular",
-                      "color": "#1A1A1A",
-                      "wrap": true,
-                      "align": "center",
-                      "flex": 1
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "設計師",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
                     },
                     {
                       "type": "box",
@@ -536,28 +182,136 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": "藝術玻璃",
-                          "size": "sm",
+                          "text": "建築師",
+                          "size": "xxs",
                           "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
-                          "margin": "none"
-                        },
-                        {
-                          "type": "text",
-                          "text": "結合工藝色彩，打造獨特空間作品",
-                          "size": "xs",
-                          "weight": "regular",
-                          "color": "#737D8C",
-                          "wrap": true,
-                          "margin": "xs"
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
                         }
                       ],
                       "spacing": "none",
-                      "flex": 5
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "建商",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
                     }
                   ],
-                  "spacing": "sm"
+                  "spacing": "xs"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "營造",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "商業空間",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "住宅業主",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "8px",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#C4835A"
+                    }
+                  ],
+                  "spacing": "xs"
+                }
+              ],
+              "spacing": "xs",
+              "margin": "md"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "你是不是也遇過這些問題？",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#253043",
+                  "wrap": true,
+                  "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "sm",
+                  "color": "#DCD4C5"
                 },
                 {
                   "type": "box",
@@ -565,42 +319,26 @@
                   "contents": [
                     {
                       "type": "text",
-                      "text": "🪟",
-                      "size": "sm",
+                      "text": "📌",
+                      "size": "xs",
                       "weight": "regular",
-                      "color": "#1A1A1A",
-                      "wrap": true,
-                      "align": "center",
+                      "color": "#C4835A",
+                      "wrap": false,
                       "flex": 1
                     },
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "空間玻璃",
-                          "size": "sm",
-                          "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
-                          "margin": "none"
-                        },
-                        {
-                          "type": "text",
-                          "text": "隔間淋浴門窗，兼顧美感與實用",
-                          "size": "xs",
-                          "weight": "regular",
-                          "color": "#737D8C",
-                          "wrap": true,
-                          "margin": "xs"
-                        }
-                      ],
-                      "spacing": "none",
-                      "flex": 5
+                      "type": "text",
+                      "text": "大圖輸出缺工藝，難達藝術質感",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#253043",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
                     }
                   ],
-                  "spacing": "sm"
+                  "spacing": "sm",
+                  "margin": "sm"
                 },
                 {
                   "type": "box",
@@ -608,42 +346,26 @@
                   "contents": [
                     {
                       "type": "text",
-                      "text": "🏗️",
-                      "size": "sm",
+                      "text": "📌",
+                      "size": "xs",
                       "weight": "regular",
-                      "color": "#1A1A1A",
-                      "wrap": true,
-                      "align": "center",
+                      "color": "#C4835A",
+                      "wrap": false,
                       "flex": 1
                     },
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "工程整合",
-                          "size": "sm",
-                          "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
-                          "margin": "none"
-                        },
-                        {
-                          "type": "text",
-                          "text": "玻璃鋁框鐵件，丈量安裝完整到位",
-                          "size": "xs",
-                          "weight": "regular",
-                          "color": "#737D8C",
-                          "wrap": true,
-                          "margin": "xs"
-                        }
-                      ],
-                      "spacing": "none",
-                      "flex": 5
+                      "type": "text",
+                      "text": "玻璃鐵件分包，尺寸收邊難整合",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#253043",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
                     }
                   ],
-                  "spacing": "sm"
+                  "spacing": "sm",
+                  "margin": "sm"
                 },
                 {
                   "type": "box",
@@ -651,13 +373,120 @@
                   "contents": [
                     {
                       "type": "text",
-                      "text": "🧗",
-                      "size": "sm",
+                      "text": "📌",
+                      "size": "xs",
                       "weight": "regular",
-                      "color": "#1A1A1A",
-                      "wrap": true,
-                      "align": "center",
+                      "color": "#C4835A",
+                      "wrap": false,
                       "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "設計圖美，卻找不到廠家實作",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#253043",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "📌",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "特殊彎曲或異材質，找不到方案",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#253043",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "📌",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "兼顧採光與隔熱，不知如何選材",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#253043",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                }
+              ],
+              "spacing": "sm",
+              "margin": "md",
+              "paddingAll": "18px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
                       "type": "box",
@@ -665,105 +494,71 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": "高空作業",
-                          "size": "sm",
-                          "weight": "bold",
-                          "color": "#0E2A3A",
-                          "wrap": true,
-                          "margin": "none"
-                        },
-                        {
-                          "type": "text",
-                          "text": "外牆檢測防水，依現場規劃施工",
+                          "text": "💬 LINE諮詢",
                           "size": "xs",
-                          "weight": "regular",
-                          "color": "#737D8C",
-                          "wrap": true,
-                          "margin": "xs"
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
                         }
                       ],
                       "spacing": "none",
-                      "flex": 5
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "📍 導航門市",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
                     }
                   ],
                   "spacing": "sm"
                 }
               ],
-              "spacing": "md",
-              "margin": "md"
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
             }
           ],
           "spacing": "md",
           "paddingAll": "18px",
-          "backgroundColor": "#F4F6F8"
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
-                }
-              ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
-            }
-          ]
+          "backgroundColor": "#253043"
         }
       },
       {
         "type": "bubble",
         "size": "mega",
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card4.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "開啟名片",
-            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
           }
         },
         "body": {
@@ -772,26 +567,308 @@
           "contents": [
             {
               "type": "text",
-              "text": "為什麼選擇 友泰京？",
-              "size": "lg",
+              "text": "我們能為你做什麼",
+              "size": "xl",
               "weight": "bold",
-              "color": "#FFFFFF",
+              "color": "#C4835A",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "流程：確認→場勘→定案→製作→交付",
-              "size": "xs",
-              "weight": "bold",
-              "color": "#B8860B",
+              "text": "從設計規劃到現場施作，實現空間想像",
+              "size": "sm",
+              "weight": "regular",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "xs"
             },
             {
-              "type": "separator",
-              "margin": "md",
-              "color": "#2E7D8F"
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🎨",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "margin": "none"
+                    },
+                    {
+                      "type": "text",
+                      "text": "藝術玻璃",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": false,
+                      "margin": "sm"
+                    },
+                    {
+                      "type": "text",
+                      "text": "工藝與色彩結合",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#A0AAB8",
+                      "wrap": true,
+                      "margin": "xs"
+                    }
+                  ],
+                  "spacing": "none",
+                  "paddingAll": "16px",
+                  "backgroundColor": "#1E2838",
+                  "cornerRadius": "16px",
+                  "flex": 1
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🪟",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "margin": "none"
+                    },
+                    {
+                      "type": "text",
+                      "text": "空間玻璃",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": false,
+                      "margin": "sm"
+                    },
+                    {
+                      "type": "text",
+                      "text": "美感實用隔間窗",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#A0AAB8",
+                      "wrap": true,
+                      "margin": "xs"
+                    }
+                  ],
+                  "spacing": "none",
+                  "paddingAll": "16px",
+                  "backgroundColor": "#1E2838",
+                  "cornerRadius": "16px",
+                  "flex": 1
+                }
+              ],
+              "spacing": "md",
+              "margin": "md"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🏗️",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "margin": "none"
+                    },
+                    {
+                      "type": "text",
+                      "text": "工程整合",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": false,
+                      "margin": "sm"
+                    },
+                    {
+                      "type": "text",
+                      "text": "鋁框鐵件一條龍",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#A0AAB8",
+                      "wrap": true,
+                      "margin": "xs"
+                    }
+                  ],
+                  "spacing": "none",
+                  "paddingAll": "16px",
+                  "backgroundColor": "#1E2838",
+                  "cornerRadius": "16px",
+                  "flex": 1
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🧗",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "margin": "none"
+                    },
+                    {
+                      "type": "text",
+                      "text": "高空作業",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": false,
+                      "margin": "sm"
+                    },
+                    {
+                      "type": "text",
+                      "text": "外牆檢測與防水",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#A0AAB8",
+                      "wrap": true,
+                      "margin": "xs"
+                    }
+                  ],
+                  "spacing": "none",
+                  "paddingAll": "16px",
+                  "backgroundColor": "#1E2838",
+                  "cornerRadius": "16px",
+                  "flex": 1
+                }
+              ],
+              "spacing": "md",
+              "margin": "md"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "💬 LINE諮詢",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "📍 導航門市",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
+                    }
+                  ],
+                  "spacing": "sm"
+                }
+              ],
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
+            }
+          ],
+          "spacing": "md",
+          "paddingAll": "18px",
+          "backgroundColor": "#253043"
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "為什麼選擇友泰京？",
+              "size": "xl",
+              "weight": "bold",
+              "color": "#C4835A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "box",
@@ -800,24 +877,25 @@
                 {
                   "type": "text",
                   "text": "30+",
-                  "size": "xxl",
+                  "size": "4xl",
                   "weight": "bold",
-                  "color": "#FFFFFF",
+                  "color": "#C4835A",
                   "wrap": false,
                   "flex": 2
                 },
                 {
                   "type": "text",
-                  "text": "年產業經驗\n專業整合",
+                  "text": "年玻璃產業\n服務經驗",
                   "size": "sm",
                   "weight": "bold",
-                  "color": "#9BD7E4",
+                  "color": "#FFFFFF",
                   "wrap": true,
+                  "margin": "none",
                   "flex": 3
                 }
               ],
               "spacing": "md",
-              "margin": "md",
+              "margin": "xl",
               "alignItems": "center"
             },
             {
@@ -827,9 +905,9 @@
                 {
                   "type": "text",
                   "text": "3",
-                  "size": "xxl",
+                  "size": "4xl",
                   "weight": "bold",
-                  "color": "#FFFFFF",
+                  "color": "#C4835A",
                   "wrap": false,
                   "flex": 2
                 },
@@ -838,8 +916,9 @@
                   "text": "代工藝傳承\n品質保證",
                   "size": "sm",
                   "weight": "bold",
-                  "color": "#9BD7E4",
+                  "color": "#FFFFFF",
                   "wrap": true,
+                  "margin": "none",
                   "flex": 3
                 }
               ],
@@ -854,98 +933,131 @@
                 {
                   "type": "text",
                   "text": "4",
-                  "size": "xxl",
+                  "size": "4xl",
                   "weight": "bold",
-                  "color": "#FFFFFF",
+                  "color": "#C4835A",
                   "wrap": false,
                   "flex": 2
                 },
                 {
                   "type": "text",
-                  "text": "大服務項目\n一條龍施作",
+                  "text": "大服務項目\n專業整合",
                   "size": "sm",
                   "weight": "bold",
-                  "color": "#9BD7E4",
+                  "color": "#FFFFFF",
                   "wrap": true,
+                  "margin": "none",
                   "flex": 3
                 }
               ],
               "spacing": "md",
               "margin": "md",
               "alignItems": "center"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "💬 LINE諮詢",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "📍 導航門市",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
+                    }
+                  ],
+                  "spacing": "sm"
+                }
+              ],
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
             }
           ],
           "spacing": "md",
           "paddingAll": "18px",
-          "backgroundColor": "#0E2A3A"
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
-                }
-              ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
-            }
-          ]
+          "backgroundColor": "#253043"
         }
       },
       {
         "type": "bubble",
         "size": "mega",
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card5.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "開啟名片",
-            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
           }
         },
         "body": {
@@ -953,169 +1065,121 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "text",
-              "text": "品質落在實處",
-              "size": "lg",
-              "weight": "bold",
-              "color": "#0E2A3A",
-              "wrap": true,
-              "margin": "none"
-            },
-            {
-              "type": "text",
-              "text": "工藝藏在細節，滿足高標準設計",
-              "size": "xs",
-              "weight": "regular",
-              "color": "#737D8C",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "separator",
-              "margin": "sm",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "separator",
-              "margin": "sm",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "text",
-              "text": "🔹 藝術工藝｜光影層次",
-              "size": "sm",
-              "weight": "bold",
-              "color": "#2E7D8F",
-              "wrap": true,
-              "margin": "sm"
-            },
-            {
-              "type": "text",
-              "text": "鑲嵌、紋理與複合工藝，呈現立體美感",
-              "size": "xs",
-              "weight": "regular",
-              "color": "#1A1A1A",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "separator",
-              "margin": "sm",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "text",
-              "text": "🔹 機能選材｜美感兼顧",
-              "size": "sm",
-              "weight": "bold",
-              "color": "#2E7D8F",
-              "wrap": true,
-              "margin": "sm"
-            },
-            {
-              "type": "text",
-              "text": "安全玻璃、Low-E 或中空複合結構",
-              "size": "xs",
-              "weight": "regular",
-              "color": "#1A1A1A",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "separator",
-              "margin": "sm",
-              "color": "#E2E6EA"
-            },
-            {
-              "type": "text",
-              "text": "🔹 精準加工｜施工細節",
-              "size": "sm",
-              "weight": "bold",
-              "color": "#2E7D8F",
-              "wrap": true,
-              "margin": "sm"
-            },
-            {
-              "type": "text",
-              "text": "彎曲異材質搭配，矽膠收邊俐落穩固",
-              "size": "xs",
-              "weight": "regular",
-              "color": "#1A1A1A",
-              "wrap": true,
-              "margin": "xs"
-            }
-          ],
-          "spacing": "sm",
-          "paddingAll": "18px",
-          "backgroundColor": "#FFFFFF"
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "💬 LINE諮詢",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "📍 導航門市",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
+                    }
+                  ],
+                  "spacing": "sm"
                 }
               ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
             }
-          ]
-        }
-      },
-      {
-        "type": "bubble",
-        "size": "mega",
+          ],
+          "spacing": "none",
+          "paddingAll": "14px",
+          "backgroundColor": "#253043"
+        },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card6.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card5.jpg",
           "size": "full",
-          "aspectRatio": "20:13",
+          "aspectRatio": "3:4",
           "aspectMode": "cover",
           "action": {
             "type": "uri",
             "label": "開啟名片",
             "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "styles": {
+          "body": {
+            "backgroundColor": "#F5F1E8"
           }
         },
         "body": {
@@ -1125,9 +1189,9 @@
             {
               "type": "text",
               "text": "讓我們聊聊你的空間",
-              "size": "lg",
+              "size": "xl",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#253043",
               "wrap": true,
               "margin": "none"
             },
@@ -1136,176 +1200,225 @@
               "text": "拍下現場照片＋尺寸，LINE 傳給我免費評估",
               "size": "xs",
               "weight": "bold",
-              "color": "#B8860B",
+              "color": "#C4835A",
               "wrap": true,
               "margin": "xs"
             },
             {
-              "type": "separator",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "📞",
+                      "size": "sm",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "0938-111-822",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "💬",
+                      "size": "sm",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "LINE：@fez86488989",
+                      "size": "sm",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "📍",
+                      "size": "sm",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "新北市中和區連城路518巷8號（中和高中旁巷）",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "⏰",
+                      "size": "sm",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "週一～五 08:00-17:00",
+                      "size": "xs",
+                      "weight": "regular",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 6
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "sm"
+                }
+              ],
+              "spacing": "sm",
               "margin": "md",
-              "color": "#E2E6EA"
+              "paddingAll": "18px",
+              "backgroundColor": "#253043",
+              "cornerRadius": "20px"
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
-                  "type": "text",
-                  "text": "📞",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "0938-111-822",
-                  "size": "sm",
-                  "weight": "bold",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "💬 LINE諮詢",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#C4835A",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "💬 LINE諮詢",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "📍 導航門市",
+                          "size": "xs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": false,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "none",
+                      "paddingAll": "12px",
+                      "backgroundColor": "#253043",
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "action": {
+                        "type": "uri",
+                        "label": "📍 導航門市",
+                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                      }
+                    }
+                  ],
+                  "spacing": "sm"
                 }
               ],
-              "spacing": "md"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "💬",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "LINE：@fez86488989",
-                  "size": "sm",
-                  "weight": "bold",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "⏰",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "週一～五 08:00-17:00",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "📍",
-                  "size": "sm",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "align": "center",
-                  "flex": 1
-                },
-                {
-                  "type": "text",
-                  "text": "新北市中和區連城路518巷8號（中和高中旁巷）",
-                  "size": "xs",
-                  "weight": "regular",
-                  "color": "#1A1A1A",
-                  "wrap": true,
-                  "flex": 6
-                }
-              ],
-              "spacing": "md"
+              "spacing": "none",
+              "paddingAll": "12px",
+              "backgroundColor": "#F5F1E8",
+              "cornerRadius": "20px"
             }
           ],
-          "spacing": "sm",
+          "spacing": "md",
           "paddingAll": "18px",
-          "backgroundColor": "#F4F6F8"
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  },
-                  "color": "#0E2A3A"
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "secondary",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                  }
-                }
-              ],
-              "spacing": "sm"
-            },
-            {
-              "type": "button",
-              "style": "link",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0600"
-              },
-              "color": "#737D8C"
-            }
-          ]
+          "backgroundColor": "#F5F1E8"
         }
       }
     ]

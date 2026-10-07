@@ -6,6 +6,11 @@
     "contents": [
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -15,16 +20,16 @@
               "text": "李柏融  Benson Lee",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 李柏融 Benson Lee｜執行長\n· 讓藝術融入玻璃，讓隔熱成為空間美學\n· 藝術玻璃・空間玻璃・工程整合・外牆高空作業",
+              "text": "· 李柏融 Benson Lee｜執行長\n· 讓藝術融入玻璃，讓隔熱成為空間美學",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -36,45 +41,49 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         },
         "hero": {
           "type": "image",
           "url": "https://ericlin1994.github.io/movenpick-card/img/card1.jpg",
           "size": "full",
-          "aspectRatio": "20:13",
+          "aspectRatio": "3:4",
           "aspectMode": "cover"
         }
       },
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -84,16 +93,16 @@
               "text": "我們專為誰服務",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 我們專為誰服務\n· 設計師｜建築師｜建商｜營造｜商空｜業主\n· 大圖輸出缺工藝，難達藝術質感\n· 玻璃鐵件分包，尺寸收邊難整合\n· 設計圖美，卻找不到廠家實作\n· 特殊彎曲或異材質，找不到方案\n· 需兼顧採光隔熱，不知如何選材\n· 報價工法差異大，品質難以判斷",
+              "text": "· 我們專為誰服務\n· 設計師｜建築師｜建商｜營造｜商空｜業主\n· 大圖輸出缺工藝，難達藝術質感\n· 玻璃鐵件分包，尺寸收邊難整合\n· 設計圖美，卻找不到廠家實作\n· 特殊彎曲或異材質，找不到方案\n· 兼顧採光與隔熱，不知如何選材",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -105,45 +114,42 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card2.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         }
       },
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -153,16 +159,16 @@
               "text": "我們能為你做什麼",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 我們能為你做什麼\n· 藝術玻璃 結合工藝色彩，打造獨特空間作品\n· 空間玻璃 隔間淋浴門窗，兼顧美感與實用\n· 工程整合 玻璃鋁框鐵件，丈量安裝完整到位\n· 高空作業 外牆檢測防水，依現場規劃施工",
+              "text": "· 我們能為你做什麼\n· 藝術玻璃 工藝與色彩結合\n· 空間玻璃 美感實用隔間窗\n· 工程整合 鋁框鐵件一條龍\n· 高空作業 外牆檢測與防水",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -174,64 +180,61 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card3.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         }
       },
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
           "contents": [
             {
               "type": "text",
-              "text": "為什麼選擇 友泰京？",
+              "text": "為什麼選擇友泰京？",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 為什麼選擇 友泰京？\n· 30+ 年產業經驗\n· 3 代工藝傳承\n· 4 大服務項目\n· 流程：確認→場勘→定案→製作→交付",
+              "text": "· 為什麼選擇友泰京？\n· 30+ 年玻璃產業服務經驗\n· 3 代工藝傳承\n· 4 大服務項目",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -243,45 +246,42 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card4.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         }
       },
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -291,16 +291,16 @@
               "text": "品質落在實處",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 品質落在實處\n· 藝術工藝 鑲嵌紋理複合工藝，呈現立體美感\n· 機能選材 安全玻璃、Low-E 或中空複合結構\n· 精準加工 彎曲異材質搭配，矽膠收邊俐落穩固",
+              "text": "· 品質落在實處\n· 玻璃光影特寫（文案烤進圖內）",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -312,45 +312,49 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         },
         "hero": {
           "type": "image",
           "url": "https://ericlin1994.github.io/movenpick-card/img/card5.jpg",
           "size": "full",
-          "aspectRatio": "20:13",
+          "aspectRatio": "3:4",
           "aspectMode": "cover"
         }
       },
       {
         "type": "bubble",
+        "styles": {
+          "body": {
+            "backgroundColor": "#253043"
+          }
+        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -360,16 +364,16 @@
               "text": "讓我們聊聊你的空間",
               "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A",
+              "color": "#FFFFFF",
               "wrap": true,
               "margin": "none"
             },
             {
               "type": "text",
-              "text": "· 讓我們聊聊你的空間\n· 電話 0938-111-822\n· LINE @fez86488989\n· 週一～五 08:00-17:00\n· 新北市中和區連城路518巷8號（中和高中旁巷）",
+              "text": "· 讓我們聊聊你的空間\n· 電話 0938-111-822\n· LINE @fez86488989\n· 新北市中和區連城路518巷8號\n· 週一～五 08:00-17:00",
               "size": "xs",
               "weight": "regular",
-              "color": "#1A1A1A",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "xs"
             }
@@ -381,41 +385,33 @@
           "layout": "vertical",
           "contents": [
             {
-              "type": "button",
-              "style": "primary",
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "LINE 諮詢",
+                  "size": "xs",
+                  "weight": "bold",
+                  "color": "#FFFFFF",
+                  "wrap": false,
+                  "align": "center"
+                }
+              ],
+              "spacing": "md",
+              "paddingAll": "12px",
+              "backgroundColor": "#C4835A",
+              "cornerRadius": "100px",
               "action": {
                 "type": "uri",
                 "label": "LINE 諮詢",
                 "uri": "https://line.me/ti/p/@fez86488989"
               }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "IG 作品",
-                "uri": "https://www.instagram.com/tc_fez_glass_team/"
-              }
-            },
-            {
-              "type": "button",
-              "style": "primary",
-              "action": {
-                "type": "uri",
-                "label": "導航門市",
-                "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-              }
             }
           ],
-          "spacing": "sm"
-        },
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card6.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover"
+          "spacing": "none",
+          "paddingAll": "12px",
+          "backgroundColor": "#253043"
         }
       }
     ]
