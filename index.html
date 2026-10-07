@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>吳明憲 Steve｜莫凡彼沙發工藝 負責人</title>
+<title>李柏融 Benson Lee｜友泰京玻璃工程 執行長</title>
 <meta name="description" content="生活沒有標準尺寸，沙發也不該只有標準答案。沙發訂製・展售・批發・諮詢｜桃園市龜山區大湖路249號｜03-397-2191">
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -17,8 +17,8 @@
      TODO B: og:url 改為正式網址
      ═══════════════════════════════════════════════════════════ -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="吳明憲 Steve｜莫凡彼沙發工藝 負責人">
-<meta property="og:description" content="生活沒有標準尺寸，沙發也不該只有標準答案。沙發訂製・展售・批發・專業諮詢｜03-397-2191">
+<meta property="og:title" content="李柏融 Benson Lee｜友泰京玻璃工程 執行長">
+<meta property="og:description" content="讓藝術融入玻璃，讓隔熱成為空間美學。藝術玻璃・空間玻璃・工程整合・外牆高空作業｜0938-111-822">
 <meta property="og:image" content="https://ericlin1994.github.io/movenpick-card/og.jpg">
 <meta property="og:url" content="https://ericlin1994.github.io/movenpick-card/">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,8 +27,8 @@
 
 <style>
   :root{
-    --navy:#16233D; --navy-2:#22355C; --navy-3:#2E4675;
-    --brown:#A96B3C; --gold:#C9A227; --gold-2:#E3C878;
+    --navy:#0E2A3A; --navy-2:#123A4A; --navy-3:#1B5063;
+    --brown:#2E7D8F; --gold:#4FA8BD; --gold-2:#9BD7E4;
     --ink:#1C2333; --paper:#F5F1EA; --muted:#6B7280; --red:#B4462F;
     --radius:20px;
     /* TODO C: 官網 / LINE / IG / FB 連結集中在頁面最下方 JS 的 LINKS 物件，改那裡就好 */
@@ -202,7 +202,7 @@
 <body>
 <!-- 分享模式畫面：點卡片上的「分享給好友」進來時只顯示這一塊 -->
 <div id="shareScreen">
-  <div class="ss-logo">MOVENPICK<small>莫凡彼沙發工藝</small></div>
+  <div class="ss-logo">TC FEZ GLASS<small>友泰京玻璃工程</small></div>
   <p class="ss-tip" id="ssTip">正在為你開啟分享對象…</p>
   <button id="ssBtn" onclick="fireShare()">📤 選擇分享對象</button>
   <pre id="ssDiag"></pre>
@@ -212,190 +212,159 @@
   <!-- ═══════════ 分享列（置頂） ═══════════ -->
   <div class="topbar">
     <button id="shareBtn" onclick="shareCard()">📤 分享這張名片</button>
-    <button id="sendBtn" onclick="sendToChat()" style="display:none;margin-top:8px;background:#A96B3C">📨 直接傳到這個聊天室</button>
+    <button id="sendBtn" onclick="sendToChat()" style="display:none;margin-top:8px;background:#2E7D8F">📨 直接傳到這個聊天室</button>
   </div>
 
-  <!-- ═══════════ 1 / 7　主卡 ═══════════ -->
+<!-- CONTENT_START -->
+  <!-- ═══════════ 1　主卡 ═══════════ -->
   <header class="hero">
-    <div class="logo">MOVENPICK<small>莫凡彼沙發工藝</small></div>
+    <div class="logo">TC FEZ GLASS<small>友泰京玻璃工程</small></div>
 
-    <!-- TODO D: 把形象照存成 photo.jpg 放同一資料夾；沒有檔案時顯示「形象照」佔位圈 -->
-    <img class="portrait" src="photo.jpg" alt="吳明憲 Steve"
+    <!-- TODO: 形象照存成 photo.jpg 放同一資料夾；沒有檔案時顯示佔位圈 -->
+    <img class="portrait" src="photo.jpg" alt="李柏融 Benson Lee"
          onerror="this.outerHTML='<div class=&quot;portrait-ph&quot;>形象照</div>'">
 
-    <h1 class="name">吳明憲 <span>Steve</span></h1>
-    <p class="role">莫凡彼沙發工藝　負責人</p>
+    <h1 class="name">李柏融 <span>Benson Lee</span></h1>
+    <p class="role">友泰京玻璃工程　執行長</p>
 
     <div class="slogan">
       <i>“</i>
-      <span class="big">生活沒有標準尺寸</span>
-      沙發也不該只有標準答案
+      <span class="big">讓藝術融入玻璃</span>
+      讓隔熱成為空間美學
       <i>”</i>
     </div>
 
     <div class="tags">
-      <span class="tag">沙發訂製</span>
-      <span class="tag">展售批發</span>
-      <span class="tag">專業諮詢</span>
+      <span class="tag">藝術玻璃</span><span class="tag">空間玻璃</span><span class="tag">工程整合</span><span class="tag">外牆高空作業</span>
     </div>
 
     <nav class="actions">
-      <a class="btn" data-link="site"><span class="ic">🌐</span>官方網站</a>
       <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
+      <a class="btn" data-link="ig"><span class="ic">📷</span>IG 作品</a>
       <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
     </nav>
   </header>
 
-  <!-- ═══════════ 2 / 7 ═══════════ -->
-  <div class="sec-title">ABOUT｜<em>認識莫凡彼</em></div>
+  <!-- ═══════════ 2 ═══════════ -->
+  <div class="sec-title">ABOUT｜<em>認識友泰京</em></div>
   <div class="rail" id="rail">
 
     <article class="card">
-      <h3>我們專為<em>這些人</em>打造沙發</h3>
+      <h3>我們專為<em>誰服務</em></h3>
       <div class="grid6">
-        <div><span>🏠</span>新成屋</div>
-        <div><span>🔑</span>換屋族</div>
-        <div><span>🏛️</span>豪宅</div>
-        <div><span>📐</span>設計師</div>
-        <div><span>🏢</span>商業空間</div>
-        <div><span>🏬</span>家具通路</div>
+        <div><span>🏢</span>設計師</div><div><span>📐</span>建築師</div><div><span>🏗️</span>建商</div><div><span>🧱</span>營造</div><div><span>🏬</span>商業空間</div><div><span>🏠</span>住宅業主</div>
       </div>
       <div class="box">
-        <div class="bt">你是不是也有這些困擾？</div>
+        <div class="bt">你是不是也遇過這些狀況？</div>
         <ul class="warn">
-          <li>沙發坐起來不舒服，久坐腰酸背痛</li>
-          <li>尺寸不合，空間總是差一點點</li>
-          <li>想換皮革／布料／顏色卻不知道怎麼選</li>
-          <li>找不到符合風格又耐用的沙發</li>
-          <li>設計師提案需要特殊尺寸款式</li>
-          <li>坐感可客製，柔軟／適中／扎實自由選擇</li>
+          <li>想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次</li><li>玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合</li><li>設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商</li><li>特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案</li><li>希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材</li><li>玻璃種類與報價差異大，難以判斷品質及工法是否符合需求</li>
         </ul>
       </div>
-      <div class="talk">如果你中了其中一項，歡迎直接找我聊聊！</div>
+      <div class="talk">中了其中一項，歡迎直接找我聊聊！</div>
     </article>
 
-    <!-- ═══════════ 3 / 7 ═══════════ -->
+    <!-- ═══════════ 3 ═══════════ -->
     <article class="card">
       <h3>我們能為你做什麼</h3>
-      <p class="sub">從需求到落地，一次搞定</p>
-
+      <p class="sub">從設計規劃到現場施作，實現空間想像</p>
       <div class="svc">
-        <div class="ico">🛋️</div>
+        <div class="ico">🎨</div>
         <div>
-          <h4>沙發訂製</h4>
-          <div class="tagsm">尺寸 · 材質 · 坐感</div>
-          <p>依空間、身形與使用習慣，客製最適合的沙發。</p>
+          <h4>藝術玻璃</h4>
+          <div class="tagsm">工藝 · 色彩 · 光影</div>
+          <p>結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品。</p>
         </div>
-      </div>
-      <div class="svc">
-        <div class="ico">🏬</div>
+      </div><div class="svc">
+        <div class="ico">🪟</div>
         <div>
-          <h4>展售批發</h4>
-          <div class="tagsm">現場體驗 · 合作供應</div>
-          <p>提供家具通路與設計產業合作，穩定供貨、品質一致。</p>
+          <h4>空間玻璃</h4>
+          <div class="tagsm">隔間 · 門窗 · 欄杆</div>
+          <p>依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能。</p>
         </div>
-      </div>
-      <div class="svc">
-        <div class="ico">💬</div>
+      </div><div class="svc">
+        <div class="ico">🔧</div>
         <div>
-          <h4>專業諮詢</h4>
-          <div class="tagsm">配置 · 選材 · 需求評估</div>
-          <p>從空間配置、材質選擇到坐感評估，給你清楚實用的建議。</p>
+          <h4>工程整合</h4>
+          <div class="tagsm">丈量 · 加工 · 安裝</div>
+          <p>整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位。</p>
+        </div>
+      </div><div class="svc">
+        <div class="ico">🧗</div>
+        <div>
+          <h4>外牆高空作業</h4>
+          <div class="tagsm">檢測 · 修繕 · 防水</div>
+          <p>提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式。</p>
         </div>
       </div>
     </article>
 
-    <!-- ═══════════ 4 / 7 ═══════════ -->
+    <!-- ═══════════ 4 ═══════════ -->
     <article class="card">
-      <h3>為什麼選擇 <em>莫凡彼</em>？</h3>
+      <h3>為什麼選擇 <em>友泰京</em>？</h3>
       <div class="stats">
-        <div><b>40+年</b><span>三代沙發製造經驗</span></div>
-        <div><b>200+</b><span>全台合作經銷通路</span></div>
-        <div><b>100,000+</b><span>累積製作沙發超過十萬組</span></div>
-        <div><b>800 坪</b><span>自有沙發製造廠</span></div>
+        <div><b>30+ 年</b><span>玻璃產業服務經驗</span></div><div><b>第三代</b><span>玻璃工藝傳承</span></div><div><b>4 大服務</b><span>完整專業整合</span></div>
       </div>
-      <p class="sub" style="margin-bottom:8px">從設計到製造，一條龍完成</p>
+      <p class="sub" style="margin-bottom:8px">從需求到交付，五步完成</p>
       <ol class="steps">
-        <li><b>需求</b>　了解空間／需求、使用習慣</li>
-        <li><b>選材</b>　皮革、布料、填充、五金</li>
-        <li><b>設計</b>　設計討論</li>
-        <li><b>製造</b>　台灣工廠、精工製造</li>
-        <li><b>交付</b>　專人安裝、售後服務</li>
+        <li><b>需求確認</b>　了解設計想法、使用需求與預算，釐清施作範圍</li><li><b>場勘丈量</b>　確認現場尺寸、結構及施工條件，評估整合細節</li><li><b>方案定案</b>　確認玻璃選材、工法、樣品與報價，建立施作依據</li><li><b>製作安裝</b>　依確認方案加工製作，整合玻璃、鋁框與鐵件施工</li><li><b>驗收交付</b>　確認成品、收邊與使用功能，提供保養及維護建議</li>
       </ol>
     </article>
 
-    <!-- ═══════════ 5 / 7 ═══════════ -->
+    <!-- ═══════════ 5 ═══════════ -->
     <article class="card">
-      <h3>好坐感，來自我們對<em>細節</em>的堅持</h3>
+      <h3>工藝藏在<em>細節</em>，品質落在實處</h3>
       <div class="craft">
         <figure>
-          <img src="craft1.jpg" alt="嚴選牛皮" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
-          <figcaption><h4>嚴選牛皮</h4><p>細緻柔韌、透氣耐用，越坐越舒適</p></figcaption>
-        </figure>
-        <figure>
-          <img src="craft2.jpg" alt="實木骨架" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
-          <figcaption><h4>實木骨架</h4><p>結構穩固耐用，使用壽命更長</p></figcaption>
-        </figure>
-        <figure>
-          <img src="craft3.jpg" alt="高密度泡棉" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
-          <figcaption><h4>高密度泡棉</h4><p>多層結構、支撐性佳，久坐不易塌陷</p></figcaption>
-        </figure>
-        <figure>
-          <img src="craft4.jpg" alt="台灣製椅腳" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
-          <figcaption><h4>台灣製椅腳</h4><p>穩固耐重、不易晃動，細節成就品質</p></figcaption>
+          <img src="craft1.jpg" alt="藝術工藝｜光影層次" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <figcaption><h4>藝術工藝｜光影層次</h4><p>鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感</p></figcaption>
+        </figure><figure>
+          <img src="craft2.jpg" alt="機能選材｜美感兼顧實用" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <figcaption><h4>機能選材｜美感兼顧實用</h4><p>安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求</p></figcaption>
+        </figure><figure>
+          <img src="craft3.jpg" alt="精準加工｜實現特殊設計" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <figcaption><h4>精準加工｜實現特殊設計</h4><p>特殊尺寸、彎曲造型及異材質搭配，符合設計需求</p></figcaption>
+        </figure><figure>
+          <img src="craft4.jpg" alt="施工細節｜整合完整到位" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <figcaption><h4>施工細節｜整合完整到位</h4><p>固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護</p></figcaption>
         </figure>
       </div>
     </article>
 
-    <!-- ═══════════ 6 / 7 ═══════════ -->
+    <!-- ═══════════ 6 ═══════════ -->
     <article class="card">
-      <h3>Google <em>真實案例</em>與好評</h3>
-      <p class="sub">精選 Google 評論</p>
-
-      <div class="rev">
-        <div class="pic"><img src="case1.jpg" alt="案例1" onerror="this.outerHTML='<div class=&quot;pic ph&quot;>沙發照</div>'"></div>
-        <div>
-          <div class="who">吳ＯＯ <span class="stars">★★★★★</span></div>
-          <p class="txt">和親友都一同選擇莫凡彼的沙發！除了老闆專業且耐心溝通外，沙發的做工、質感都非常好！</p>
-        </div>
-      </div>
-      <div class="rev">
-        <div class="pic"><img src="case2.jpg" alt="案例2" onerror="this.outerHTML='<div class=&quot;pic ph&quot;>沙發照</div>'"></div>
-        <div>
-          <div class="who">吳ＯＯ <span class="stars">★★★★★</span></div>
-          <p class="txt">在這裡訂做沙發，價格合理、成品舒適又美觀！老闆解說詳細又親切，並且能滿足客戶的需求。很棒～</p>
-        </div>
-      </div>
-      <div class="rev">
-        <div class="pic"><img src="case3.jpg" alt="案例3" onerror="this.outerHTML='<div class=&quot;pic ph&quot;>沙發照</div>'"></div>
-        <div>
-          <div class="who">Amber <span class="stars">★★★★★</span></div>
-          <p class="txt">質感很好的沙發！老闆服務也好！從參觀到下訂，都講解得很詳細；小狗喜歡，主人也喜歡。</p>
-        </div>
+      <h3>作品<em>案例</em></h3>
+      <p class="sub">實際施作案例照（Benson 提供後放入 case1~3.jpg）</p>
+      <div class="craft">
+        <figure>
+          <img src="case1.jpg" alt="案例1" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+        </figure><figure>
+          <img src="case2.jpg" alt="案例2" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+        </figure><figure>
+          <img src="case3.jpg" alt="案例3" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+        </figure>
       </div>
     </article>
 
-    <!-- ═══════════ 7 / 7 ═══════════ -->
+    <!-- ═══════════ 7 ═══════════ -->
     <article class="card">
-      <h3>想換沙發<em>卻不知道怎麼選</em>？</h3>
-      <div class="box" style="text-align:center;background:#F1EDE4;border-style:solid">
-        <p style="margin:0 0 6px;font-weight:800;color:var(--navy);font-size:15px">拍下你的空間照片 ＋ 尺寸</p>
+      <h3>讓我們聊聊<em>你的空間</em></h3>
+      <div class="box" style="text-align:center;background:#E7F2F5;border-style:solid">
+        <p style="margin:0 0 6px;font-weight:800;color:var(--navy);font-size:15px">拍下現場照片 ＋ 尺寸</p>
         <p style="margin:0;font-weight:800;color:var(--brown);font-size:15px">LINE 傳給我</p>
-        <p style="margin:8px 0 0;font-size:13.5px;color:#4A5468">我幫你免費初步評估最適合你的沙發</p>
+        <p style="margin:8px 0 0;font-size:13.5px;color:#4A5468">免費初步評估最適合的玻璃方案</p>
       </div>
 
       <div class="info" style="margin:14px 0 0;box-shadow:none;padding:0;border:0">
-        <div class="row"><div class="k">電話</div><div><a href="tel:033972191">03-397-2191</a></div></div>
-        <div class="row"><div class="k">地址</div><div>桃園市龜山區大湖路249號<br><span class="note">林口長庚　近警察大學</span></div></div>
-        <div class="row"><div class="k">營業時間</div><div class="note">【待補：營業時間】</div></div>
+        <div class="row"><div class="k">電話</div><div><a href="tel:+886938111822">0938-111-822</a></div></div>
+        <div class="row"><div class="k">地址</div><div>新北市中和區連城路518巷8號<br><span class="note">中和高中旁巷</span></div></div>
+        <div class="row"><div class="k">營業時間</div><div class="note">週一～五 08:00-17:00</div></div>
       </div>
 
       <nav class="actions" style="grid-template-columns:1fr 1fr;margin-top:16px">
-        <a class="btn tel" data-link="site"><span class="ic">🌐</span>官方網站</a>
-        <a class="btn line" data-link="line"><span class="ic">💬</span>預約諮詢</a>
-        <a class="btn" href="tel:033972191"><span class="ic">📞</span>撥打電話</a>
-        <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
+        <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
         <a class="btn" data-link="ig"><span class="ic">📷</span>Instagram</a>
+        <a class="btn" href="tel:+886938111822"><span class="ic">📞</span>撥打電話</a>
+        <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
         <a class="btn" data-link="fb"><span class="ic">👍</span>Facebook</a>
       </nav>
     </article>
@@ -403,24 +372,22 @@
   </div>
   <div class="count" id="count"><b>2</b> / 7　左右滑動看更多</div>
 
-  <!-- ═══════════ 門市資訊 ═══════════ -->
-  <div class="sec-title">VISIT｜<em>門市資訊</em></div>
+  <!-- ═══════════ 店家資訊 ═══════════ -->
+  <div class="sec-title">VISIT｜<em>聯絡資訊</em></div>
   <div class="info">
-    <div class="row"><div class="k">地址</div><div>桃園市龜山區大湖路249號<br><span class="note">林口長庚　近警察大學</span></div></div>
-    <div class="row"><div class="k">電話</div><div><a href="tel:033972191">03-397-2191</a></div></div>
-    <div class="row"><div class="k">時間</div><div class="note">【待補：營業時間】</div></div>
-    <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">@【待補：LINE ID】</a></div></div>
-    <div class="row"><div class="k">官網</div><div><a data-link="site" href="#">【待補：官網網址】</a></div></div>
+    <div class="row"><div class="k">地址</div><div>新北市中和區連城路518巷8號<br><span class="note">中和高中旁巷</span></div></div>
+    <div class="row"><div class="k">電話</div><div><a href="tel:+886938111822">0938-111-822</a></div></div>
+    <div class="row"><div class="k">時間</div><div class="note">週一～五 08:00-17:00</div></div>
+    <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">@fez86488989（官方帳號）</a><br><span class="note">個人帳號：benson911</span></div></div>
     <div class="row"><div class="k">社群</div><div><a data-link="ig" href="#">Instagram</a>　·　<a data-link="fb" href="#">Facebook</a></div></div>
   </div>
-
-  <p class="tip" id="tipText">在 LINE 聊天室貼上這個網址，會自動展開成一張名片圖卡；<br>朋友點開就能看、一鍵加 LINE、直接導航到門市。</p>
+<!-- CONTENT_END -->  <p class="tip" id="tipText">在 LINE 聊天室貼上這個網址，會自動展開成一張名片圖卡；<br>朋友點開就能看、一鍵加 LINE、直接導航到門市。</p>
   <pre id="diag"></pre>
 
   <footer>
-    莫凡彼沙發工藝 MOVENPICK　沙發訂製・展售・批發・諮詢<br>
-    桃園市龜山區大湖路249號　03-397-2191<br>
-    © <span id="y"></span> Mövenpick Sofa Craft. All rights reserved.
+    友泰京玻璃工程 TC FEZ GLASS　藝術玻璃・空間玻璃・工程整合・外牆高空作業<br>
+    新北市中和區連城路518巷8號　0938-111-822<br>
+    © <span id="y"></span> TC FEZ Glass. All rights reserved.
   </footer>
 </div>
 
@@ -432,15 +399,13 @@
    LINE 加好友連結格式：個人帳號 https://line.me/ti/p/~你的ID／官方帳號 https://line.me/R/ti/p/@你的ID
    ══════════════════════════════════════════════════════════ */
 const LINKS = {
-  site: 'https://【官網網址】',
-  line: 'https://line.me/R/ti/p/@【LINE@ID】',
-  map : 'https://www.google.com/maps/search/?api=1&query=' +
-        encodeURIComponent('莫凡彼沙發工藝 桃園市龜山區大湖路249號'),
-  ig  : 'https://www.instagram.com/【IG帳號】',
-  fb  : 'https://www.facebook.com/【FB粉專】'
+  line: 'https://line.me/ti/p/@fez86488989',
+  map : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('友泰京玻璃工程 新北市中和區連城路518巷8號'),
+  ig  : 'https://www.instagram.com/tc_fez_glass_team/',
+  fb  : 'https://www.facebook.com/profile.php?id=100079776776531'
 };
-const SHARE_TITLE = '吳明憲 Steve｜莫凡彼沙發工藝 負責人';
-const SHARE_TEXT  = '生活沒有標準尺寸，沙發也不該只有標準答案。沙發訂製・展售・批發・諮詢｜03-397-2191';
+const SHARE_TITLE = '李柏融 Benson Lee｜友泰京玻璃工程 執行長';
+const SHARE_TEXT  = '讓藝術融入玻璃，讓隔熱成為空間美學。藝術玻璃・空間玻璃・工程整合・外牆高空作業｜0938-111-822';
 
 document.querySelectorAll('[data-link]').forEach(el=>{
   const key = el.dataset.link;
@@ -463,16 +428,16 @@ let liffReady = false, flexPayload = null;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b13';
-const PAGE_VER = '2026-10-07-0400-分享頁零閃爍'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
+const BUILD = 'b14';
+const PAGE_VER = '2026-10-07-0500-友泰京版'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
-const INLINE_FLEX = {"type":"flex","altText":"莫凡彼沙發工藝｜吳明憲 Steve 電子名片","contents":{"type":"carousel","contents":[{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card1.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"吳明憲  Steve","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"莫凡彼沙發工藝　負責人","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"生活沒有標準尺寸","size":"xl","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"沙發也不該只有標準答案","size":"md","color":"#A96B3C","weight":"bold","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"沙發訂製　·　展售批發　·　專業諮詢","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card2.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"我們專為這些人打造沙發","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"新成屋｜換屋族｜豪宅｜設計師｜商業空間｜家具通路","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"你是不是也有這些困擾？","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 沙發坐起來不舒服，久坐腰酸背痛","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 尺寸不合，空間總是差一點點","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 想換皮革／布料／顏色卻不知道怎麼選","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 找不到符合風格又耐用的沙發","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 設計師提案需要特殊尺寸款式","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 坐感可客製：柔軟／適中／扎實自由選擇","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#A96B3C","weight":"bold","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card3.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"我們能為你做什麼","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"從需求到落地，一次搞定","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"沙發訂製","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"展售批發","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"專業諮詢","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 配置 · 選材 · 需求評估 — 給你清楚實用的建議","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card4.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"為什麼選擇 莫凡彼？","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"40+年三代經驗｜200+合作通路｜100,000+組｜800坪自有廠","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"從設計到製造，一條龍完成","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 01 需求　了解空間／需求、使用習慣","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 02 選材　皮革、布料、填充、五金","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 03 設計　設計討論","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 04 製造　台灣工廠、精工製造","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 05 交付　專人安裝、售後服務","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card5.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"好坐感，來自我們對細節的堅持","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"嚴選牛皮｜實木骨架｜高密度泡棉｜台灣製椅腳","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"嚴選牛皮","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 細緻柔韌、透氣耐用，越坐越舒適","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"實木骨架","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 結構穩固耐用，使用壽命更長","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"高密度泡棉","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 多層結構、支撐性佳，久坐不易塌陷","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"台灣製椅腳","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 穩固耐重、不易晃動，細節成就品質","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card6.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"Google 真實案例與好評","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"精選 Google 評論","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"吳ＯＯ　★★★★★","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"吳ＯＯ　★★★★★","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"Amber　★★★★★","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card7.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"想換沙發卻不知道怎麼選？","size":"lg","color":"#16233D","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"我幫你免費初步評估最適合你的沙發","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#E6E0D4"},{"type":"text","text":"拍下你的空間照片 ＋ 尺寸，LINE 傳給我","size":"sm","color":"#16233D","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 電話　03-397-2191","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 地址　桃園市龜山區大湖路249號","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 　　　林口長庚　近警察大學","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"沙發訂製・展售・批發・諮詢","size":"xs","color":"#A96B3C","weight":"bold","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","color":"#A96B3C","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","color":"#16233D","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"}}]}}]}};
+const INLINE_FLEX = {"type":"flex","altText":"友泰京玻璃工程｜李柏融 Benson 電子名片","contents":{"type":"carousel","contents":[{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card1.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"李柏融  Benson Lee","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"友泰京玻璃工程　執行長","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"讓藝術融入玻璃，讓隔熱成為空間美學","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"以藝術玻璃工藝，打造節能舒適新視界","size":"sm","color":"#2E7D8F","weight":"bold","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"藝術玻璃　·　空間玻璃　·　工程整合　·　外牆高空作業","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card2.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"我們專為誰服務","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"設計師｜建築師｜建商｜營造｜商業空間｜住宅業主","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"你是不是也遇過這些狀況？","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 玻璃種類與報價差異大，難以判斷品質及工法是否符合需求","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#2E7D8F","weight":"bold","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card3.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"我們能為你做什麼","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"從設計規劃到現場施作，實現空間想像","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"藝術玻璃","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"空間玻璃","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"工程整合","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"外牆高空作業","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card4.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"為什麼選擇 友泰京？","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"30+ 年產業經驗｜第三代工藝傳承｜4 大服務整合","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"30+ 年｜玻璃產業服務經驗","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 累積藝術玻璃與各式玻璃工程的實務經驗","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"第三代｜玻璃工藝傳承","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 延續工藝底蘊，結合現代設計與空間需求","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"4 大服務｜完整專業整合","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 藝術玻璃、空間玻璃、工程整合與外牆高空作業","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"從需求到交付，五步完成","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"01 需求確認　了解設計想法、使用需求與預算\n02 場勘丈量　確認現場尺寸、結構及施工條件\n03 方案定案　確認玻璃選材、工法、樣品與報價\n04 製作安裝　依確認方案加工，整合玻璃、鋁框與鐵件\n05 驗收交付　確認成品、收邊與使用功能，提供保養建議","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card5.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"工藝藏在細節，品質落在實處","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"藝術工藝｜機能選材｜精準加工｜施工細節","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"藝術工藝｜光影層次","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 依設計需求運用鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"機能選材｜美感兼顧實用","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 依使用情境搭配安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"精準加工｜實現特殊設計","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 透過細緻丈量與客製加工，讓特殊尺寸、彎曲造型及異材質搭配符合設計需求","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"施工細節｜整合完整到位","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 重視玻璃、鋁框與鐵件的固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}},{"type":"bubble","size":"mega","hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card6.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},"body":{"type":"box","layout":"vertical","spacing":"none","paddingAll":"16px","contents":[{"type":"text","text":"讓我們聊聊你的空間","size":"lg","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"none","align":"start"},{"type":"text","text":"拍下現場照片 ＋ 尺寸，LINE 傳給我，免費初步評估","size":"xs","color":"#6B7280","weight":"regular","wrap":true,"margin":"sm","align":"start"},{"type":"separator","margin":"md","color":"#DCEAEE"},{"type":"text","text":"友泰京玻璃工程","size":"sm","color":"#0E2A3A","weight":"bold","wrap":true,"margin":"md","align":"start"},{"type":"text","text":"· 電話　0938-111-822","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 地址　新北市中和區連城路518巷8號","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 　　　（中和高中旁巷）","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· 營業時間　週一～五 08:00-17:00","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"· LINE　line.me/ti/p/@fez86488989","size":"xs","color":"#4A5468","weight":"regular","wrap":true,"margin":"xs","align":"start"},{"type":"text","text":"藝術玻璃・空間玻璃・工程整合・外牆高空作業","size":"xs","color":"#2E7D8F","weight":"bold","wrap":true,"margin":"md","align":"start"}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","paddingAll":"12px","contents":[{"type":"box","layout":"horizontal","spacing":"sm","contents":[{"type":"button","style":"primary","color":"#2E7D8F","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","color":"#0E2A3A","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},{"type":"button","style":"secondary","action":{"type":"uri","label":"分享給好友","uri":"https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"}}]}}]}};
 /* ═══════ FLEX_PAYLOAD_END ═══════ */
 
 /* ═══════ F_CANDIDATE_START（由 build_flex.py 自動寫入，勿手改）═══════ */
-const INLINE_F1 = {"type":"flex","altText":"F1 無圖版","contents":{"type":"carousel","contents":[{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"吳明憲  Steve","weight":"bold","color":"#16233D"},{"type":"text","text":"莫凡彼沙發工藝　負責人","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"生活沒有標準尺寸\n沙發也不該只有標準答案\n沙發訂製　·　展售批發　·　專業諮詢","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們專為這些人打造沙發","weight":"bold","color":"#16233D"},{"type":"text","text":"新成屋｜換屋族｜豪宅｜設計師｜商業空間｜家具通路","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【你是不是也有這些困擾？】\n· 沙發坐起來不舒服，久坐腰酸背痛\n· 尺寸不合，空間總是差一點點\n· 想換皮革／布料／顏色卻不知道怎麼選\n· 找不到符合風格又耐用的沙發\n· 設計師提案需要特殊尺寸款式\n· 坐感可客製：柔軟／適中／扎實自由選擇\n中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們能為你做什麼","weight":"bold","color":"#16233D"},{"type":"text","text":"從需求到落地，一次搞定","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【沙發訂製】\n· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製\n【展售批發】\n· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定\n【專業諮詢】\n· 配置 · 選材 · 需求評估 — 給你清楚實用的建議","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"為什麼選擇 莫凡彼？","weight":"bold","color":"#16233D"},{"type":"text","text":"40+年三代經驗｜200+合作通路｜100,000+組｜800坪自有廠","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【從設計到製造，一條龍完成】\n· 01 需求　了解空間／需求、使用習慣\n· 02 選材　皮革、布料、填充、五金\n· 03 設計　設計討論\n· 04 製造　台灣工廠、精工製造\n· 05 交付　專人安裝、售後服務","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"好坐感，來自我們對細節的堅持","weight":"bold","color":"#16233D"},{"type":"text","text":"嚴選牛皮｜實木骨架｜高密度泡棉｜台灣製椅腳","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【嚴選牛皮】\n· 細緻柔韌、透氣耐用，越坐越舒適\n【實木骨架】\n· 結構穩固耐用，使用壽命更長\n【高密度泡棉】\n· 多層結構、支撐性佳，久坐不易塌陷\n【台灣製椅腳】\n· 穩固耐重、不易晃動，細節成就品質","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"Google 真實案例與好評","weight":"bold","color":"#16233D"},{"type":"text","text":"精選 Google 評論","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【吳ＯＯ　★★★★★】\n· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！\n【吳ＯＯ　★★★★★】\n· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。\n【Amber　★★★★★】\n· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"想換沙發卻不知道怎麼選？","weight":"bold","color":"#16233D"},{"type":"text","text":"我幫你免費初步評估最適合你的沙發","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【拍下你的空間照片 ＋ 尺寸，LINE 傳給我】\n· 電話　03-397-2191\n· 地址　桃園市龜山區大湖路249號\n· 　　　林口長庚　近警察大學\n沙發訂製・展售・批發・諮詢","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]}}]}};
-const INLINE_F2 = {"type":"flex","altText":"F2 有圖版","contents":{"type":"carousel","contents":[{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"吳明憲  Steve","weight":"bold","color":"#16233D"},{"type":"text","text":"莫凡彼沙發工藝　負責人","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"生活沒有標準尺寸\n沙發也不該只有標準答案\n沙發訂製　·　展售批發　·　專業諮詢","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card1.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們專為這些人打造沙發","weight":"bold","color":"#16233D"},{"type":"text","text":"新成屋｜換屋族｜豪宅｜設計師｜商業空間｜家具通路","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【你是不是也有這些困擾？】\n· 沙發坐起來不舒服，久坐腰酸背痛\n· 尺寸不合，空間總是差一點點\n· 想換皮革／布料／顏色卻不知道怎麼選\n· 找不到符合風格又耐用的沙發\n· 設計師提案需要特殊尺寸款式\n· 坐感可客製：柔軟／適中／扎實自由選擇\n中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card2.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們能為你做什麼","weight":"bold","color":"#16233D"},{"type":"text","text":"從需求到落地，一次搞定","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【沙發訂製】\n· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製\n【展售批發】\n· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定\n【專業諮詢】\n· 配置 · 選材 · 需求評估 — 給你清楚實用的建議","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card3.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"為什麼選擇 莫凡彼？","weight":"bold","color":"#16233D"},{"type":"text","text":"40+年三代經驗｜200+合作通路｜100,000+組｜800坪自有廠","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【從設計到製造，一條龍完成】\n· 01 需求　了解空間／需求、使用習慣\n· 02 選材　皮革、布料、填充、五金\n· 03 設計　設計討論\n· 04 製造　台灣工廠、精工製造\n· 05 交付　專人安裝、售後服務","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card4.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"好坐感，來自我們對細節的堅持","weight":"bold","color":"#16233D"},{"type":"text","text":"嚴選牛皮｜實木骨架｜高密度泡棉｜台灣製椅腳","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【嚴選牛皮】\n· 細緻柔韌、透氣耐用，越坐越舒適\n【實木骨架】\n· 結構穩固耐用，使用壽命更長\n【高密度泡棉】\n· 多層結構、支撐性佳，久坐不易塌陷\n【台灣製椅腳】\n· 穩固耐重、不易晃動，細節成就品質","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card5.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"Google 真實案例與好評","weight":"bold","color":"#16233D"},{"type":"text","text":"精選 Google 評論","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【吳ＯＯ　★★★★★】\n· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！\n【吳ＯＯ　★★★★★】\n· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。\n【Amber　★★★★★】\n· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card6.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"想換沙發卻不知道怎麼選？","weight":"bold","color":"#16233D"},{"type":"text","text":"我幫你免費初步評估最適合你的沙發","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【拍下你的空間照片 ＋ 尺寸，LINE 傳給我】\n· 電話　03-397-2191\n· 地址　桃園市龜山區大湖路249號\n· 　　　林口長庚　近警察大學\n沙發訂製・展售・批發・諮詢","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"官方網站","uri":"https://ericlin1994.github.io/movenpick-card/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://liff.line.me/2011897701-TrLfDuwi"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card7.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}}]}};
+const INLINE_F1 = {"type":"flex","altText":"F1 無圖版","contents":{"type":"carousel","contents":[{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"李柏融  Benson Lee","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"友泰京玻璃工程　執行長","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"讓藝術融入玻璃，讓隔熱成為空間美學\n以藝術玻璃工藝，打造節能舒適新視界\n藝術玻璃　·　空間玻璃　·　工程整合　·　外牆高空作業","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們專為誰服務","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"設計師｜建築師｜建商｜營造｜商業空間｜住宅業主","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【你是不是也遇過這些狀況？】\n· 想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次\n· 玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合\n· 設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商\n· 特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案\n· 希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材\n· 玻璃種類與報價差異大，難以判斷品質及工法是否符合需求\n中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們能為你做什麼","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"從設計規劃到現場施作，實現空間想像","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【藝術玻璃】\n· 結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品\n【空間玻璃】\n· 依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能\n【工程整合】\n· 整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位\n【外牆高空作業】\n· 提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"為什麼選擇 友泰京？","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"30+ 年產業經驗｜第三代工藝傳承｜4 大服務整合","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【30+ 年｜玻璃產業服務經驗】\n· 累積藝術玻璃與各式玻璃工程的實務經驗\n【第三代｜玻璃工藝傳承】\n· 延續工藝底蘊，結合現代設計與空間需求\n【4 大服務｜完整專業整合】\n· 藝術玻璃、空間玻璃、工程整合與外牆高空作業\n【從需求到交付，五步完成】\n01 需求確認　了解設計想法、使用需求與預算\n02 場勘丈量　確認現場尺寸、結構及施工條件\n03 方案定案　確認玻璃選材、工法、樣品與報價\n04 製作安裝　依確認方案加工，整合玻璃、鋁框與鐵件\n05 驗收交付　確認成品、收邊與使用功能，提供保養建議","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"工藝藏在細節，品質落在實處","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"藝術工藝｜機能選材｜精準加工｜施工細節","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【藝術工藝｜光影層次】\n· 依設計需求運用鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感\n【機能選材｜美感兼顧實用】\n· 依使用情境搭配安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求\n【精準加工｜實現特殊設計】\n· 透過細緻丈量與客製加工，讓特殊尺寸、彎曲造型及異材質搭配符合設計需求\n【施工細節｜整合完整到位】\n· 重視玻璃、鋁框與鐵件的固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"讓我們聊聊你的空間","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"拍下現場照片 ＋ 尺寸，LINE 傳給我，免費初步評估","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【友泰京玻璃工程】\n· 電話　0938-111-822\n· 地址　新北市中和區連城路518巷8號\n· 　　　（中和高中旁巷）\n· 營業時間　週一～五 08:00-17:00\n· LINE　line.me/ti/p/@fez86488989\n藝術玻璃・空間玻璃・工程整合・外牆高空作業","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]}}]}};
+const INLINE_F2 = {"type":"flex","altText":"F2 有圖版","contents":{"type":"carousel","contents":[{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"李柏融  Benson Lee","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"友泰京玻璃工程　執行長","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"讓藝術融入玻璃，讓隔熱成為空間美學\n以藝術玻璃工藝，打造節能舒適新視界\n藝術玻璃　·　空間玻璃　·　工程整合　·　外牆高空作業","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card1.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們專為誰服務","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"設計師｜建築師｜建商｜營造｜商業空間｜住宅業主","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【你是不是也遇過這些狀況？】\n· 想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次\n· 玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合\n· 設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商\n· 特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案\n· 希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材\n· 玻璃種類與報價差異大，難以判斷品質及工法是否符合需求\n中了其中一項，歡迎直接找我聊聊！","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card2.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們能為你做什麼","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"從設計規劃到現場施作，實現空間想像","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【藝術玻璃】\n· 結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品\n【空間玻璃】\n· 依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能\n【工程整合】\n· 整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位\n【外牆高空作業】\n· 提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card3.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"為什麼選擇 友泰京？","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"30+ 年產業經驗｜第三代工藝傳承｜4 大服務整合","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【30+ 年｜玻璃產業服務經驗】\n· 累積藝術玻璃與各式玻璃工程的實務經驗\n【第三代｜玻璃工藝傳承】\n· 延續工藝底蘊，結合現代設計與空間需求\n【4 大服務｜完整專業整合】\n· 藝術玻璃、空間玻璃、工程整合與外牆高空作業\n【從需求到交付，五步完成】\n01 需求確認　了解設計想法、使用需求與預算\n02 場勘丈量　確認現場尺寸、結構及施工條件\n03 方案定案　確認玻璃選材、工法、樣品與報價\n04 製作安裝　依確認方案加工，整合玻璃、鋁框與鐵件\n05 驗收交付　確認成品、收邊與使用功能，提供保養建議","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card4.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"工藝藏在細節，品質落在實處","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"藝術工藝｜機能選材｜精準加工｜施工細節","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【藝術工藝｜光影層次】\n· 依設計需求運用鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感\n【機能選材｜美感兼顧實用】\n· 依使用情境搭配安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求\n【精準加工｜實現特殊設計】\n· 透過細緻丈量與客製加工，讓特殊尺寸、彎曲造型及異材質搭配符合設計需求\n【施工細節｜整合完整到位】\n· 重視玻璃、鋁框與鐵件的固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card5.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}},{"type":"bubble","body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"讓我們聊聊你的空間","weight":"bold","color":"#0E2A3A"},{"type":"text","text":"拍下現場照片 ＋ 尺寸，LINE 傳給我，免費初步評估","size":"xs","color":"#6B7280","wrap":true},{"type":"text","text":"【友泰京玻璃工程】\n· 電話　0938-111-822\n· 地址　新北市中和區連城路518巷8號\n· 　　　（中和高中旁巷）\n· 營業時間　週一～五 08:00-17:00\n· LINE　line.me/ti/p/@fez86488989\n藝術玻璃・空間玻璃・工程整合・外牆高空作業","size":"xs","color":"#4A5468","wrap":true}]},"footer":{"type":"box","layout":"vertical","contents":[{"type":"button","style":"primary","action":{"type":"uri","label":"LINE 諮詢","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"button","style":"primary","action":{"type":"uri","label":"IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"button","style":"primary","action":{"type":"uri","label":"導航門市","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}]},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card6.jpg","size":"full","aspectRatio":"20:13","aspectMode":"cover"}}]}};
 /* ═══════ F_CANDIDATE_END ═══════ */
 
 /* ── 診斷面板：?debug=1 強制顯示；沒加參數時只在出錯時顯示 ── */

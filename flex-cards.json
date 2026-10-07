@@ -1,6 +1,6 @@
 {
   "type": "flex",
-  "altText": "莫凡彼沙發工藝｜吳明憲 Steve 電子名片",
+  "altText": "友泰京玻璃工程｜李柏融 Benson 電子名片",
   "contents": {
     "type": "carousel",
     "contents": [
@@ -27,9 +27,9 @@
           "contents": [
             {
               "type": "text",
-              "text": "吳明憲  Steve",
+              "text": "李柏融  Benson Lee",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -37,7 +37,7 @@
             },
             {
               "type": "text",
-              "text": "莫凡彼沙發工藝　負責人",
+              "text": "友泰京玻璃工程　執行長",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -48,13 +48,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "生活沒有標準尺寸",
-              "size": "xl",
-              "color": "#16233D",
+              "text": "讓藝術融入玻璃，讓隔熱成為空間美學",
+              "size": "lg",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -62,9 +62,9 @@
             },
             {
               "type": "text",
-              "text": "沙發也不該只有標準答案",
-              "size": "md",
-              "color": "#A96B3C",
+              "text": "以藝術玻璃工藝，打造節能舒適新視界",
+              "size": "sm",
+              "color": "#2E7D8F",
               "weight": "bold",
               "wrap": true,
               "margin": "xs",
@@ -72,7 +72,7 @@
             },
             {
               "type": "text",
-              "text": "沙發訂製　·　展售批發　·　專業諮詢",
+              "text": "藝術玻璃　·　空間玻璃　·　工程整合　·　外牆高空作業",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -96,31 +96,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -131,7 +131,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
@@ -160,9 +160,9 @@
           "contents": [
             {
               "type": "text",
-              "text": "我們專為這些人打造沙發",
+              "text": "我們專為誰服務",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -170,7 +170,7 @@
             },
             {
               "type": "text",
-              "text": "新成屋｜換屋族｜豪宅｜設計師｜商業空間｜家具通路",
+              "text": "設計師｜建築師｜建商｜營造｜商業空間｜住宅業主",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -181,13 +181,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "你是不是也有這些困擾？",
+              "text": "你是不是也遇過這些狀況？",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -195,7 +195,7 @@
             },
             {
               "type": "text",
-              "text": "· 沙發坐起來不舒服，久坐腰酸背痛",
+              "text": "· 想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -205,7 +205,7 @@
             },
             {
               "type": "text",
-              "text": "· 尺寸不合，空間總是差一點點",
+              "text": "· 玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -215,7 +215,7 @@
             },
             {
               "type": "text",
-              "text": "· 想換皮革／布料／顏色卻不知道怎麼選",
+              "text": "· 設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -225,7 +225,7 @@
             },
             {
               "type": "text",
-              "text": "· 找不到符合風格又耐用的沙發",
+              "text": "· 特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -235,7 +235,7 @@
             },
             {
               "type": "text",
-              "text": "· 設計師提案需要特殊尺寸款式",
+              "text": "· 希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -245,7 +245,7 @@
             },
             {
               "type": "text",
-              "text": "· 坐感可客製：柔軟／適中／扎實自由選擇",
+              "text": "· 玻璃種類與報價差異大，難以判斷品質及工法是否符合需求",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -257,7 +257,7 @@
               "type": "text",
               "text": "中了其中一項，歡迎直接找我聊聊！",
               "size": "xs",
-              "color": "#A96B3C",
+              "color": "#2E7D8F",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -279,31 +279,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -314,7 +314,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
@@ -345,7 +345,7 @@
               "type": "text",
               "text": "我們能為你做什麼",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -353,7 +353,7 @@
             },
             {
               "type": "text",
-              "text": "從需求到落地，一次搞定",
+              "text": "從設計規劃到現場施作，實現空間想像",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -364,13 +364,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "沙發訂製",
+              "text": "藝術玻璃",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -378,7 +378,7 @@
             },
             {
               "type": "text",
-              "text": "· 尺寸 · 材質 · 坐感 — 依空間、身形與使用習慣客製",
+              "text": "· 結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -388,9 +388,9 @@
             },
             {
               "type": "text",
-              "text": "展售批發",
+              "text": "空間玻璃",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -398,7 +398,7 @@
             },
             {
               "type": "text",
-              "text": "· 現場體驗 · 合作供應 — 家具通路與設計產業合作，供貨穩定",
+              "text": "· 依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -408,9 +408,9 @@
             },
             {
               "type": "text",
-              "text": "專業諮詢",
+              "text": "工程整合",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -418,7 +418,27 @@
             },
             {
               "type": "text",
-              "text": "· 配置 · 選材 · 需求評估 — 給你清楚實用的建議",
+              "text": "· 整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位",
+              "size": "xs",
+              "color": "#4A5468",
+              "weight": "regular",
+              "wrap": true,
+              "margin": "xs",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "外牆高空作業",
+              "size": "sm",
+              "color": "#0E2A3A",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -442,31 +462,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -477,7 +497,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
@@ -506,9 +526,9 @@
           "contents": [
             {
               "type": "text",
-              "text": "為什麼選擇 莫凡彼？",
+              "text": "為什麼選擇 友泰京？",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -516,7 +536,7 @@
             },
             {
               "type": "text",
-              "text": "40+年三代經驗｜200+合作通路｜100,000+組｜800坪自有廠",
+              "text": "30+ 年產業經驗｜第三代工藝傳承｜4 大服務整合",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -527,13 +547,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "從設計到製造，一條龍完成",
+              "text": "30+ 年｜玻璃產業服務經驗",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -541,7 +561,7 @@
             },
             {
               "type": "text",
-              "text": "· 01 需求　了解空間／需求、使用習慣",
+              "text": "· 累積藝術玻璃與各式玻璃工程的實務經驗",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -551,7 +571,17 @@
             },
             {
               "type": "text",
-              "text": "· 02 選材　皮革、布料、填充、五金",
+              "text": "第三代｜玻璃工藝傳承",
+              "size": "sm",
+              "color": "#0E2A3A",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 延續工藝底蘊，結合現代設計與空間需求",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -561,7 +591,17 @@
             },
             {
               "type": "text",
-              "text": "· 03 設計　設計討論",
+              "text": "4 大服務｜完整專業整合",
+              "size": "sm",
+              "color": "#0E2A3A",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md",
+              "align": "start"
+            },
+            {
+              "type": "text",
+              "text": "· 藝術玻璃、空間玻璃、工程整合與外牆高空作業",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -571,17 +611,17 @@
             },
             {
               "type": "text",
-              "text": "· 04 製造　台灣工廠、精工製造",
-              "size": "xs",
-              "color": "#4A5468",
-              "weight": "regular",
+              "text": "從需求到交付，五步完成",
+              "size": "sm",
+              "color": "#0E2A3A",
+              "weight": "bold",
               "wrap": true,
-              "margin": "xs",
+              "margin": "md",
               "align": "start"
             },
             {
               "type": "text",
-              "text": "· 05 交付　專人安裝、售後服務",
+              "text": "01 需求確認　了解設計想法、使用需求與預算\n02 場勘丈量　確認現場尺寸、結構及施工條件\n03 方案定案　確認玻璃選材、工法、樣品與報價\n04 製作安裝　依確認方案加工，整合玻璃、鋁框與鐵件\n05 驗收交付　確認成品、收邊與使用功能，提供保養建議",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -605,31 +645,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -640,7 +680,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
@@ -669,9 +709,9 @@
           "contents": [
             {
               "type": "text",
-              "text": "好坐感，來自我們對細節的堅持",
+              "text": "工藝藏在細節，品質落在實處",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -679,7 +719,7 @@
             },
             {
               "type": "text",
-              "text": "嚴選牛皮｜實木骨架｜高密度泡棉｜台灣製椅腳",
+              "text": "藝術工藝｜機能選材｜精準加工｜施工細節",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -690,13 +730,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "嚴選牛皮",
+              "text": "藝術工藝｜光影層次",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -704,7 +744,7 @@
             },
             {
               "type": "text",
-              "text": "· 細緻柔韌、透氣耐用，越坐越舒適",
+              "text": "· 依設計需求運用鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -714,9 +754,9 @@
             },
             {
               "type": "text",
-              "text": "實木骨架",
+              "text": "機能選材｜美感兼顧實用",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -724,7 +764,7 @@
             },
             {
               "type": "text",
-              "text": "· 結構穩固耐用，使用壽命更長",
+              "text": "· 依使用情境搭配安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -734,9 +774,9 @@
             },
             {
               "type": "text",
-              "text": "高密度泡棉",
+              "text": "精準加工｜實現特殊設計",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -744,7 +784,7 @@
             },
             {
               "type": "text",
-              "text": "· 多層結構、支撐性佳，久坐不易塌陷",
+              "text": "· 透過細緻丈量與客製加工，讓特殊尺寸、彎曲造型及異材質搭配符合設計需求",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -754,9 +794,9 @@
             },
             {
               "type": "text",
-              "text": "台灣製椅腳",
+              "text": "施工細節｜整合完整到位",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -764,7 +804,7 @@
             },
             {
               "type": "text",
-              "text": "· 穩固耐重、不易晃動，細節成就品質",
+              "text": "· 重視玻璃、鋁框與鐵件的固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -788,31 +828,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -823,7 +863,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
@@ -852,9 +892,9 @@
           "contents": [
             {
               "type": "text",
-              "text": "Google 真實案例與好評",
+              "text": "讓我們聊聊你的空間",
               "size": "lg",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "none",
@@ -862,7 +902,7 @@
             },
             {
               "type": "text",
-              "text": "精選 Google 評論",
+              "text": "拍下現場照片 ＋ 尺寸，LINE 傳給我，免費初步評估",
               "size": "xs",
               "color": "#6B7280",
               "weight": "regular",
@@ -873,13 +913,13 @@
             {
               "type": "separator",
               "margin": "md",
-              "color": "#E6E0D4"
+              "color": "#DCEAEE"
             },
             {
               "type": "text",
-              "text": "吳ＯＯ　★★★★★",
+              "text": "友泰京玻璃工程",
               "size": "sm",
-              "color": "#16233D",
+              "color": "#0E2A3A",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -887,7 +927,7 @@
             },
             {
               "type": "text",
-              "text": "· 和親友都一同選擇莫凡彼的沙發！老闆專業且耐心溝通，做工質感都非常好！",
+              "text": "· 電話　0938-111-822",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -897,17 +937,7 @@
             },
             {
               "type": "text",
-              "text": "吳ＯＯ　★★★★★",
-              "size": "sm",
-              "color": "#16233D",
-              "weight": "bold",
-              "wrap": true,
-              "margin": "md",
-              "align": "start"
-            },
-            {
-              "type": "text",
-              "text": "· 價格合理、成品舒適又美觀！老闆解說詳細又親切，能滿足客戶需求。",
+              "text": "· 地址　新北市中和區連城路518巷8號",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -917,140 +947,7 @@
             },
             {
               "type": "text",
-              "text": "Amber　★★★★★",
-              "size": "sm",
-              "color": "#16233D",
-              "weight": "bold",
-              "wrap": true,
-              "margin": "md",
-              "align": "start"
-            },
-            {
-              "type": "text",
-              "text": "· 質感很好的沙發！從參觀到下訂都講解得很詳細；小狗喜歡，主人也喜歡。",
-              "size": "xs",
-              "color": "#4A5468",
-              "weight": "regular",
-              "wrap": true,
-              "margin": "xs",
-              "align": "start"
-            }
-          ]
-        },
-        "footer": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "paddingAll": "12px",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "button",
-              "style": "secondary",
-              "action": {
-                "type": "uri",
-                "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "type": "bubble",
-        "size": "mega",
-        "hero": {
-          "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card7.jpg",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover",
-          "action": {
-            "type": "uri",
-            "label": "開啟名片",
-            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
-          }
-        },
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "none",
-          "paddingAll": "16px",
-          "contents": [
-            {
-              "type": "text",
-              "text": "想換沙發卻不知道怎麼選？",
-              "size": "lg",
-              "color": "#16233D",
-              "weight": "bold",
-              "wrap": true,
-              "margin": "none",
-              "align": "start"
-            },
-            {
-              "type": "text",
-              "text": "我幫你免費初步評估最適合你的沙發",
-              "size": "xs",
-              "color": "#6B7280",
-              "weight": "regular",
-              "wrap": true,
-              "margin": "sm",
-              "align": "start"
-            },
-            {
-              "type": "separator",
-              "margin": "md",
-              "color": "#E6E0D4"
-            },
-            {
-              "type": "text",
-              "text": "拍下你的空間照片 ＋ 尺寸，LINE 傳給我",
-              "size": "sm",
-              "color": "#16233D",
-              "weight": "bold",
-              "wrap": true,
-              "margin": "md",
-              "align": "start"
-            },
-            {
-              "type": "text",
-              "text": "· 電話　03-397-2191",
+              "text": "· 　　　（中和高中旁巷）",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -1060,7 +957,7 @@
             },
             {
               "type": "text",
-              "text": "· 地址　桃園市龜山區大湖路249號",
+              "text": "· 營業時間　週一～五 08:00-17:00",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -1070,7 +967,7 @@
             },
             {
               "type": "text",
-              "text": "· 　　　林口長庚　近警察大學",
+              "text": "· LINE　line.me/ti/p/@fez86488989",
               "size": "xs",
               "color": "#4A5468",
               "weight": "regular",
@@ -1080,9 +977,9 @@
             },
             {
               "type": "text",
-              "text": "沙發訂製・展售・批發・諮詢",
+              "text": "藝術玻璃・空間玻璃・工程整合・外牆高空作業",
               "size": "xs",
-              "color": "#A96B3C",
+              "color": "#2E7D8F",
               "weight": "bold",
               "wrap": true,
               "margin": "md",
@@ -1104,31 +1001,31 @@
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
-                  "action": {
-                    "type": "uri",
-                    "label": "官方網站",
-                    "uri": "https://ericlin1994.github.io/movenpick-card/"
-                  }
-                },
-                {
-                  "type": "button",
-                  "style": "primary",
-                  "color": "#A96B3C",
+                  "color": "#2E7D8F",
                   "action": {
                     "type": "uri",
                     "label": "LINE 諮詢",
-                    "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+                    "uri": "https://line.me/ti/p/@fez86488989"
                   }
                 },
                 {
                   "type": "button",
                   "style": "primary",
-                  "color": "#16233D",
+                  "color": "#0E2A3A",
+                  "action": {
+                    "type": "uri",
+                    "label": "IG 作品",
+                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#0E2A3A",
                   "action": {
                     "type": "uri",
                     "label": "導航門市",
-                    "uri": "https://www.google.com/maps/search/?api=1&query=%E8%8E%AB%E5%87%A1%E5%BD%BC%E7%85%89%E7%99%BC%E5%B7%A5%E8%97%9D"
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
                   }
                 }
               ]
@@ -1139,7 +1036,7 @@
               "action": {
                 "type": "uri",
                 "label": "分享給好友",
-                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0400"
+                "uri": "https://liff.line.me/2011897701-TrLfDuwi?share=1&v=2026-10-07-0500"
               }
             }
           ]
