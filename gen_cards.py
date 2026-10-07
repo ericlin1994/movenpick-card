@@ -69,11 +69,12 @@ def pill(img, text, x2=None, y2=None, fill=(0, 0, 0, 128), fg=WHITE, pad=40, hei
     return lay
 
 
-def brand(img, label_en="TC FEZ GLASS", label_zh="友泰京玻璃工程", color=WHITE, alpha=235):
+def brand(img, label_en="TC FEZ GLASS", label_zh="友泰京玻璃工程", color=WHITE, alpha=235, zh_color=None):
     lay = layer((W, H))
     d = ImageDraw.Draw(lay)
     d.text((MARGIN, MARGIN - 8), label_en, font=font(BOLD, 32), fill=color + (alpha,))
-    d.text((MARGIN, MARGIN + 34), label_zh, font=font(REG, 22), fill=CYAN_L + (200,))
+    d.text((MARGIN, MARGIN + 34), label_zh, font=font(REG, 22),
+           fill=(zh_color or CYAN_L) + (228,))
     return overlay(img, lay)
 
 
@@ -170,7 +171,7 @@ def card3(pg="3 / 6"):
     labels = ["藝術玻璃", "空間玻璃", "工程整合", "外牆高空作業"]
     for (x, y, col), lab in zip(quads, labels):
         d.rectangle([x, y, x + W // 2, y + H // 2], fill=col)
-    img = brand(img, color=WHITE, alpha=245)
+    img = brand(img, color=WHITE, alpha=245, zh_color=(232, 242, 246))
     lay = layer((W, H))
     dl = ImageDraw.Draw(lay)
     for (x, y, _), lab in zip(quads, labels):
