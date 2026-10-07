@@ -13,24 +13,23 @@
             {
               "type": "text",
               "text": "李柏融  Benson Lee",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "友泰京玻璃工程　執行長",
+              "text": "· 李柏融 Benson Lee｜執行長\n· 讓藝術融入玻璃，讓隔熱成為空間美學\n· 藝術玻璃・空間玻璃・工程整合・外牆高空作業",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "讓藝術融入玻璃，讓隔熱成為空間美學\n以藝術玻璃工藝，打造節能舒適新視界\n藝術玻璃　·　空間玻璃　·　工程整合　·　外牆高空作業",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -63,7 +62,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
@@ -82,24 +82,23 @@
             {
               "type": "text",
               "text": "我們專為誰服務",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "設計師｜建築師｜建商｜營造｜商業空間｜住宅業主",
+              "text": "· 我們專為誰服務\n· 設計師｜建築師｜建商｜營造｜商空｜業主\n· 大圖輸出缺工藝，難達藝術質感\n· 玻璃鐵件分包，尺寸收邊難整合\n· 設計圖美，卻找不到廠家實作\n· 特殊彎曲或異材質，找不到方案\n· 需兼顧採光隔熱，不知如何選材\n· 報價工法差異大，品質難以判斷",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "【你是不是也遇過這些狀況？】\n· 想做有質感的藝術玻璃，卻只拿到大圖輸出的方案，缺少工藝層次\n· 玻璃與鐵件扶手由不同廠商施作，尺寸、固定與收邊難以整合\n· 設計圖很漂亮，卻找不到能實際製作與施工的玻璃廠商\n· 特殊造型、彎曲或異材質搭配，詢問多家仍找不到合適方案\n· 希望玻璃兼顧美感、採光與隔熱，卻不知道該如何選材\n· 玻璃種類與報價差異大，難以判斷品質及工法是否符合需求\n中了其中一項，歡迎直接找我聊聊！",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -132,7 +131,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
@@ -151,24 +151,23 @@
             {
               "type": "text",
               "text": "我們能為你做什麼",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "從設計規劃到現場施作，實現空間想像",
+              "text": "· 我們能為你做什麼\n· 藝術玻璃 結合工藝色彩，打造獨特空間作品\n· 空間玻璃 隔間淋浴門窗，兼顧美感與實用\n· 工程整合 玻璃鋁框鐵件，丈量安裝完整到位\n· 高空作業 外牆檢測防水，依現場規劃施工",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "【藝術玻璃】\n· 結合工藝、色彩與光影，為住宅、商業空間及建築打造獨特的玻璃作品\n【空間玻璃】\n· 依空間需求規劃玻璃隔間、門窗、淋浴拉門與欄杆，兼顧美感與實用機能\n【工程整合】\n· 整合玻璃、鋁框與鐵件，從丈量、加工到安裝，讓尺寸、固定與收邊完整到位\n【外牆高空作業】\n· 提供外牆檢測、修繕、防水及矽膠更新，依現場條件規劃高空作業方式",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -201,7 +200,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
@@ -220,24 +220,23 @@
             {
               "type": "text",
               "text": "為什麼選擇 友泰京？",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "30+ 年產業經驗｜第三代工藝傳承｜4 大服務整合",
+              "text": "· 為什麼選擇 友泰京？\n· 30+ 年產業經驗\n· 3 代工藝傳承\n· 4 大服務項目\n· 流程：確認→場勘→定案→製作→交付",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "【30+ 年｜玻璃產業服務經驗】\n· 累積藝術玻璃與各式玻璃工程的實務經驗\n【第三代｜玻璃工藝傳承】\n· 延續工藝底蘊，結合現代設計與空間需求\n【4 大服務｜完整專業整合】\n· 藝術玻璃、空間玻璃、工程整合與外牆高空作業\n【從需求到交付，五步完成】\n01 需求確認　了解設計想法、使用需求與預算\n02 場勘丈量　確認現場尺寸、結構及施工條件\n03 方案定案　確認玻璃選材、工法、樣品與報價\n04 製作安裝　依確認方案加工，整合玻璃、鋁框與鐵件\n05 驗收交付　確認成品、收邊與使用功能，提供保養建議",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -270,7 +269,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
@@ -288,25 +288,24 @@
           "contents": [
             {
               "type": "text",
-              "text": "工藝藏在細節，品質落在實處",
+              "text": "品質落在實處",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "藝術工藝｜機能選材｜精準加工｜施工細節",
+              "text": "· 品質落在實處\n· 藝術工藝 鑲嵌紋理複合工藝，呈現立體美感\n· 機能選材 安全玻璃、Low-E 或中空複合結構\n· 精準加工 彎曲異材質搭配，矽膠收邊俐落穩固",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "【藝術工藝｜光影層次】\n· 依設計需求運用鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感\n【機能選材｜美感兼顧實用】\n· 依使用情境搭配安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求\n【精準加工｜實現特殊設計】\n· 透過細緻丈量與客製加工，讓特殊尺寸、彎曲造型及異材質搭配符合設計需求\n【施工細節｜整合完整到位】\n· 重視玻璃、鋁框與鐵件的固定、接合及矽膠收邊，讓成品穩固、俐落且便於維護",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -339,7 +338,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
@@ -358,24 +358,23 @@
             {
               "type": "text",
               "text": "讓我們聊聊你的空間",
+              "size": "sm",
               "weight": "bold",
-              "color": "#0E2A3A"
+              "color": "#0E2A3A",
+              "wrap": true,
+              "margin": "none"
             },
             {
               "type": "text",
-              "text": "拍下現場照片 ＋ 尺寸，LINE 傳給我，免費初步評估",
+              "text": "· 讓我們聊聊你的空間\n· 電話 0938-111-822\n· LINE @fez86488989\n· 週一～五 08:00-17:00\n· 新北市中和區連城路518巷8號（中和高中旁巷）",
               "size": "xs",
-              "color": "#6B7280",
-              "wrap": true
-            },
-            {
-              "type": "text",
-              "text": "【友泰京玻璃工程】\n· 電話　0938-111-822\n· 地址　新北市中和區連城路518巷8號\n· 　　　（中和高中旁巷）\n· 營業時間　週一～五 08:00-17:00\n· LINE　line.me/ti/p/@fez86488989\n藝術玻璃・空間玻璃・工程整合・外牆高空作業",
-              "size": "xs",
-              "color": "#4A5468",
-              "wrap": true
+              "weight": "regular",
+              "color": "#1A1A1A",
+              "wrap": true,
+              "margin": "xs"
             }
-          ]
+          ],
+          "spacing": "none"
         },
         "footer": {
           "type": "box",
@@ -408,7 +407,8 @@
                 "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
               }
             }
-          ]
+          ],
+          "spacing": "sm"
         },
         "hero": {
           "type": "image",
