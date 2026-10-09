@@ -423,10 +423,13 @@ window.addEventListener('unhandledrejection', e =>
    ══════════════════════════════════════════════════════════ */
 const LIFF_ID = '2011897701-TrLfDuwi';   // 由 client.json 的 links.liff 自動寫入
 let liffReady = false, flexPayload = null;
+/* 共用模式下 payload 抓不到時為 true → 直接中止分享，
+   絕對不要拿「本頁自己的內容」當後備，那會送出別人的名片。 */
+let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b24';
+const BUILD = 'b25';
 const PAGE_VER = '2026-10-07-0800-短標籤+4:3可選'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
@@ -469,17 +472,51 @@ function diag(msg, bad){
   }
 }
 
+/* 讀 query 參數。LIFF 會把原始 query 包進 liff.state，所以整串解碼後再找；
+   若拿到的值還是編碼過的（%3A%2F%2F…）就再解一次。 */
+function getParam(name){
+  const q = decodeURIComponent(location.search) + '&' + decodeURIComponent(location.hash || '');
+  const m = q.match(new RegExp('[?&]' + name + '=([^&#]*)'));
+  if(!m) return '';
+  let v = m[1];
+  if(!/^https?:/i.test(v)){ try{ v = decodeURIComponent(v); }catch(e){} }
+  return v;
+}
+
 (async function initLiff(){
-  // 卡片：優先使用頁面內嵌的 payload（不可能被快取成舊版）；沒有才去抓檔案
-  if(INLINE_FLEX){
-    flexPayload = INLINE_FLEX;
-    diag('payload 來源：內嵌在頁面（最新）');
-  }else{
+  // ── 共用模式（?src=<客戶的 flex-cards.json 網址>）──
+  // 卡片按鈕帶上對方那份 payload 的網址，這裡抓回來當「這次要分享的內容」。
+  // 好處：所有客戶共用同一組 LIFF，買家不必自己去 LINE 控制台申請。
+  // GitHub Pages 回應 Access-Control-Allow-Origin: *，所以跨網域讀取沒問題。
+  const srcParam = getParam('src');
+  if(srcParam){
     try{
-      const r = await fetch('flex-cards.json?b=' + BUILD, { cache: 'no-store' });
-      if(r.ok) flexPayload = await r.json();
-      diag('payload 來源：外部檔案（' + BUILD + '）');
-    }catch(e){ /* 用 file:// 開啟時讀不到，屬正常 */ }
+      const r = await fetch(srcParam, { cache: 'no-store' });
+      if(r.ok){
+        flexPayload = await r.json();
+        diag('payload 來源：共用模式 → ' + srcParam);
+      }else{
+        diag('共用模式讀取失敗（HTTP ' + r.status + '）', true);
+      }
+    }catch(e){
+      diag('共用模式讀取失敗：' + (e && e.message || e), true);
+    }
+    if(!flexPayload){
+      payloadFailed = true;
+      diag('→ 這次「不會」送出卡片（寧可失敗，也不要送成別人的名片）', true);
+    }
+  }else{
+    // 卡片：優先使用頁面內嵌的 payload（不可能被快取成舊版）；沒有才去抓檔案
+    if(INLINE_FLEX){
+      flexPayload = INLINE_FLEX;
+      diag('payload 來源：內嵌在頁面（最新）');
+    }else{
+      try{
+        const r = await fetch('flex-cards.json?b=' + BUILD, { cache: 'no-store' });
+        if(r.ok) flexPayload = await r.json();
+        diag('payload 來源：外部檔案（' + BUILD + '）');
+      }catch(e){ /* 用 file:// 開啟時讀不到，屬正常 */ }
+    }
   }
 
   // 指紋檢查：只驗 button（文字的 margin 是正常的）
@@ -612,6 +649,12 @@ async function autoShare(){
 async function shareCard(){
   diag('👆 分享按鈕被按下（' + new Date().toLocaleTimeString() + '）');
   const tip = document.getElementById('tipText');
+
+  if(payloadFailed){
+    diag('❌ 要分享的卡片內容沒抓到，已中止（避免送成別人的名片）', true);
+    if(tip) tip.textContent = '卡片內容載入失敗，請關掉重開，或請對方重新傳一次連結。';
+    return;
+  }
 
   // 1) 在 LINE 內 → 用 shareTargetPicker 送出原生 Flex 卡片
   if(liffReady){

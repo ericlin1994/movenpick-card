@@ -28,6 +28,20 @@ ADDR     = C["addr"]
 _UNSET = "https://liff.line.me/0000000000-XXXXXXXX"
 if (not LIFF_URL) or "0000000000" in LIFF_URL:
     LIFF_URL = _UNSET
+# ── 分享模式 ──
+# own    = 客戶自己申請的 LIFF（點卡片圖片 → 開啟自己的名片頁 → 再按分享）
+# shared = 共用一組 LIFF（點卡片圖片 → 中繼頁把 src 指到的 flex-cards.json 抓回來分享）
+#          買家不必自己去 LINE 控制台申請，這是自助版的預設。
+SHARE = LK.get("share") or {}
+SHARE_MODE = SHARE.get("mode", "own")
+if SHARE_MODE == "shared" and SHARE.get("relay_liff"):
+    SRC = SHARE.get("src") or (LK["page_url"].rstrip("/") + "/flex-cards.json")
+    SHARE_URL = f"{SHARE['relay_liff']}?share=1&src={SRC}&v={LK['share_ver']}"
+    CARD_URL = SHARE_URL          # 點卡片圖片 = 一鍵轉發
+else:
+    SHARE_URL = LIFF_URL + "?share=1&v=" + LK["share_ver"]
+    CARD_URL = LIFF_URL           # 點卡片圖片 = 開啟自己的名片頁
+
 LINKS = {
     "line":  LK["line"],
     "line2": LK["line2"],
@@ -36,7 +50,7 @@ LINKS = {
     "tel":   LK["tel"],
     "map":   "https://www.google.com/maps/search/?api=1&query="
              + urllib.parse.quote(C["map_query"]),
-    "share": LIFF_URL + "?share=1&v=" + LK["share_ver"],
+    "share": SHARE_URL,
 }
 
 # ═══════════ Design Tokens ═══════════
@@ -202,7 +216,7 @@ def build_bubble(i):
     if i in HEROES:
         b["hero"] = {"type": "image", "url": HEROES[i], "size": "full",
                      "aspectRatio": "3:4", "aspectMode": "cover",
-                     "action": {"type": "uri", "label": "開啟名片", "uri": LIFF_URL}}
+                     "action": {"type": "uri", "label": "開啟名片", "uri": CARD_URL}}
     return b
 
 
