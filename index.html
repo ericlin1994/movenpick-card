@@ -550,7 +550,9 @@ function shareModeSelfCheck(){
     if(ssTip) ssTip.innerHTML = '這個連結沒有帶到分享參數（被 LINE 的轉址吃掉了）。<br>'
       + '這是已知問題，已回報處理。';
   }else{
-    if(ssTip) ssTip.innerHTML = '分享功能沒有啟動。<br>請把下方黑框內容截圖回報。';
+    if(ssTip) ssTip.innerHTML = '分享功能沒有啟動。<br>'
+      + '如果是把「頁面網址」貼進來開啟的，請改用卡片上的圖片，或這個連結：<br>'
+      + '<small>https://liff.line.me/' + LIFF_ID + '?share=1</small>';
   }
 }
 
@@ -570,31 +572,12 @@ function getParam(name){
 }
 
 (async function initLiff(){
-  // ── 自己修正網址：直接用「頁面網址」開啟時 LIFF 無法使用，
-  //    自動轉成 liff.line.me 網址，使用者不必知道兩者的差別。
-  //    兩個防護避免無限轉址：
-  //      1) LINE 送回來時會帶 liff.state 或 liff.referrer（實測是後者）
-  //      2) sessionStorage 記號：每個分頁只轉一次
-  //    注意：這裡用外層的 return 直接結束 initLiff —— 若只 return 內層 IIFE，
-  //    下面的 fetch 與 liff.init 會在「頁面正在離開」時被瀏覽器中斷，變成 Load failed。
-  {
-    let raw = location.search + (location.hash || '');
-    try{ raw = decodeURIComponent(location.search) + decodeURIComponent(location.hash || ''); }catch(e){}
-    const inLine = /Line\/[\d.]+/i.test(navigator.userAgent);
-    const alreadyLiff = /liff\.state=/.test(location.search) || /liff\.referrer=/.test(location.search);
-    let bounced = false;
-    try{
-      bounced = sessionStorage.getItem('liff_redirected') === '1';
-      if(alreadyLiff) sessionStorage.removeItem('liff_redirected');   // 已經在 LIFF 裡，解除記號
-    }catch(e){}
-    if(inLine && !alreadyLiff && !bounced
-       && raw.indexOf('share=1') !== -1 && LIFF_ID.indexOf('【') !== 0){
-      try{ sessionStorage.setItem('liff_redirected', '1'); }catch(e){}
-      diag('偵測到直接用頁面網址開啟 → 自動轉成 LIFF 網址（只轉一次）');
-      location.replace('https://liff.line.me/' + LIFF_ID + location.search + (location.hash || ''));
-      return;
-    }
-  }
+  // ── 刻意「不做」的事：不要自動把頁面網址轉成 liff.line.me 網址。
+  //    實測（iOS / LINE 26.x）LINE 開 LIFF 時「不一定」會帶 liff.state 或
+  //    liff.referrer，因此無法可靠判斷「我是不是已經在 LIFF 裡」，
+  //    自動轉址就會變成無限重導迴圈（實際踩到過）。
+  //    正確做法：卡片一律使用 liff.line.me 網址（build_flex.py 產生的就是）。
+  //    使用者若自己貼了頁面網址，就讓下方的自助診斷告訴他該用哪個連結。
 
   // ── 共用模式（?src=<客戶的 flex-cards.json 網址>）──
   // 卡片按鈕帶上對方那份 payload 的網址，這裡抓回來當「這次要分享的內容」。
