@@ -1,27 +1,44 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-友泰京玻璃工程｜3:4 直式海報 Hero 圖產生器（精品工程版）
+3:4 直式海報 Hero 圖產生器（多客戶版）
 ------------------------------------------------
 畫布 1080x1440（LINE aspectRatio 3:4）、座標原點左上
 文字直接「烤」進圖中（卡片 1、5 的 body 不放文案）
+
+換客戶只改 client.json（brand / theme / images 三段），不要改本檔。
 用法：python gen_cards.py
 執行長形象照放 photo.jpg 進 repo 根目錄就會自動置入（否則顯示虛線預留框）。
 """
-import pathlib
+import json, pathlib
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
+HERE = pathlib.Path(__file__).parent
+CLIENT = json.loads((HERE / "client.json").read_text(encoding="utf-8"))
+B = CLIENT["brand"]
+C = CLIENT["contact"]
+TH = CLIENT["theme"]
+IMG = CLIENT["images"]
+
 W, H = 1080, 1440
-OUT = pathlib.Path(__file__).with_name("img")
+OUT = HERE / "img"
 OUT.mkdir(exist_ok=True)
-ROOT = pathlib.Path(__file__).parent
+ROOT = HERE
 
 F = pathlib.Path(r"C:\Windows\Fonts")
 BOLD, REG = str(F / "msjhbd.ttc"), str(F / "msjh.ttc")
 
-NAVY, NAVY_D = (37, 48, 67), (30, 40, 56)
-COPPER, BEIGE = (196, 131, 90), (245, 241, 232)
-WHITE, MUTED = (255, 255, 255), (160, 170, 184)
+
+def rgb(hexstr):
+    s = hexstr.lstrip("#")
+    return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
+
+
+NAVY, NAVY_D = rgb(TH["NAVY"]), rgb(TH["NAVY_D"])
+COPPER, BEIGE = rgb(TH["COPPER"]), rgb(TH["BEIGE"])
+WHITE, MUTED = rgb(TH["WHITE"]), rgb(TH["MUTED"])
+HERO_TOP, HERO_BOT = rgb(TH["HERO_GRAD"][0]), rgb(TH["HERO_GRAD"][1])
+OG_TOP, OG_BOT = rgb(TH["OG_GRAD"][0]), rgb(TH["OG_GRAD"][1])
 
 
 def font(p, s):
@@ -109,8 +126,8 @@ def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
     d = ImageDraw.Draw(lay)
 
     # 品牌（左上 80,80）
-    d.text((80, 80), "TC FEZ GLASS", font=font(BOLD, 34), fill=WHITE + (245,))
-    d.text((80, 124), "友泰京玻璃工程", font=font(REG, 26), fill=BEIGE + (240,))
+    d.text((80, 80), B["en"], font=font(BOLD, 34), fill=WHITE + (245,))
+    d.text((80, 124), B["name"], font=font(REG, 26), fill=BEIGE + (240,))
 
     # 人名 + 英文名
     fo = font(BOLD, name_size)
@@ -149,52 +166,51 @@ def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
     return path_out
 
 
-def card1(pager="1 / 6", h=H, out="card1.jpg"):
-    ph = photo_or_none("photo.jpg", h)
-    if ph:
-        art = bottom_mask(ph, start=int(h * 0.42), strength=0.9)
+def render(p, h=H, out=None):
+    """依 client.json 的 images.posters 設定產生一張海報"""
+    if p["art"] == "photo":
+        ph = photo_or_none(p.get("photo", "photo.jpg"), h)
+        if ph:
+            art = bottom_mask(ph, start=int(h * 0.42), strength=0.9)
+        else:
+            art = gradient((W, h), HERO_TOP, HERO_BOT)
+            art = placeholder(art, (330, int(h * 0.10), W - 90, int(h * 0.46)),
+                              p.get("placeholder", "形象照"))
     else:
-        art = gradient((W, h), (26, 38, 54), (52, 74, 92))
-        art = placeholder(art, (330, int(h * 0.10), W - 90, int(h * 0.46)), "形象照")
-    return poster(OUT / out, art, "李柏融", en="Benson",
-                  role="友泰京玻璃工程　執行長",
-                  slogan=("讓藝術融入玻璃，", "讓隔熱成為空間美學"), pager=pager,
-                  name_size=int(118 * (h / H) ** 0.6), canvas_h=h)
-
-
-def card5(pager="5 / 6", h=H, out="card5.jpg"):
-    art = glass_art((W, h))
-    return poster(OUT / out, art, "品質落在實處", en="",
-                  role="工藝藏在細節，滿足高標準設計",
-                  slogan=("藝術工藝 · 機能選材", "精準加工 · 施工細節"), pager=pager,
-                  name_size=int(96 * (h / H) ** 0.6), show_quote=False, canvas_h=h)
+        art = glass_art((W, h))
+    return poster(OUT / (out or p["out"]), art, p["name"], en=p.get("en", ""),
+                  role=p.get("role", ""), slogan=tuple(p.get("slogan", [])),
+                  pager=p.get("pager", ""),
+                  name_size=int(p["name_size"] * (h / H) ** 0.6),
+                  show_quote=p.get("show_quote", True), canvas_h=h)
 
 
 def make_og():
     w, h = 1200, 630
-    img = gradient((w, h), (30, 40, 56), (52, 74, 92))
+    img = gradient((w, h), OG_TOP, OG_BOT)
     lay = layer((w, h))
     d = ImageDraw.Draw(lay)
     d.ellipse([w - 560, -300, w + 300, 420], fill=COPPER + (60,))
     img = over(img, lay.filter(ImageFilter.GaussianBlur(100)))
     d = ImageDraw.Draw(img)
-    d.text((80, 66), "TC FEZ GLASS", font=font(BOLD, 32), fill=BEIGE)
-    d.text((80, 112), "友泰京玻璃工程", font=font(REG, 26), fill=MUTED)
-    d.text((80, 196), "李柏融  Benson Lee", font=font(BOLD, 76), fill=WHITE)
-    d.text((80, 292), "友泰京玻璃工程　執行長", font=font(REG, 32), fill=MUTED)
-    d.line([(80, 362), (1120, 362)], fill=(196, 131, 90, 220), width=2)
-    d.text((80, 392), "讓藝術融入玻璃，", font=font(BOLD, 50), fill=COPPER)
-    d.text((80, 456), "讓隔熱成為空間美學", font=font(BOLD, 50), fill=WHITE)
-    d.text((80, 545), "藝術玻璃・空間玻璃・工程整合・外牆高空作業　0938-111-822",
+    d.text((80, 66), B["en"], font=font(BOLD, 32), fill=BEIGE)
+    d.text((80, 112), B["name"], font=font(REG, 26), fill=MUTED)
+    d.text((80, 196), B["owner_display"], font=font(BOLD, 76), fill=WHITE)
+    d.text((80, 292), B["role"], font=font(REG, 32), fill=MUTED)
+    d.line([(80, 362), (1120, 362)], fill=COPPER + (220,), width=2)
+    d.text((80, 392), f"{B['slogan1']}，", font=font(BOLD, 50), fill=COPPER)
+    d.text((80, 456), B["slogan2"], font=font(BOLD, 50), fill=WHITE)
+    d.text((80, 545), f"{B['services_line']}　{C['phone']}",
            font=font(REG, 26), fill=MUTED)
-    p = ROOT / "og.jpg"
+    p = ROOT / IMG["og"]["out"]
     img.save(p, "JPEG", quality=90, optimize=True)
     return p
 
 
 if __name__ == "__main__":
-    print("✓", card1("1 / 6").name, "（3:4）")
-    print("✓", card5("5 / 6").name, "（3:4）")
-    print("✓", card1("1 / 6", h=810, out="card1_43.jpg").name, "（4:3 較矮）")
-    print("✓", card5("5 / 6", h=810, out="card5_43.jpg").name, "（4:3 較矮）")
+    for p in IMG["posters"]:
+        print("✓", render(p).name, f"（{p['pager']}）")
+    for v in IMG["variants"]:
+        base = next(p for p in IMG["posters"] if p["page"] == v["page"])
+        print("✓", render(base, h=v["h"], out=v["out"]).name, "（較矮版）")
     print("✓", make_og().name)

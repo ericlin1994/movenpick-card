@@ -1,38 +1,46 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-友泰京玻璃工程｜LINE 電子名片 Flex Message 產生器 v3
+LINE 電子名片 Flex Message 產生器 v4（多客戶版）
 ------------------------------------------------
-風格：雜誌海報感（3:4 直式 Hero 烤字）+ 精品配色（深藍 / 玫瑰銅 / 奶油白）
-設計來源：Gemini 第二版 Design Tokens（精品工程）
+所有客戶資料都集中在 client.json —— 換客戶只改 client.json，不要改本檔。
+風格：雜誌海報感（3:4 直式 Hero 烤字）+ 精品配色
 用法：python build_flex.py
 """
 import json, pathlib, urllib.parse
 
-IMG = "https://ericlin1994.github.io/movenpick-card/img"
-LIFF_URL = "https://liff.line.me/2011897701-TrLfDuwi"
-ADDR = "新北市中和區連城路518巷8號"
+HERE = pathlib.Path(__file__).parent
+CLIENT = json.loads((HERE / "client.json").read_text(encoding="utf-8"))
+
+B      = CLIENT["brand"]
+C      = CLIENT["contact"]
+LK     = CLIENT["links"]
+FLEX   = CLIENT["flex"]
+IMGCFG = CLIENT["images"]
+TH     = CLIENT["theme"]
+
+IMG      = LK["img_base"]
+LIFF_URL = LK["liff"]
+ADDR     = C["addr"]
 LINKS = {
-    "line":  "https://line.me/ti/p/@fez86488989",
-    "line2": "https://line.me/ti/p/~benson911",
-    "ig":    "https://www.instagram.com/tc_fez_glass_team/",
-    "fb":    "https://www.facebook.com/profile.php?id=100079776776531",
-    "tel":   "tel:+886938111822",
+    "line":  LK["line"],
+    "line2": LK["line2"],
+    "ig":    LK["ig"],
+    "fb":    LK["fb"],
+    "tel":   LK["tel"],
     "map":   "https://www.google.com/maps/search/?api=1&query="
-             + urllib.parse.quote("友泰京玻璃工程 " + ADDR),
-    "share": LIFF_URL + "?share=1&v=2026-10-07-0700",
+             + urllib.parse.quote(C["map_query"]),
+    "share": LIFF_URL + "?share=1&v=" + LK["share_ver"],
 }
 
-# ═══════════ Design Tokens（精品工程版） ═══════════
-NAVY   = "#253043"   # 主底色 深邃海軍藍
-NAVY_D = "#1E2838"   # 卡片內層深色
-COPPER = "#C4835A"   # 強調色 玫瑰銅
-BEIGE  = "#F5F1E8"   # 介面底色 奶油米白
-WHITE  = "#FFFFFF"
-MUTED  = "#A0AAB8"   # 深底上的次要文字
-DIVIDE = "#DCD4C5"   # 米白底上的分隔線
-
-# padding / cornerRadius 用 px（cornerRadius 支援關鍵字，但 px 最不會出錯）
+# ═══════════ Design Tokens ═══════════
+NAVY   = TH["NAVY"]
+NAVY_D = TH["NAVY_D"]
+COPPER = TH["COPPER"]
+BEIGE  = TH["BEIGE"]
+WHITE  = TH["WHITE"]
+MUTED  = TH["MUTED"]
+DIVIDE = TH["DIVIDE"]
 
 
 def t(s, size="xs", weight="regular", color=WHITE, wrap=True, margin=None,
@@ -71,6 +79,10 @@ def hbox(*contents, spacing="sm", **k):
 def sep(margin="md", color=DIVIDE): return {"type": "separator", "margin": margin, "color": color}
 
 
+def chunk(seq, n):
+    return [list(seq[i:i + n]) for i in range(0, len(seq), n)]
+
+
 def pill(label, uri, bg, fg=WHITE):
     """圓角膠囊按鈕：用 box + action 做（LINE 預設 button 無法自訂圓角與底色）。
     標籤要短、字級 xxs、允許換行——三顆膠囊各佔 1/3 寬，字太長會被裁掉。"""
@@ -80,10 +92,9 @@ def pill(label, uri, bg, fg=WHITE):
 
 
 def control_row():
-    """共用底部操作區：米白圓角底 + 三顆膠囊（IG / LINE / 導航）"""
-    return box([hbox(pill("📷 IG 作品", LINKS["ig"], NAVY),
-                     pill("💬 LINE", LINKS["line"], COPPER),
-                     pill("📍 導航", LINKS["map"], NAVY), spacing="sm")],
+    """共用底部操作區：米白圓角底 + 膠囊列（由 client.json 的 flex.pills 決定）"""
+    return box([hbox(*[pill(p["label"], LINKS[p["link"]], TH[p["bg"]]) for p in FLEX["pills"]],
+                     spacing="sm")],
                spacing="none", padding="10px", bg=BEIGE, radius="20px")
 
 
@@ -96,23 +107,18 @@ def tag_pill(label):
 # ═══════════ 逐卡 body ═══════════
 def body1():
     """雜誌封面款：主文案烤進 Hero 圖；body 保留一行保險文字 + 操作列"""
-    return vbox([t("友泰京玻璃工程　藝術玻璃・空間玻璃・工程整合・外牆高空作業",
-                   size="xxs", color=MUTED, margin="none"),
+    return vbox([t(FLEX["cover_line"], size="xxs", color=MUTED, margin="none"),
                  control_row()], spacing="md", padding="14px", bg=NAVY)
 
 
 def body2():
-    aud = ["設計師", "建築師", "建商", "營造", "商空", "住宅"]
-    pains = ["大圖輸出缺工藝，難達藝術質感",
-             "玻璃鐵件分包，尺寸收邊難整合",
-             "設計圖美，卻找不到廠家實作",
-             "特殊彎曲或異材質，找不到方案",
-             "兼顧採光與隔熱，不知如何選材"]
+    aud = FLEX["audiences"]
+    pains = FLEX["pains"]
     return vbox([
-        t("我們專為誰服務", size="xl", weight="bold", color=COPPER, margin="none"),
-        vbox([hbox(*[tag_pill(x) for x in aud[:3]], spacing="xs"),
-              hbox(*[tag_pill(x) for x in aud[3:]], spacing="xs")], spacing="xs", margin="md"),
-        box([t("你是不是也遇過這些問題？", size="xs", weight="bold", color=NAVY, margin="none"),
+        t(FLEX["titles"][1], size="xl", weight="bold", color=COPPER, margin="none"),
+        vbox(*[hbox(*[tag_pill(x) for x in row], spacing="xs") for row in chunk(aud, 3)],
+             spacing="xs", margin="md"),
+        box([t(FLEX["pain_title"], size="xs", weight="bold", color=NAVY, margin="none"),
              sep("sm", DIVIDE)] +
             [hbox(t("📌", size="xs", color=COPPER, flex=1, wrap=False),
                   t(p, size="xs", color=NAVY, flex=6, margin="none"), spacing="sm",
@@ -124,26 +130,24 @@ def body2():
 
 
 def body3():
-    svcs = [("🎨", "藝術玻璃", "工藝與色彩結合"), ("🪟", "空間玻璃", "美感實用隔間窗"),
-            ("🏗️", "工程整合", "鋁框鐵件一條龍"), ("🧗", "高空作業", "外牆檢測與防水")]
     def cell(ic, name, desc):
         return box([t(ic, size="md", color=COPPER, margin="none", wrap=False),
                     t(name, size="sm", weight="bold", color=WHITE, margin="sm", wrap=False),
                     t(desc, size="xs", color=MUTED, margin="xs")],
                    spacing="none", padding="16px", bg=NAVY_D, radius="16px", flex=1)
     return vbox([
-        t("我們能為你做什麼", size="xl", weight="bold", color=COPPER, margin="none"),
-        t("從設計規劃到現場施作，實現空間想像", size="sm", color=WHITE, margin="xs"),
-        hbox(cell(*svcs[0]), cell(*svcs[1]), spacing="md", margin="md"),
-        hbox(cell(*svcs[2]), cell(*svcs[3]), spacing="md", margin="md"),
+        t(FLEX["services_title"], size="xl", weight="bold", color=COPPER, margin="none"),
+        t(FLEX["services_sub"], size="sm", color=WHITE, margin="xs"),
+    ] + [hbox(*[cell(s["icon"], s["name"], s["desc"]) for s in row], spacing="md", margin="md")
+         for row in chunk(FLEX["services"], 2)] + [
         control_row(),
     ], spacing="md", padding="18px", bg=NAVY)
 
 
 def body4():
-    stats = [("30+", "年玻璃產業\n服務經驗"), ("3", "代工藝傳承\n品質保證"), ("4", "大服務項目\n專業整合")]
+    stats = [(s["big"], s["small"]) for s in FLEX["stats"]]
     return vbox([
-        t("為什麼選擇友泰京？", size="xl", weight="bold", color=COPPER, margin="none"),
+        t(f"{FLEX['why_prefix']}{B['short_name']}？", size="xl", weight="bold", color=COPPER, margin="none"),
     ] + [hbox(t(big, size="4xl", weight="bold", color=COPPER, flex=2, wrap=False),
               t(small, size="sm", weight="bold", color=WHITE, flex=3, margin="none"),
               spacing="md", align_items="center", margin="xl" if i == 0 else "md")
@@ -154,8 +158,7 @@ def body4():
 
 def body5():
     """工藝：主文案烤進 3:4 Hero 圖；body 保留一行保險文字 + 操作列"""
-    return vbox([t("藝術工藝・機能選材・精準加工・施工細節",
-                   size="xxs", color=MUTED, margin="none"),
+    return vbox([t(FLEX["craft_line"], size="xxs", color=MUTED, margin="none"),
                  control_row()], spacing="md", padding="14px", bg=NAVY)
 
 
@@ -164,35 +167,23 @@ def body6():
         return hbox(t(ic, size="sm", color=COPPER, flex=1, wrap=False),
                     t(txt, size=size, weight=weight, color=color, flex=6, margin="none"),
                     spacing="sm", margin="sm")
+    rows = [row(r["icon"], r["text"],
+                size="sm" if r.get("emphasis", True) else "xs",
+                weight="bold" if r.get("emphasis", True) else "regular")
+            for r in FLEX["contact_rows"]]
     return vbox([
-        t("讓我們聊聊你的空間", size="xl", weight="bold", color=NAVY, margin="none"),
-        t("拍下現場照片＋尺寸，LINE 傳給我免費評估", size="xs", weight="bold", color=COPPER, margin="xs"),
-        box([row("📞", "0938-111-822"),
-             row("💬", "LINE：@fez86488989"),
-             row("📍", "新北市中和區連城路518巷8號（中和高中旁巷）", size="xs", weight="regular"),
-             row("⏰", "週一～五 08:00-17:00", size="xs", weight="regular")],
-            spacing="sm", padding="18px", bg=NAVY, radius="20px", margin="md"),
+        t(FLEX["contact_title"], size="xl", weight="bold", color=NAVY, margin="none"),
+        t(FLEX["contact_sub"], size="xs", weight="bold", color=COPPER, margin="xs"),
+        box(rows, spacing="sm", padding="18px", bg=NAVY, radius="20px", margin="md"),
         control_row(),
     ], spacing="md", padding="18px", bg=BEIGE)
 
 
 BODIES = [body1, body2, body3, body4, body5, body6]
-HEROES = {1: f"{IMG}/card1.jpg", 5: f"{IMG}/card5.jpg"}   # 只有這兩張有 3:4 Hero
-BG_COLOR = {1: NAVY, 2: NAVY, 3: NAVY, 4: NAVY, 5: NAVY, 6: BEIGE}
-TITLES = ["李柏融  Benson Lee", "我們專為誰服務", "我們能為你做什麼",
-          "為什麼選擇友泰京？", "品質落在實處", "讓我們聊聊你的空間"]
-SUMMARIES = [
-    ["李柏融 Benson Lee｜執行長", "讓藝術融入玻璃，讓隔熱成為空間美學"],
-    ["我們專為誰服務", "設計師｜建築師｜建商｜營造｜商空｜業主",
-     "大圖輸出缺工藝，難達藝術質感", "玻璃鐵件分包，尺寸收邊難整合",
-     "設計圖美，卻找不到廠家實作", "特殊彎曲或異材質，找不到方案", "兼顧採光與隔熱，不知如何選材"],
-    ["我們能為你做什麼", "藝術玻璃 工藝與色彩結合", "空間玻璃 美感實用隔間窗",
-     "工程整合 鋁框鐵件一條龍", "高空作業 外牆檢測與防水"],
-    ["為什麼選擇友泰京？", "30+ 年玻璃產業服務經驗", "3 代工藝傳承", "4 大服務項目"],
-    ["品質落在實處", "玻璃光影特寫（文案烤進圖內）"],
-    ["讓我們聊聊你的空間", "電話 0938-111-822", "LINE @fez86488989",
-     "新北市中和區連城路518巷8號", "週一～五 08:00-17:00"],
-]
+HEROES = {int(k): f"{IMG}/{v}" for k, v in IMGCFG["heroes"].items()}
+BG_COLOR = {i + 1: TH[name] for i, name in enumerate(FLEX["bg_pages"])}
+TITLES = FLEX["titles"]
+SUMMARIES = FLEX["summaries"]
 
 
 def build_bubble(i):
@@ -212,15 +203,15 @@ def build_bubble(i):
 # ═══════════ 備援版（結構最簡） ═══════════
 def build_candidate(with_hero: bool):
     bubbles = []
-    for i in range(6):
+    for i in range(len(BODIES)):
         n = i + 1
         body = vbox([t(TITLES[i], size="sm", weight="bold", color=WHITE, margin="none"),
                      t("\n".join("· " + s for s in SUMMARIES[i]), size="xs", color=MUTED, margin="xs")],
                     spacing="none")
         b = {"type": "bubble", "styles": {"body": {"backgroundColor": NAVY}}, "body": body,
-             "footer": vbox([box([t("LINE 諮詢", size="xs", weight="bold", color=WHITE,
+             "footer": vbox([box([t(FLEX["cta_line"], size="xs", weight="bold", color=WHITE,
                                     align="center", wrap=False)], padding="12px", bg=COPPER,
-                                 radius="100px", action={"type": "uri", "label": "LINE 諮詢",
+                                 radius="100px", action={"type": "uri", "label": FLEX["cta_line"],
                                                          "uri": LINKS["line"]})],
                             spacing="none", padding="12px", bg=NAVY)}
         if with_hero and n in HEROES:
@@ -269,8 +260,8 @@ def inject_candidates():
 
 
 def main():
-    bubbles = [build_bubble(n) for n in range(1, 7)]
-    payload = {"type": "flex", "altText": "友泰京玻璃工程｜李柏融 Benson 電子名片",
+    bubbles = [build_bubble(n) for n in range(1, len(BODIES) + 1)]
+    payload = {"type": "flex", "altText": FLEX["alt_text"],
                "contents": {"type": "carousel", "contents": bubbles}}
     out = pathlib.Path(__file__).with_name("flex-cards.json")
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
