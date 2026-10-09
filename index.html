@@ -570,6 +570,21 @@ function getParam(name){
 }
 
 (async function initLiff(){
+  // ── 自己修正網址：直接用「頁面網址」開啟時 LIFF 無法使用，
+  //    自動轉成 liff.line.me 網址，使用者不必知道兩者的差別。
+  //    （避免無限轉址：LIFF 開啟時會帶 liff.state，看到它就不再轉）
+  (function(){
+    let raw = location.search + (location.hash || '');
+    try{ raw = decodeURIComponent(location.search) + decodeURIComponent(location.hash || ''); }catch(e){}
+    const inLine = /Line\/[\d.]+/i.test(navigator.userAgent);
+    const alreadyLiff = /liff\.state=/.test(location.search);
+    if(inLine && !alreadyLiff && raw.indexOf('share=1') !== -1 && LIFF_ID.indexOf('【') !== 0){
+      diag('偵測到直接用頁面網址開啟 → 自動轉成 LIFF 網址');
+      location.replace('https://liff.line.me/' + LIFF_ID + location.search + (location.hash || ''));
+      return;
+    }
+  })();
+
   // ── 共用模式（?src=<客戶的 flex-cards.json 網址>）──
   // 卡片按鈕帶上對方那份 payload 的網址，這裡抓回來當「這次要分享的內容」。
   // 好處：所有客戶共用同一組 LIFF，買家不必自己去 LINE 控制台申請。
