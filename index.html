@@ -483,7 +483,7 @@ let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b29';
+const BUILD = 'b30';
 const PAGE_VER = '2026-10-09-1910-底部CTA改用flex-sticky'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
@@ -604,6 +604,7 @@ function getParam(name){
   // 好處：所有客戶共用同一組 LIFF，買家不必自己去 LINE 控制台申請。
   // GitHub Pages 回應 Access-Control-Allow-Origin: *，所以跨網域讀取沒問題。
   const srcParam = getParam('src');
+  const pageParam = getParam('page');
   if(srcParam){
     try{
       const r = await fetch(srcParam, { cache: 'no-store' });
@@ -621,40 +622,6 @@ function getParam(name){
       diag('→ 這次「不會」送出卡片（寧可失敗，也不要送成別人的名片）', true);
     }
   }else{
-    // ── 「看名片頁」模式（?page=<客戶名片頁的網址>）──
-    //    中繼頁把客戶自己那份名片頁的內容抓進來顯示，收件者就看得完整內容；
-    //    分享鈕仍在（LIFF 已就緒，用的是客戶的卡片 payload）。
-    //    前提：兩邊是同一套模板（外殼相同），所以只換內容區塊就正確。
-    const pageParam = getParam('page');
-    if(pageParam){
-      try{
-        const base = pageParam.replace(/\/?$/, '/');
-        const r = await fetch(base + 'index.html?b=' + BUILD, { cache: 'no-store' });
-        if(r.ok){
-          const html = await r.text();
-          const m = html.match(/<!-- CONTENT_START -->([\s\S]*?)<!-- CONTENT_END -->/);
-          const host = document.getElementById('pageContent');
-          if(m && host){
-            // 客戶頁的內容本身包了一層 <div id="pageContent">，先用 DOM 拆掉它，
-            // 否則會出現重複 id（舊版模板沒有那層也能處理）
-            const tmp = document.createElement('div');
-            tmp.innerHTML = m[1];
-            const box = tmp.querySelector('#pageContent');
-            // 相對路徑的圖片／連結改成絕對（否則會指向中繼頁自己的網域）
-            host.innerHTML = (box ? box.innerHTML : m[1]).replace(
-              /\b(src|href)="(?!https?:|data:|mailto:|tel:|#)([^"]*)"/g,
-              (s, a, u) => a + '="' + base + u + '"');
-            bindRail();
-            diag('名片頁內容：已載入 ' + base);
-          }else{
-            diag('名片頁內容：找不到內容區塊（客戶頁可能是舊版模板）', true);
-          }
-        }else{
-          diag('名片頁內容載入失敗 HTTP ' + r.status, true);
-        }
-      }catch(e){ diag('名片頁內容載入失敗：' + (e && e.message || e), true); }
-    }
-
     // 卡片：優先使用頁面內嵌的 payload（不可能被快取成舊版）；沒有才去抓檔案
       if(INLINE_FLEX){
       flexPayload = INLINE_FLEX;
@@ -666,6 +633,36 @@ function getParam(name){
         diag('payload 來源：外部檔案（' + BUILD + '）');
       }catch(e){ /* 用 file:// 開啟時讀不到，屬正常 */ }
     }
+  }
+
+  // ── 「看名片頁」模式（?src=…&page=<客戶名片頁的網址>）──
+  //    把客戶自己那份名片頁的內容抓進來顯示，收件者就看得完整內容。
+  //    刻意「不 await」：那頁是整份 HTML（約 120KB），若等它回來才初始化 LIFF，
+  //    「分享這張名片」按鈕會有一段空窗期按了沒反應（實際踩到過）。
+  if(pageParam){
+    (async function loadPageContent(){
+      try{
+        const base = pageParam.replace(/\/?$/, '/');
+        const r = await fetch(base + 'index.html?b=' + BUILD, { cache: 'no-store' });
+        if(!r.ok){ diag('名片頁內容載入失敗 HTTP ' + r.status, true); return; }
+        const html = await r.text();
+        const m = html.match(/<!-- CONTENT_START -->([\s\S]*?)<!-- CONTENT_END -->/);
+        const host = document.getElementById('pageContent');
+        if(!m || !host){
+          diag('名片頁內容：找不到內容區塊（客戶頁可能是舊版模板）', true); return;
+        }
+        // 客戶頁的內容自己包了一層 <div id="pageContent">，用 DOM 拆掉（避免重複 id）
+        const tmp = document.createElement('div');
+        tmp.innerHTML = m[1];
+        const box = tmp.querySelector('#pageContent');
+        // 相對路徑的圖片／連結改成絕對（否則會指向中繼頁自己的網域）
+        host.innerHTML = (box ? box.innerHTML : m[1]).replace(
+          /\b(src|href)="(?!https?:|data:|mailto:|tel:|#)([^"]*)"/g,
+          (s, a, u) => a + '="' + base + u + '"');
+        bindRail();
+        diag('名片頁內容：已載入 ' + base);
+      }catch(e){ diag('名片頁內容載入失敗：' + (e && e.message || e), true); }
+    })();
   }
 
   // 指紋檢查：只驗 button（文字的 margin 是正常的）
