@@ -572,18 +572,29 @@ function getParam(name){
 (async function initLiff(){
   // ── 自己修正網址：直接用「頁面網址」開啟時 LIFF 無法使用，
   //    自動轉成 liff.line.me 網址，使用者不必知道兩者的差別。
-  //    （避免無限轉址：LIFF 開啟時會帶 liff.state，看到它就不再轉）
-  (function(){
+  //    兩個防護避免無限轉址：
+  //      1) LINE 送回來時會帶 liff.state 或 liff.referrer（實測是後者）
+  //      2) sessionStorage 記號：每個分頁只轉一次
+  //    注意：這裡用外層的 return 直接結束 initLiff —— 若只 return 內層 IIFE，
+  //    下面的 fetch 與 liff.init 會在「頁面正在離開」時被瀏覽器中斷，變成 Load failed。
+  {
     let raw = location.search + (location.hash || '');
     try{ raw = decodeURIComponent(location.search) + decodeURIComponent(location.hash || ''); }catch(e){}
     const inLine = /Line\/[\d.]+/i.test(navigator.userAgent);
-    const alreadyLiff = /liff\.state=/.test(location.search);
-    if(inLine && !alreadyLiff && raw.indexOf('share=1') !== -1 && LIFF_ID.indexOf('【') !== 0){
-      diag('偵測到直接用頁面網址開啟 → 自動轉成 LIFF 網址');
+    const alreadyLiff = /liff\.state=/.test(location.search) || /liff\.referrer=/.test(location.search);
+    let bounced = false;
+    try{
+      bounced = sessionStorage.getItem('liff_redirected') === '1';
+      if(alreadyLiff) sessionStorage.removeItem('liff_redirected');   // 已經在 LIFF 裡，解除記號
+    }catch(e){}
+    if(inLine && !alreadyLiff && !bounced
+       && raw.indexOf('share=1') !== -1 && LIFF_ID.indexOf('【') !== 0){
+      try{ sessionStorage.setItem('liff_redirected', '1'); }catch(e){}
+      diag('偵測到直接用頁面網址開啟 → 自動轉成 LIFF 網址（只轉一次）');
       location.replace('https://liff.line.me/' + LIFF_ID + location.search + (location.hash || ''));
       return;
     }
-  })();
+  }
 
   // ── 共用模式（?src=<客戶的 flex-cards.json 網址>）──
   // 卡片按鈕帶上對方那份 payload 的網址，這裡抓回來當「這次要分享的內容」。
