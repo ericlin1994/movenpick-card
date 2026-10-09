@@ -36,8 +36,11 @@ SHARE = LK.get("share") or {}
 SHARE_MODE = SHARE.get("mode", "own")
 if SHARE_MODE == "shared" and SHARE.get("relay_liff"):
     SRC = SHARE.get("src") or (LK["page_url"].rstrip("/") + "/flex-cards.json")
+    PAGE = SHARE.get("page") or LK["page_url"]
     SHARE_URL = f"{SHARE['relay_liff']}?share=1&src={SRC}&v={LK['share_ver']}"
-    CARD_URL = SHARE_URL          # 點卡片圖片 = 一鍵轉發
+    # 點卡片圖片 = 看名片頁（中繼頁會把客戶的名片頁內容抓進來顯示），
+    # 要一鍵轉發時按頁面上的分享鈕（走 SHARE_URL）
+    CARD_URL = f"{SHARE['relay_liff']}?src={SRC}&page={PAGE}&v={LK['share_ver']}"
 else:
     SHARE_URL = LIFF_URL + "?share=1&v=" + LK["share_ver"]
     CARD_URL = LIFF_URL           # 點卡片圖片 = 開啟自己的名片頁

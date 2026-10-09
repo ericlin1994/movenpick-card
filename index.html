@@ -265,6 +265,9 @@
   </div>
 
 <!-- CONTENT_START -->
+<!-- 這一整塊是「名片頁內容」；共用中繼頁會把客戶這一段抓過去顯示，
+     所以換客戶時只要重跑本檔即可，兩邊內容自動一致 -->
+<div id="pageContent">
   <!-- ═══════════ 1　主卡 ═══════════ -->
   <header class="hero">
     <div class="logo">TC FEZ GLASS<small>友泰京玻璃工程</small></div>
@@ -430,6 +433,7 @@
     <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">@fez86488989（官方帳號）</a><br><span class="note">個人帳號：benson911</span></div></div>
     <div class="row"><div class="k">社群</div><div><a data-link="ig" href="#">Instagram</a>　·　<a data-link="fb" href="#">Facebook</a></div></div>
   </div>
+</div><!-- /#pageContent -->
 <!-- CONTENT_END -->  <p class="tip" id="tipText">在 LINE 聊天室貼上這個網址，會自動展開成一張名片圖卡；<br>朋友點開就能看、一鍵加 LINE、直接導航到門市。</p>
   <pre id="diag"></pre>
 
@@ -480,7 +484,7 @@ let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b26';
+const BUILD = 'b28';
 const PAGE_VER = '2026-10-09-1910-底部CTA改用flex-sticky'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
@@ -618,8 +622,42 @@ function getParam(name){
       diag('→ 這次「不會」送出卡片（寧可失敗，也不要送成別人的名片）', true);
     }
   }else{
+    // ── 「看名片頁」模式（?page=<客戶名片頁的網址>）──
+    //    中繼頁把客戶自己那份名片頁的內容抓進來顯示，收件者就看得完整內容；
+    //    分享鈕仍在（LIFF 已就緒，用的是客戶的卡片 payload）。
+    //    前提：兩邊是同一套模板（外殼相同），所以只換內容區塊就正確。
+    const pageParam = getParam('page');
+    if(pageParam){
+      try{
+        const base = pageParam.replace(/\/?$/, '/');
+        const r = await fetch(base + 'index.html?b=' + BUILD, { cache: 'no-store' });
+        if(r.ok){
+          const html = await r.text();
+          const m = html.match(/<!-- CONTENT_START -->([\s\S]*?)<!-- CONTENT_END -->/);
+          const host = document.getElementById('pageContent');
+          if(m && host){
+            // 客戶頁的內容本身包了一層 <div id="pageContent">，先用 DOM 拆掉它，
+            // 否則會出現重複 id（舊版模板沒有那層也能處理）
+            const tmp = document.createElement('div');
+            tmp.innerHTML = m[1];
+            const box = tmp.querySelector('#pageContent');
+            // 相對路徑的圖片／連結改成絕對（否則會指向中繼頁自己的網域）
+            host.innerHTML = (box ? box.innerHTML : m[1]).replace(
+              /\b(src|href)="(?!https?:|data:|mailto:|tel:|#)([^"]*)"/g,
+              (s, a, u) => a + '="' + base + u + '"');
+            bindRail();
+            diag('名片頁內容：已載入 ' + base);
+          }else{
+            diag('名片頁內容：找不到內容區塊（客戶頁可能是舊版模板）', true);
+          }
+        }else{
+          diag('名片頁內容載入失敗 HTTP ' + r.status, true);
+        }
+      }catch(e){ diag('名片頁內容載入失敗：' + (e && e.message || e), true); }
+    }
+
     // 卡片：優先使用頁面內嵌的 payload（不可能被快取成舊版）；沒有才去抓檔案
-    if(INLINE_FLEX){
+      if(INLINE_FLEX){
       flexPayload = INLINE_FLEX;
       diag('payload 來源：內嵌在頁面（最新）');
     }else{
@@ -1303,14 +1341,19 @@ async function shareCard(){
     document.querySelectorAll('.is-pressed').forEach(e => e.classList.remove('is-pressed')));
 })();
 
-/* 滑動時更新「n / 7」指示（主卡算第 1 張） */
-const rail = document.getElementById('rail'), countEl = document.getElementById('count');
-rail.addEventListener('scroll', ()=>{
-  const cards = [...rail.children], mid = rail.scrollLeft + rail.clientWidth/2;
-  let idx = 0;
-  cards.forEach((c,i)=>{ if(c.offsetLeft + c.offsetWidth/2 < mid) idx = i; });
-  countEl.innerHTML = '<b>'+(idx+2)+'</b> / 7　左右滑動看更多';
-},{passive:true});
+/* 滑動時更新「n / 7」指示（主卡算第 1 張）
+   包成函式：中繼頁載入客戶的名片頁內容後要重新綁定一次 */
+function bindRail(){
+  const rail = document.getElementById('rail'), countEl = document.getElementById('count');
+  if(!rail || !countEl) return;
+  rail.addEventListener('scroll', ()=>{
+    const cards = [...rail.children], mid = rail.scrollLeft + rail.clientWidth/2;
+    let idx = 0;
+    cards.forEach((c,i)=>{ if(c.offsetLeft + c.offsetWidth/2 < mid) idx = i; });
+    countEl.innerHTML = '<b>'+(idx+2)+'</b> / 7　左右滑動看更多';
+  },{passive:true});
+}
+bindRail();
 </script>
 </body>
 </html>

@@ -50,6 +50,9 @@ CRAFT    = [tuple(x) for x in WEB["craft"]]
 CTA      = WEB["cta"]
 
 CONTENT = f"""<!-- CONTENT_START -->
+<!-- 這一整塊是「名片頁內容」；共用中繼頁會把客戶這一段抓過去顯示，
+     所以換客戶時只要重跑本檔即可，兩邊內容自動一致 -->
+<div id="pageContent">
   <!-- ═══════════ 1　主卡 ═══════════ -->
   <header class="hero">
     <div class="logo">{BRAND_EN}<small>{BRAND}</small></div>
@@ -181,6 +184,7 @@ CONTENT = f"""<!-- CONTENT_START -->
     <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">{C["line_id"]}（官方帳號）</a><br><span class="note">個人帳號：{C["line_personal"]}</span></div></div>
     <div class="row"><div class="k">社群</div><div><a data-link="ig" href="#">Instagram</a>　·　<a data-link="fb" href="#">Facebook</a></div></div>
   </div>
+</div><!-- /#pageContent -->
 <!-- CONTENT_END -->"""
 
 
