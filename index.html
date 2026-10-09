@@ -520,6 +520,7 @@ function diag(msg, bad){
   if(ssDiagEl){
     ssDiagEl.innerHTML += line;
     // 只在 ?debug=1 時顯示（正常使用者不會看到 log；失敗時改用下方的大字提示）
+    if(DEBUG) ssDiagEl.style.display = 'block';
   }
 }
 
