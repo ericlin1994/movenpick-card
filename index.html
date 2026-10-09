@@ -67,8 +67,17 @@
   .btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
        padding:12px 5px;border-radius:14px;text-decoration:none;font-size:12.5px;font-weight:700;
        color:#fff;background:linear-gradient(180deg,var(--navy-3),var(--navy-2));
-       border:1px solid rgba(255,255,255,.16);letter-spacing:.03em}
-  .btn:active{transform:scale(.96)}
+       border:1px solid rgba(255,255,255,.16);letter-spacing:.03em;
+       /* 立體：硬邊厚度 + 內上緣高光 + 柔散陰影 */
+       box-shadow:0 4px 0 rgba(12,20,34,.55), 0 8px 16px rgba(22,35,61,.20),
+                  inset 0 1px 0 rgba(255,255,255,.20);
+       transform:translateY(0);
+       transition:transform .07s ease, box-shadow .07s ease, filter .12s ease}
+  .btn:active,.btn.is-pressed{
+       transform:translateY(4px);
+       box-shadow:0 1px 0 rgba(12,20,34,.5), 0 3px 8px rgba(22,35,61,.16),
+                  inset 0 1px 0 rgba(255,255,255,.14);
+       filter:brightness(1.08)}
   .btn .ic{font-size:18px;line-height:1}
   .btn.line{background:linear-gradient(180deg,#B87A47,var(--brown))}
   .btn.tel{background:linear-gradient(180deg,#2E4675,var(--navy-2))}
@@ -160,14 +169,25 @@
           background:linear-gradient(180deg,var(--paper) 70%,rgba(245,241,234,.85) 100%)}
   .topbar button{width:100%;padding:15px;border:0;border-radius:14px;background:var(--navy);color:#fff;
           font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em;
-          box-shadow:0 4px 14px rgba(22,35,61,.18)}
-  .topbar button:active{filter:brightness(1.2)}
+          box-shadow:0 5px 0 #141C2B, 0 10px 18px rgba(22,35,61,.22), inset 0 1px 0 rgba(255,255,255,.22);
+          transform:translateY(0);
+          transition:transform .07s ease, box-shadow .07s ease, filter .12s ease}
+  .topbar button:active,.topbar button.is-pressed{
+          transform:translateY(4px);filter:brightness(1.08);
+          box-shadow:0 1px 0 #141C2B, 0 4px 10px rgba(22,35,61,.18), inset 0 1px 0 rgba(255,255,255,.16)}
+  /* 呼吸提示改成 filter（原本動 box-shadow 會把立體厚度蓋掉） */
   .topbar button.hint{animation:pulse 1.6s ease-in-out infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 4px 14px rgba(22,35,61,.18)}50%{box-shadow:0 0 0 6px rgba(169,107,60,.28)}}
+  @keyframes pulse{0%,100%{filter:brightness(1)}
+                   50%{filter:brightness(1.14) drop-shadow(0 0 7px rgba(196,131,90,.55))}}
   .share{margin:18px 20px 0}
   .share button{width:100%;padding:16px;border:0;border-radius:14px;background:var(--navy);color:#fff;
-        font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em}
-  .share button:active{filter:brightness(1.2)}
+        font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em;
+        box-shadow:0 5px 0 #141C2B, 0 10px 18px rgba(22,35,61,.22), inset 0 1px 0 rgba(255,255,255,.22);
+        transform:translateY(0);
+        transition:transform .07s ease, box-shadow .07s ease, filter .12s ease}
+  .share button:active,.share button.is-pressed{
+        transform:translateY(4px);filter:brightness(1.08);
+        box-shadow:0 1px 0 #141C2B, 0 4px 10px rgba(22,35,61,.18), inset 0 1px 0 rgba(255,255,255,.16)}
   .tip{font-size:12px;color:var(--muted);text-align:center;margin:10px 20px 0;line-height:1.75}
   #diag{display:none;margin:14px 20px 0;padding:12px 14px;border-radius:12px;background:#12192B;
         color:#8FE3B0;font:12px/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-all}
@@ -175,7 +195,8 @@
   #diag .bad{color:#FF9B8A}
   footer{text-align:center;font-size:11.5px;color:#9AA1AE;margin:24px 20px 0;line-height:1.9}
   /* ═══ 分享模式：整頁只留一顆大按鈕（點卡片分享鈕進來時） ═══ */
-  #shareScreen{display:none;padding:30px 22px;text-align:center}
+  /* 分享模式：內容在上方，主 CTA 固定在螢幕最下方 */
+  #shareScreen{display:none;padding:30px 22px calc(132px + env(safe-area-inset-bottom));text-align:center}
   html.share-mode .wrap{display:none !important}
   html.share-mode #shareScreen{display:block}
   #shareScreen .ss-logo{font-weight:900;color:var(--navy);letter-spacing:.14em;font-size:19px;margin:40px 0 6px}
@@ -203,6 +224,14 @@
           transform:translateY(4px);cursor:default;filter:brightness(.93);
           box-shadow:0 2px 0 #141C2B, 0 8px 16px rgba(20,28,48,.3),
                      inset 0 1px 0 rgba(255,255,255,.16)}
+  /* 固定在最下方的 CTA 條：單手也按得到，捲到哪裡都在 */
+  #shareScreen .ss-bar{
+          position:fixed;left:0;right:0;bottom:0;z-index:50;
+          padding:14px 22px calc(14px + env(safe-area-inset-bottom));
+          background:linear-gradient(180deg,rgba(245,241,232,.70) 0%,rgba(245,241,232,.97) 45%);
+          backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+          border-top:1px solid rgba(37,48,67,.10)}
+  #shareScreen .ss-bar button{margin:0 auto}
   #ssDiag{display:none;margin:26px 0 0;padding:12px 14px;border-radius:12px;background:#12192B;color:#D8DEE9;
           font-size:11px;line-height:1.7;text-align:left;white-space:pre-wrap;font-family:Menlo,Consolas,monospace}
 </style>
@@ -220,7 +249,7 @@
 <div id="shareScreen">
   <div class="ss-logo">TC FEZ GLASS<small>友泰京玻璃工程</small></div>
   <p class="ss-tip" id="ssTip">正在為你開啟分享對象…</p>
-  <button id="ssBtn" onclick="fireShare()">📤 選擇分享對象</button>
+  <div class="ss-bar"><button id="ssBtn" onclick="fireShare()">📤 選擇分享對象</button></div>
   <pre id="ssDiag"></pre>
 </div>
 <div class="wrap">
@@ -1232,6 +1261,21 @@ async function shareCard(){
     alert('網址已複製，貼到 LINE 就能傳給朋友');
   }catch(e){ diag('一般分享也失敗：' + e, true); }
 }
+
+/* 一頁式網頁上的按鈕也給同樣的按壓回饋
+   （LINE 內建瀏覽器的 :active 不可靠，所以用 pointer/touch 事件補 class） */
+(function(){
+  document.querySelectorAll('.btn, .topbar button, .share button').forEach(b => {
+    const down = () => b.classList.add('is-pressed');
+    const up   = () => b.classList.remove('is-pressed');
+    ['pointerdown','touchstart'].forEach(e => b.addEventListener(e, down, {passive:true}));
+    ['pointerup','pointercancel','touchend','touchcancel','pointerleave','blur']
+      .forEach(e => b.addEventListener(e, up, {passive:true}));
+  });
+  // 從外部連結返回時，把殘留的按下狀態清掉
+  window.addEventListener('pageshow', () =>
+    document.querySelectorAll('.is-pressed').forEach(e => e.classList.remove('is-pressed')));
+})();
 
 /* 滑動時更新「n / 7」指示（主卡算第 1 張） */
 const rail = document.getElementById('rail'), countEl = document.getElementById('count');
