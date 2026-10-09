@@ -192,6 +192,84 @@ def sub1(html, pattern, repl, label):
     return new
 
 
+PRIVACY_TMPL = """<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隱私權政策｜__BRAND__</title>
+<style>
+  body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+       max-width:720px;margin:0 auto;padding:28px 20px 60px;line-height:1.9;color:#1C2333;background:#F5F1EA}
+  h1{font-size:24px;color:__NAVY__;border-bottom:3px solid __COPPER__;padding-bottom:10px}
+  h2{font-size:17px;color:__NAVY__;margin-top:28px}
+  p,li{font-size:14.5px;color:#3C4658}
+  .meta{font-size:13px;color:#6B7280}
+  a{color:__NAVY__}
+</style>
+</head>
+<body>
+<h1>隱私權政策</h1>
+<p class="meta">__BRAND__（以下稱「本店」）　最後更新：__YEAR__ 年</p>
+
+<p>本頁說明本店透過 LINE 電子名片（LIFF 應用程式）提供服務時，如何蒐集、使用與保護您的資料。</p>
+
+<h2>一、蒐集的資料</h2>
+<ul>
+  <li><strong>LINE 帳號識別資訊</strong>：當您使用本名片中的「分享給好友」功能時，LINE 平台會提供您的使用者識別碼（user ID）與顯示名稱，用於完成分享流程。</li>
+  <li><strong>您主動提供的內容</strong>：當您透過 LINE 與本店聯繫時，所傳送的訊息、照片、需求說明等資訊。</li>
+  <li>本店<strong>不會</strong>取得您的密碼、好友名單或聊天內容。</li>
+</ul>
+
+<h2>二、資料的使用目的</h2>
+<ul>
+  <li>提供__SERVICES__等服務</li>
+  <li>回覆您的詢問與需求評估</li>
+  <li>名片分享功能的運作（由您主動觸發）</li>
+</ul>
+
+<h2>三、分享功能的說明</h2>
+<p>當您按下「分享給好友」時，名片內容會透過 LINE 的官方分享機制（share target picker）傳送給您指定的對象，且僅在您主動操作時才會發生。本店不會、也無法代替您發送任何訊息。</p>
+
+<h2>四、資料的保存與保護</h2>
+<p>資料僅於提供服務所需期間保存，並採取合理的技術與管理措施防止未經授權的存取。</p>
+
+<h2>五、資料的第三人提供</h2>
+<p>除法律要求或您另行同意外，本店不會將您的個人資料提供給第三方。資料處理過程中會使用 LINE 平台（LY Corporation）之服務。</p>
+
+<h2>六、您的權利</h2>
+<p>您可隨時要求查詢、更正或刪除本店持有的您的個人資料。請透過下方聯絡方式與本店聯繫。</p>
+
+<h2>七、聯絡方式</h2>
+<p>
+  __BRAND__<br>
+  電話：<a href="__TEL_URL__">__PHONE__</a><br>
+  地址：__ADDR__<br>
+  LINE：<a href="__LINE_URL__">__LINE_ID__</a>
+</p>
+</body>
+</html>
+"""
+
+
+def write_privacy():
+    """隱私權政策也由 client.json 產生（LIFF 應用程式需要一份可公開的隱私政策網址）"""
+    import datetime
+    html = (PRIVACY_TMPL
+            .replace("__YEAR__", str(datetime.date.today().year))
+            .replace("__BRAND__", BRAND)
+            .replace("__SERVICES__", B["services_line"].replace("・", "、"))
+            .replace("__NAVY__", TH["NAVY"])
+            .replace("__COPPER__", TH["COPPER"])
+            .replace("__TEL_URL__", TEL_LINK)
+            .replace("__PHONE__", TEL_TXT)
+            .replace("__ADDR__", ADDR)
+            .replace("__LINE_URL__", LINE)
+            .replace("__LINE_ID__", C["line_id"]))
+    (pathlib.Path(__file__).with_name("privacy.html")).write_text(html, encoding="utf-8")
+    print("✓ privacy.html 已依 client.json 重建（隱私權政策）")
+
+
 def main():
     page = pathlib.Path(__file__).with_name("index.html")
     html = page.read_text(encoding="utf-8")
@@ -212,6 +290,38 @@ def main():
                 lambda m: m.group(1) + title + m.group(2), "og:title")
     html = sub1(html, r'(<meta property="og:description" content=")[^"]*(">)',
                 lambda m: m.group(1) + WEB["seo_description"] + m.group(2), "og:description")
+
+    # ── 2b. OG 分享網址與 LIFF ID（買家的網址／LIFF，不是開發者的） ──
+    page_url = LK["page_url"]
+    html = sub1(html, r'(<meta property="og:image" content=")[^"]*(">)',
+                lambda m: m.group(1) + page_url.rstrip("/") + "/og.jpg" + m.group(2), "og:image")
+    html = sub1(html, r'(<meta property="og:url" content=")[^"]*(">)',
+                lambda m: m.group(1) + page_url + m.group(2), "og:url")
+
+    # liff 未填（模板狀態）→ 寫入佔位符，頁面 JS 會自動跳過 LIFF 功能
+    liff_raw = LK["liff"]
+    liff_unset = (not liff_raw) or ("0000000000" in liff_raw)
+    LIFF_URL = "https://liff.line.me/0000000000-XXXXXXXX" if liff_unset else liff_raw
+    liff_id = "【請填入你的 LIFF ID（例：1234567890-AbCdEfGh）】" if liff_unset \
+        else liff_raw.rstrip("/").split("/")[-1]
+    html = sub1(html, r"const LIFF_ID = '[^']*';[^\n]*",
+                f"const LIFF_ID = '{liff_id}';   // 由 client.json 的 links.liff 自動寫入", "LIFF_ID")
+
+    # 開發者留下的 TODO 註解（內含開發者自己的 repo 名稱）→ 換成說明
+    # 冪等：兩種寫法都接受，重跑不會炸
+    html = sub1(html,
+                r"(TODO A: og:image.*?TODO B: og:url 改為正式網址"
+                r"|分享預覽的 og:image／og:url 由 client\.json 的 links\.page_url 自動寫入，不需手改)",
+                "分享預覽的 og:image／og:url 由 client.json 的 links.page_url 自動寫入，不需手改",
+                "og TODO 註解")
+
+    # 除錯面板裡測試用的卡片圖網址（原本寫死開發者自己的 repo）→ 換成這家客戶的
+    html = sub1(html, r"const IMG1 = '[^']*';",
+                f"const IMG1 = '{LK['img_base'].rstrip('/')}/card1.jpg';", "IMG1")
+
+    # 頁面 JS 內硬編碼的 LIFF 網址（除錯面板用，共 5 處）→ 全部同步成這家客戶的
+    html, n_liff = re.subn(r"https://liff\.line\.me/[A-Za-z0-9\-]+", LIFF_URL, html)
+    print(f"  ・頁面內 LIFF 網址同步 {n_liff} 處")
     html = sub1(html, r'(<meta name="theme-color" content=")[^"]*(">)',
                 lambda m: m.group(1) + TH["NAVY"] + m.group(2), "theme-color")
     # favicon：emoji 藏在 href 的 data URI 內（同一個 tag 裡就有 '>'），所以整段一起比對
@@ -251,6 +361,7 @@ def main():
 
     page.write_text(html, encoding="utf-8")
     print("✓ 一頁式名片內容已依 client.json 重建　", len(html.encode()), "bytes")
+    write_privacy()
 
 
 if __name__ == "__main__":

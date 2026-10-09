@@ -12,9 +12,7 @@
 
 <!-- ═══════════════════════════════════════════════════════════
      LINE / FB 分享預覽（貼連結自動展開成名片圖卡）
-     TODO A: og:image 改為部署後的絕對網址，例：
-             https://帳號.github.io/movenpick-card/og.jpg （1200x630）
-     TODO B: og:url 改為正式網址
+     分享預覽的 og:image／og:url 由 client.json 的 links.page_url 自動寫入，不需手改
      ═══════════════════════════════════════════════════════════ -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="李柏融 Benson Lee｜友泰京玻璃工程 執行長">
@@ -423,12 +421,12 @@ window.addEventListener('unhandledrejection', e =>
    ─ 需要：LINE Login channel + LIFF app，並在 Console 開啟 shareTargetPicker
    ─ 填入 LIFF_ID 後，在 LINE 內開啟本頁即可把「7 張原生卡片」分享給好友
    ══════════════════════════════════════════════════════════ */
-const LIFF_ID = '2011897701-TrLfDuwi';   // Steve 的 LIFF app（LINE Login channel 底下）
+const LIFF_ID = '2011897701-TrLfDuwi';   // 由 client.json 的 links.liff 自動寫入
 let liffReady = false, flexPayload = null;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b20';
+const BUILD = 'b24';
 const PAGE_VER = '2026-10-07-0800-短標籤+4:3可選'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */

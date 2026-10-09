@@ -22,6 +22,12 @@ TH     = CLIENT["theme"]
 IMG      = LK["img_base"]
 LIFF_URL = LK["liff"]
 ADDR     = C["addr"]
+
+# liff 未設定時（模板狀態）給一個格式合法但無效的佔位網址，
+# 讓卡片結構仍能通過 validate_flex；買家填上自己的 LIFF 後就自動生效。
+_UNSET = "https://liff.line.me/0000000000-XXXXXXXX"
+if (not LIFF_URL) or "0000000000" in LIFF_URL:
+    LIFF_URL = _UNSET
 LINKS = {
     "line":  LK["line"],
     "line2": LK["line2"],
