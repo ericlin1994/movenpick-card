@@ -468,8 +468,48 @@ function diag(msg, bad){
   // 分享模式下網站內容是隱藏的，所以黑框要同步顯示在分享畫面上
   if(ssDiagEl){
     ssDiagEl.innerHTML += line;
-    if(DEBUG) ssDiagEl.style.display = 'block';
+    // 出錯一律顯示（原本只有 ?debug=1 才顯示 → 失敗時使用者只看到空白）
+    if(DEBUG || bad) ssDiagEl.style.display = 'block';
   }
+}
+
+/* ── 分享模式的自救診斷：不能讓使用者看到空白，也永遠不要一直等 ──
+   在分享模式下若 5 秒內 LIFF 沒起來，就把原因直接寫在畫面上。 */
+function shareModeSelfCheck(){
+  const ssTip = document.getElementById('ssTip');
+  const ssBtn = document.getElementById('ssBtn');
+  let q = location.search + (location.hash || '');
+  try{ q = decodeURIComponent(location.search) + decodeURIComponent(location.hash || ''); }catch(e){}
+  const inLine = /Line\/[\d.]+/i.test(navigator.userAgent);
+  const seenShare = q.indexOf('share=1') !== -1;
+  let src = '';
+  try{ src = getParam('src'); }catch(e){}
+
+  diag('──── 自助診斷（分享模式 5 秒未啟動）────');
+  diag('・在 LINE 內開啟：' + (inLine ? '是' : '否 ← 這就是問題，請用 LINE 開啟'));
+  diag('・收到的網址：' + location.search + (location.hash || ''));
+  diag('・偵測到 share=1：' + (seenShare ? '是' : '否 ← 參數被吃掉了'));
+  diag('・取到的 src：' + (src || '（無）'));
+  diag('・LIFF_ID：' + LIFF_ID);
+  diag('・LINE 版本：' + ((navigator.userAgent.match(/Line\/[\d.]+/) || ['（不在 LINE 內）'])[0]));
+
+  if(liffReady){
+    diag('（LIFF 已就緒，可直接按下方按鈕）');
+    if(ssTip) ssTip.innerHTML = '請按下方按鈕選擇分享對象';
+  }else if(!inLine){
+    if(ssTip) ssTip.innerHTML = '這個頁面必須在 <b>LINE 裡面</b>開啟才能分享。<br>'
+      + '請把連結貼進 LINE 的聊天室，再從聊天室點開。';
+  }else if(!seenShare){
+    if(ssTip) ssTip.innerHTML = '這個連結沒有帶到分享參數（被 LINE 的轉址吃掉了）。<br>'
+      + '這是已知問題，已回報處理。';
+  }else{
+    if(ssTip) ssTip.innerHTML = '分享功能沒有啟動。<br>請把下方黑框內容截圖回報。';
+  }
+  if(ssBtn) ssBtn.textContent = '🔄 重新再試一次';
+}
+
+if(document.documentElement.className === 'share-mode'){
+  setTimeout(shareModeSelfCheck, 5000);
 }
 
 /* 讀 query 參數。LIFF 會把原始 query 包進 liff.state，所以整串解碼後再找；
