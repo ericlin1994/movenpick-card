@@ -261,7 +261,6 @@
   <!-- ═══════════ 分享列（置頂） ═══════════ -->
   <div class="topbar">
     <button id="shareBtn" onclick="shareCard()">📤 分享這張名片</button>
-    <button id="sendBtn" onclick="sendToChat()" style="display:none;margin-top:8px;background:#2E7D8F">📨 直接傳到這個聊天室</button>
   </div>
 
 <!-- CONTENT_START -->
@@ -422,7 +421,7 @@
     </article>
 
   </div>
-  <div class="count" id="count"><b>2</b> / 7　左右滑動看更多</div>
+  <div class="count" id="count"><b>1</b> / 6　左右滑動看更多</div>
 
   <!-- ═══════════ 店家資訊 ═══════════ -->
   <div class="sec-title">VISIT｜<em>聯絡資訊</em></div>
@@ -484,7 +483,7 @@ let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b28';
+const BUILD = 'b29';
 const PAGE_VER = '2026-10-09-1910-底部CTA改用flex-sticky'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
@@ -517,7 +516,7 @@ function payloadForSend(){
   return p;
 }
 function diag(msg, bad){
-  diagEl.classList.add('show');
+  if(DEBUG) diagEl.classList.add('show');   /* 網頁最下面的 log 只在 ?debug=1 出現 */
   const line = (bad ? '<span class="bad">✗ ' : '· ') + String(msg).replace(/</g,'&lt;') + (bad ? '</span>' : '') + '\n';
   diagEl.innerHTML += line;
   // 分享模式下網站內容是隱藏的，所以黑框要同步顯示在分享畫面上
@@ -723,15 +722,8 @@ function getParam(name){
       document.getElementById('tipText').innerHTML =
         '你正在 LINE 裡開啟名片。<br>按最上面那顆按鈕，卡片就會以你的名義傳給朋友，對方也能再往下傳。';
     }
-    // 若 LIFF 是在一對一聊天室裡被打開，多給一條不走選擇器的路
-    try{
-      const ctx = liff.getContext ? liff.getContext() : null;
-      if(inLine && ctx && ctx.type === 'utou'){
-        const b = document.getElementById('sendBtn');
-        b.style.display = 'block';
-        diag('偵測到一對一聊天室 → 可用「直接傳到這個聊天室」');
-      }
-    }catch(e){}
+    // （已移除「直接傳到這個聊天室」按鈕：功能與分享選擇器重複，
+    //   且只在一對一聊天室出現，容易讓使用者困惑）
   }catch(e){
     diag('liff.init 失敗：' + (e && (e.message || e.code) || e), true);
     diag('→ channel 若仍在 Developing，需把該 LINE 帳號加成 Tester 或發佈 channel', true);
@@ -1346,12 +1338,23 @@ async function shareCard(){
 function bindRail(){
   const rail = document.getElementById('rail'), countEl = document.getElementById('count');
   if(!rail || !countEl) return;
-  rail.addEventListener('scroll', ()=>{
-    const cards = [...rail.children], mid = rail.scrollLeft + rail.clientWidth/2;
-    let idx = 0;
-    cards.forEach((c,i)=>{ if(c.offsetLeft + c.offsetWidth/2 < mid) idx = i; });
-    countEl.innerHTML = '<b>'+(idx+2)+'</b> / 7　左右滑動看更多';
-  },{passive:true});
+  const n = rail.children.length;          /* 用實際張數，不要寫死 */
+  const setCount = () => {
+    /* 取「中心最接近滑動視窗中心」的那一張當目前頁碼。
+       原本的判斷是「中心在視窗左半邊就算過關」→ 最後一張永遠過不了中線，
+       所以舊版會停在 6/7 數不到最後一張。 */
+    const mid = rail.scrollLeft + rail.clientWidth / 2;
+    let best = 0, bestD = Infinity;
+    [...rail.children].forEach((c, i) => {
+      /* offsetLeft 是相對 offsetParent，要扣掉 rail 自己的位移才能跟 mid 比 */
+      const center = c.offsetLeft - rail.offsetLeft + c.offsetWidth / 2;
+      const d = Math.abs(center - mid);
+      if(d < bestD){ bestD = d; best = i; }
+    });
+    countEl.innerHTML = '<b>' + (best + 1) + '</b> / ' + n + '　左右滑動看更多';
+  };
+  rail.addEventListener('scroll', setCount, {passive:true});
+  setCount();
 }
 bindRail();
 </script>

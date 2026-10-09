@@ -173,7 +173,7 @@ CONTENT = f"""<!-- CONTENT_START -->
     </article>
 
   </div>
-  <div class="count" id="count"><b>2</b> / 7　左右滑動看更多</div>
+  <div class="count" id="count"><b>1</b> / 6　左右滑動看更多</div>
 
   <!-- ═══════════ 店家資訊 ═══════════ -->
   <div class="sec-title">{WEB["visit_title_html"]}</div>
