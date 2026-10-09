@@ -552,9 +552,6 @@ function shareModeSelfCheck(){
   }else{
     if(ssTip) ssTip.innerHTML = '分享功能沒有啟動。<br>請把下方黑框內容截圖回報。';
   }
-  if(ssBtn) ssBtn.textContent = '🔄 重新再試一次';
-  // 重新武裝按鈕：不然 shareFired 還是 true，按下去了也不會動
-  if(!liffReady) shareFired = false;
 }
 
 if(document.documentElement.className === 'share-mode'){
@@ -721,12 +718,15 @@ async function sendToChat(){
 let shareFired = false;
 async function fireShare(){
   const b = document.getElementById('ssBtn');
-  if(shareFired) return;
+  if(shareFired) return;                    /* 只防同一瞬間連點兩次 */
   shareFired = true;
   if(b){ b.classList.add('is-pressed','is-busy'); b.textContent = '開啟中…'; }
   try{ if(navigator.vibrate) navigator.vibrate(12); }catch(e){}   /* 手機震一下（Android 支援） */
-  try{ await shareCard(); }catch(e){}
-  if(b){ b.classList.remove('is-pressed','is-busy'); b.textContent = '🔄 再試一次'; }
+  try{ await shareCard(); }catch(e){ diag('分享流程出錯：' + (e && (e.message||e)), true); }
+  /* 選擇器關閉（送出或取消）後就重新開放 —— 不然按鈕只會作用一次，
+     而畫面上卻寫著「再試一次」，那是在騙使用者 */
+  shareFired = false;
+  if(b){ b.classList.remove('is-pressed','is-busy'); b.textContent = '📤 選擇分享對象'; }
 }
 
 /* 手指按下／放開時即時回饋（連還沒放開都看得到下陷） */
