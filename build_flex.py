@@ -73,11 +73,12 @@ def t(s, size="xs", weight="regular", color=WHITE, wrap=True, margin=None,
 
 
 def box(contents, layout="vertical", spacing="md", margin=None, padding=None, bg=None,
-        radius=None, flex=None, border=None, align_items=None, action=None):
+        radius=None, flex=None, border=None, align_items=None, action=None, background=None):
     o = {"type": "box", "layout": layout, "contents": contents, "spacing": spacing}
     if margin: o["margin"] = margin
     if padding: o["paddingAll"] = padding
     if bg: o["backgroundColor"] = bg
+    if background: o["background"] = background
     if radius: o["cornerRadius"] = radius
     if flex is not None: o["flex"] = flex
     if border: o["borderWidth"] = border[0]; o["borderColor"] = border[1]
@@ -103,19 +104,34 @@ def chunk(seq, n):
     return [list(seq[i:i + n]) for i in range(0, len(seq), n)]
 
 
+def _mix(hexcolor, other, k):
+    """把顏色往另一個顏色混 k 比例（0~1）"""
+    a, b = hexcolor.lstrip("#"), other.lstrip("#")
+    return "#" + "".join(
+        f"{round(int(a[i:i+2], 16) + (int(b[i:i+2], 16) - int(a[i:i+2], 16)) * k):02X}"
+        for i in (0, 2, 4))
+
+
+def lighten(c, k=0.22): return _mix(c, "#FFFFFF", k)
+def darken(c, k=0.20):  return _mix(c, "#000000", k)
+
+
 def pill(label, uri, bg, fg=WHITE):
     """圓角膠囊按鈕：用 box + action 做（LINE 預設 button 無法自訂圓角與底色）。
-    標籤要短、字級 xxs、允許換行——三顆膠囊各佔 1/3 寬，字太長會被裁掉。"""
+    立體感＝垂直漸層（上亮下暗）＋ 一圈略亮的邊框；這是 Flex 能做到的最大幅度
+    （Flex 沒有 box-shadow，做不出真正的投影）。點擊時的變暗回饋由 LINE 原生提供。"""
     return box([t(label, size="xxs", weight="bold", color=fg, align="center", wrap=True)],
-               spacing="none", padding="10px", bg=bg, radius="100px", flex=1,
+               spacing="none", padding="10px", radius="100px", flex=1,
+               background={"type": "linearGradient", "angle": "90deg",
+                           "startColor": lighten(bg, 0.16), "endColor": darken(bg, 0.22)},
+               border=("1px", lighten(bg, 0.26)),
                action={"type": "uri", "label": label[:20], "uri": uri})
 
 
 def control_row():
-    """共用底部操作區：米白圓角底 + 膠囊列（由 client.json 的 flex.pills 決定）"""
-    return box([hbox(*[pill(p["label"], LINKS[p["link"]], TH[p["bg"]]) for p in FLEX["pills"]],
-                     spacing="sm")],
-               spacing="none", padding="10px", bg=BEIGE, radius="20px")
+    """底部操作列：由 client.json 的 flex.pills 決定（放進 bubble.footer 會貼齊卡片底部）"""
+    return hbox(*[pill(p["label"], LINKS[p["link"]], TH[p["bg"]]) for p in FLEX["pills"]],
+                spacing="sm")
 
 
 def tag_pill(label):
@@ -126,9 +142,9 @@ def tag_pill(label):
 
 # ═══════════ 逐卡 body ═══════════
 def body1():
-    """雜誌封面款：主文案烤進 Hero 圖；body 保留一行保險文字 + 操作列"""
-    return vbox([t(FLEX["cover_line"], size="xxs", color=MUTED, margin="none"),
-                 control_row()], spacing="md", padding="14px", bg=NAVY)
+    """雜誌封面款：主文案烤進 Hero 圖；body 只留一行保險文字（按鈕在 footer）"""
+    return vbox([t(FLEX["cover_line"], size="xxs", color=MUTED, margin="none")],
+                spacing="md", padding="14px", bg=NAVY)
 
 
 def body2():
@@ -145,7 +161,6 @@ def body2():
                   margin="sm")
              for p in pains],
             spacing="sm", padding="18px", bg=BEIGE, radius="20px", margin="md"),
-        control_row(),
     ], spacing="md", padding="18px", bg=NAVY)
 
 
@@ -159,9 +174,7 @@ def body3():
         t(FLEX["services_title"], size="xl", weight="bold", color=COPPER, margin="none"),
         t(FLEX["services_sub"], size="sm", color=WHITE, margin="xs"),
     ] + [hbox(*[cell(s["icon"], s["name"], s["desc"]) for s in row], spacing="md", margin="md")
-         for row in chunk(FLEX["services"], 2)] + [
-        control_row(),
-    ], spacing="md", padding="18px", bg=NAVY)
+         for row in chunk(FLEX["services"], 2)], spacing="md", padding="18px", bg=NAVY)
 
 
 def body4():
@@ -171,15 +184,13 @@ def body4():
     ] + [hbox(t(big, size="4xl", weight="bold", color=COPPER, flex=2, wrap=False),
               t(small, size="sm", weight="bold", color=WHITE, flex=3, margin="none"),
               spacing="md", align_items="center", margin="xl" if i == 0 else "md")
-         for i, (big, small) in enumerate(stats)] + [
-        control_row(),
-    ], spacing="md", padding="18px", bg=NAVY)
+         for i, (big, small) in enumerate(stats)], spacing="md", padding="18px", bg=NAVY)
 
 
 def body5():
-    """工藝：主文案烤進 3:4 Hero 圖；body 保留一行保險文字 + 操作列"""
-    return vbox([t(FLEX["craft_line"], size="xxs", color=MUTED, margin="none"),
-                 control_row()], spacing="md", padding="14px", bg=NAVY)
+    """工藝：主文案烤進 3:4 Hero 圖；body 只留一行保險文字（按鈕在 footer）"""
+    return vbox([t(FLEX["craft_line"], size="xxs", color=MUTED, margin="none")],
+                spacing="md", padding="14px", bg=NAVY)
 
 
 def body6():
@@ -195,7 +206,6 @@ def body6():
         t(FLEX["contact_title"], size="xl", weight="bold", color=NAVY, margin="none"),
         t(FLEX["contact_sub"], size="xs", weight="bold", color=COPPER, margin="xs"),
         box(rows, spacing="sm", padding="18px", bg=NAVY, radius="20px", margin="md"),
-        control_row(),
     ], spacing="md", padding="18px", bg=BEIGE)
 
 
@@ -210,8 +220,12 @@ def build_bubble(i):
     b = {
         "type": "bubble", "size": "mega",
         # 深色卡片背景用 bubble styles（官方做法），body 區塊才會整片滿版
-        "styles": {"body": {"backgroundColor": BG_COLOR[i]}},
+        "styles": {"body": {"backgroundColor": BG_COLOR[i]},
+                   # 米白底的卡片（第 6 張）footer 用純白，才看得出下面有一條操作列
+                   "footer": {"backgroundColor": WHITE if BG_COLOR[i] == BEIGE else BEIGE}},
         "body": BODIES[i - 1](),
+        # 三顆膠囊放在 footer：貼齊卡片最下方，像 App 的底部操作列
+        "footer": vbox([control_row()], spacing="none", padding="10px"),
     }
     if i in HEROES:
         b["hero"] = {"type": "image", "url": HEROES[i], "size": "full",
