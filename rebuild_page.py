@@ -49,6 +49,35 @@ STEPS    = [tuple(x) for x in WEB["steps"]]
 CRAFT    = [tuple(x) for x in WEB["craft"]]
 CTA      = WEB["cta"]
 
+# ── 按鈕列（資料驅動）────────────────────────────────────────────
+# client.json 的 web.btns / web.btns2 沒設定時，就輸出原本寫死的版本，
+# 所以沒有設定這一項的客戶（既有案子）輸出完全不會變。
+def _btns_nav(items, ind, extra_style=""):
+    n = len(items)
+    rows = []
+    for b in items:
+        href = LK.get(b["link"], "#") if b.get("link") else b.get("href", "#")
+        cls = (" " + b["cls"]) if b.get("cls") else ""
+        rows.append(f'{ind}  <a class="btn{cls}" href="{href}">'
+                    f'<span class="ic">{b.get("icon", "")}</span>{b["label"]}</a>')
+    head = (f'<nav class="actions" '
+            f'style="grid-template-columns:repeat({n},1fr){extra_style}">')
+    return head + "\n" + "\n".join(rows) + f'\n{ind}</nav>'
+
+NAV1 = (_btns_nav(WEB["btns"], "    ") if WEB.get("btns") else r"""<nav class="actions">
+      <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
+      <a class="btn" data-link="ig"><span class="ic">📷</span>IG 作品</a>
+      <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
+    </nav>""")
+NAV2 = (_btns_nav(WEB["btns2"], "      ", ";margin-top:16px")
+        if WEB.get("btns2") else f"""<nav class="actions" style="grid-template-columns:1fr 1fr;margin-top:16px">
+        <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
+        <a class="btn" data-link="ig"><span class="ic">📷</span>Instagram</a>
+        <a class="btn" href="{TEL_LINK}"><span class="ic">📞</span>撥打電話</a>
+        <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
+        <a class="btn" data-link="fb"><span class="ic">👍</span>Facebook</a>
+      </nav>""")
+
 CONTENT = f"""<!-- CONTENT_START -->
 <!-- 這一整塊是「名片頁內容」；共用中繼頁會把客戶這一段抓過去顯示，
      所以換客戶時只要重跑本檔即可，兩邊內容自動一致 -->
@@ -75,11 +104,7 @@ CONTENT = f"""<!-- CONTENT_START -->
       {''.join(f'<span class="tag">{t}</span>' for t in TAGS)}
     </div>
 
-    <nav class="actions">
-      <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
-      <a class="btn" data-link="ig"><span class="ic">📷</span>IG 作品</a>
-      <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
-    </nav>
+    {NAV1}
   </header>
 
   <!-- ═══════════ 2 ═══════════ -->
@@ -163,13 +188,7 @@ CONTENT = f"""<!-- CONTENT_START -->
         <div class="row"><div class="k">營業時間</div><div class="note">{HOURS}</div></div>
       </div>
 
-      <nav class="actions" style="grid-template-columns:1fr 1fr;margin-top:16px">
-        <a class="btn line" data-link="line"><span class="ic">💬</span>LINE 諮詢</a>
-        <a class="btn" data-link="ig"><span class="ic">📷</span>Instagram</a>
-        <a class="btn" href="{TEL_LINK}"><span class="ic">📞</span>撥打電話</a>
-        <a class="btn" data-link="map"><span class="ic">📍</span>導航門市</a>
-        <a class="btn" data-link="fb"><span class="ic">👍</span>Facebook</a>
-      </nav>
+      {NAV2}
     </article>
 
   </div>

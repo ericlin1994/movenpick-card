@@ -55,6 +55,10 @@ LINKS = {
              + urllib.parse.quote(C["map_query"]),
     "share": SHARE_URL,
 }
+# 讓 client.json 自訂的任意字串連結都能給卡片按鈕用（例如示範站的說明／聯絡／購買）
+for _k, _v in LK.items():
+    if isinstance(_v, str) and _k not in LINKS and _k != "share":
+        LINKS[_k] = _v
 
 # ═══════════ Design Tokens ═══════════
 NAVY   = TH["NAVY"]
