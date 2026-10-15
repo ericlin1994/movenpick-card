@@ -88,7 +88,7 @@ CONTENT = f"""<!-- CONTENT_START -->
     <div class="logo">{BRAND_EN}<small>{BRAND}</small></div>
 
     <!-- TODO: 形象照存成 photo.jpg 放同一資料夾；沒有檔案時顯示佔位圈 -->
-    <img class="portrait" src="photo.jpg" alt="{OWNER[0]} {OWNER[1]}"
+    <img class="portrait" src="photo.jpg" alt="{OWNER[0]} {OWNER[1]}" fetchpriority="high" decoding="async" width="134" height="134"
          onerror="this.outerHTML='<div class=&quot;portrait-ph&quot;>形象照</div>'">
 
     <h1 class="name">{OWNER[0]} <span>{OWNER[1]}</span></h1>
@@ -157,7 +157,7 @@ CONTENT = f"""<!-- CONTENT_START -->
       <h3>{WEB["craft_title_html"]}</h3>
       <div class="craft">
         {''.join(f'''<figure>
-          <img src="{src}" alt="{h}" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="{src}" alt="{h}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
           <figcaption><h4>{h}</h4><p>{p}</p></figcaption>
         </figure>''' for src, h, p in CRAFT)}
       </div>
@@ -169,7 +169,7 @@ CONTENT = f"""<!-- CONTENT_START -->
       <p class="sub">{WEB["case_sub"]}</p>
       <div class="craft">
         {''.join(f'''<figure>
-          <img src="case{i}.jpg" alt="案例{i}" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case{i}.jpg" alt="案例{i}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure>''' for i in range(1, WEB["case_count"] + 1))}
       </div>
     </article>
@@ -199,7 +199,7 @@ CONTENT = f"""<!-- CONTENT_START -->
   <div class="sec-title">{WEB["gallery_title_html"]}</div>
   <div class="wall">
     {''.join(f'''<figure>
-          <img src="gallery{i}.jpg" alt="作品{i}" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery{i}.jpg" alt="作品{i}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure>''' for i in range(1, WEB["gallery_count"] + 1))}
   </div>
 

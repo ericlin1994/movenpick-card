@@ -27,7 +27,7 @@
   :root{
     --navy:#253043; --navy-2:#1E2838; --navy-3:#33415C;
     --brown:#C4835A; --gold:#C4835A; --gold-2:#DFA77C;
-    --ink:#253043; --paper:#F5F1E8; --muted:#6B7280; --red:#B4462F;
+    --ink:#253043; --paper:#F5F1E8; --muted:#5B6372; --brown-text:#9E6338; --red:#B4462F;
     --radius:20px;
     /* TODO C: 官網 / LINE / IG / FB 連結集中在頁面最下方 JS 的 LINKS 物件，改那裡就好 */
   }
@@ -79,12 +79,12 @@
                   inset 0 1px 0 rgba(255,255,255,.14);
        filter:brightness(1.08)}
   .btn .ic{font-size:18px;line-height:1}
-  .btn.line{background:linear-gradient(180deg,#B87A47,var(--brown))}
+  .btn.line{background:linear-gradient(180deg,#A8683C,#8F5630)}
   .btn.tel{background:linear-gradient(180deg,#2E4675,var(--navy-2))}
 
   /* ── 區塊標題 ── */
   .sec-title{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.18em;margin:26px 20px 10px}
-  .sec-title em{font-style:normal;color:var(--brown)}
+  .sec-title em{font-style:normal;color:var(--brown-text)}
 
   /* ── 橫向卡片輪播（對應原圖 1/7～7/7） ── */
   .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 16px;scrollbar-width:none}
@@ -94,7 +94,7 @@
   .card h3{margin:0 0 4px;font-size:19px;color:var(--navy);letter-spacing:.02em;line-height:1.5}
   .card h3 em{font-style:normal;color:var(--brown)}
   .card .sub{margin:0 0 14px;font-size:13.5px;color:var(--muted)}
-  .card p{margin:0 0 10px;font-size:14.5px;color:#3C4658}
+  .card p{margin:0 0 10px;font-size:15px;line-height:1.75;color:#3C4658}
 
   .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 4px}
   .grid6 div{background:#F1EDE4;border:1px solid rgba(22,35,61,.08);border-radius:12px;
@@ -102,9 +102,9 @@
   .grid6 div span{display:block;font-size:16px;margin-bottom:3px}
 
   .box{background:#F7F4EE;border:1px dashed rgba(22,35,61,.18);border-radius:14px;padding:14px;margin-top:12px}
-  .box .bt{font-size:12.5px;font-weight:800;color:var(--brown);letter-spacing:.1em;margin-bottom:8px;text-align:center}
+  .box .bt{font-size:12.5px;font-weight:800;color:var(--brown-text);letter-spacing:.1em;margin-bottom:8px;text-align:center}
   .box ul{margin:0;padding:0;list-style:none}
-  .box li{position:relative;padding-left:22px;font-size:14px;color:#3C4658;margin-bottom:8px}
+  .box li{position:relative;padding-left:22px;font-size:14.5px;color:#3C4658;margin-bottom:8px}
   .box li:last-child{margin-bottom:0}
   .box li::before{content:"✓";position:absolute;left:0;top:0;color:var(--brown);font-weight:800}
   .box.warn li::before{content:"✕";color:var(--red)}
@@ -117,8 +117,8 @@
   .svc .ico{flex:0 0 40px;height:40px;border-radius:12px;background:#F1EDE4;display:flex;
             align-items:center;justify-content:center;font-size:19px}
   .svc h4{margin:0 0 2px;font-size:16px;color:var(--navy)}
-  .svc .tagsm{font-size:12px;color:var(--brown);font-weight:700;letter-spacing:.06em;margin-bottom:4px}
-  .svc p{margin:0;font-size:13.5px;color:#4A5468;line-height:1.65}
+  .svc .tagsm{font-size:12px;color:var(--brown-text);font-weight:700;letter-spacing:.06em;margin-bottom:4px}
+  .svc p{margin:0;font-size:14px;color:#4A5468;line-height:1.7}
 
   /* 數據 */
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 14px}
@@ -129,18 +129,18 @@
   .steps li{position:relative;padding:9px 0 9px 46px;border-bottom:1px dashed rgba(22,35,61,.10);font-size:14px;color:#3C4658}
   .steps li:last-child{border-bottom:0}
   .steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;left:0;top:9px;
-        font-size:13px;font-weight:800;color:#fff;background:var(--brown);border-radius:8px;padding:3px 7px}
+        font-size:13px;font-weight:800;color:#fff;background:#A8683C;border-radius:8px;padding:3px 7px}
   .steps b{color:var(--navy)}
 
   /* 2x2 工藝 */
-  .craft{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  .craft{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
   .craft figure{margin:0;background:#F7F4EE;border-radius:14px;overflow:hidden;border:1px solid rgba(22,35,61,.07)}
   .craft .ph{aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#EDE7DB,#EDE7DB 8px,#F5F1EA 8px,#F5F1EA 16px);
              display:flex;align-items:center;justify-content:center;font-size:11px;color:#9AA1AE;letter-spacing:.1em}
   .craft img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-  .craft figcaption{padding:10px 11px 12px}
+  .craft figcaption{padding:9px 9px 11px}
   .craft h4{margin:0 0 3px;font-size:14.5px;color:var(--navy)}
-  .craft p{margin:0;font-size:12px;color:#5A6478;line-height:1.6}
+  .craft p{margin:0;font-size:12.5px;color:#5A6478;line-height:1.65}
 
   /* 作品牆 */
   .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 20px 0;background:#fff;
@@ -173,11 +173,11 @@
   .info .note{font-size:12.5px;color:var(--muted)}
 
   /* 置頂分享列：滑到哪裡都按得到 */
-  .topbar{position:sticky;top:0;z-index:30;padding:12px 20px 10px;
+  .topbar{position:sticky;top:0;z-index:30;padding:8px 16px 6px;
           background:linear-gradient(180deg,var(--paper) 70%,rgba(245,241,234,.85) 100%)}
-  .topbar button{width:100%;padding:15px;border:0;border-radius:14px;background:var(--navy);color:#fff;
-          font-size:15px;font-weight:800;font-family:inherit;letter-spacing:.06em;
-          box-shadow:0 5px 0 #141C2B, 0 10px 18px rgba(22,35,61,.22), inset 0 1px 0 rgba(255,255,255,.22);
+  .topbar button{width:100%;padding:10px;border:0;border-radius:14px;background:var(--navy);color:#fff;
+          font-size:14px;font-weight:800;font-family:inherit;letter-spacing:.06em;
+          box-shadow:0 3px 0 #141C2B, 0 6px 12px rgba(22,35,61,.2), inset 0 1px 0 rgba(255,255,255,.22);
           transform:translateY(0);
           transition:transform .07s ease, box-shadow .07s ease, filter .12s ease}
   .topbar button:active,.topbar button.is-pressed{
@@ -185,6 +185,10 @@
           box-shadow:0 1px 0 #141C2B, 0 4px 10px rgba(22,35,61,.18), inset 0 1px 0 rgba(255,255,255,.16)}
   /* 呼吸提示改成 filter（原本動 box-shadow 會把立體厚度蓋掉） */
   .topbar button.hint{animation:pulse 1.6s ease-in-out infinite}
+  @media (prefers-reduced-motion:reduce){
+    .topbar button.hint{animation:none}
+  }
+  .btn:focus-visible,.topbar button:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
   @keyframes pulse{0%,100%{filter:brightness(1)}
                    50%{filter:brightness(1.14) drop-shadow(0 0 7px rgba(196,131,90,.55))}}
   .share{margin:18px 20px 0}
@@ -201,7 +205,7 @@
         color:#8FE3B0;font:12px/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-all}
   #diag.show{display:block}
   #diag .bad{color:#FF9B8A}
-  footer{text-align:center;font-size:11.5px;color:#9AA1AE;margin:24px 20px 0;line-height:1.9}
+  footer{text-align:center;font-size:11.5px;color:#6B7280;margin:24px 20px 0;line-height:1.9}
   /* ═══ 分享模式：整頁只留一顆大按鈕（點卡片分享鈕進來時） ═══ */
   /* 按鈕固定在畫面最下方：用 flex + sticky，不依賴 position:fixed
      （LINE 內建瀏覽器對 fixed 的處理不一致；flex 的 min-height:100dvh
@@ -280,7 +284,7 @@
     <div class="logo">TC FEZ GLASS<small>友泰京玻璃工程</small></div>
 
     <!-- TODO: 形象照存成 photo.jpg 放同一資料夾；沒有檔案時顯示佔位圈 -->
-    <img class="portrait" src="photo.jpg" alt="李柏融 Benson Lee"
+    <img class="portrait" src="photo.jpg" alt="李柏融 Benson Lee" fetchpriority="high" decoding="async" width="134" height="134"
          onerror="this.outerHTML='<div class=&quot;portrait-ph&quot;>形象照</div>'">
 
     <h1 class="name">李柏融 <span>Benson Lee</span></h1>
@@ -374,16 +378,16 @@
       <h3>工藝藏在<em>細節</em>，品質落在實處</h3>
       <div class="craft">
         <figure>
-          <img src="craft1.jpg" alt="藝術工藝｜光影層次" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="craft1.jpg" alt="藝術工藝｜光影層次" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
           <figcaption><h4>藝術工藝｜光影層次</h4><p>鑲嵌、紋理與複合工藝，呈現玻璃的立體層次與光影美感</p></figcaption>
         </figure><figure>
-          <img src="craft2.jpg" alt="機能選材｜美感兼顧實用" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="craft2.jpg" alt="機能選材｜美感兼顧實用" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
           <figcaption><h4>機能選材｜美感兼顧實用</h4><p>安全玻璃、Low-E 或中空複合結構，兼顧美感與機能需求</p></figcaption>
         </figure><figure>
-          <img src="craft3.jpg" alt="精準加工｜實現特殊設計" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="craft3.jpg" alt="精準加工｜實現特殊設計" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
           <figcaption><h4>精準加工｜實現特殊設計</h4><p>特殊尺寸、彎曲造型及異材質搭配，符合設計需求</p></figcaption>
         </figure><figure>
-          <img src="craft4.jpg" alt="立體雕刻｜層次與光影" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="craft4.jpg" alt="立體雕刻｜層次與光影" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
           <figcaption><h4>立體雕刻｜層次與光影</h4><p>噴砂雕刻與背漆層次，讓圖紋立體、透光而有深度</p></figcaption>
         </figure>
       </div>
@@ -395,17 +399,17 @@
       <p class="sub">實際施作案例（住宅、宗教建築與商業空間）</p>
       <div class="craft">
         <figure>
-          <img src="case1.jpg" alt="案例1" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case1.jpg" alt="案例1" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure><figure>
-          <img src="case2.jpg" alt="案例2" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case2.jpg" alt="案例2" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure><figure>
-          <img src="case3.jpg" alt="案例3" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case3.jpg" alt="案例3" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure><figure>
-          <img src="case4.jpg" alt="案例4" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case4.jpg" alt="案例4" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure><figure>
-          <img src="case5.jpg" alt="案例5" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case5.jpg" alt="案例5" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure><figure>
-          <img src="case6.jpg" alt="案例6" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
+          <img src="case6.jpg" alt="案例6" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>案例照</div>'">
         </figure>
       </div>
     </article>
@@ -441,23 +445,23 @@
   <div class="sec-title">更多<em>作品</em></div>
   <div class="wall">
     <figure>
-          <img src="gallery1.jpg" alt="作品1" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery1.jpg" alt="作品1" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery2.jpg" alt="作品2" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery2.jpg" alt="作品2" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery3.jpg" alt="作品3" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery3.jpg" alt="作品3" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery4.jpg" alt="作品4" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery4.jpg" alt="作品4" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery5.jpg" alt="作品5" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery5.jpg" alt="作品5" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery6.jpg" alt="作品6" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery6.jpg" alt="作品6" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery7.jpg" alt="作品7" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery7.jpg" alt="作品7" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery8.jpg" alt="作品8" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery8.jpg" alt="作品8" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure><figure>
-          <img src="gallery9.jpg" alt="作品9" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+          <img src="gallery9.jpg" alt="作品9" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
         </figure>
   </div>
 
@@ -521,7 +525,7 @@ let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b37';
+const BUILD = 'b38';
 const PAGE_VER = '2026-10-15-2-hero圖改網址破LINE圖快取'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
