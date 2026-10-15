@@ -22,6 +22,7 @@ C      = CLIENT["contact"]
 LK     = CLIENT["links"]
 WEB    = CLIENT["web"]
 TH     = CLIENT["theme"]
+IMG_CFG = CLIENT["images"]
 
 BRAND    = B["name"]
 BRAND_EN = B["en"]
@@ -348,7 +349,7 @@ def main():
 
     # 除錯面板裡測試用的卡片圖網址（原本寫死開發者自己的 repo）→ 換成這家客戶的
     html = sub1(html, r"const IMG1 = '[^']*';",
-                f"const IMG1 = '{LK['img_base'].rstrip('/')}/card1.jpg';", "IMG1")
+                f"const IMG1 = '{LK['img_base'].rstrip('/')}/{IMG_CFG['heroes']['1']}';", "IMG1")
 
     # 頁面 JS 內硬編碼的 LIFF 網址（除錯面板用，共 5 處）→ 全部同步成這家客戶的
     html, n_liff = re.subn(r"https://liff\.line\.me/[A-Za-z0-9\-]+", LIFF_URL, html)
