@@ -209,6 +209,11 @@ CONTENT = f"""<!-- CONTENT_START -->
     <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">{C["line_id"]}（官方帳號）</a><br><span class="note">個人帳號：{C["line_personal"]}</span></div></div>
     <div class="row"><div class="k">社群</div><div class="soc"><a data-link="ig" href="#">Instagram</a><a data-link="fb" href="#">Facebook</a></div></div>
   </div>
+  <!-- ═══════════ 底部常駐列（sticky） ═══════════ -->
+  <nav class="dock" aria-label="快速聯絡">
+    <a class="btn line" data-link="line" href="{LINE}"><span class="ic">💬</span>LINE 諮詢</a>
+    <a class="btn tel" href="{TEL_LINK}"><span class="ic">📞</span>撥打電話</a>
+  </nav>
 </div><!-- /#pageContent -->
 <!-- CONTENT_END -->"""
 
