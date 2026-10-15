@@ -229,7 +229,7 @@
     "count": 6,
     "heroes": {
       "1": "card1-v3.jpg",
-      "5": "card5-v4.jpg"
+      "5": "card5-v5.jpg"
     },
     "posters": [
       {
@@ -250,18 +250,15 @@
       },
       {
         "page": 5,
-        "out": "card5-v4.jpg",
+        "out": "card5-v5.jpg",
         "art": "photo",
         "photo": "card5_hero.jpg",
         "name": "品質落在實處",
         "en": "",
         "role": "工藝藏在細節，滿足高標準設計",
-        "slogan": [
-          "藝術工藝 · 機能選材",
-          "精準加工 · 立體雕刻"
-        ],
+        "slogan": [],
         "name_size": 96,
-        "name_y": 0.67,
+        "name_y": 0.76,
         "show_quote": false
       }
     ],
@@ -274,8 +271,8 @@
       {
         "page": 5,
         "h": 810,
-        "out": "card5-v4_43.jpg",
-        "name_y": 0.54
+        "out": "card5-v5_43.jpg",
+        "name_y": 0.72
       }
     ],
     "og": {
