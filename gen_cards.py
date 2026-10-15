@@ -155,8 +155,11 @@ def poster(path_out, art, name, en="", role="", slogan=(),
     return path_out
 
 
-def render(p, h=H, out=None):
-    """依 client.json 的 images.posters 設定產生一張海報"""
+def render(p, h=H, out=None, name_y=None):
+    """依 client.json 的 images.posters 設定產生一張海報
+    name_y：比例 0~1，優先序 參數 → p["name_y"] → None（poster 預設 0.47）"""
+    if name_y is None:
+        name_y = p.get("name_y")
     if p["art"] == "photo":
         ph = photo_or_none(p.get("photo", "photo.jpg"), h)
         if ph:
@@ -170,6 +173,7 @@ def render(p, h=H, out=None):
     return poster(OUT / (out or p["out"]), art, p["name"], en=p.get("en", ""),
                   role=p.get("role", ""), slogan=tuple(p.get("slogan", [])),
                   name_size=int(p["name_size"] * (h / H) ** 0.6),
+                  name_y=int(h * name_y) if name_y is not None else None,
                   show_quote=p.get("show_quote", True), canvas_h=h)
 
 
@@ -200,5 +204,5 @@ if __name__ == "__main__":
         print("✓", render(p).name, f"（第 {p['page']} 張）")
     for v in IMG["variants"]:
         base = next(p for p in IMG["posters"] if p["page"] == v["page"])
-        print("✓", render(base, h=v["h"], out=v["out"]).name, "（較矮版）")
+        print("✓", render(base, h=v["h"], out=v["out"], name_y=v.get("name_y")).name, "（較矮版）")
     print("✓", make_og().name)

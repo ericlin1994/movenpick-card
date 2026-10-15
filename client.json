@@ -229,7 +229,7 @@
     "count": 6,
     "heroes": {
       "1": "card1-v3.jpg",
-      "5": "card5-v3.jpg"
+      "5": "card5-v4.jpg"
     },
     "posters": [
       {
@@ -250,7 +250,7 @@
       },
       {
         "page": 5,
-        "out": "card5-v3.jpg",
+        "out": "card5-v4.jpg",
         "art": "photo",
         "photo": "card5_hero.jpg",
         "name": "品質落在實處",
@@ -261,6 +261,7 @@
           "精準加工 · 立體雕刻"
         ],
         "name_size": 96,
+        "name_y": 0.67,
         "show_quote": false
       }
     ],
@@ -273,7 +274,8 @@
       {
         "page": 5,
         "h": 810,
-        "out": "card5-v3_43.jpg"
+        "out": "card5-v4_43.jpg",
+        "name_y": 0.54
       }
     ],
     "og": {
