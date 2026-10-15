@@ -443,33 +443,6 @@
                     },
                     {
                       "type": "text",
-                      "text": "特殊彎曲或異材質，找不到方案",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#253043",
-                      "wrap": true,
-                      "margin": "none",
-                      "flex": 6
-                    }
-                  ],
-                  "spacing": "sm",
-                  "margin": "sm"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "📌",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
                       "text": "兼顧採光與隔熱，不知如何選材",
                       "size": "xs",
                       "weight": "regular",

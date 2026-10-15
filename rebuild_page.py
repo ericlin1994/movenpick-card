@@ -31,6 +31,7 @@ OWNER    = (B["owner_name"], B["owner_en"])
 ROLE     = B["role"]
 SLOGAN1, SLOGAN2 = B["slogan1"], B["slogan2"]
 TAGS     = B["tags"]
+TAGS_BLOCK = ("\n    <div class=\"tags\">\n      " + ''.join(f'<span class="tag">{t}</span>' for t in TAGS) + "\n    </div>\n") if TAGS else ""
 
 ADDR      = C["addr"]
 ADDR_NOTE = C["addr_note"]
@@ -100,11 +101,7 @@ CONTENT = f"""<!-- CONTENT_START -->
       {SLOGAN2}
       <i>”</i>
     </div>
-
-    <div class="tags">
-      {''.join(f'<span class="tag">{t}</span>' for t in TAGS)}
-    </div>
-
+{TAGS_BLOCK}
     {NAV1}
   </header>
 
@@ -185,7 +182,7 @@ CONTENT = f"""<!-- CONTENT_START -->
 
       <div class="info" style="margin:14px 0 0;box-shadow:none;padding:0;border:0">
         <div class="row"><div class="k">電話</div><div><a href="{TEL_LINK}">{TEL_TXT}</a></div></div>
-        <div class="row"><div class="k">地址</div><div>{ADDR}<br><span class="note">{ADDR_NOTE}</span></div></div>
+        <div class="row"><div class="k">地址</div><div><a data-link="map" href="#">{ADDR}</a><br><span class="note">{ADDR_NOTE}</span></div></div>
         <div class="row"><div class="k">營業時間</div><div class="note">{HOURS}</div></div>
       </div>
 
@@ -206,11 +203,11 @@ CONTENT = f"""<!-- CONTENT_START -->
   <!-- ═══════════ 店家資訊 ═══════════ -->
   <div class="sec-title">{WEB["visit_title_html"]}</div>
   <div class="info">
-    <div class="row"><div class="k">地址</div><div>{ADDR}<br><span class="note">{ADDR_NOTE}</span></div></div>
+    <div class="row"><div class="k">地址</div><div><a data-link="map" href="#">{ADDR}</a><br><span class="note">{ADDR_NOTE}</span></div></div>
     <div class="row"><div class="k">電話</div><div><a href="{TEL_LINK}">{TEL_TXT}</a></div></div>
     <div class="row"><div class="k">時間</div><div class="note">{HOURS}</div></div>
     <div class="row"><div class="k">LINE</div><div><a data-link="line" href="#">{C["line_id"]}（官方帳號）</a><br><span class="note">個人帳號：{C["line_personal"]}</span></div></div>
-    <div class="row"><div class="k">社群</div><div><a data-link="ig" href="#">Instagram</a>　·　<a data-link="fb" href="#">Facebook</a></div></div>
+    <div class="row"><div class="k">社群</div><div class="soc"><a data-link="ig" href="#">Instagram</a><a data-link="fb" href="#">Facebook</a></div></div>
   </div>
 </div><!-- /#pageContent -->
 <!-- CONTENT_END -->"""
