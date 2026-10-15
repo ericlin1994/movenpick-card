@@ -194,6 +194,14 @@ CONTENT = f"""<!-- CONTENT_START -->
   </div>
   <div class="count" id="count"><b>1</b> / 6　左右滑動看更多</div>
 
+  <!-- ═══════════ 作品牆 ═══════════ -->
+  <div class="sec-title">{WEB["gallery_title_html"]}</div>
+  <div class="wall">
+    {''.join(f'''<figure>
+          <img src="gallery{i}.jpg" alt="作品{i}" onerror="this.outerHTML='<div class=&quot;ph&quot;>照片</div>'">
+        </figure>''' for i in range(1, WEB["gallery_count"] + 1))}
+  </div>
+
   <!-- ═══════════ 店家資訊 ═══════════ -->
   <div class="sec-title">{WEB["visit_title_html"]}</div>
   <div class="info">

@@ -1,0 +1,9 @@
+# ── 工作檔（不部署，只留本機）──
+# 客戶原始照片與去背中間檔體積大且不需要上線
+photos_raw/
+benson_raw.jpg
+benson_cut_*.png
+_overview.jpg
+_check_*.jpg
+_preview_*.jpg
+_sheet_*.jpg
