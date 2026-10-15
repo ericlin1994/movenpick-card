@@ -34,6 +34,10 @@ def rgb(hexstr):
     return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
 
 
+def lighten(c, k):  # k=0 原色、k=1 純白
+    return tuple(int(c[i] + (255 - c[i]) * k) for i in range(3))
+
+
 NAVY, NAVY_D = rgb(TH["NAVY"]), rgb(TH["NAVY_D"])
 COPPER, BEIGE = rgb(TH["COPPER"]), rgb(TH["BEIGE"])
 WHITE, MUTED = rgb(TH["WHITE"]), rgb(TH["MUTED"])
@@ -136,7 +140,7 @@ def poster(path_out, art, name, en="", role="", slogan=(),
         d.text((80, y), line, font=fo, fill=WHITE + (255,))
         if en and i == 0:
             d.text((80 + fo.getlength(line) + 26, y + int(name_size * 0.42)),
-                   en, font=font(BOLD, int(name_size * 0.5)), fill=COPPER + (255,))
+                   en, font=font(BOLD, int(name_size * 0.5)), fill=lighten(COPPER, 0.5) + (255,))
 
     y = name_y + int(name_size * 1.12) * len(name.split("\n")) + int(h * 0.004)
     if role:
