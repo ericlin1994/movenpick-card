@@ -113,7 +113,7 @@ def photo_or_none(name, h=H):
     return im.crop((l, t, l + W, t + h))
 
 
-def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
+def poster(path_out, art, name, en="", role="", slogan=(),
            name_size=120, name_y=None, show_quote=True, canvas_h=None, size_k=1.0):
     """canvas_h / unit：同一組文案可套在 3:4（1440）與 4:3（810）兩種畫布"""
     h = canvas_h or H
@@ -151,17 +151,6 @@ def poster(path_out, art, name, en="", role="", slogan=(), pager="1 / 6",
 
     img = over(img, lay)
 
-    # 頁碼膠囊（底部置中、米白 80%）
-    pw, ph = 160, 50
-    px, py = (W - pw) // 2, int(h - 120)
-    lay2 = layer((W, h))
-    ImageDraw.Draw(lay2).rounded_rectangle([px, py, px + pw, py + ph], radius=25,
-                                           fill=BEIGE + (204,))
-    img = over(img, lay2)
-    d2 = ImageDraw.Draw(img)
-    fo2 = font(REG, 26)
-    d2.text((px + (pw - fo2.getlength(pager)) / 2, py + 9), pager, font=fo2, fill=NAVY)
-
     img.save(path_out, "JPEG", quality=90, optimize=True)
     return path_out
 
@@ -180,7 +169,6 @@ def render(p, h=H, out=None):
         art = glass_art((W, h))
     return poster(OUT / (out or p["out"]), art, p["name"], en=p.get("en", ""),
                   role=p.get("role", ""), slogan=tuple(p.get("slogan", [])),
-                  pager=p.get("pager", ""),
                   name_size=int(p["name_size"] * (h / H) ** 0.6),
                   show_quote=p.get("show_quote", True), canvas_h=h)
 
@@ -209,7 +197,7 @@ def make_og():
 
 if __name__ == "__main__":
     for p in IMG["posters"]:
-        print("✓", render(p).name, f"（{p['pager']}）")
+        print("✓", render(p).name, f"（第 {p['page']} 張）")
     for v in IMG["variants"]:
         base = next(p for p in IMG["posters"] if p["page"] == v["page"])
         print("✓", render(base, h=v["h"], out=v["out"]).name, "（較矮版）")

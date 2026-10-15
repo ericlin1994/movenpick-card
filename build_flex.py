@@ -231,8 +231,11 @@ def build_bubble(i):
                    # 米白底的卡片（第 6 張）footer 用純白，才看得出下面有一條操作列
                    "footer": {"backgroundColor": WHITE if BG_COLOR[i] == BEIGE else BEIGE}},
         "body": BODIES[i - 1](),
-        # 三顆膠囊放在 footer：貼齊卡片最下方，像 App 的底部操作列
-        "footer": vbox([control_row()], spacing="none", padding="10px"),
+        # 頁碼 + 三顆膠囊放在 footer：六張都有、貼齊卡片最下方，頁碼位置天然一致
+        # （頁碼色 #6B7280：#A0AAB8 在米白底對比僅約 2.3:1，看不清楚）
+        "footer": vbox([t(f"{i} / {len(BODIES)}", size="xxs", color="#6B7280",
+                          wrap=False, margin="none", align="center"),
+                        control_row()], spacing="sm", padding="10px"),
     }
     if i in HEROES:
         b["hero"] = {"type": "image", "url": HEROES[i], "size": "full",

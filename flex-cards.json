@@ -38,6 +38,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "1 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -141,12 +151,12 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card1-v2.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card1-v3.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -472,6 +482,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "2 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -575,7 +595,7 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         }
       },
@@ -790,6 +810,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "3 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -893,7 +923,7 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         }
       },
@@ -1015,6 +1045,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "4 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -1118,7 +1158,7 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         }
       },
@@ -1156,6 +1196,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "5 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -1259,12 +1309,12 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card5-v2.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card5-v3.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -1437,6 +1487,16 @@
           "layout": "vertical",
           "contents": [
             {
+              "type": "text",
+              "text": "6 / 6",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#6B7280",
+              "wrap": false,
+              "margin": "none",
+              "align": "center"
+            },
+            {
               "type": "box",
               "layout": "horizontal",
               "contents": [
@@ -1540,7 +1600,7 @@
               "spacing": "sm"
             }
           ],
-          "spacing": "none",
+          "spacing": "sm",
           "paddingAll": "10px"
         }
       }

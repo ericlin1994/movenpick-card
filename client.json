@@ -228,13 +228,13 @@
   "images": {
     "count": 6,
     "heroes": {
-      "1": "card1-v2.jpg",
-      "5": "card5-v2.jpg"
+      "1": "card1-v3.jpg",
+      "5": "card5-v3.jpg"
     },
     "posters": [
       {
         "page": 1,
-        "out": "card1-v2.jpg",
+        "out": "card1-v3.jpg",
         "art": "photo",
         "photo": "photo.jpg",
         "placeholder": "形象照",
@@ -246,12 +246,11 @@
           "讓隔熱成為空間美學"
         ],
         "name_size": 118,
-        "show_quote": true,
-        "pager": "1 / 6"
+        "show_quote": true
       },
       {
         "page": 5,
-        "out": "card5-v2.jpg",
+        "out": "card5-v3.jpg",
         "art": "photo",
         "photo": "card5_hero.jpg",
         "name": "品質落在實處",
@@ -262,20 +261,19 @@
           "精準加工 · 立體雕刻"
         ],
         "name_size": 96,
-        "show_quote": false,
-        "pager": "5 / 6"
+        "show_quote": false
       }
     ],
     "variants": [
       {
         "page": 1,
         "h": 810,
-        "out": "card1-v2_43.jpg"
+        "out": "card1-v3_43.jpg"
       },
       {
         "page": 5,
         "h": 810,
-        "out": "card5-v2_43.jpg"
+        "out": "card5-v3_43.jpg"
       }
     ],
     "og": {
