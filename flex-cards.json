@@ -1369,7 +1369,7 @@
                     {
                       "type": "text",
                       "text": "📞",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "regular",
                       "color": "#C4835A",
                       "wrap": false,
@@ -1378,7 +1378,7 @@
                     {
                       "type": "text",
                       "text": "0938-111-822",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "bold",
                       "color": "#FFFFFF",
                       "wrap": true,
@@ -1387,7 +1387,12 @@
                     }
                   ],
                   "spacing": "sm",
-                  "margin": "sm"
+                  "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg",
+                  "color": "#3A465C"
                 },
                 {
                   "type": "box",
@@ -1396,7 +1401,7 @@
                     {
                       "type": "text",
                       "text": "💬",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "regular",
                       "color": "#C4835A",
                       "wrap": false,
@@ -1405,7 +1410,7 @@
                     {
                       "type": "text",
                       "text": "LINE：@fez86488989",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "bold",
                       "color": "#FFFFFF",
                       "wrap": true,
@@ -1414,7 +1419,12 @@
                     }
                   ],
                   "spacing": "sm",
-                  "margin": "sm"
+                  "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg",
+                  "color": "#3A465C"
                 },
                 {
                   "type": "box",
@@ -1423,7 +1433,7 @@
                     {
                       "type": "text",
                       "text": "📍",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "regular",
                       "color": "#C4835A",
                       "wrap": false,
@@ -1432,7 +1442,7 @@
                     {
                       "type": "text",
                       "text": "新北市中和區連城路518巷8號（中和高中旁巷）",
-                      "size": "xs",
+                      "size": "md",
                       "weight": "regular",
                       "color": "#FFFFFF",
                       "wrap": true,
@@ -1441,7 +1451,12 @@
                     }
                   ],
                   "spacing": "sm",
-                  "margin": "sm"
+                  "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg",
+                  "color": "#3A465C"
                 },
                 {
                   "type": "box",
@@ -1450,7 +1465,7 @@
                     {
                       "type": "text",
                       "text": "⏰",
-                      "size": "sm",
+                      "size": "lg",
                       "weight": "regular",
                       "color": "#C4835A",
                       "wrap": false,
@@ -1459,7 +1474,7 @@
                     {
                       "type": "text",
                       "text": "週一～五 08:00-17:00",
-                      "size": "xs",
+                      "size": "md",
                       "weight": "regular",
                       "color": "#FFFFFF",
                       "wrap": true,
@@ -1468,17 +1483,17 @@
                     }
                   ],
                   "spacing": "sm",
-                  "margin": "sm"
+                  "margin": "none"
                 }
               ],
-              "spacing": "sm",
+              "spacing": "none",
               "margin": "md",
-              "paddingAll": "18px",
+              "paddingAll": "26px",
               "backgroundColor": "#253043",
               "cornerRadius": "20px"
             }
           ],
-          "spacing": "md",
+          "spacing": "lg",
           "paddingAll": "18px",
           "backgroundColor": "#F5F1E8"
         },

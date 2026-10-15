@@ -201,19 +201,23 @@ def body5():
 
 
 def body6():
-    def row(ic, txt, size="sm", weight="bold", color=WHITE):
-        return hbox(t(ic, size="sm", color=COPPER, flex=1, wrap=False),
+    def row(ic, txt, size="md", weight="bold", color=WHITE):
+        return hbox(t(ic, size="lg", color=COPPER, flex=1, wrap=False),
                     t(txt, size=size, weight=weight, color=color, flex=6, margin="none"),
-                    spacing="sm", margin="sm")
+                    spacing="sm", margin="none")
     rows = [row(r["icon"], r["text"],
-                size="sm" if r.get("emphasis", True) else "xs",
+                size="lg" if r.get("emphasis", True) else "md",
                 weight="bold" if r.get("emphasis", True) else "regular")
             for r in FLEX["contact_rows"]]
+    spaced = []
+    for i, r in enumerate(rows):
+        if i: spaced.append(sep(margin="lg", color="#3A465C"))
+        spaced.append(r)
     return vbox([
         t(FLEX["contact_title"], size="xl", weight="bold", color=NAVY, margin="none"),
         t(FLEX["contact_sub"], size="xs", weight="bold", color=COPPER, margin="xs"),
-        box(rows, spacing="sm", padding="18px", bg=NAVY, radius="20px", margin="md"),
-    ], spacing="md", padding="18px", bg=BEIGE)
+        box(spaced, spacing="none", padding="26px", bg=NAVY, radius="20px", margin="md"),
+    ], spacing="lg", padding="18px", bg=BEIGE)
 
 
 BODIES = [body1, body2, body3, body4, body5, body6]
