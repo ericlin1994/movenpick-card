@@ -144,10 +144,16 @@
   .craft p{margin:0;font-size:12.5px;color:#5A6478;line-height:1.65}
 
   /* 作品牆 */
-  .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 20px 0;background:#fff;
-        border-radius:var(--radius);padding:12px;box-shadow:0 2px 12px rgba(22,35,61,.05)}
-  .wall figure{margin:0;border-radius:10px;overflow:hidden;background:#F7F4EE;border:1px solid rgba(22,35,61,.07)}
+  /* 3 欄 × 4 列＝12 格：第一張 2×2 佔 4 格 + 其餘 8 張各 1 格 */
+  .wall{display:grid;grid-template-columns:repeat(3,1fr);margin:6px 20px 0;padding:0;gap:4px;background:none;box-shadow:none}
+  .wall figure{margin:0;border-radius:8px;overflow:hidden;background:#F7F4EE;border:1px solid rgba(22,35,61,.07);
+               transition:transform .12s ease-out}
+  .wall figure.is-pressed{transform:scale(.96)}
+  .wall figure:first-child{grid-column:span 2;grid-row:span 2;position:relative}
   .wall img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+  /* 大圖用絕對定位填滿格子：不參與列高計算（直式照片也不會把列撐高） */
+  .wall figure:first-child img{position:absolute;top:0;left:0;height:100%;aspect-ratio:auto}
+  .wall img,.craft img{cursor:zoom-in}
   .wall .ph{aspect-ratio:1/1;background:repeating-linear-gradient(45deg,#EDE7DB,#EDE7DB 8px,#F5F1EA 8px,#F5F1EA 16px);
             display:flex;align-items:center;justify-content:center;font-size:10px;color:#9AA1AE;letter-spacing:.1em}
 
@@ -163,6 +169,27 @@
 
   .count{text-align:center;font-size:12px;color:var(--muted);margin:-4px 0 0;letter-spacing:.06em}
   .count b{color:var(--navy)}
+  /* 圓點模式：只有 JS 成功建好圓點後才會加 .is-dots；沒跑到就維持上面的靜態文字 */
+  .count.is-dots{font-size:0;display:flex;justify-content:center;gap:0;margin:-10px 0 -2px}
+  /* 視覺 6×6，靠 padding + background-clip 把可點區域放大到約 14×34 */
+  .count.is-dots i{box-sizing:content-box;width:6px;height:6px;padding:14px 4px;border-radius:3px;
+        background:rgba(37,48,67,.2);background-clip:content-box;cursor:pointer;
+        -webkit-tap-highlight-color:transparent;transition:width .2s,background-color .2s}
+  .count.is-dots i.on{width:18px;background-color:var(--brown)}
+
+  /* 圖片淡入：只有 JS 加上 html.has-js 後才會隱藏，JS 沒跑圖片永遠可見 */
+  html.has-js img{transition:opacity .25s}
+  html.has-js img:not(.loaded){opacity:0}
+
+  /* 置中的卡片陰影加深（只動 box-shadow，不碰 transform，避免影響 scroll-snap） */
+  .card{transition:box-shadow .25s}
+  .card.is-center{box-shadow:0 12px 32px rgba(22,35,61,.20)}
+
+  /* 作品／工藝圖放大 */
+  #lightbox{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;display:flex;align-items:center;justify-content:center;
+        padding:16px;background:rgba(10,15,25,.92);cursor:zoom-out;-webkit-tap-highlight-color:transparent}
+  #lightbox[hidden]{display:none}
+  #lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
 
   /* 門市資訊 */
   .info{margin:6px 20px 0;background:#fff;border-radius:var(--radius);padding:16px;
@@ -190,6 +217,9 @@
   .topbar button.hint{animation:pulse 1.6s ease-in-out infinite}
   @media (prefers-reduced-motion:reduce){
     .topbar button.hint{animation:none}
+    /* 此區塊在檔案較前面，選擇器加 html 前綴提高優先權，才蓋得過後面定義的 transition */
+    html .wall figure,html .card,html .count.is-dots i{transition:none}
+    html.has-js img:not(.never){transition:none}
   }
   .btn:focus-visible,.topbar button:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
   @keyframes pulse{0%,100%{filter:brightness(1)}
@@ -484,6 +514,9 @@
   </footer>
 </div>
 
+<!-- 圖片放大（在 CONTENT 區塊外，rebuild_page.py 不會覆蓋） -->
+<div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="圖片放大"><img id="lightboxImg" class="loaded" alt=""></div>
+
 <!-- LINE LIFF SDK（在 LINE 內開啟時提供 shareTargetPicker） -->
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script>
@@ -524,8 +557,8 @@ let payloadFailed = false;
 
 /* 改動 flex-cards.json 後請把 BUILD 往後跳一號：
    LINE 內建瀏覽器會快取檔案，不跳號會一直送出舊版卡片 */
-const BUILD = 'b39';
-const PAGE_VER = '2026-10-15-4-UIUX-B批'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
+const BUILD = 'b40';
+const PAGE_VER = '2026-10-15-5-UIUX-C批'   // 每次改頁面就改這個，用來確認手機拿到的是最新版
 
 /* ═══════ FLEX_PAYLOAD_START（由 build_flex.py 自動寫入，勿手改）═══════ */
 const INLINE_FLEX = {"type":"flex","altText":"友泰京玻璃工程｜李柏融 Benson 電子名片","contents":{"type":"carousel","contents":[{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#253043"},"footer":{"backgroundColor":"#F5F1E8"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"友泰京玻璃工程　藝術玻璃・空間玻璃・工程整合・外牆高空作業","size":"xxs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"none"}],"spacing":"md","paddingAll":"14px","backgroundColor":"#253043"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card1-v2.jpg","size":"full","aspectRatio":"3:4","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}}},{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#253043"},"footer":{"backgroundColor":"#F5F1E8"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們專為誰服務","size":"xl","weight":"bold","color":"#C4835A","wrap":true,"margin":"none"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"設計師","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"建築師","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"建商","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"}],"spacing":"xs"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"營造","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"商空","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"住宅","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":false,"align":"center"}],"spacing":"none","paddingAll":"8px","cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#C4835A"}],"spacing":"xs"}],"spacing":"xs","margin":"md"},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"你是不是也遇過這些問題？","size":"xs","weight":"bold","color":"#253043","wrap":true,"margin":"none"},{"type":"separator","margin":"sm","color":"#DCD4C5"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📌","size":"xs","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"大圖輸出缺工藝，難達藝術質感","size":"xs","weight":"regular","color":"#253043","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📌","size":"xs","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"玻璃鐵件分包，尺寸收邊難整合","size":"xs","weight":"regular","color":"#253043","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📌","size":"xs","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"設計圖美，卻找不到廠家實作","size":"xs","weight":"regular","color":"#253043","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📌","size":"xs","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"兼顧採光與隔熱，不知如何選材","size":"xs","weight":"regular","color":"#253043","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"}],"spacing":"sm","margin":"md","paddingAll":"18px","backgroundColor":"#F5F1E8","cornerRadius":"20px"}],"spacing":"md","paddingAll":"18px","backgroundColor":"#253043"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"}},{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#253043"},"footer":{"backgroundColor":"#F5F1E8"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"我們能為你做什麼","size":"xl","weight":"bold","color":"#C4835A","wrap":true,"margin":"none"},{"type":"text","text":"從設計規劃到現場施作，實現空間想像","size":"sm","weight":"regular","color":"#FFFFFF","wrap":true,"margin":"xs"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"🎨","size":"md","weight":"regular","color":"#C4835A","wrap":false,"margin":"none"},{"type":"text","text":"藝術玻璃","size":"sm","weight":"bold","color":"#FFFFFF","wrap":false,"margin":"sm"},{"type":"text","text":"工藝與色彩結合","size":"xs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"xs"}],"spacing":"none","paddingAll":"16px","backgroundColor":"#1E2838","cornerRadius":"16px","flex":1},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"🪟","size":"md","weight":"regular","color":"#C4835A","wrap":false,"margin":"none"},{"type":"text","text":"空間玻璃","size":"sm","weight":"bold","color":"#FFFFFF","wrap":false,"margin":"sm"},{"type":"text","text":"美感實用隔間窗","size":"xs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"xs"}],"spacing":"none","paddingAll":"16px","backgroundColor":"#1E2838","cornerRadius":"16px","flex":1}],"spacing":"md","margin":"md"},{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"🏗️","size":"md","weight":"regular","color":"#C4835A","wrap":false,"margin":"none"},{"type":"text","text":"工程整合","size":"sm","weight":"bold","color":"#FFFFFF","wrap":false,"margin":"sm"},{"type":"text","text":"鋁框鐵件一條龍","size":"xs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"xs"}],"spacing":"none","paddingAll":"16px","backgroundColor":"#1E2838","cornerRadius":"16px","flex":1},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"🧗","size":"md","weight":"regular","color":"#C4835A","wrap":false,"margin":"none"},{"type":"text","text":"高空作業","size":"sm","weight":"bold","color":"#FFFFFF","wrap":false,"margin":"sm"},{"type":"text","text":"外牆檢測與防水","size":"xs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"xs"}],"spacing":"none","paddingAll":"16px","backgroundColor":"#1E2838","cornerRadius":"16px","flex":1}],"spacing":"md","margin":"md"}],"spacing":"md","paddingAll":"18px","backgroundColor":"#253043"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"}},{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#253043"},"footer":{"backgroundColor":"#F5F1E8"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"為什麼選擇友泰京？","size":"xl","weight":"bold","color":"#C4835A","wrap":true,"margin":"none"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"30+","size":"4xl","weight":"bold","color":"#C4835A","wrap":false,"flex":2},{"type":"text","text":"年玻璃產業\n服務經驗","size":"sm","weight":"bold","color":"#FFFFFF","wrap":true,"margin":"none","flex":3}],"spacing":"md","margin":"xl","alignItems":"center"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"3","size":"4xl","weight":"bold","color":"#C4835A","wrap":false,"flex":2},{"type":"text","text":"代工藝傳承\n品質保證","size":"sm","weight":"bold","color":"#FFFFFF","wrap":true,"margin":"none","flex":3}],"spacing":"md","margin":"md","alignItems":"center"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"4","size":"4xl","weight":"bold","color":"#C4835A","wrap":false,"flex":2},{"type":"text","text":"大服務項目\n專業整合","size":"sm","weight":"bold","color":"#FFFFFF","wrap":true,"margin":"none","flex":3}],"spacing":"md","margin":"md","alignItems":"center"}],"spacing":"md","paddingAll":"18px","backgroundColor":"#253043"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"}},{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#253043"},"footer":{"backgroundColor":"#F5F1E8"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"藝術工藝・機能選材・精準加工・立體雕刻","size":"xxs","weight":"regular","color":"#A0AAB8","wrap":true,"margin":"none"}],"spacing":"md","paddingAll":"14px","backgroundColor":"#253043"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"},"hero":{"type":"image","url":"https://ericlin1994.github.io/movenpick-card/img/card5-v2.jpg","size":"full","aspectRatio":"3:4","aspectMode":"cover","action":{"type":"uri","label":"開啟名片","uri":"https://liff.line.me/2011897701-TrLfDuwi"}}},{"type":"bubble","size":"mega","styles":{"body":{"backgroundColor":"#F5F1E8"},"footer":{"backgroundColor":"#FFFFFF"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"讓我們聊聊你的空間","size":"xl","weight":"bold","color":"#253043","wrap":true,"margin":"none"},{"type":"text","text":"拍下現場照片＋尺寸，LINE 傳給我免費評估","size":"xs","weight":"bold","color":"#C4835A","wrap":true,"margin":"xs"},{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📞","size":"sm","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"0938-111-822","size":"sm","weight":"bold","color":"#FFFFFF","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"💬","size":"sm","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"LINE：@fez86488989","size":"sm","weight":"bold","color":"#FFFFFF","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"📍","size":"sm","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"新北市中和區連城路518巷8號（中和高中旁巷）","size":"xs","weight":"regular","color":"#FFFFFF","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"},{"type":"box","layout":"horizontal","contents":[{"type":"text","text":"⏰","size":"sm","weight":"regular","color":"#C4835A","wrap":false,"flex":1},{"type":"text","text":"週一～五 08:00-17:00","size":"xs","weight":"regular","color":"#FFFFFF","wrap":true,"margin":"none","flex":6}],"spacing":"sm","margin":"sm"}],"spacing":"sm","margin":"md","paddingAll":"18px","backgroundColor":"#253043","cornerRadius":"20px"}],"spacing":"md","paddingAll":"18px","backgroundColor":"#F5F1E8"},"footer":{"type":"box","layout":"vertical","contents":[{"type":"box","layout":"horizontal","contents":[{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📷 IG 作品","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📷 IG 作品","uri":"https://www.instagram.com/tc_fez_glass_team/"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"💬 LINE","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#CD9774","endColor":"#996646"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#D3A385","action":{"type":"uri","label":"💬 LINE","uri":"https://line.me/ti/p/@fez86488989"}},{"type":"box","layout":"vertical","contents":[{"type":"text","text":"📍 導航","size":"xxs","weight":"bold","color":"#FFFFFF","wrap":true,"align":"center"}],"spacing":"none","paddingAll":"10px","background":{"type":"linearGradient","angle":"90deg","startColor":"#485161","endColor":"#1D2534"},"cornerRadius":"100px","flex":1,"borderWidth":"1px","borderColor":"#5E6674","action":{"type":"uri","label":"📍 導航","uri":"https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"}}],"spacing":"sm"}],"spacing":"none","paddingAll":"10px"}}]}};
@@ -1377,6 +1410,40 @@ function bindRail(){
   const rail = document.getElementById('rail'), countEl = document.getElementById('count');
   if(!rail || !countEl) return;
   const n = rail.children.length;          /* 用實際張數，不要寫死 */
+  /* 圓點：先在 fragment 建好再一次換掉文字，最後才加 .is-dots；
+     中途出錯就保留原本的靜態文字 */
+  let dots = [];
+  try{
+    const frag = document.createDocumentFragment();
+    for(let i = 0; i < n; i++){
+      const d = document.createElement('i');
+      d.setAttribute('role', 'button');
+      d.setAttribute('tabindex', '0');
+      d.setAttribute('aria-label', '第 ' + (i + 1) + ' 張，共 ' + n + ' 張');
+      frag.appendChild(d);
+      dots.push(d);
+    }
+    countEl.textContent = '';
+    countEl.appendChild(frag);
+    countEl.classList.add('is-dots');
+  }catch(e){ dots = []; }
+  const goTo = i => {
+    const c = rail.children[i];
+    if(!c) return;
+    /* 與 setCount 同一套座標：讓該張的中心對齊視窗中心 */
+    const left = c.offsetLeft - rail.offsetLeft + c.offsetWidth / 2 - rail.clientWidth / 2;
+    const calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try{ rail.scrollTo({left: left, behavior: calm ? 'auto' : 'smooth'}); }
+    catch(e){ rail.scrollLeft = left; }
+  };
+  const dotAt = t => { const d = t.closest ? t.closest('i') : null; return d ? dots.indexOf(d) : -1; };
+  countEl.addEventListener('click', e => { const i = dotAt(e.target); if(i >= 0) goTo(i); });
+  countEl.addEventListener('keydown', e => {
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    const i = dotAt(e.target);
+    if(i >= 0){ e.preventDefault(); goTo(i); }
+  });
+  let shown = -1;
   const setCount = () => {
     /* 取「中心最接近滑動視窗中心」的那一張當目前頁碼。
        原本的判斷是「中心在視窗左半邊就算過關」→ 最後一張永遠過不了中線，
@@ -1389,12 +1456,92 @@ function bindRail(){
       const d = Math.abs(center - mid);
       if(d < bestD){ bestD = d; best = i; }
     });
-    countEl.innerHTML = '<b>' + (best + 1) + '</b> / ' + n + '　左右滑動看更多';
+    if(best === shown) return;
+    shown = best;
+    if(dots.length){
+      dots.forEach((d, i) => {
+        d.classList.toggle('on', i === best);
+        if(i === best) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    }else{
+      countEl.innerHTML = '<b>' + (best + 1) + '</b> / ' + n + '　左右滑動看更多';
+    }
+    /* 最接近中央的卡片加深陰影（只動 box-shadow，不動 transform） */
+    [...rail.children].forEach((c, i) => c.classList.toggle('is-center', i === best));
   };
-  rail.addEventListener('scroll', setCount, {passive:true});
+  /* scroll 事件節流：每個畫面最多算一次 */
+  let ticking = false;
+  rail.addEventListener('scroll', () => {
+    if(ticking) return;
+    ticking = true;
+    (window.requestAnimationFrame || setTimeout)(() => { ticking = false; setCount(); });
+  }, {passive:true});
   setCount();
 }
 bindRail();
+</script>
+<script>
+/* 視覺增強（獨立 script：上面的主程式出錯也不會牽連圖片顯示）。
+   全部用 document 層級委派，中繼頁事後塞進來的內容也有效。 */
+
+/* 作品牆／工藝圖：點圖放大，點任何地方或按 Esc 關閉 */
+(function(){
+  try{
+    const box = document.getElementById('lightbox'), big = document.getElementById('lightboxImg');
+    if(!box || !big) return;
+    let prevOverflow = null;
+    const close = () => {
+      if(box.hidden) return;
+      box.hidden = true;
+      big.removeAttribute('src');
+      document.body.style.overflow = prevOverflow || '';
+      prevOverflow = null;
+    };
+    document.addEventListener('click', e => {
+      const t = e.target;
+      if(!t || !t.closest) return;
+      const img = t.closest('.wall img, .craft img');   /* 已被換成 .ph 的就不會命中 */
+      if(!img || !box.hidden) return;
+      const src = img.currentSrc || img.src;
+      if(!src) return;
+      big.src = src;
+      big.alt = img.alt || '';
+      prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      box.hidden = false;
+    });
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if(e.key === 'Escape' || e.key === 'Esc') close(); });
+  }catch(e){}
+})();
+
+/* 作品牆縮圖按壓回饋（既有 .btn/.topbar/.share 的 is-pressed 邏輯不動；這裡用委派） */
+(function(){
+  try{
+    const clear = () => document.querySelectorAll('.wall figure.is-pressed')
+      .forEach(f => f.classList.remove('is-pressed'));
+    const down = e => {
+      const f = e.target && e.target.closest ? e.target.closest('.wall figure') : null;
+      if(f) f.classList.add('is-pressed');
+    };
+    ['pointerdown','touchstart'].forEach(ev => document.addEventListener(ev, down, {passive:true}));
+    ['pointerup','pointercancel','touchend','touchcancel','dragstart']
+      .forEach(ev => document.addEventListener(ev, clear, {passive:true}));
+    window.addEventListener('pageshow', clear);
+  }catch(e){}
+})();
+
+/* 圖片淡入：has-js 只在監聽器都掛好之後才加；已載入完成的圖當場補 .loaded */
+(function(){
+  const root = document.documentElement;
+  try{
+    const mark = e => { const t = e.target; if(t && t.tagName === 'IMG') t.classList.add('loaded'); };
+    document.addEventListener('load', mark, true);    /* load/error 不冒泡，用捕獲階段接 */
+    document.addEventListener('error', mark, true);   /* 載入失敗也要解除透明（沒被 onerror 換掉的情況） */
+    root.classList.add('has-js');
+    document.querySelectorAll('img').forEach(img => { if(img.complete) img.classList.add('loaded'); });
+  }catch(e){ root.classList.remove('has-js'); }
+})();
 </script>
 </body>
 </html>
