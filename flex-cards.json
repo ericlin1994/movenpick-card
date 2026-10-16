@@ -510,7 +510,7 @@
           "contents": [
             {
               "type": "text",
-              "text": "30+ 年經驗・3 代工藝傳承・4 大服務項目",
+              "text": "50+ 年經驗・3 代工藝傳承・4 大服務項目",
               "size": "xxs",
               "weight": "regular",
               "color": "#A0AAB8",
@@ -645,7 +645,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card4-v1.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card4-v2.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",

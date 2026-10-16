@@ -245,7 +245,7 @@
             },
             {
               "type": "text",
-              "text": "· 為什麼選擇友泰京？\n· 30+ 年玻璃產業服務經驗\n· 3 代工藝傳承\n· 4 大服務項目",
+              "text": "· 為什麼選擇友泰京？\n· 50+ 年玻璃產業服務經驗\n· 3 代工藝傳承\n· 4 大服務項目",
               "size": "xs",
               "weight": "regular",
               "color": "#A0AAB8",
@@ -290,7 +290,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card4-v1.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card4-v2.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover"
