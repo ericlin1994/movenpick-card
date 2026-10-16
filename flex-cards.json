@@ -184,297 +184,16 @@
           "contents": [
             {
               "type": "text",
-              "text": "我們專為誰服務",
-              "size": "xl",
-              "weight": "bold",
-              "color": "#C4835A",
+              "text": "設計師・建築師・建商・營造・商空・住宅",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "none"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "設計師",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    },
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "建築師",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    },
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "建商",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    }
-                  ],
-                  "spacing": "xs"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "營造",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    },
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "商空",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    },
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "住宅",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": false,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "none",
-                      "paddingAll": "8px",
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#C4835A"
-                    }
-                  ],
-                  "spacing": "xs"
-                }
-              ],
-              "spacing": "xs",
-              "margin": "md"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "你是不是也遇過這些問題？",
-                  "size": "xs",
-                  "weight": "bold",
-                  "color": "#253043",
-                  "wrap": true,
-                  "margin": "none"
-                },
-                {
-                  "type": "separator",
-                  "margin": "sm",
-                  "color": "#DCD4C5"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "📌",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "大圖輸出缺工藝，難達藝術質感",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#253043",
-                      "wrap": true,
-                      "margin": "none",
-                      "flex": 6
-                    }
-                  ],
-                  "spacing": "sm",
-                  "margin": "sm"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "📌",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "玻璃鐵件分包，尺寸收邊難整合",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#253043",
-                      "wrap": true,
-                      "margin": "none",
-                      "flex": 6
-                    }
-                  ],
-                  "spacing": "sm",
-                  "margin": "sm"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "📌",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "設計圖美，卻找不到廠家實作",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#253043",
-                      "wrap": true,
-                      "margin": "none",
-                      "flex": 6
-                    }
-                  ],
-                  "spacing": "sm",
-                  "margin": "sm"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "📌",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "flex": 1
-                    },
-                    {
-                      "type": "text",
-                      "text": "兼顧採光與隔熱，不知如何選材",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#253043",
-                      "wrap": true,
-                      "margin": "none",
-                      "flex": 6
-                    }
-                  ],
-                  "spacing": "sm",
-                  "margin": "sm"
-                }
-              ],
-              "spacing": "sm",
-              "margin": "md",
-              "paddingAll": "18px",
-              "backgroundColor": "#F5F1E8",
-              "cornerRadius": "20px"
             }
           ],
           "spacing": "md",
-          "paddingAll": "18px",
+          "paddingAll": "14px",
           "backgroundColor": "#253043"
         },
         "footer": {
@@ -597,6 +316,18 @@
           ],
           "spacing": "sm",
           "paddingAll": "10px"
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card2-v1.jpg",
+          "size": "full",
+          "aspectRatio": "3:4",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "label": "開啟名片",
+            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+          }
         }
       },
       {
@@ -616,193 +347,16 @@
           "contents": [
             {
               "type": "text",
-              "text": "我們能為你做什麼",
-              "size": "xl",
-              "weight": "bold",
-              "color": "#C4835A",
+              "text": "藝術玻璃・空間玻璃・工程整合・外牆高空作業",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "none"
-            },
-            {
-              "type": "text",
-              "text": "從設計規劃到現場施作，實現空間想像",
-              "size": "sm",
-              "weight": "regular",
-              "color": "#FFFFFF",
-              "wrap": true,
-              "margin": "xs"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "🎨",
-                      "size": "md",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "margin": "none"
-                    },
-                    {
-                      "type": "text",
-                      "text": "藝術玻璃",
-                      "size": "sm",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": false,
-                      "margin": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "工藝與色彩結合",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#A0AAB8",
-                      "wrap": true,
-                      "margin": "xs"
-                    }
-                  ],
-                  "spacing": "none",
-                  "paddingAll": "16px",
-                  "backgroundColor": "#1E2838",
-                  "cornerRadius": "16px",
-                  "flex": 1
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "🪟",
-                      "size": "md",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "margin": "none"
-                    },
-                    {
-                      "type": "text",
-                      "text": "空間玻璃",
-                      "size": "sm",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": false,
-                      "margin": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "美感實用隔間窗",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#A0AAB8",
-                      "wrap": true,
-                      "margin": "xs"
-                    }
-                  ],
-                  "spacing": "none",
-                  "paddingAll": "16px",
-                  "backgroundColor": "#1E2838",
-                  "cornerRadius": "16px",
-                  "flex": 1
-                }
-              ],
-              "spacing": "md",
-              "margin": "md"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "🏗️",
-                      "size": "md",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "margin": "none"
-                    },
-                    {
-                      "type": "text",
-                      "text": "工程整合",
-                      "size": "sm",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": false,
-                      "margin": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "鋁框鐵件一條龍",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#A0AAB8",
-                      "wrap": true,
-                      "margin": "xs"
-                    }
-                  ],
-                  "spacing": "none",
-                  "paddingAll": "16px",
-                  "backgroundColor": "#1E2838",
-                  "cornerRadius": "16px",
-                  "flex": 1
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "🧗",
-                      "size": "md",
-                      "weight": "regular",
-                      "color": "#C4835A",
-                      "wrap": false,
-                      "margin": "none"
-                    },
-                    {
-                      "type": "text",
-                      "text": "高空作業",
-                      "size": "sm",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": false,
-                      "margin": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "外牆檢測與防水",
-                      "size": "xs",
-                      "weight": "regular",
-                      "color": "#A0AAB8",
-                      "wrap": true,
-                      "margin": "xs"
-                    }
-                  ],
-                  "spacing": "none",
-                  "paddingAll": "16px",
-                  "backgroundColor": "#1E2838",
-                  "cornerRadius": "16px",
-                  "flex": 1
-                }
-              ],
-              "spacing": "md",
-              "margin": "md"
             }
           ],
           "spacing": "md",
-          "paddingAll": "18px",
+          "paddingAll": "14px",
           "backgroundColor": "#253043"
         },
         "footer": {
@@ -925,6 +479,18 @@
           ],
           "spacing": "sm",
           "paddingAll": "10px"
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card3-v1.jpg",
+          "size": "full",
+          "aspectRatio": "3:4",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "label": "開啟名片",
+            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+          }
         }
       },
       {
@@ -944,100 +510,16 @@
           "contents": [
             {
               "type": "text",
-              "text": "為什麼選擇友泰京？",
-              "size": "xl",
-              "weight": "bold",
-              "color": "#C4835A",
+              "text": "30+ 年經驗・3 代工藝傳承・4 大服務項目",
+              "size": "xxs",
+              "weight": "regular",
+              "color": "#A0AAB8",
               "wrap": true,
               "margin": "none"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "30+",
-                  "size": "4xl",
-                  "weight": "bold",
-                  "color": "#C4835A",
-                  "wrap": false,
-                  "flex": 2
-                },
-                {
-                  "type": "text",
-                  "text": "年玻璃產業\n服務經驗",
-                  "size": "sm",
-                  "weight": "bold",
-                  "color": "#FFFFFF",
-                  "wrap": true,
-                  "margin": "none",
-                  "flex": 3
-                }
-              ],
-              "spacing": "md",
-              "margin": "xl",
-              "alignItems": "center"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "3",
-                  "size": "4xl",
-                  "weight": "bold",
-                  "color": "#C4835A",
-                  "wrap": false,
-                  "flex": 2
-                },
-                {
-                  "type": "text",
-                  "text": "代工藝傳承\n品質保證",
-                  "size": "sm",
-                  "weight": "bold",
-                  "color": "#FFFFFF",
-                  "wrap": true,
-                  "margin": "none",
-                  "flex": 3
-                }
-              ],
-              "spacing": "md",
-              "margin": "md",
-              "alignItems": "center"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "4",
-                  "size": "4xl",
-                  "weight": "bold",
-                  "color": "#C4835A",
-                  "wrap": false,
-                  "flex": 2
-                },
-                {
-                  "type": "text",
-                  "text": "大服務項目\n專業整合",
-                  "size": "sm",
-                  "weight": "bold",
-                  "color": "#FFFFFF",
-                  "wrap": true,
-                  "margin": "none",
-                  "flex": 3
-                }
-              ],
-              "spacing": "md",
-              "margin": "md",
-              "alignItems": "center"
             }
           ],
           "spacing": "md",
-          "paddingAll": "18px",
+          "paddingAll": "14px",
           "backgroundColor": "#253043"
         },
         "footer": {
@@ -1160,6 +642,18 @@
           ],
           "spacing": "sm",
           "paddingAll": "10px"
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card4-v1.jpg",
+          "size": "full",
+          "aspectRatio": "3:4",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "label": "開啟名片",
+            "uri": "https://liff.line.me/2011897701-TrLfDuwi"
+          }
         }
       },
       {

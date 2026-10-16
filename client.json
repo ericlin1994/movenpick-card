@@ -100,6 +100,11 @@
       "NAVY",
       "BEIGE"
     ],
+    "card_lines": {
+      "2": "設計師・建築師・建商・營造・商空・住宅",
+      "3": "藝術玻璃・空間玻璃・工程整合・外牆高空作業",
+      "4": "30+ 年經驗・3 代工藝傳承・4 大服務項目"
+    },
     "cover_line": "友泰京玻璃工程　藝術玻璃・空間玻璃・工程整合・外牆高空作業",
     "audiences": [
       "設計師",
@@ -232,6 +237,9 @@
     "count": 6,
     "heroes": {
       "1": "card1-v7.jpg",
+      "2": "card2-v1.jpg",
+      "3": "card3-v1.jpg",
+      "4": "card4-v1.jpg",
       "5": "card5-v7.jpg"
     },
     "posters": [
@@ -250,6 +258,30 @@
         ],
         "name_size": 118,
         "show_quote": true
+      },
+      {
+        "page": 2,
+        "out": "card2-v1.jpg",
+        "art": "bg",
+        "photo": "card_bg.jpg",
+        "layout": "pains",
+        "placeholder": "服務對象"
+      },
+      {
+        "page": 3,
+        "out": "card3-v1.jpg",
+        "art": "bg",
+        "photo": "card_bg.jpg",
+        "layout": "services",
+        "placeholder": "服務項目"
+      },
+      {
+        "page": 4,
+        "out": "card4-v1.jpg",
+        "art": "bg",
+        "photo": "card_bg.jpg",
+        "layout": "stats",
+        "placeholder": "實績數據"
       },
       {
         "page": 5,

@@ -154,44 +154,13 @@ def body1():
                 spacing="md", padding="14px", bg=NAVY)
 
 
-def body2():
-    aud = FLEX["audiences"]
-    pains = FLEX["pains"]
-    return vbox([
-        t(FLEX["titles"][1], size="xl", weight="bold", color=COPPER, margin="none"),
-        vbox(*[hbox(*[tag_pill(x) for x in row], spacing="xs") for row in chunk(aud, 3)],
-             spacing="xs", margin="md"),
-        box([t(FLEX["pain_title"], size="xs", weight="bold", color=NAVY, margin="none"),
-             sep("sm", DIVIDE)] +
-            [hbox(t("📌", size="xs", color=COPPER, flex=1, wrap=False),
-                  t(p, size="xs", color=NAVY, flex=6, margin="none"), spacing="sm",
-                  margin="sm")
-             for p in pains],
-            spacing="sm", padding="18px", bg=BEIGE, radius="20px", margin="md"),
-    ], spacing="md", padding="18px", bg=NAVY)
-
-
-def body3():
-    def cell(ic, name, desc):
-        return box([t(ic, size="md", color=COPPER, margin="none", wrap=False),
-                    t(name, size="sm", weight="bold", color=WHITE, margin="sm", wrap=False),
-                    t(desc, size="xs", color=MUTED, margin="xs")],
-                   spacing="none", padding="16px", bg=NAVY_D, radius="16px", flex=1)
-    return vbox([
-        t(FLEX["services_title"], size="xl", weight="bold", color=COPPER, margin="none"),
-        t(FLEX["services_sub"], size="sm", color=WHITE, margin="xs"),
-    ] + [hbox(*[cell(s["icon"], s["name"], s["desc"]) for s in row], spacing="md", margin="md")
-         for row in chunk(FLEX["services"], 2)], spacing="md", padding="18px", bg=NAVY)
-
-
-def body4():
-    stats = [(s["big"], s["small"]) for s in FLEX["stats"]]
-    return vbox([
-        t(f"{FLEX['why_prefix']}{B['short_name']}？", size="xl", weight="bold", color=COPPER, margin="none"),
-    ] + [hbox(t(big, size="4xl", weight="bold", color=COPPER, flex=2, wrap=False),
-              t(small, size="sm", weight="bold", color=WHITE, flex=3, margin="none"),
-              spacing="md", align_items="center", margin="xl" if i == 0 else "md")
-         for i, (big, small) in enumerate(stats)], spacing="md", padding="18px", bg=NAVY)
+def body_caption(page):
+    """內容烤進 Hero 圖的卡片（第 2／3／4 張）：body 只留一行說明。
+    主內容（服務對象／服務項目／實績數據）已經排進 hero 圖，body 再放一次會重複；
+    一行說明同時也讓 Flex 文字版（F1／F2 備援 payload）有東西可顯示。"""
+    line = (FLEX.get("card_lines") or {}).get(str(page), "")
+    return vbox([t(line, size="xxs", color=MUTED, margin="none")],
+                spacing="md", padding="14px", bg=NAVY)
 
 
 def body5():
@@ -220,7 +189,8 @@ def body6():
     ], spacing="lg", padding="18px", bg=BEIGE)
 
 
-BODIES = [body1, body2, body3, body4, body5, body6]
+BODIES = [body1, lambda: body_caption(2), lambda: body_caption(3), lambda: body_caption(4),
+          body5, body6]
 HEROES = {int(k): f"{IMG}/{v}" for k, v in IMGCFG["heroes"].items()}
 BG_COLOR = {i + 1: TH[name] for i, name in enumerate(FLEX["bg_pages"])}
 TITLES = FLEX["titles"]

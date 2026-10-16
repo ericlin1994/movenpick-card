@@ -6,3 +6,7 @@ benson_cut_*.png
 _*.jpg
 __pycache__/
 _*.py
+# 客戶提供的底圖與烤圖中間檔（體積大、不需上線）
+card_bg_src.jpg
+card_bg.jpg
+_*.png
