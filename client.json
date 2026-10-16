@@ -10,7 +10,7 @@
     "en": "TC FEZ GLASS",
     "legal": "TC FEZ Glass",
     "logo": "brand_logo_white.png",
-    "logo_width": 440,
+    "logo_width": 380,
     "logo_width_og": 380,
     "favicon_emoji": "🪟",
     "owner_name": "李柏融",
@@ -231,13 +231,13 @@
   "images": {
     "count": 6,
     "heroes": {
-      "1": "card1-v6.jpg",
-      "5": "card5-v6.jpg"
+      "1": "card1-v7.jpg",
+      "5": "card5-v7.jpg"
     },
     "posters": [
       {
         "page": 1,
-        "out": "card1-v6.jpg",
+        "out": "card1-v7.jpg",
         "art": "photo",
         "photo": "photo.jpg",
         "placeholder": "形象照",
@@ -253,7 +253,7 @@
       },
       {
         "page": 5,
-        "out": "card5-v6.jpg",
+        "out": "card5-v7.jpg",
         "art": "photo",
         "photo": "card5_hero.jpg",
         "name": "品質落在實處",
@@ -269,12 +269,12 @@
       {
         "page": 1,
         "h": 810,
-        "out": "card1-v6_43.jpg"
+        "out": "card1-v7_43.jpg"
       },
       {
         "page": 5,
         "h": 810,
-        "out": "card5-v6_43.jpg",
+        "out": "card5-v7_43.jpg",
         "name_y": 0.72
       }
     ],

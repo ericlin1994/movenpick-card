@@ -156,7 +156,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card1-v6.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card1-v7.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
@@ -1314,7 +1314,7 @@
         },
         "hero": {
           "type": "image",
-          "url": "https://ericlin1994.github.io/movenpick-card/img/card5-v6.jpg",
+          "url": "https://ericlin1994.github.io/movenpick-card/img/card5-v7.jpg",
           "size": "full",
           "aspectRatio": "3:4",
           "aspectMode": "cover",
