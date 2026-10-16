@@ -34,6 +34,36 @@ def rgb(hexstr):
     return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
 
 
+LOGO = B.get("logo")                 # client.json: brand.logo（白色去背 PNG，選用）
+LOGO_W = int(B.get("logo_width", 440))
+LOGO_W_OG = int(B.get("logo_width_og", 380))
+LOGO_SCRIM = float(B.get("logo_scrim", 0.5))   # 左上角局部壓暗強度（0 = 不壓）
+
+
+def brand_lockup(im, x=80, y=80, width=None):
+    """左上角品牌鎖定圖：client.json 有 brand.logo 就貼白色 logo，
+    否則退回文字版（英文名＋中文名）。回傳底部 y，方便後續排版。
+
+    貼之前先在左上角壓一層柔和的暗階：白色 logo 疊在實拍照上時，
+    遇到亮部（反光玻璃、天空）會整片糊掉，這層 scrim 是為了讓它穩定可讀。"""
+    w = width or LOGO_W
+    if LOGO_SCRIM > 0:
+        sc = Image.new("RGBA", im.size, (0, 0, 0, 0))
+        rx, ry, blur = int(w * 1.9), int(w * 1.2), int(w * 0.3)
+        ImageDraw.Draw(sc).ellipse([-rx // 2 + x, -ry // 2 + y, x + rx, y + ry],
+                                   fill=NAVY_D + (int(255 * LOGO_SCRIM),))
+        im.alpha_composite(sc.filter(ImageFilter.GaussianBlur(blur)))
+    if LOGO and (ROOT / LOGO).exists():
+        lg = Image.open(ROOT / LOGO).convert("RGBA")
+        lg = lg.resize((w, max(1, round(lg.height * w / lg.width))), Image.LANCZOS)
+        im.alpha_composite(lg, (x, y))
+        return y + lg.height
+    d = ImageDraw.Draw(im)
+    d.text((x, y), B["en"], font=font(BOLD, 34), fill=WHITE + (245,))
+    d.text((x, y + 44), B["name"], font=font(REG, 26), fill=BEIGE + (240,))
+    return y + 72
+
+
 def lighten(c, k):  # k=0 原色、k=1 純白
     return tuple(int(c[i] + (255 - c[i]) * k) for i in range(3))
 
@@ -130,8 +160,7 @@ def poster(path_out, art, name, en="", role="", slogan=(),
     d = ImageDraw.Draw(lay)
 
     # 品牌（左上 80,80）
-    d.text((80, 80), B["en"], font=font(BOLD, 34), fill=WHITE + (245,))
-    d.text((80, 124), B["name"], font=font(REG, 26), fill=BEIGE + (240,))
+    brand_lockup(lay, 80, 80)
 
     # 人名 + 英文名
     fo = font(BOLD, name_size)
@@ -189,8 +218,10 @@ def make_og():
     d.ellipse([w - 560, -300, w + 300, 420], fill=COPPER + (60,))
     img = over(img, lay.filter(ImageFilter.GaussianBlur(100)))
     d = ImageDraw.Draw(img)
-    d.text((80, 66), B["en"], font=font(BOLD, 32), fill=BEIGE)
-    d.text((80, 112), B["name"], font=font(REG, 26), fill=MUTED)
+    img = img.convert("RGBA")
+    brand_lockup(img, 80, 60, width=LOGO_W_OG)
+    img = img.convert("RGB")
+    d = ImageDraw.Draw(img)
     d.text((80, 196), B["owner_display"], font=font(BOLD, 76), fill=WHITE)
     d.text((80, 292), B["role"], font=font(REG, 32), fill=MUTED)
     d.line([(80, 362), (1120, 362)], fill=COPPER + (220,), width=2)

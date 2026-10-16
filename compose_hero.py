@@ -27,7 +27,7 @@ DESAT = 0.14            # 降飽和比例
 COOL = (0.97, 1.00, 1.05)   # RGB 冷色增益
 TOP_SCRIM = 0.45        # 頂部暗階強度（給品牌字）
 TOP_SCRIM_H = 0.26      # 暗階覆蓋高度比例
-CORNER = 0.62           # 左上角局部壓暗（品牌字壓在反光玻璃上時用）
+CORNER = 0.0            # 左上角局部壓暗：改由 gen_cards.brand_lockup 統一處理（LOGO_SCRIM）
 
 
 def cover_crop(im, w, h, top_frac=0.0, zoom=1.0):
