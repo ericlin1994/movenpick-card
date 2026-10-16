@@ -58,6 +58,14 @@ def fit(img, tw, th, fv=0.5, fh=0.5):
     return im.crop((l, t, l + tw, t + th))
 
 
+def brighten(img, gain=1.0, gamma=1.0):
+    """線性增益 + gamma 提亮（gamma < 1 拉中間調，高光不易爆掉）"""
+    import numpy as np
+    a = np.array(img).astype(np.float32) / 255.0
+    a = (a ** gamma) * gain
+    return Image.fromarray((a.clip(0, 1) * 255).astype(np.uint8))
+
+
 def bake_scrim(img, start=0.28, mid=0.50, k_mid=0.40, k_bot=0.30):
     """先把下半部烤暗，讓之後疊上去的白字有對比。
 
@@ -78,6 +86,12 @@ def bake_scrim(img, start=0.28, mid=0.50, k_mid=0.40, k_bot=0.30):
         k[y] = kk
     arr = np.array(img).astype(np.float32) * k[:, None, None]
     return Image.fromarray(arr.clip(0, 255).astype(np.uint8))
+
+
+# 卡片第 5 頁主視覺：這張特寫原圖偏暗（金屬框吃掉中間調），
+# 提亮到能看見玻璃紋理與稜鏡彩光，但底部暗階不能一起提亮，否則白字會糊掉。
+CARD5_GAIN, CARD5_GAMMA = 1.08, 0.92
+CARD5_SCRIM = dict(start=0.30, mid=0.55, k_mid=0.58, k_bot=0.46)
 
 
 def main():
@@ -101,7 +115,8 @@ def main():
             th = round(tw * 3 / 4)
         res = fit(im, tw, th, fv, fh)
         if out == "card5_hero.jpg":
-            res = bake_scrim(res)
+            res = brighten(res, CARD5_GAIN, CARD5_GAMMA)
+            res = bake_scrim(res, **CARD5_SCRIM)
         up = tw / im.width
         res.save(HERE / out, "JPEG", quality=90, optimize=True)
         warn = "  ⚠ 放大超過 1.45x" if up > 1.45 else ""

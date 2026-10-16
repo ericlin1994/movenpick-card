@@ -241,7 +241,7 @@
       "2": "card2-v1.jpg",
       "3": "card3-v1.jpg",
       "4": "card4-v1.jpg",
-      "5": "card5-v8.jpg"
+      "5": "card5-v9.jpg"
     },
     "posters": [
       {
@@ -286,7 +286,7 @@
       },
       {
         "page": 5,
-        "out": "card5-v8.jpg",
+        "out": "card5-v9.jpg",
         "art": "photo",
         "photo": "card5_hero.jpg",
         "name": "品質落在實處",
@@ -307,7 +307,7 @@
       {
         "page": 5,
         "h": 810,
-        "out": "card5-v8_43.jpg",
+        "out": "card5-v9_43.jpg",
         "name_y": 0.72
       }
     ],
