@@ -1,125 +1,89 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""把去背後的人像合成為名片第 1 頁的形象照（1080x1440，3:4）。
+"""名片第 1 頁形象照：**不去背**，整張照片滿版當底（1080x1440, 3:4）。
 
 產出：photo.jpg（gen_cards.py 會自動置入 card1）
-- 人物底部貼齊畫布下緣（不懸空），頭頂留白給左上品牌字
-- 邊緣內縮 1px 去除去背灰白邊
-- 背景＝深藍漸層＋銅金柔光＋極淡玻璃斜切面＋底噪，與卡片主色一致
+
+- benson_raw.jpg 是 9:16 直幅，cover 到 3:4 必須垂直裁切；人物頭頂約在 7.5%，
+  因此採「上緣貼齊」裁切（t=0），只切掉下方牛仔褲，頭頂留約 10% 空間給左上品牌字。
+- 照片上緣是反光玻璃（偏亮），會壓掉左上角品牌字 → 烤一層很淡的頂部暗階。
+- 底部文字區的暗階由 gen_cards.py 統一處理（共用邏輯，不在這裡重複）。
+- 整體做輕微冷色調（降飽和 + 偏藍），避免鏡面反射的綠意與品牌深藍/銅金打架。
 """
 import pathlib
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
-from scipy import ndimage
 
 HERE = pathlib.Path(__file__).parent
 W, H = 1080, 1440
 
-HERO_TOP, HERO_BOT = (0x1A, 0x26, 0x36), (0x34, 0x4A, 0x5C)
-COPPER = (0xC4, 0x83, 0x5A)
+SRC = HERE / "benson_raw.jpg"
 NAVY_D = (0x1E, 0x28, 0x38)
 
-HEAD_TOP_Y = 176
-BOTTOM_FADE = 0      # 貼齊下緣，不留硬切線
+# 可調參數
+CROP_TOP_FRAC = 0.0     # 從原圖上緣切掉的比例（0 = 完整保留頭頂留白）
+ZOOM = 1.0              # >1 稍微放大（裁掉一點邊緣的爆亮反射）
+DESAT = 0.14            # 降飽和比例
+COOL = (0.97, 1.00, 1.05)   # RGB 冷色增益
+TOP_SCRIM = 0.45        # 頂部暗階強度（給品牌字）
+TOP_SCRIM_H = 0.26      # 暗階覆蓋高度比例
+CORNER = 0.62           # 左上角局部壓暗（品牌字壓在反光玻璃上時用）
 
 
-def gradient(size, top, bot):
-    w, h = size
-    img = Image.new("RGB", (w, h))
-    d = ImageDraw.Draw(img)
-    for y in range(h):
-        k = y / max(1, h - 1)
-        d.line([(0, y), (w, y)], fill=tuple(int(top[i] + (bot[i] - top[i]) * k) for i in range(3)))
-    return img
+def cover_crop(im, w, h, top_frac=0.0, zoom=1.0):
+    r = max(w / im.width, h / im.height) * zoom
+    im = im.resize((max(1, int(round(im.width * r))), max(1, int(round(im.height * r)))), Image.LANCZOS)
+    x = (im.width - w) // 2
+    y = int(round((im.height - h) * top_frac))
+    y = max(0, min(y, im.height - h))
+    return im.crop((x, y, x + w, y + h))
 
 
-def background():
-    img = gradient((W, H), HERO_TOP, HERO_BOT).convert("RGBA")
+def grade(im, desat=DESAT, cool=COOL):
+    arr = np.array(im).astype(np.float32)
+    lum = arr @ np.array([0.299, 0.587, 0.114], np.float32)
+    arr = arr * (1 - desat) + lum[..., None] * desat
+    arr = arr * np.array(cool, np.float32)
+    return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), "RGB")
 
-    # 1) 玻璃斜切面：極淡，只留氛圍（降對比、加大模糊，避免「數位感」）
-    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+
+def top_scrim(im, strength=TOP_SCRIM, height_frac=TOP_SCRIM_H, color=NAVY_D):
+    h = im.height
+    lay = Image.new("RGBA", im.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    for i, x in enumerate(range(-300, W + 400, 210)):
-        d.line([(x, H), (x + 560, 0)], fill=(255, 255, 255, 9), width=40 - (i % 4) * 8)
-    for i, x in enumerate(range(-140, W + 320, 300)):
-        d.line([(x, H), (x + 320, 0)], fill=COPPER + (10,), width=18)
-    img = Image.alpha_composite(img, lay.filter(ImageFilter.GaussianBlur(26)))
-
-    # 2) 右上銅金柔光
-    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(glow).ellipse([W - 640, -440, W + 340, 380], fill=COPPER + (70,))
-    img = Image.alpha_composite(img, glow.filter(ImageFilter.GaussianBlur(150)))
-
-    # 3) 左下壓暗
-    vig = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(vig).ellipse([-520, H - 920, 640, H + 400], fill=NAVY_D + (105,))
-    img = Image.alpha_composite(img, vig.filter(ImageFilter.GaussianBlur(160)))
-
-    # 4) 細微底噪，避免漸層出現色帶（banding）
-    rgb = np.array(img).astype(np.float32)
-    rng = np.random.default_rng(7)
-    rgb[:, :, :3] += rng.normal(0, 2.1, (H, W, 1))
-    return Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8), "RGBA")
+    n = int(h * height_frac)
+    for y in range(n):
+        a = int(255 * strength * (1 - y / max(1, n - 1)) ** 1.6)
+        d.line([(0, y), (im.width, y)], fill=color + (a,))
+    return Image.alpha_composite(im.convert("RGBA"), lay).convert("RGB")
 
 
-def fix_grid_remnant(rgba):
-    """修掉衣襬與手臂夾縫間漏去背的金屬菱格網（低飽和的灰白像素）。"""
-    arr = np.array(rgba).astype(np.float32)
-    hsv = np.array(Image.fromarray(arr[:, :, :3].astype(np.uint8)).convert("HSV")).astype(np.float32)
-    x1, y1, x2, y2 = 534, 804, 582, 898
-    box = (slice(y1, y2), slice(x1, x2))
-    kill = (hsv[:, :, 1][box] / 255.0) < 0.24
-    alpha = arr[:, :, 3][box]
-    before = int((alpha > 128).sum())
-    alpha[kill] = 0
-    arr[:, :, 3][box] = alpha
-    print(f"  夾縫殘留清除：{before} → {int((alpha > 128).sum())} px")
-    return Image.fromarray(arr.astype(np.uint8), "RGBA")
+def corner_scrim(im, strength=0.6, rx=680, ry=460, blur=120, color=NAVY_D):
+    """左上角局部壓暗：品牌字（80,80）壓在反光玻璃上會看不清楚。
+    只暗左上角，人物臉部（畫面中央）不受影響。"""
+    lay = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    ImageDraw.Draw(lay).ellipse([-rx // 2, -ry // 2, rx, ry], fill=color + (int(255 * strength),))
+    lay = lay.filter(ImageFilter.GaussianBlur(blur))
+    return Image.alpha_composite(im.convert("RGBA"), lay).convert("RGB")
 
 
-def defringe(rgba, shrink=1.2):
-    """內縮 alpha 一圈再羽化，去掉去背留下的灰白邊。"""
-    a = np.array(rgba.split()[-1]).astype(np.float32) / 255.0
-    m = a >= 0.5
-    if shrink > 0:
-        m = ndimage.binary_erosion(m, np.ones((3, 3), bool), iterations=max(1, int(round(shrink))))
-    a2 = ndimage.gaussian_filter(np.where(m, 1.0, 0.0).astype(np.float32), 0.9)
-    arr = np.array(rgba).astype(np.float32)
-    arr[:, :, 3] = np.clip(a2, 0, 1) * 255
-    return Image.fromarray(arr.astype(np.uint8), "RGBA")
+def build(top_frac=CROP_TOP_FRAC, zoom=ZOOM, desat=DESAT, cool=COOL,
+          scrim=TOP_SCRIM, scrim_h=TOP_SCRIM_H, corner=CORNER):
+    im = Image.open(SRC).convert("RGB")
+    im = cover_crop(im, W, H, top_frac, zoom)
+    if desat or any(abs(c - 1) > 1e-6 for c in cool):
+        im = grade(im, desat, cool)
+    if scrim > 0:
+        im = top_scrim(im, scrim, scrim_h)
+    if corner > 0:
+        im = corner_scrim(im, corner)
+    return im
 
 
 def main():
-    cut = Image.open(HERE / "benson_cut_u2net_clean.png").convert("RGBA")
-    cut = fix_grid_remnant(cut)
-    cut = defringe(cut)
-
-    a = np.array(cut)[:, :, 3]
-    ys, xs = np.where(a > 128)
-    subj = cut.crop((xs.min(), ys.min(), xs.max() + 1, ys.max() + 1))
-
-    # 底部貼齊下緣、頭頂落在 HEAD_TOP_Y
-    s = (H - HEAD_TOP_Y) / subj.height
-    subj = subj.resize((max(1, round(subj.width * s)), max(1, round(subj.height * s))), Image.LANCZOS)
-    x, y = (W - subj.width) // 2, HEAD_TOP_Y
-    print(f"  人物框 {subj.size}  貼上 x={x} y={y}  底部={y + subj.height}")
-
-    bg = background()
-    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    glow.paste(COPPER + (130,), (x, y), subj.split()[-1])
-    bg = Image.alpha_composite(bg, glow.filter(ImageFilter.GaussianBlur(46)))
-    bg.alpha_composite(subj, (x, y))
-
-    if BOTTOM_FADE:
-        arr = np.array(bg).astype(np.float32)
-        k = np.ones(H, np.float32)
-        k[H - BOTTOM_FADE:] = np.linspace(1, 0, BOTTOM_FADE)
-        arr[:, :, 3] *= k[:, None]
-        bg = Image.fromarray(arr.astype(np.uint8), "RGBA")
-
-    out = bg.convert("RGB")
-    out.save(HERE / "photo.jpg", "JPEG", quality=93, optimize=True)
-    print(f"✓ photo.jpg {out.size}")
+    im = build()
+    im.save(HERE / "photo.jpg", "JPEG", quality=93, optimize=True)
+    print(f"✓ photo.jpg {im.size}（整張照片滿版，未去背）")
 
 
 if __name__ == "__main__":

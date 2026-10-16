@@ -4,3 +4,5 @@ photos_raw/
 benson_raw.jpg
 benson_cut_*.png
 _*.jpg
+__pycache__/
+_*.py

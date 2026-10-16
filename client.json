@@ -228,13 +228,13 @@
   "images": {
     "count": 6,
     "heroes": {
-      "1": "card1-v4.jpg",
+      "1": "card1-v5.jpg",
       "5": "card5-v5.jpg"
     },
     "posters": [
       {
         "page": 1,
-        "out": "card1-v4.jpg",
+        "out": "card1-v5.jpg",
         "art": "photo",
         "photo": "photo.jpg",
         "placeholder": "形象照",
@@ -266,7 +266,7 @@
       {
         "page": 1,
         "h": 810,
-        "out": "card1-v4_43.jpg"
+        "out": "card1-v5_43.jpg"
       },
       {
         "page": 5,
