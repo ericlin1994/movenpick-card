@@ -1130,58 +1130,6 @@
                   ],
                   "spacing": "sm",
                   "margin": "none"
-                },
-                {
-                  "type": "separator",
-                  "margin": "lg",
-                  "color": "#3A465C"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "image",
-                          "url": "https://benson.cardtaiwan.com/img/icon-map-v2.png",
-                          "size": "20px",
-                          "aspectRatio": "1:1",
-                          "aspectMode": "cover",
-                          "flex": 0
-                        },
-                        {
-                          "type": "text",
-                          "text": "導航到門市",
-                          "size": "xxs",
-                          "weight": "bold",
-                          "color": "#FFFFFF",
-                          "wrap": true,
-                          "align": "center"
-                        }
-                      ],
-                      "spacing": "xs",
-                      "paddingAll": "10px",
-                      "background": {
-                        "type": "linearGradient",
-                        "angle": "90deg",
-                        "startColor": "#CD9774",
-                        "endColor": "#996646"
-                      },
-                      "cornerRadius": "100px",
-                      "flex": 1,
-                      "borderWidth": "1px",
-                      "borderColor": "#D3A385",
-                      "action": {
-                        "type": "uri",
-                        "label": "導航到門市",
-                        "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
-                      }
-                    }
-                  ],
-                  "spacing": "none"
                 }
               ],
               "spacing": "none",
@@ -1189,6 +1137,54 @@
               "paddingAll": "14px",
               "backgroundColor": "#253043",
               "cornerRadius": "20px"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": "https://benson.cardtaiwan.com/img/icon-map-v2.png",
+                      "size": "20px",
+                      "aspectRatio": "1:1",
+                      "aspectMode": "cover",
+                      "flex": 0
+                    },
+                    {
+                      "type": "text",
+                      "text": "導航到門市",
+                      "size": "xxs",
+                      "weight": "bold",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "align": "center"
+                    }
+                  ],
+                  "spacing": "xs",
+                  "paddingAll": "10px",
+                  "background": {
+                    "type": "linearGradient",
+                    "angle": "90deg",
+                    "startColor": "#CD9774",
+                    "endColor": "#996646"
+                  },
+                  "cornerRadius": "100px",
+                  "flex": 1,
+                  "borderWidth": "1px",
+                  "borderColor": "#D3A385",
+                  "action": {
+                    "type": "uri",
+                    "label": "導航到門市",
+                    "uri": "https://www.google.com/maps/search/?api=1&query=%E5%8F%8B%E6%B3%B0%E4%BA%AC%E7%8E%BB%E7%92%83%E5%B7%A5%E7%A8%8B%20%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E9%80%A3%E5%9F%8E%E8%B7%AF518%E5%B7%B78%E8%99%9F"
+                  }
+                }
+              ],
+              "spacing": "none",
+              "margin": "md"
             }
           ],
           "spacing": "lg",
