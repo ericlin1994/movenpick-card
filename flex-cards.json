@@ -1130,6 +1130,38 @@
                   ],
                   "spacing": "sm",
                   "margin": "none"
+                },
+                {
+                  "type": "separator",
+                  "margin": "lg",
+                  "color": "#3A465C"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🏢",
+                      "size": "lg",
+                      "weight": "regular",
+                      "color": "#C4835A",
+                      "wrap": false,
+                      "flex": 1
+                    },
+                    {
+                      "type": "text",
+                      "text": "統編 90746796",
+                      "size": "md",
+                      "weight": "regular",
+                      "color": "#FFFFFF",
+                      "wrap": true,
+                      "margin": "none",
+                      "flex": 7
+                    }
+                  ],
+                  "spacing": "sm",
+                  "margin": "none"
                 }
               ],
               "spacing": "none",
