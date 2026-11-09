@@ -1201,13 +1201,13 @@
                   "background": {
                     "type": "linearGradient",
                     "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
+                    "startColor": "#485161",
+                    "endColor": "#1D2534"
                   },
                   "cornerRadius": "100px",
                   "flex": 1,
                   "borderWidth": "1px",
-                  "borderColor": "#D3A385",
+                  "borderColor": "#5E6674",
                   "action": {
                     "type": "uri",
                     "label": "導航到門市",
@@ -1241,13 +1241,13 @@
                   "background": {
                     "type": "linearGradient",
                     "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
+                    "startColor": "#485161",
+                    "endColor": "#1D2534"
                   },
                   "cornerRadius": "100px",
                   "flex": 1,
                   "borderWidth": "1px",
-                  "borderColor": "#D3A385",
+                  "borderColor": "#5E6674",
                   "action": {
                     "type": "uri",
                     "label": "官方網站",
