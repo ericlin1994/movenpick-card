@@ -49,127 +49,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
@@ -236,127 +290,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
@@ -423,127 +531,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
@@ -610,127 +772,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
@@ -797,127 +1013,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
@@ -1279,127 +1549,181 @@
             },
             {
               "type": "box",
-              "layout": "horizontal",
+              "layout": "vertical",
               "contents": [
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-ig-v1.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "IG 作品",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "IG 作品",
+                        "uri": "https://www.instagram.com/tc_fez_glass_team/"
+                      }
                     },
                     {
-                      "type": "text",
-                      "text": "IG 作品",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "LINE",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#CD9774",
+                        "endColor": "#996646"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#D3A385",
+                      "action": {
+                        "type": "uri",
+                        "label": "LINE",
+                        "uri": "https://line.me/ti/p/@fez86488989"
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-web-v3.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "官方網站",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "官方網站",
+                        "uri": "https://www.fezglass.com"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "IG 作品",
-                    "uri": "https://www.instagram.com/tc_fez_glass_team/"
-                  }
+                  "spacing": "sm"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-line-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "LINE",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "image",
+                          "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
+                          "size": "20px",
+                          "aspectRatio": "1:1",
+                          "aspectMode": "cover",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "分享名片",
+                          "size": "xxs",
+                          "weight": "bold",
+                          "color": "#FFFFFF",
+                          "wrap": true,
+                          "align": "center"
+                        }
+                      ],
+                      "spacing": "xs",
+                      "paddingAll": "10px",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "90deg",
+                        "startColor": "#485161",
+                        "endColor": "#1D2534"
+                      },
+                      "cornerRadius": "100px",
+                      "flex": 1,
+                      "borderWidth": "1px",
+                      "borderColor": "#5E6674",
+                      "action": {
+                        "type": "uri",
+                        "label": "分享名片",
+                        "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
+                      }
                     }
                   ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#CD9774",
-                    "endColor": "#996646"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#D3A385",
-                  "action": {
-                    "type": "uri",
-                    "label": "LINE",
-                    "uri": "https://line.me/ti/p/@fez86488989"
-                  }
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://benson.cardtaiwan.com/img/icon-share-v2.png",
-                      "size": "20px",
-                      "aspectRatio": "1:1",
-                      "aspectMode": "cover",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "分享名片",
-                      "size": "xxs",
-                      "weight": "bold",
-                      "color": "#FFFFFF",
-                      "wrap": true,
-                      "align": "center"
-                    }
-                  ],
-                  "spacing": "xs",
-                  "paddingAll": "10px",
-                  "background": {
-                    "type": "linearGradient",
-                    "angle": "90deg",
-                    "startColor": "#485161",
-                    "endColor": "#1D2534"
-                  },
-                  "cornerRadius": "100px",
-                  "flex": 1,
-                  "borderWidth": "1px",
-                  "borderColor": "#5E6674",
-                  "action": {
-                    "type": "uri",
-                    "label": "分享名片",
-                    "uri": "https://liff.line.me/2011946176-m9EBmuJf?v=2026-11-05-1451#share=1"
-                  }
+                  "spacing": "sm"
                 }
               ],
               "spacing": "sm"
